@@ -177,7 +177,7 @@ export default ({ pathContext, location }) => {
   return (
     <div>
       <Helmet>
-        <title>{page.frontmatter.title} &middot; HEML </title>
+        <title>{page.frontmatter.title} &middot; Sixgill </title>
       </Helmet>
       <Header currentPath={location.pathname} fixed />
       <Nav nav={nav} currentPath={location.pathname} />
