@@ -52,7 +52,11 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
 
       result.data.allMarkdownRemark.edges.forEach(({ node }) => {
         if (node.fileAbsolutePath.indexOf('index') > 0) {
-          const parent = { title: node.frontmatter.title, children: [], redirectFrom: getMarkdownPath(node) };
+          const parent = {
+            title: node.frontmatter.title,
+            children: [],
+            redirectFrom: getMarkdownPath(node)
+          };
 
           nav.push(parent);
         } else {

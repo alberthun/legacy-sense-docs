@@ -152,7 +152,8 @@ class IndexPage extends Component {
               cross-enterprise architecture unbounded for scale
               and unrestricted for extensibility and deployment.
               Sense fits within the infrastructure of any enterprise
-              for development of a wide range of task-specific applications for sensor-equipped assets.
+              for development of a wide range of task-specific applications
+              for sensor-equipped assets.
             </p>
           </div>
         </Philosophy>

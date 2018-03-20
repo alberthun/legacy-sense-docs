@@ -1,4 +1,4 @@
 {
   "presets": ["react", "es2015", "stage-1"],
-  "plugins": [["transform-class-properties", { "spec": true }], "add-module-exports"]
+  "plugins": ["transform-decorators-legacy", "transform-class-properties", "add-module-exports"]
 }

@@ -1,24 +1,27 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { ThemeProvider } from 'styled-components';
-
+import { Provider } from 'mobx-react';
+import theme from '../theme';
 import '../styles.css';
+import Requests from '../stores/requests';
+import Auth from '../stores/auth';
 
-const theme = {
-  monospace: '\'Source Code Pro\', monospace',
-  tablet: 'only screen and (max-width: 800px)',
-  mobile: 'only screen and (max-width: 650px)',
-  colors: {
-    primary: '#002966',
-    text: '#1a1a1a',
-  },
+const auth = new Auth();
+const requests = new Requests(auth);
+
+const stores = {
+  auth,
+  requests
 };
 
 const DefaultLayout = ({ children }) => (
-  <div>
-    <Helmet title="Docs Sixgill" />
-    <ThemeProvider theme={theme}>{children()}</ThemeProvider>
-  </div>
+  <Provider {...stores}>
+    <div>
+      <Helmet title="Docs Sixgill" />
+      <ThemeProvider theme={theme}>{children()}</ThemeProvider>
+    </div>
+  </Provider>
 );
 
 export default DefaultLayout;

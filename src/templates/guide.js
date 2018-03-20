@@ -1,19 +1,17 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
-import { pickBy, mapKeys, pick, identity } from 'lodash';
+import Rehype from 'rehype-react';
 
 import Header from '../components/Header';
 import Nav from '../components/Nav';
-import Sidebar from '../components/Sidebar';
-
-import Rehype from "rehype-react";
-import Request from "../components/Request";
+import Request from '../components/Request';
+import Console from '../components/Console';
 
 const renderAst = new Rehype({
   createElement: React.createElement,
-  components: { "request": Request },
- }).Compiler;
+  components: { request: Request },
+}).Compiler;
 
 const Documentation = styled.main`
   float: left;
@@ -155,25 +153,6 @@ export default ({ pathContext, location }) => {
     ''
   );
 
-  const extras = pickBy(
-    mapKeys(
-      pick(page.frontmatter, ['tests', 'issues', 'edit']),
-      (href, text) => {
-        switch (text) {
-          case 'tests':
-            return 'Litmus Tests';
-
-          case 'issues':
-            return 'Report a Bug';
-
-          case 'edit':
-            return 'Edit this Page';
-        }
-      }
-    ),
-    identity
-  );
-
   return (
     <div>
       <Helmet>
@@ -191,7 +170,7 @@ export default ({ pathContext, location }) => {
           { renderAst(page.htmlAst) }
         </DocContents>
       </Documentation>
-      <Sidebar headings={page.headings} extras={extras} />
+      <Console />
     </div>
   );
 };

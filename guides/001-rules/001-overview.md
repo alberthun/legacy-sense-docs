@@ -7,7 +7,7 @@ description: "Sub title"
 This allows you create a new landmark
 
 ```curl request
-curl -X POST http://localhost:5001/v2/login -H 'content-type: application/json' -d '{
+curl -X POST https://sense-api.sixgill.com/v2/login -H 'content-type: application/json' -d '{
     "email":"lspears@sixgill.com",
     "password":"password1"
 }'

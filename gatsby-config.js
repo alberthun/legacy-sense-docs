@@ -1,11 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Starter Blog',
-    author: 'Kyle Mathews',
-    description: 'A starter blog demonstrating what Gatsby can do.',
-    siteUrl: 'https://gatsbyjs.github.io/gatsby-starter-blog/',
+    title: 'Docs Sixgill',
+    description: 'Sixgill documentation.',
+    siteUrl: 'https://docs.sixgill.com/',
   },
-  pathPrefix: '/gatsby-starter-blog',
   plugins: [
     {
       resolve: 'gatsby-source-filesystem',
@@ -18,6 +16,7 @@ module.exports = {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
+          'gatsby-remark-copy-linked-files',
           {
             resolve: 'live-example',
             options: {
@@ -26,8 +25,7 @@ module.exports = {
           },
           {
             resolve: 'gatsby-remark-images',
-          },
-          'gatsby-remark-copy-linked-files',
+          }
         ],
       },
     },
