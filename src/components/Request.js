@@ -5,22 +5,31 @@ import { observer, inject } from 'mobx-react';
 @inject('requests')
 @observer
 export default class Counter extends React.Component {
-  request = () => {
-    const data = this.props.children.map(c => {
+  constructor(props) {
+    super(props);
+    const data = props.children.map(c => {
       if (c.props && c.props.href) {
         return c.props.href;
       }
       return c;
     });
-    this.props.requests.add(parseCurl(data.join(' ')));
+    this.state = {
+      ...parseCurl(data.join(' '))
+    };
+  }
+
+  request = () => {
+    this.props.requests.add(this.state);
   }
 
   render() {
     return (
-      <code>
-        {this.props.children}
-        <button onClick={this.request}>Execute</button>
-      </code>
+      <div>
+        <code>{this.props.children }</code>
+        <div>
+          <button onClick={this.copy}>Copy</button>
+        </div>
+      </div>
     );
   }
 }

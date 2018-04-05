@@ -6,7 +6,7 @@ import Rehype from 'rehype-react';
 import Header from '../components/Header';
 import Nav from '../components/Nav';
 import Request from '../components/Request';
-import Console from '../components/Console';
+import Sidebar from '../components/Sidebar';
 
 const renderAst = new Rehype({
   createElement: React.createElement,
@@ -15,7 +15,7 @@ const renderAst = new Rehype({
 
 const Documentation = styled.main`
   float: left;
-  width: 60%;
+  width: 55%;
   margin-left: 20%;
   padding: 2em 4em;
 
@@ -169,8 +169,8 @@ export default ({ pathContext, location }) => {
         <DocContents>
           { renderAst(page.htmlAst) }
         </DocContents>
+        <Sidebar headings={page.headings} />
       </Documentation>
-      <Console />
     </div>
   );
 };

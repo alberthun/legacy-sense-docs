@@ -19,5 +19,4 @@ Sense Reach Android SDK v1.0.0 _(released March 9, 2018)_
 
 [Sixgill Reach Android SDK User Guide](http://docs.sixgill.com/android-user-guide.html)
 
-
 Users can also demo the mobile SDK capabilities by using the Sixgill Sync 2.0 demo application, available on the App Store and (coming soon) the Google Play Store.
