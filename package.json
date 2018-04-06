@@ -28,6 +28,8 @@
     "react-responsive-grid": "^0.3.4",
     "react-router": "^4.2.0",
     "rehype-react": "^3.0.2",
+    "remark": "^9.0.0",
+    "remark-react": "^4.0.1",
     "styled-components": "^3.2.3"
   },
   "devDependencies": {
@@ -38,7 +40,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
     "pre-commit": "^1.2.2",
-    "prettier": "^1.11.1"
+    "prettier": "1.11.1"
   },
   "scripts": {
     "start": "gatsby develop",
