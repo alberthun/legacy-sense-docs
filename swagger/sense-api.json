@@ -8,6 +8,133 @@
     "description": "# Sense Api description\nText attributes _italic_, *italic*, __bold__, **bold**, `monospace`.\n"
   },
   "paths": {
+    "/v2/organizations": {
+      "get": {
+        "summary": "List organization",
+        "tags": [
+          "Organizations"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Organization"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create an organization",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Organization"
+            }
+          }
+        ],
+        "tags": [
+          "Organizations"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/definitions/Organization"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/organizations/${organizationId}": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "organizationId",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "put": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Organization"
+            }
+          }
+        ],
+        "summary": "Update an organization",
+        "tags": [
+          "Organizations"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/definitions/Organization"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an organization",
+        "tags": [
+          "Organizations"
+        ],
+        "responses": {
+          "204": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/v2/landmarks/search": {
+      "post": {
+        "summary": "Search and list landmarks",
+        "tags": [
+          "Landmarks"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Landmark"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v2/projects/{projectId}/landmarks": {
       "post": {
         "summary": "Add a landmark",
@@ -131,6 +258,17 @@
     }
   },
   "definitions": {
+    "Organization": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
     "Landmark": {
       "type": "object",
       "properties": {
