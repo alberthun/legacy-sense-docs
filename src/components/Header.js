@@ -1,7 +1,7 @@
-import React from 'react';
-import Link from 'gatsby-link';
-import classnames from 'classnames';
-import styled from 'styled-components';
+import React from "react";
+import Link from "gatsby-link";
+import classnames from "classnames";
+import styled from "styled-components";
 
 const Logo = styled.h1`
   font-size: 1.5em;
@@ -20,7 +20,7 @@ const Logo = styled.h1`
 const Header = styled.header`
   border-top: 3px solid ${props => props.theme.colors.primary};
   border-bottom: 1px solid #f0f0f0;
-  position: ${props => (props.fixed ? 'fixed' : 'relative')};
+  position: ${props => (props.fixed ? "fixed" : "relative")};
   top: 0;
   left: 0;
   background: white;
@@ -55,14 +55,15 @@ const Header = styled.header`
   }
 `;
 
-const Offset = ({ fixed, children }) => (fixed ? (
-  <div>
-    {children}
-    <div style={{ height: '68px' }} />
-  </div>
-) : (
-  children
-));
+const Offset = ({ fixed, children }) =>
+  fixed ? (
+    <div>
+      {children}
+      <div style={{ height: "68px" }} />
+    </div>
+  ) : (
+    children
+  );
 
 export default ({ currentPath, fixed, nav }) => (
   <Offset fixed={fixed}>
@@ -75,7 +76,7 @@ export default ({ currentPath, fixed, nav }) => (
           <li>
             <Link
               className={classnames({
-                active: currentPath === '/guides/getting-started',
+                active: currentPath === "/guides/getting-started"
               })}
               to="/guides/getting-started/overview"
             >
@@ -86,18 +87,16 @@ export default ({ currentPath, fixed, nav }) => (
             <Link
               className={classnames({
                 active:
-                  currentPath.startsWith('/api') &&
-                  currentPath !== '/api/overview',
+                  currentPath.startsWith("/api") &&
+                  currentPath !== "/apis/overview"
               })}
-              to="/api/overview"
+              to="/apis/overview"
             >
               API Docs
             </Link>
           </li>
           <li>
-            <a href="/support">
-              Support
-            </a>
+            <a href="/support">Support</a>
           </li>
         </ul>
       ) : (

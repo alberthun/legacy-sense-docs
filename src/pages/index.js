@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import Button from '../components/Button';
+import React, { Component } from "react";
+import styled from "styled-components";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import Button from "../components/Button";
 
 const Hero = styled.div`
   z-index: 1;
@@ -55,7 +55,8 @@ const Hero = styled.div`
       font-size: 1.25em;
     }
 
-    section:first-child, section:last-child {
+    section:first-child,
+    section:last-child {
       width: 100%;
     }
 
@@ -95,8 +96,7 @@ const Philosophy = styled.section`
 `;
 
 class IndexPage extends Component {
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   render() {
     return (
@@ -107,17 +107,18 @@ class IndexPage extends Component {
             <h2>Sixgill</h2>
             <h3>
               We are a backbone for governance of the Internet of Everything.
-              Sixgill enables the governance of connected assets—people, places and things—with our
-               universal sensor data services platform for easier,
-              faster, and more flexible IoE application development.
-              We unlock the value of IoE by taking noisy, voluminous data and identifying exception
-              events—the valuable data intersections
-              that are pertinent to business problems that our customers care about in the moment.
+              Sixgill enables the governance of connected assets—people, places
+              and things—with our universal sensor data services platform for
+              easier, faster, and more flexible IoE application development. We
+              unlock the value of IoE by taking noisy, voluminous data and
+              identifying exception events—the valuable data intersections that
+              are pertinent to business problems that our customers care about
+              in the moment.
             </h3>
             <Button to="/guides/getting-started/overview" large>
               Get Started
             </Button>
-            <Button to="/api/overview" large transparent>
+            <Button to="/apis/overview" large transparent>
               API Docs
             </Button>
           </section>
@@ -126,34 +127,33 @@ class IndexPage extends Component {
           <div>
             <h3>Sixgill Sense: How it Works</h3>
             <p>
-              Sense features and benefits provide a unique combination of technology,
-              services and capacity-maximizing capabilities.
-              With continuous sensor data collection and real-time understanding,
-              Sense helps enterprises know what assets are available,
-              where they are and their operating state while keeping behaviors
-              and actions on track.
+              Sense features and benefits provide a unique combination of
+              technology, services and capacity-maximizing capabilities. With
+              continuous sensor data collection and real-time understanding,
+              Sense helps enterprises know what assets are available, where they
+              are and their operating state while keeping behaviors and actions
+              on track.
             </p>
           </div>
           <div>
             <h3>Sense 2.0 Product Brief</h3>
             <p>
-              Sense features and benefits provide a unique combination of technology,
-              services and capacity-maximizing capabilities.
-              With continuous sensor data collection and real-time understanding,
-              Sense helps enterprises know what assets are available,
-              where they are and their operating state
-              while keeping behaviors and actions on track.
+              Sense features and benefits provide a unique combination of
+              technology, services and capacity-maximizing capabilities. With
+              continuous sensor data collection and real-time understanding,
+              Sense helps enterprises know what assets are available, where they
+              are and their operating state while keeping behaviors and actions
+              on track.
             </p>
           </div>
           <div>
             <h3>Sense 2.0 Architecture White Paper</h3>
             <p>
               Sense solves fragmentation and integration problems with a common,
-              cross-enterprise architecture unbounded for scale
-              and unrestricted for extensibility and deployment.
-              Sense fits within the infrastructure of any enterprise
-              for development of a wide range of task-specific applications
-              for sensor-equipped assets.
+              cross-enterprise architecture unbounded for scale and unrestricted
+              for extensibility and deployment. Sense fits within the
+              infrastructure of any enterprise for development of a wide range
+              of task-specific applications for sensor-equipped assets.
             </p>
           </div>
         </Philosophy>
@@ -162,6 +162,5 @@ class IndexPage extends Component {
     );
   }
 }
-
 
 export default IndexPage;

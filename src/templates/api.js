@@ -42,7 +42,6 @@ const DisableAuthorizePlugin = function() {
 
 class Api extends React.Component {
   componentDidMount() {
-    console.log(this.props.pathContext.page.spec);
     SwaggerUI({
       dom_id: "#ui",
       spec: JSON.parse(this.props.pathContext.page.spec),
@@ -52,17 +51,8 @@ class Api extends React.Component {
     });
   }
   render() {
-    // const api = this.props.data.openApiSpec;
     const { location } = this.props;
     const { nav } = this.props.pathContext;
-
-    // const paths = api.childrenOpenApiSpecPath;
-    /*
-    const groupsByTag = {};
-    paths.forEach(c => {
-      groupsByTag[c.tag] = [].concat(groupsByTag[c.tag] || [], c);
-    });
-    */
 
     return (
       <div>

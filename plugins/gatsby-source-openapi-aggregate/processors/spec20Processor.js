@@ -1,18 +1,6 @@
 const spec20Processor = (name, spec) => {
   const rootId = `spec.${name}`;
 
-  Object.keys(spec.paths).forEach(p => {
-    Object.keys(spec.paths[p]).forEach(v => {
-      if (v === "parameters") {
-        const { parameters } = spec.paths[p];
-        delete spec.paths[p].parameters;
-        Object.keys(spec.paths[p]).forEach(path => {
-          path.parameters = [].concat(path.parameters || [], parameters);
-        });
-      }
-    });
-  });
-
   const paths = [];
   Object.keys(spec.paths).forEach(p => {
     Object.keys(spec.paths[p]).forEach(v => {
@@ -26,8 +14,6 @@ const spec20Processor = (name, spec) => {
           verb: v,
           summary: path.summary,
           description: path.description,
-          parameters: path.parameters,
-          tags: path.tags,
           tag: path.tags ? path.tags.join(",") : null
         }
       });

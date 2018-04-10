@@ -56,6 +56,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
             frontmatter {
               title
               description
+              path
             }
           }
         }
@@ -72,11 +73,12 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     nav.push(guideParent);
 
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+      if (node.frontmatter.path) return;
       if (node.fileAbsolutePath.indexOf("index") > 0) {
         guideParent.children.push({
           title: node.frontmatter.title,
-          children: [],
-          redirectFrom: getMarkdownPath(node)
+          children: []
+          // redirectFrom: getMarkdownPath(node)
         });
       } else {
         const parent = guideParent.children[guideParent.children.length - 1];
@@ -99,7 +101,6 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     nav.push(apiParent);
 
     result.data.allOpenApiSpec.edges.forEach(({ node }) => {
-      console.log(node);
       apiParent.children.push({
         title: node.title,
         children: [],
@@ -118,9 +119,13 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     });
 
     result.data.allMarkdownRemark.edges.forEach(({ node }, i) => {
-      if (node.fileAbsolutePath.indexOf("index") > 0) {
+      const nodePath = node.frontmatter.path || getMarkdownPath(node);
+      if (
+        !node.frontmatter.path &&
+        node.fileAbsolutePath.indexOf("index") > 0
+      ) {
         createPage({
-          path: getMarkdownPath(node),
+          path: nodePath,
           component: redirectTemplate,
           context: {
             to: getMarkdownPath(result.data.allMarkdownRemark.edges[i + 1].node)
@@ -128,7 +133,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
         });
       } else {
         createPage({
-          path: getMarkdownPath(node),
+          path: nodePath,
           component: documentationTemplate,
           context: { page: node, nav }
         });

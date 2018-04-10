@@ -1,7 +1,7 @@
-import React from 'react';
-import Link from 'gatsby-link';
-import classnames from 'classnames';
-import styled from 'styled-components';
+import React from "react";
+import Link from "gatsby-link";
+import classnames from "classnames";
+import styled from "styled-components";
 
 const Wrapper = styled.nav`
   position: fixed;
@@ -24,7 +24,7 @@ const Wrapper = styled.nav`
 const List = styled.ul`
   list-style: none;
   padding: 0;
-  margin-top: ${props => (props.inner ? '1em' : '2em')};
+  margin-top: ${props => (props.inner ? "1em" : "2em")};
 `;
 
 const ListItem = styled.li`
@@ -32,13 +32,13 @@ const ListItem = styled.li`
   padding: 0;
   font-weight: 600;
   ${props =>
-    (props.inner
+    props.inner
       ? `
   font-weight: 400;
   font-size: .9rem;
   margin-left: 1em;
   margin-bottom: .75em;`
-      : '')} a {
+      : ""} a {
     color: inherit;
     text-decoration: none;
 
@@ -49,28 +49,46 @@ const ListItem = styled.li`
   }
 `;
 
-export default ({ currentPath, nav }) => (
-  <Wrapper>
-    <List>
-      {nav.map(parent => (
-        <ListItem key={parent.path}>
-          <Link to={parent.path}>{parent.title}</Link>
-          <List inner>
-            {parent.children.map(child => (
-              <ListItem key={child.path} inner>
-                <Link
-                  to={child.path}
-                  className={classnames({
-                    active: currentPath === child.path,
-                  })}
-                >
-                  {child.title}
-                </Link>
-              </ListItem>
-            ))}
-          </List>
-        </ListItem>
-      ))}
-    </List>
-  </Wrapper>
-);
+export default ({ currentPath, nav }) => {
+  console.log(nav);
+  return (
+    <Wrapper>
+      <List>
+        {nav.map(parent => (
+          <ListItem key={parent.path}>
+            <Link to={parent.path}>{parent.title}</Link>
+            <List inner>
+              {parent.children.map(child => (
+                <ListItem key={child.path} inner>
+                  <Link
+                    to={child.path}
+                    className={classnames({
+                      active: currentPath === child.path
+                    })}
+                  >
+                    {child.title}
+                    <List inner>
+                      {child.children &&
+                        child.children.map(child => (
+                          <ListItem key={child.path} inner>
+                            <Link
+                              to={child.path}
+                              className={classnames({
+                                active: currentPath === child.path
+                              })}
+                            >
+                              {child.title}
+                            </Link>
+                          </ListItem>
+                        ))}
+                    </List>
+                  </Link>
+                </ListItem>
+              ))}
+            </List>
+          </ListItem>
+        ))}
+      </List>
+    </Wrapper>
+  );
+};

@@ -64,10 +64,7 @@ exports.sourceNodes = async ({ boundActionCreators }, options) => {
     try {
       const json = JSON.parse(jsonText);
       const processor = specProcessorFactory(json);
-      const { information, paths, responses, definitions } = processor(
-        spec.name,
-        json
-      );
+      const { information, paths } = processor(spec.name, json);
 
       //
       const nodes = [];
