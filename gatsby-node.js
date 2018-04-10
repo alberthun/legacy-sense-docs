@@ -29,6 +29,8 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
           node {
             id
             name
+            title
+            spec
             childrenOpenApiSpecPath {
               tag
               description
@@ -62,17 +64,22 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
   `).then(result => {
     const nav = [];
 
+    const guideParent = {
+      title: "Guides",
+      children: [],
+      path: `/guides/`
+    };
+    nav.push(guideParent);
+
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
       if (node.fileAbsolutePath.indexOf("index") > 0) {
-        const parent = {
+        guideParent.children.push({
           title: node.frontmatter.title,
           children: [],
           redirectFrom: getMarkdownPath(node)
-        };
-
-        nav.push(parent);
+        });
       } else {
-        const parent = nav[nav.length - 1];
+        const parent = guideParent.children[guideParent.children.length - 1];
         if (!parent.path) {
           parent.path = getMarkdownPath(node);
         }
@@ -84,13 +91,20 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       }
     });
 
+    const apiParent = {
+      title: "API Documentation",
+      children: [],
+      path: `/apis/overview`
+    };
+    nav.push(apiParent);
+
     result.data.allOpenApiSpec.edges.forEach(({ node }) => {
-      const parent = {
-        title: node.name,
+      console.log(node);
+      apiParent.children.push({
+        title: node.title,
         children: [],
         path: `/apis/${node.name}`
-      };
-      nav.push(parent);
+      });
 
       createPage({
         path: `apis/${node.name}`,
