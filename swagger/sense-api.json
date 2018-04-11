@@ -1,13 +1,101 @@
 {
   "swagger": "2.0",
-  "host": "petstore.swagger.io",
-  "basePath": "/v2",
   "info": {
     "title": "Sense Api",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "description": "# Sense Api description\nText attributes _italic_, *italic*, __bold__, **bold**, `monospace`.\n"
   },
   "paths": {
+    "/v2/login": {
+      "post": {
+        "summary": "Authenticate users",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Authenticate"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "description": "jwt token"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/users/me": {
+      "get": {
+        "summary": "get authenticated user",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "update authenticated user",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "locale": {
+                  "type": "object",
+                  "properties": {
+                    "timeZone": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
     "/v2/organizations": {
       "get": {
         "summary": "List organization",
@@ -39,7 +127,12 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Organization"
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              }
             }
           }
         ],
@@ -50,12 +143,7 @@
           "200": {
             "description": "successful operation",
             "schema": {
-              "type": "object",
-              "properties": {
-                "data": {
-                  "$ref": "#/definitions/Organization"
-                }
-              }
+              "$ref": "#/definitions/Organization"
             }
           }
         }
@@ -71,19 +159,24 @@
         }
       ],
       "put": {
+        "summary": "Update an organization",
+        "tags": [
+          "Organizations"
+        ],
         "parameters": [
           {
             "in": "body",
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Organization"
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              }
             }
           }
-        ],
-        "summary": "Update an organization",
-        "tags": [
-          "Organizations"
         ],
         "responses": {
           "200": {
@@ -101,6 +194,27 @@
       },
       "delete": {
         "summary": "Delete an organization",
+        "tags": [
+          "Organizations"
+        ],
+        "responses": {
+          "204": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/v2/organizations/${organizationId}/leave": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "organizationId",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "Leave an organization",
         "tags": [
           "Organizations"
         ],
@@ -255,9 +369,95 @@
           }
         }
       }
+    },
+    "/v2/projects/{projectId}/channels": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "projectId",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "List channels",
+        "tags": [
+          "Channels"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Channel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
+    "ApiKey": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "apiKey": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "qrCode": {
+          "type": "string"
+        }
+      }
+    },
+    "Channel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "locale": {
+          "type": "object",
+          "properties": {
+            "timezone": {
+              "type": "string",
+              "readOnly": true
+            }
+          }
+        }
+      }
+    },
     "Organization": {
       "type": "object",
       "properties": {
@@ -266,6 +466,15 @@
         },
         "name": {
           "type": "string"
+        },
+        "permissions": {
+          "type": "object",
+          "properties": {
+            "admin": {
+              "type": "boolean",
+              "readOnly": true
+            }
+          }
         }
       }
     },
