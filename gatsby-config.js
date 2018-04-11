@@ -46,13 +46,6 @@ module.exports = {
       }
     },
     {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: `${__dirname}/apis`,
-        name: "apis-pages"
-      }
-    },
-    {
       resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
