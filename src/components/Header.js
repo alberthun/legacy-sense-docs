@@ -56,14 +56,14 @@ const Header = styled.header`
 `;
 
 const Offset = ({ fixed, children }) =>
-  fixed ? (
+  (fixed ? (
     <div>
       {children}
       <div style={{ height: "68px" }} />
     </div>
   ) : (
     children
-  );
+  ));
 
 export default ({ currentPath, fixed, nav }) => (
   <Offset fixed={fixed}>

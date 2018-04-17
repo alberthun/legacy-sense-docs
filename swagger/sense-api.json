@@ -1,5 +1,5 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.0",
   "info": {
     "title": "Sense Api",
     "version": "2.0.0",
@@ -9,36 +9,40 @@
     "/v2/login": {
       "post": {
         "summary": "Authenticate users",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "email": {
-                  "type": "string"
-                },
-                "password": {
-                  "type": "string"
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
                 }
               }
             }
           }
-        ],
+        },
         "tags": [
           "Authenticate"
         ],
         "responses": {
           "200": {
             "description": "successful operation",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "token": {
-                  "type": "string",
-                  "description": "jwt token"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string",
+                      "description": "jwt token"
+                    }
+                  }
                 }
               }
             }
@@ -55,8 +59,12 @@
         "responses": {
           "200": {
             "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/User"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
             }
           }
         }
@@ -66,29 +74,29 @@
         "tags": [
           "Users"
         ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "locale": {
-                  "type": "object",
-                  "properties": {
-                    "timeZone": {
-                      "type": "string"
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "locale": {
+                    "type": "object",
+                    "properties": {
+                      "timeZone": {
+                        "type": "string"
+                      }
                     }
                   }
                 }
               }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "successful operation"
@@ -105,13 +113,17 @@
         "responses": {
           "200": {
             "description": "successful operation",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "data": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/Organization"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Organization"
+                      }
+                    }
                   }
                 }
               }
@@ -121,29 +133,33 @@
       },
       "post": {
         "summary": "Create an organization",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string"
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
                 }
               }
             }
           }
-        ],
+        },
         "tags": [
           "Organizations"
         ],
         "responses": {
           "200": {
             "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/Organization"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Organization"
+                }
+              }
             }
           }
         }
@@ -154,8 +170,10 @@
         {
           "in": "path",
           "name": "organizationId",
-          "type": "string",
-          "required": true
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
         }
       ],
       "put": {
@@ -163,29 +181,33 @@
         "tags": [
           "Organizations"
         ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string"
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
                 }
               }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "successful operation",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "data": {
-                  "$ref": "#/definitions/Organization"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Organization"
+                    }
+                  }
                 }
               }
             }
@@ -209,8 +231,10 @@
         {
           "in": "path",
           "name": "organizationId",
-          "type": "string",
-          "required": true
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
         }
       ],
       "post": {
@@ -234,13 +258,17 @@
         "responses": {
           "200": {
             "description": "successful operation",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "data": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/Landmark"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Landmark"
+                      }
+                    }
                   }
                 }
               }
@@ -255,31 +283,38 @@
         "tags": [
           "Landmarks"
         ],
-        "description": "",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Landmark"
+              }
+            }
+          }
+        },
         "parameters": [
           {
             "in": "path",
             "name": "projectId",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "body",
-            "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Landmark"
+              "type": "string"
             }
           }
         ],
         "responses": {
           "200": {
             "description": "successful operation",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "data": {
-                  "$ref": "#/definitions/Landmark"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Landmark"
+                    }
+                  }
                 }
               }
             }
@@ -292,14 +327,18 @@
         {
           "in": "path",
           "name": "projectId",
-          "type": "string",
-          "required": true
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
         },
         {
           "in": "path",
           "name": "landmarkId",
-          "type": "string",
-          "required": true
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
         }
       ],
       "get": {
@@ -310,11 +349,15 @@
         "responses": {
           "200": {
             "description": "successful operation",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "data": {
-                  "$ref": "#/definitions/Landmark"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Landmark"
+                    }
+                  }
                 }
               }
             }
@@ -327,16 +370,8 @@
           "Landmarks"
         ],
         "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "data": {
-                  "$ref": "#/definitions/Landmark"
-                }
-              }
-            }
+          "204": {
+            "description": "successful operation"
           }
         }
       },
@@ -345,24 +380,28 @@
         "tags": [
           "Landmarks"
         ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Landmark"
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Landmark"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "successful operation",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "data": {
-                  "$ref": "#/definitions/Landmark"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Landmark"
+                    }
+                  }
                 }
               }
             }
@@ -375,8 +414,10 @@
         {
           "in": "path",
           "name": "projectId",
-          "type": "string",
-          "required": true
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
         }
       ],
       "get": {
@@ -387,13 +428,66 @@
         "responses": {
           "200": {
             "description": "successful operation",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "data": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/Channel"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Channel"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create Channel",
+        "tags": [
+          "Channels"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "ios",
+                      "android",
+                      "gateway"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Channel"
+                      }
+                    }
                   }
                 }
               }
@@ -403,100 +497,107 @@
       }
     }
   },
-  "definitions": {
-    "ApiKey": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "apiKey": {
-          "type": "string"
-        },
-        "createdAt": {
-          "type": "string"
-        },
-        "qrCode": {
-          "type": "string"
-        }
-      }
-    },
-    "Channel": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        }
-      }
-    },
-    "User": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "locale": {
-          "type": "object",
-          "properties": {
-            "timezone": {
-              "type": "string",
-              "readOnly": true
-            }
-          }
-        }
-      }
-    },
-    "Organization": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "permissions": {
-          "type": "object",
-          "properties": {
-            "admin": {
-              "type": "boolean",
-              "readOnly": true
-            }
-          }
-        }
-      }
-    },
-    "Landmark": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "address": {
-          "type": "string"
-        },
-        "model": {
-          "type": "object"
-        },
-        "tags": {
-          "type": "array",
-          "items": {
+  "components": {
+    "schemas": {
+      "ApiKey": {
+        "type": "object",
+        "properties": {
+          "id": {
             "type": "string"
+          },
+          "apiKey": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "qrCode": {
+            "type": "string"
+          }
+        }
+      },
+      "Channel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "ios",
+              "android",
+              "gateway"
+            ]
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "locale": {
+            "type": "object",
+            "properties": {
+              "timezone": {
+                "type": "string",
+                "readOnly": true
+              }
+            }
+          }
+        }
+      },
+      "Organization": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "permissions": {
+            "type": "object",
+            "properties": {
+              "admin": {
+                "type": "boolean",
+                "readOnly": true
+              }
+            }
+          }
+        }
+      },
+      "Landmark": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "model": {
+            "type": "object"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }

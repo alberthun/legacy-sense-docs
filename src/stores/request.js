@@ -18,8 +18,8 @@ export default class Request {
     this.id = uniqueId('requests');
   }
 
-  @action setResponse(httpCode, response) {
-    console.log(httpCode, response);
+  @action
+  setResponse(httpCode, response) {
     this.state = 'resolved';
     this.httpCode = httpCode;
     this.response = response;

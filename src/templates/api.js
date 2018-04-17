@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 // import Link from "gatsby-link";
-import Helmet from "react-helmet";
-import styled from "styled-components";
-import SwaggerUI from "swagger-ui";
-import "swagger-ui/dist/swagger-ui.css";
+import Helmet from 'react-helmet';
+import styled from 'styled-components';
+import SwaggerUI from 'swagger-ui';
+import 'swagger-ui/dist/swagger-ui.css';
 
-import Header from "../components/Header";
-import Nav from "../components/Nav";
+import Header from '../components/Header';
+import Nav from '../components/Nav';
 
 const ApiDocs = styled.main`
   float: left;
@@ -14,7 +14,7 @@ const ApiDocs = styled.main`
   margin-left: 20%;
   padding: 2em 4em;
 
-  @media ${props => props.theme.mobile} {
+  @media ${(props) => props.theme.mobile} {
     width: 100%;
     margin: 0;
   }
@@ -43,7 +43,7 @@ const DisableAuthorizePlugin = function() {
 class Api extends React.Component {
   componentDidMount() {
     SwaggerUI({
-      dom_id: "#ui",
+      dom_id: '#ui',
       spec: JSON.parse(this.props.pathContext.page.spec),
       plugins: [DisableTryItOutPlugin, DisableAuthorizePlugin],
       defaultModelsExpandDepth: -1,
