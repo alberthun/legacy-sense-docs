@@ -1,9 +1,9 @@
-const path = require("path");
-const fs = require("fs");
+const path = require('path');
+const fs = require('fs');
 
-const fromJson = filePath => {
+const fromJson = (filePath) => {
   return new Promise((resolve, reject) => {
-    fs.readFile(filePath, "utf8", (err, data) => {
+    fs.readFile(filePath, 'utf8', (err, data) => {
       if (err) {
         reject(err);
         return;
@@ -16,9 +16,9 @@ const fromJson = filePath => {
 
 module.exports = {
   siteMetadata: {
-    title: "Docs Sixgill",
-    description: "Sixgill documentation.",
-    siteUrl: "https://docs.sixgill.com/"
+    title: 'Docs Sixgill',
+    description: 'Sixgill documentation.',
+    siteUrl: 'https://docs.sixgill.com/'
   },
   plugins: [
     {
@@ -26,52 +26,52 @@ module.exports = {
       options: {
         specs: [
           {
-            name: "sense-api",
+            name: 'sense-api',
             resolve: () =>
-              fromJson(path.resolve(__dirname, "./swagger/sense-api.json"))
+              fromJson(path.resolve(__dirname, './openapi/sense-api.json'))
           },
           {
-            name: "ingress",
+            name: 'ingress',
             resolve: () =>
-              fromJson(path.resolve(__dirname, "./swagger/ingress.json"))
+              fromJson(path.resolve(__dirname, './openapi/ingress.json'))
           }
         ]
       }
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/guides`,
-        name: "pages"
+        name: 'pages'
       }
     },
     {
-      resolve: "gatsby-transformer-remark",
+      resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
-          "gatsby-remark-copy-linked-files",
+          'gatsby-remark-copy-linked-files',
           {
-            resolve: "live-example",
+            resolve: 'live-example',
             options: {
-              "curl request": "request"
+              'curl request': 'request'
             }
           },
           {
-            resolve: "gatsby-remark-images"
+            resolve: 'gatsby-remark-images'
           }
         ]
       }
     },
-    "gatsby-plugin-styled-components",
-    "gatsby-transformer-sharp",
-    "gatsby-plugin-sharp",
+    'gatsby-plugin-styled-components',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     {
-      resolve: "gatsby-plugin-google-analytics",
+      resolve: 'gatsby-plugin-google-analytics',
       options: {
         // trackingId: `ADD YOUR TRACKING ID HERE`,
       }
     },
-    "gatsby-plugin-offline",
-    "gatsby-plugin-react-helmet"
+    'gatsby-plugin-offline',
+    'gatsby-plugin-react-helmet'
   ]
 };

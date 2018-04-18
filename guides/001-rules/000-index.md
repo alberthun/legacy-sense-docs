@@ -1,3 +1,3 @@
 ---
-title: Handling Rules
+title: Rules
 ---

@@ -1,7 +1,10 @@
-const path = require("path");
+const path = require('path');
+
+const documentationTemplate = path.resolve('src/templates/guide.js');
+const redirectTemplate = path.resolve('src/templates/redirect.js');
 
 function stripOrderingNumbers(str) {
-  return str.replace(/^(\d+-)/, "");
+  return str.replace(/^(\d+-)/, '');
 }
 
 function getMarkdownPath({ fileAbsolutePath }) {
@@ -14,13 +17,33 @@ function getMarkdownPath({ fileAbsolutePath }) {
       .pop()
   );
 
-  return `/guides/${dir}${file === "index" ? "" : `/${file}`}`;
+  return `/guides/${dir}${file === 'index' ? '' : `/${file}`}`;
+}
+
+function createGuidePages(c, createPage, context) {
+  const nodePath = getMarkdownPath(c.node);
+  if (c.children && c.children.length) {
+    createPage({
+      path: nodePath,
+      component: redirectTemplate,
+      context: {
+        to: getMarkdownPath(c.children[0].node)
+      }
+    });
+    c.children.forEach((child) => {
+      createGuidePages(child, createPage, context);
+    });
+  } else {
+    createPage({
+      path: nodePath,
+      component: documentationTemplate,
+      context: { page: c.node, ...context }
+    });
+  }
 }
 
 exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators;
-  const documentationTemplate = path.resolve("src/templates/guide.js");
-  const redirectTemplate = path.resolve("src/templates/redirect.js");
 
   return graphql(`
     {
@@ -62,39 +85,40 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
         }
       }
     }
-  `).then(result => {
+  `).then((result) => {
     const nav = [];
 
     const guideParent = {
-      title: "Guides",
+      title: 'Guides',
       children: [],
       path: `/guides/`
     };
     nav.push(guideParent);
 
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    result.data.allMarkdownRemark.edges.forEach((res) => {
+      if (!res.node) return;
+      const { node } = res;
       if (node.frontmatter.path) return;
-      if (node.fileAbsolutePath.indexOf("index") > 0) {
+      if (node.fileAbsolutePath.indexOf('index') > 0) {
         guideParent.children.push({
           title: node.frontmatter.title,
-          children: []
-          // redirectFrom: getMarkdownPath(node)
+          node,
+          children: [],
+          path: getMarkdownPath(node)
         });
       } else {
         const parent = guideParent.children[guideParent.children.length - 1];
-        if (!parent.path) {
-          parent.path = getMarkdownPath(node);
-        }
 
         parent.children.push({
           title: node.frontmatter.title,
+          node,
           path: getMarkdownPath(node)
         });
       }
     });
 
     const apiParent = {
-      title: "API Documentation",
+      title: 'API Documentation',
       children: [],
       path: `/apis/overview`
     };
@@ -118,26 +142,20 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       });
     });
 
-    result.data.allMarkdownRemark.edges.forEach(({ node }, i) => {
-      const nodePath = node.frontmatter.path || getMarkdownPath(node);
-      if (
-        !node.frontmatter.path &&
-        node.fileAbsolutePath.indexOf("index") > 0
-      ) {
+    result.data.allMarkdownRemark.edges.forEach((res) => {
+      if (!res.node) return;
+      const { node } = res;
+      if (node.frontmatter.path) {
         createPage({
-          path: nodePath,
-          component: redirectTemplate,
-          context: {
-            to: getMarkdownPath(result.data.allMarkdownRemark.edges[i + 1].node)
-          }
-        });
-      } else {
-        createPage({
-          path: nodePath,
+          path: node.frontmatter.path,
           component: documentationTemplate,
           context: { page: node, nav }
         });
       }
+    });
+
+    guideParent.children.forEach((c) => {
+      createGuidePages(c, createPage, { nav });
     });
   });
 };
