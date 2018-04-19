@@ -1,5 +1,4 @@
 import React from 'react';
-// import Link from "gatsby-link";
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 import SwaggerUI from 'swagger-ui';
@@ -20,7 +19,7 @@ const ApiDocs = styled.main`
   }
 `;
 
-const DisableTryItOutPlugin = function() {
+function DisableTryItOutPlugin() {
   return {
     statePlugins: {
       spec: {
@@ -30,15 +29,15 @@ const DisableTryItOutPlugin = function() {
       }
     }
   };
-};
+}
 
-const DisableAuthorizePlugin = function() {
+function DisableAuthorizePlugin() {
   return {
     wrapComponents: {
       authorizeBtn: () => () => null
     }
   };
-};
+}
 
 class Api extends React.Component {
   componentDidMount() {

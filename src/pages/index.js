@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import Button from "../components/Button";
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import Button from '../components/Button';
 
 const Hero = styled.div`
   z-index: 1;
   background-image: linear-gradient(
     120deg,
-    ${props => props.theme.colors.primary} 0%,
+    ${(props) => props.theme.colors.primary} 0%,
     #002966 100%
   );
   color: #fff;
@@ -43,7 +43,7 @@ const Hero = styled.div`
     font-weight: 300;
   }
 
-  @media ${props => props.theme.tablet} {
+  @media ${(props) => props.theme.tablet} {
     padding: 50px 15px;
     flex-direction: column;
 
@@ -78,14 +78,14 @@ const Philosophy = styled.section`
   }
 
   h3 {
-    color: ${props => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.primary};
   }
 
   p {
     margin-top: 0;
   }
 
-  @media ${props => props.theme.tablet} {
+  @media ${(props) => props.theme.tablet} {
     flex-direction: column;
 
     div {
@@ -115,7 +115,7 @@ class IndexPage extends Component {
               are pertinent to business problems that our customers care about
               in the moment.
             </h3>
-            <Button to="/guides/getting-started/overview" large>
+            <Button to="/guides/getting-started" large>
               Get Started
             </Button>
             <Button to="/apis/overview" large transparent>

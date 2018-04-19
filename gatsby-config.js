@@ -21,6 +21,7 @@ module.exports = {
     siteUrl: 'https://docs.sixgill.com/'
   },
   plugins: [
+    `gatsby-plugin-react-next`,
     {
       resolve: `gatsby-source-openapi-aggregate`,
       options: {
