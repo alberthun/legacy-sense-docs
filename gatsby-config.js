@@ -52,6 +52,12 @@ module.exports = {
         plugins: [
           'gatsby-remark-copy-linked-files',
           {
+            resolve: 'gatsby-remark-autolink-headers',
+            options: {
+              offsetY: -100
+            }
+          },
+          {
             resolve: 'live-example',
             options: {
               'curl request': 'request'
@@ -64,8 +70,7 @@ module.exports = {
               // the content container as this plugin uses this as the
               // base for generating different widths of each image.
               // maxWidth: 800
-              maxWidth: 1200,
-              linkImagesToOriginal: true
+              maxWidth: 1200
             }
           }
         ]

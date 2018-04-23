@@ -10,7 +10,7 @@ import Sidebar from '../components/Sidebar';
 
 const renderAst = new Rehype({
   createElement: React.createElement,
-  components: { request: Request },
+  components: { request: Request }
 }).Compiler;
 
 const Documentation = styled.main`
@@ -19,7 +19,7 @@ const Documentation = styled.main`
   margin-left: 20%;
   padding: 2em 4em;
 
-  @media ${props => props.theme.mobile} {
+  @media ${(props) => props.theme.mobile} {
     width: 100%;
     margin: 0;
   }
@@ -34,7 +34,7 @@ const DocContents = styled.div`
     padding: 0 0.25em;
     font-size: 0.95em;
     border-radius: 3px;
-    font-family: ${props => props.theme.monspace};
+    font-family: ${(props) => props.theme.monspace};
   }
 
   .gatsby-highlight pre {
@@ -126,11 +126,12 @@ const DocContents = styled.div`
     line-height: 1em;
   }
 
-  img {
-    display: block;
-    margin: 2rem auto;
-    max-width: 600px;
-    width: 98%;
+  ul {
+    li {
+      p {
+        margin: 0;
+      }
+    }
   }
 `;
 
@@ -166,9 +167,7 @@ export default ({ pathContext, location }) => {
           {description}
         </DocHeader>
 
-        <DocContents>
-          { renderAst(page.htmlAst) }
-        </DocContents>
+        <DocContents>{renderAst(page.htmlAst)}</DocContents>
         <Sidebar headings={page.headings} />
       </Documentation>
     </div>
