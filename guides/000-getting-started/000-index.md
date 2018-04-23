@@ -24,7 +24,7 @@ On-boarding users and devices in the Sense 2.0 platform
   * [Activating the Rule](#activating-the-rule)
 * [Using the Sense API](#using-the-sense-api)
 
-##Creating an Account
+## Creating an Account
 
 ---
 
