@@ -729,29 +729,263 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "Create rule",
+        "tags": ["Rules"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Rule"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Rule"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/projects/${projectId}/devices/search": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "projectId",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "summary": "List devices",
+        "tags": ["Devices"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Device"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/projects/${projectId}/devices/{deviceId}": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "projectId",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "in": "path",
+          "name": "deviceId",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Read Device",
+        "tags": ["Devices"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Device"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update Device",
+        "tags": ["Devices"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Device"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Device"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/projects/${projectId}/devices/{deviceId}/config": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "projectId",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "in": "path",
+          "name": "deviceId",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Read Device Config",
+        "tags": ["Devices"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/DeviceConfig"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update Device Config",
+        "tags": ["Devices"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceConfig"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/DeviceConfig"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
   "components": {
     "schemas": {
+      "LongLat": {
+        "type": "object",
+        "properties": {
+          "longitude": {
+            "type": "number"
+          },
+          "latitude": {
+            "type": "number"
+          }
+        }
+      },
+      "StringStringMap": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
       "ActionEmail": {
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "readOnly": true
           },
           "type": {
             "type": "string",
             "example": "email"
           },
           "successfullyExecutedAt": {
-            "type": "string"
+            "type": "string",
+            "readOnly": true
           },
           "deviceId": {
             "type": "string"
           },
           "createdAt": {
-            "type": "string"
+            "type": "integer",
+            "readOnly": true
           },
           "subject": {
             "type": "string"
@@ -771,20 +1005,23 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "readOnly": true
           },
           "type": {
             "type": "string",
             "example": "sms"
           },
           "successfullyExecutedAt": {
-            "type": "string"
+            "type": "string",
+            "readOnly": true
           },
           "deviceId": {
             "type": "string"
           },
           "createdAt": {
-            "type": "string"
+            "type": "integer",
+            "readOnly": true
           },
           "message": {
             "type": "string"
@@ -801,20 +1038,23 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "readOnly": true
           },
           "type": {
             "type": "string",
             "example": "push"
           },
           "successfullyExecutedAt": {
-            "type": "string"
+            "type": "string",
+            "readOnly": true
           },
           "deviceId": {
             "type": "string"
           },
           "createdAt": {
-            "type": "string"
+            "type": "integer",
+            "readOnly": true
           },
           "subject": {
             "type": "string"
@@ -824,11 +1064,54 @@
           }
         }
       },
+      "ActionWebhook": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true
+          },
+          "type": {
+            "type": "string",
+            "example": "webhook"
+          },
+          "successfullyExecutedAt": {
+            "type": "string",
+            "readOnly": true
+          },
+          "deviceId": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "url": {
+            "type": "string"
+          },
+          "headers": {
+            "$ref": "#/components/schemas/StringStringMap"
+          },
+          "method": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
       "Rule": {
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "readOnly": true
           },
           "name": {
             "type": "string"
@@ -843,7 +1126,8 @@
             "type": "number"
           },
           "createdAt": {
-            "type": "string"
+            "type": "string",
+            "readOnly": true
           },
           "logicalCondition": {
             "type": "object"
@@ -860,6 +1144,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/ActionPush"
+                },
+                {
+                  "$ref": "#/components/schemas/ActionWebhook"
                 }
               ]
             }
@@ -972,6 +1259,103 @@
             "type": "object"
           },
           "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "DeviceProperties": {
+        "type": "object",
+        "properties": {
+          "manufacturer": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "os": {
+            "type": "string"
+          },
+          "osVersion": {
+            "type": "string"
+          },
+          "softwareVersion": {
+            "type": "string"
+          }
+        }
+      },
+      "DeviceState": {
+        "type": "object",
+        "properties": {
+          "location": {
+            "$ref": "#/components/schemas/LongLat"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "lastUpdatedAt": {
+            "type": "string"
+          }
+        }
+      },
+      "Device": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true
+          },
+          "properties": {
+            "$ref": "#/components/schemas/DeviceProperties"
+          },
+          "deviceState": {
+            "$ref": "#/components/schemas/DeviceState"
+          },
+          "type": {
+            "type": "string"
+          },
+          "attributes": {
+            "$ref": "#/components/schemas/StringStringMap"
+          },
+          "sensors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "DeviceConfig": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true
+          },
+          "deviceId": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "cadence": {
+            "type": "integer"
+          },
+          "maxStorage": {
+            "type": "integer"
+          },
+          "sensors": {
             "type": "array",
             "items": {
               "type": "string"
