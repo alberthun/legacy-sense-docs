@@ -42,12 +42,12 @@ Once you have been invited to join an existing organization, you will receive an
 2. Enter your full name and desired password. Read and accept the terms of service.
 3. Click "Accept Inviation" to sign in to the organization's dashboard.
 
-![](images/dash_accept_invite.png)
+![](dash_accept_invite.png)
 
 ## Creating a Channel
 A data Channel is a source of data that flows into the Sense platform. For example, a Channel could include all iOS devices with an app that uses the Sense Reach iOS SDK. Channels are collections of mobile apps that use the Sense SDKs, or of any other devices that write to the Sense Ingress API.
 
-![](images/508329985.png?height=250)
+![](508329985.png?height=250)
 
 1.  In the dashboard, go to Channels. If this is your organization's first channel, you will be presented with an Intro screen. Click **Add New Channel**
 2.  Click on the type of channel you would like to create
@@ -156,7 +156,7 @@ Next, select the landmark for this condition
 - To use an existing landmark from the project, click **Select From Project Landmarks**. This will display a list of available landmarks, if any. Clicking on the name will display the landmark in the map. You can use the **Search By Landmark Name** search box to filter the list.
 - To create a new landmark, click **Add New Landmark**
 
-![](images/rule_add_new_landmark.png)  
+![](rule_add_new_landmark.png)  
 
 a) Move the map or use Google Addresses to center the map as needed, or select from Existing Landmarks  
 b) Use the Drawing Tools to create a geofence around your desired area  
@@ -230,13 +230,13 @@ Landmarks can be added within the **Add New Rule** or through the Landmarks sect
 
 1. In the dashboard, go to Projects > Landmarks
 2. Click **Add New Landmark**
-![](images/landmark_add_new.png)  
+![](landmark_add_new.png)  
 3. Move the map or use Google Addresses to center the map as needed, or select from Existing Landmarks  
 4. Use the Drawing Tools to create a geofence around your desired area  
-![](images/landmark_use_geofence.png) 
+![](landmark_use_geofence.png) 
 5. Click **Use Geofence**  
 6. Enter a name for the landmark  
-![](images/landmark_create_landmark.png) 
+![](landmark_create_landmark.png) 
 7. Click **Create Landmark** to save
 
 The landmark will now be available in the **Select From Project Landmarks** dropdown when creating a rule.
