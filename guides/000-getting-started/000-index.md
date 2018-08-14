@@ -1,14 +1,12 @@
----
-title: Getting Started
----
-
-# Getting Started with Sense 2.0
+Getting Started with Sense
+==========================================
 
 *A guide for on-boarding users and devices onto the Sense platform*
 
 *   [Create a Sixgill Sense account](#creating-an-account)
     *   [Joining an Existing Organization](#joining-an-existing-organization)
 *   [Creating a Channel](#creating-a-channel)
+    *    [API Keys](#api-keys)
 *   [Configuring a Channel for Push](#configuring-a-channel-for-push)
     *   [Apple Push](#apple-push)
     *   [Android Push](#android-push)
@@ -47,7 +45,7 @@ Once you have been invited to join an existing organization, you will receive an
 ## Creating a Channel
 A data Channel is a source of data that flows into the Sense platform. For example, a Channel could include all iOS devices with an app that uses the Sense Reach iOS SDK. Channels are collections of mobile apps that use the Sense SDKs, or of any other devices that write to the Sense Ingress API.
 
-![](508329985.png)
+![](508329985.png?height=250)
 
 1.  In the dashboard, go to Channels. If this is your organization's first channel, you will be presented with an Intro screen. Click **Add New Channel**
 2.  Click on the type of channel you would like to create
@@ -57,6 +55,13 @@ A data Channel is a source of data that flows into the Sense platform. For examp
 3.  Enter a name for your channel. Channel names must be unique to your account.
 
 This will create a Channel for the type of data you wish to ingest.
+
+## API Keys
+To send sensor data to the platform using the Ingress API or the mobile SDKs, you will need to authenticate using an API key for the respective channel - eg, iOS devices use an iOS channel, IoT devices use an IoT channel, etc. You can get these keys from the **Channels** page on the dashboard.
+
+1. In the dashboard, go to Channels
+2. Click the appropriate channel on the left, or create a new channel.
+3. Copy an existing key from **Api Keys** section, or click **Generate New ApiKey** to create another for the same channel.
 
 ## Configuring a Channel for Push
 In order to receive Push notifications, the Channel will need to be configured with mobile keys depending on the app you are using to stream data. For iOS, you will need to upload the Push certificate for your app as a **.p12 file**. For Android, you will need the Firebase key or Google Cloud Messaging key used by the app.
@@ -249,3 +254,5 @@ The Sense dashboard functions such as logging in, creating projects, channels, r
    * [Rules](http://docs.sixgill.com/rules.html)
    * [Template](http://docs.sixgill.com/templates.html)
 * [Ingress API](http://docs.sixgill.com/ingress-api.html) - The Ingress API allows devices to register with and send sensor data to the Sixgill Sense platform
+
+
