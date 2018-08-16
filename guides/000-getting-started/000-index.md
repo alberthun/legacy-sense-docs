@@ -1,7 +1,7 @@
-Getting Started with Sense
-==========================================
-
-*A guide for on-boarding users and devices onto the Sense platform*
+---
+title: Getting Started
+description: "A guide for on-boarding users and devices onto the Sense platform"
+---
 
 *   [Create a Sixgill Sense account](#creating-an-account)
     *   [Joining an Existing Organization](#joining-an-existing-organization)
@@ -40,12 +40,12 @@ Once you have been invited to join an existing organization, you will receive an
 2. Enter your full name and desired password. Read and accept the terms of service.
 3. Click "Accept Inviation" to sign in to the organization's dashboard.
 
-![](dash_accept_invite.png)
+![](images/dash_accept_invite.png)
 
 ## Creating a Channel
 A data Channel is a source of data that flows into the Sense platform. For example, a Channel could include all iOS devices with an app that uses the Sense Reach iOS SDK. Channels are collections of mobile apps that use the Sense SDKs, or of any other devices that write to the Sense Ingress API.
 
-![](508329985.png?height=250)
+![](images/508329985.png?height=250)
 
 1.  In the dashboard, go to Channels. If this is your organization's first channel, you will be presented with an Intro screen. Click **Add New Channel**
 2.  Click on the type of channel you would like to create
@@ -107,13 +107,13 @@ Sixgill Sync 2.0 for Android (coming soon)
 1.  Download the app on your device using the link above
 2.  Login with your Sense 2.0 account credentials. iOS devices should select an **iOS Mobile Devices** Channel and Android devices should use an **Android Mobile Device** Channel
 
-![](508297263.png)
+![](images/508297263.png)
 
 _Note: The ability to scan QR codes has been temporarily removed from the Sync app._  
 
 If using Sense 2.0 account credentials, you will be asked to select your project and channel.
 
-![](508297271.png)![](508330046.png)
+![](images/508297271.png)![](images/508330046.png)
 
 3. Your device will now connect to your selected Channel. The app will begin collection sensor data events for ingestion by the Sense platform.
 
@@ -161,7 +161,7 @@ Next, select the landmark for this condition
 - To use an existing landmark from the project, click **Select From Project Landmarks**. This will display a list of available landmarks, if any. Clicking on the name will display the landmark in the map. You can use the **Search By Landmark Name** search box to filter the list.
 - To create a new landmark, click **Add New Landmark**
 
-![](rule_add_new_landmark.png)  
+![](images/rule_add_new_landmark.png)  
 
 a) Move the map or use Google Addresses to center the map as needed, or select from Existing Landmarks  
 b) Use the Drawing Tools to create a geofence around your desired area  
@@ -235,13 +235,13 @@ Landmarks can be added within the **Add New Rule** or through the Landmarks sect
 
 1. In the dashboard, go to Projects > Landmarks
 2. Click **Add New Landmark**
-![](landmark_add_new.png)  
+![](images/landmark_add_new.png)  
 3. Move the map or use Google Addresses to center the map as needed, or select from Existing Landmarks  
 4. Use the Drawing Tools to create a geofence around your desired area  
-![](landmark_use_geofence.png) 
+![](images/landmark_use_geofence.png) 
 5. Click **Use Geofence**  
 6. Enter a name for the landmark  
-![](landmark_create_landmark.png) 
+![](images/landmark_create_landmark.png) 
 7. Click **Create Landmark** to save
 
 The landmark will now be available in the **Select From Project Landmarks** dropdown when creating a rule.
