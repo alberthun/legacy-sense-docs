@@ -45,7 +45,7 @@ Once you have been invited to join an existing organization, you will receive an
 ## Creating a Channel
 A data Channel is a source of data that flows into the Sense platform. For example, a Channel could include all iOS devices with an app that uses the Sense Reach iOS SDK. Channels are collections of mobile apps that use the Sense SDKs, or of any other devices that write to the Sense Ingress API.
 
-![](images/508329985.png?height=250)
+![](images/508329985.png)
 
 1.  In the dashboard, go to Channels. If this is your organization's first channel, you will be presented with an Intro screen. Click **Add New Channel**
 2.  Click on the type of channel you would like to create

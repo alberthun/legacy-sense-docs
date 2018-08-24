@@ -1,6 +1,6 @@
 ---
 title: Schemas
-description: "Using Data Mapping to help make Sense of your data"
+description: "Data mapping to help you make Sense of your data"
 ---
 
 Device data needs to be mapped to fields by their data types. This allows you to trigger specific rules on those values and generate analytics. 

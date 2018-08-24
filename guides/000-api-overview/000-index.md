@@ -1,21 +1,27 @@
 ---
-title: Apis
+title: APIs
 path: /apis/overview
 ---
 
-A data Channel is a source of data that flows into the Sense platform. For example, a Channel could include all iOS devices with an app that uses the Sense Reach iOS SDK. Channels are collections of mobile apps that use the Sense SDKs, or of any other devices that write to the Sense Ingress API.
+## Sense API
+
+The Sense API is a RESTful JSON API that allows developers to access the majority of the Sense platform’s functionality, such as:
+
+- Creating and managing user accounts within the organization 
+- Configuring data channels and projects to organize rules and collections of data streams
+- Defining landmarks around areas of interest for geographical-based triggers
+- Specifying additional data attributes or time constraints for evaluation
+- Building rules around these various conditions and the corresponding actions to be executed
 
 
-## Philosophy
 
-##IOT
+## Ingress API
 
-## Ingress
+The Ingress API is a key component that allows data ingestion into Sense, enabling devices to connect to the Sense pipeline for event processing
+- API supports both JSON and Protobuf formatted data
+- Allows mobile (iOS, Android) and generic IoT devices to register with the platform
+- Mobile devices post sensor data payloads to the Ingress mobile endpoint, sending device location, power and activity state, and readings of nearby beacons and WiFis
+- IoT devices post sensor data payloads to the Ingress IoT endpoint
 
-<div class="fixed-table">
-
-| <h3>Ingress Api</h3> | <h3>Sense Api</h3> |
-| --- | --- |
-| Do you know HTML and CSS? Check out our docs and you're off to the races! No special rules or styling paradigms to master. | Something is designed to take advantage of all that email can do while still providing a solid experience for all clients. | You can create your own powerful elements and style rules. Share them with the world, or keep 'em to yourself. Your choice. |
 
 </div>
