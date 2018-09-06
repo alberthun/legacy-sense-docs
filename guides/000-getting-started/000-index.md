@@ -104,8 +104,12 @@ Users can also demo the mobile SDK capabilities by using the Sixgill Sync 2.0 de
 
 Sixgill Sync 2.0 for Android (coming soon)
 
-1.  Download the app on your device using the link above
-2.  Login with your Sense 2.0 account credentials. iOS devices should select an **iOS Mobile Devices** Channel and Android devices should use an **Android Mobile Device** Channel
+1. Download the app on your device using the link above
+2. Accept the Terms of Service
+3. Allow the requested permissions for the sensor you woud like to enable. For example, to use the location sensors and gather location data, you will need to enable Location Services.
+4. Login with your Sense account credentials. _These are the same credentials you use to log into your account on the dashboard._
+5. Select the channel you wish to connect to.
+
 
 ![](images/508297263.png)
 

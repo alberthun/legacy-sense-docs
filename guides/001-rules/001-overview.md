@@ -197,7 +197,7 @@ Example:
 ```
 ### Predicates
 
-#### always_false
+#### always false
 
 Description:
 	This predicate is always false.  It is typically used for testing.
@@ -209,7 +209,7 @@ Example:
 }
 ```
 
-#### always_true
+#### always true
 
 Description:
 	This predicate is always true.  It is typically used for testing.
@@ -222,7 +222,7 @@ Example:
 }
 ```
      
-#### event_free_form
+#### event free form
 
 Description:
 	This predicate allows you to evaluate a specific event field in free-form fashion, typically used for IoT event payloads. 
@@ -249,7 +249,7 @@ Example:
 }
 ```
 
-#### enter_landmark
+#### enter landmark
 
 Description:
 	This is predicate allows you to evaluate whether or not a device event entered a landmark that it was previously outside of. Landmarks are specific by the landmarkId. To specify multiple landmarks, you can join together multiple predicates with an operator.
@@ -268,7 +268,7 @@ Example:
 }
 ```
 
-#### exit_landmark
+#### exit landmark
    
 Description:
 	This predicate allows you to evaluate whether or not a device exited a landmark that it was previously inside of. To specify multiple landmarks, you can join together multiple predicates with an operator.
@@ -287,7 +287,7 @@ Example:
 }
 ```
 	
-#### inside_landmark
+#### inside landmark
 
 Description:
 	This predicate allows you to evaluate whether or not a device is inside of a given landmark. To specify multiple landmarks, you can join together multiple predicates with an operator.
@@ -306,7 +306,7 @@ Example:
 }
 ```
 
-#### outside_landmark
+#### outside landmark
 
 Description:
 	This predicate allows you to evaluate whether or not a device event is outside of a given landmark. To specify multiple landmarks, you can join together multiple predicates with an operator.
@@ -325,7 +325,7 @@ Example:
 }
 ```
    
-#### landmark_has_all_tags
+#### landmark has all tags
 
 Description:
 	This predicate allows you to evaluate whether or not a given landmark has all of the tags specified. 
@@ -351,7 +351,7 @@ Example:
 }
 ```
 
-#### landmark_has_any_tags
+#### landmark has any tags
 
 Description:
 	This predicate allows you to evaluate whether or not a given landmark has any of the tags specified.
@@ -377,7 +377,7 @@ Example:
 }
 ```
    
-#### event_occurred_after
+#### event occurred after
 
 Description:
 	This predicate allows you to evaluate whether an event occurred after a given time.
@@ -396,7 +396,7 @@ Example:
 }
 ```
 
-### event_occurred_before
+### event occurred before
 
 Description:
 	This predicate allows you to evaluate whether an event occurred before a given time.
@@ -415,7 +415,7 @@ Example:
 }
 ```
 
-#### event_occurred_between_times_of_day
+#### event occurred between times of day
 
 Description:
 	This is a predicate that allows you to evaluate whether an event occurred between two given times. 
@@ -438,7 +438,7 @@ Example:
 }
 ```
 
-#### event_occurred_on_day_of_week
+#### event occurred on day of week
 
 Description:
 	This predicate allows you to evaluate whether an event occurred on a given day of the week.
