@@ -95,9 +95,6 @@ export default ({ currentPath, fixed, nav }) => (
               API Docs
             </Link>
           </li>
-          <li>
-            <a href="/support">Support</a>
-          </li>
         </ul>
       ) : (
         nav

@@ -15,14 +15,21 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["email"],
+                "required": [
+                  "email",
+                  "password"
+                ],
                 "properties": {
                   "email": {
-                    "example": "jolly@poly.com",
+                    "example": "test@email.com",
                     "type": "string"
                   },
                   "password": {
                     "example": "secret password",
+                    "type": "string"
+                  },
+                  "organizationId": {
+                    "example": "01CBTBPBV4M6PK2VEGY56N8NN1",
                     "type": "string"
                   }
                 }
@@ -30,7 +37,9 @@
             }
           }
         },
-        "tags": ["Authenticate"],
+        "tags": [
+          "Authenticate"
+        ],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -54,7 +63,9 @@
     "/v2/users/me": {
       "get": {
         "summary": "get authenticated user",
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -70,7 +81,9 @@
       },
       "put": {
         "summary": "update authenticated user",
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -104,7 +117,9 @@
     "/v2/organizations": {
       "get": {
         "summary": "List organization",
-        "tags": ["Organizations"],
+        "tags": [
+          "Organizations"
+        ],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -143,7 +158,9 @@
             }
           }
         },
-        "tags": ["Organizations"],
+        "tags": [
+          "Organizations"
+        ],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -171,7 +188,9 @@
       ],
       "put": {
         "summary": "Update an organization",
-        "tags": ["Organizations"],
+        "tags": [
+          "Organizations"
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -207,7 +226,9 @@
       },
       "delete": {
         "summary": "Delete an organization",
-        "tags": ["Organizations"],
+        "tags": [
+          "Organizations"
+        ],
         "responses": {
           "204": {
             "description": "successful operation"
@@ -228,7 +249,9 @@
       ],
       "post": {
         "summary": "Leave an organization",
-        "tags": ["Organizations"],
+        "tags": [
+          "Organizations"
+        ],
         "responses": {
           "204": {
             "description": "successful operation"
@@ -239,7 +262,9 @@
     "/v2/landmarks/search": {
       "post": {
         "summary": "Search and list landmarks",
-        "tags": ["Landmarks"],
+        "tags": [
+          "Landmarks"
+        ],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -265,7 +290,9 @@
     "/v2/projects/{projectId}/landmarks": {
       "post": {
         "summary": "Add a landmark",
-        "tags": ["Landmarks"],
+        "tags": [
+          "Landmarks"
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -326,7 +353,9 @@
       ],
       "get": {
         "summary": "Get a landmark",
-        "tags": ["Landmarks"],
+        "tags": [
+          "Landmarks"
+        ],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -347,7 +376,9 @@
       },
       "delete": {
         "summary": "Delete a landmark",
-        "tags": ["Landmarks"],
+        "tags": [
+          "Landmarks"
+        ],
         "responses": {
           "204": {
             "description": "successful operation"
@@ -356,7 +387,9 @@
       },
       "put": {
         "summary": "Update a landmark",
-        "tags": ["Landmarks"],
+        "tags": [
+          "Landmarks"
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -399,7 +432,9 @@
       ],
       "get": {
         "summary": "List channels",
-        "tags": ["Channels"],
+        "tags": [
+          "Channels"
+        ],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -423,7 +458,9 @@
       },
       "post": {
         "summary": "Create Channel",
-        "tags": ["Channels"],
+        "tags": [
+          "Channels"
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -436,7 +473,11 @@
                   },
                   "type": {
                     "type": "string",
-                    "enum": ["ios", "android", "gateway"]
+                    "enum": [
+                      "ios",
+                      "android",
+                      "gateway"
+                    ]
                   }
                 }
               }
@@ -483,7 +524,9 @@
       ],
       "get": {
         "summary": "Get a Channel",
-        "tags": ["Channels"],
+        "tags": [
+          "Channels"
+        ],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -504,7 +547,9 @@
       },
       "delete": {
         "summary": "Delete a Channel",
-        "tags": ["Channels"],
+        "tags": [
+          "Channels"
+        ],
         "responses": {
           "204": {
             "description": "successful operation"
@@ -513,7 +558,9 @@
       },
       "put": {
         "summary": "Update a Channel",
-        "tags": ["Channels"],
+        "tags": [
+          "Channels"
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -578,7 +625,9 @@
       ],
       "get": {
         "summary": "List ApiKeys for a channel",
-        "tags": ["Channels"],
+        "tags": [
+          "Channels"
+        ],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -602,7 +651,9 @@
       },
       "post": {
         "summary": "Create ApiKey for a channel",
-        "tags": ["Channels"],
+        "tags": [
+          "Channels"
+        ],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -651,7 +702,9 @@
       ],
       "delete": {
         "summary": "Delete a ApiKey",
-        "tags": ["Channels"],
+        "tags": [
+          "Channels"
+        ],
         "responses": {
           "204": {
             "description": "successful operation"
@@ -660,7 +713,9 @@
       },
       "put": {
         "summary": "Update ApiKey for a channel",
-        "tags": ["Channels"],
+        "tags": [
+          "Channels"
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -708,7 +763,9 @@
       ],
       "get": {
         "summary": "List rules",
-        "tags": ["Rules"],
+        "tags": [
+          "Rules"
+        ],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -732,7 +789,9 @@
       },
       "post": {
         "summary": "Create rule",
-        "tags": ["Rules"],
+        "tags": [
+          "Rules"
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -778,7 +837,9 @@
       ],
       "get": {
         "summary": "List devices",
-        "tags": ["Devices"],
+        "tags": [
+          "Devices"
+        ],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -822,7 +883,9 @@
       ],
       "get": {
         "summary": "Read Device",
-        "tags": ["Devices"],
+        "tags": [
+          "Devices"
+        ],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -843,7 +906,9 @@
       },
       "put": {
         "summary": "Update Device",
-        "tags": ["Devices"],
+        "tags": [
+          "Devices"
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -894,7 +959,9 @@
       ],
       "get": {
         "summary": "Read Device Config",
-        "tags": ["Devices"],
+        "tags": [
+          "Devices"
+        ],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -915,7 +982,9 @@
       },
       "put": {
         "summary": "Update Device Config",
-        "tags": ["Devices"],
+        "tags": [
+          "Devices"
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -1181,7 +1250,11 @@
           },
           "type": {
             "type": "string",
-            "enum": ["ios", "android", "gateway"]
+            "enum": [
+              "ios",
+              "android",
+              "gateway"
+            ]
           },
           "method": {
             "type": "string"

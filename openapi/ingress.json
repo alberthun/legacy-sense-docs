@@ -3,7 +3,7 @@
   "info": {
     "title": "Ingress Api",
     "version": "1.0.0",
-    "description": "The Ingress API allows devices to register with and send data to the Sixgill Sense platform. Currently, the API is is compatible with mobile (iOS, Android) and generic IoT devices, and it supports both JSON and Protobuf formatted data. \n\nThe API is separated into two endpoints: mobile and IoT. The mobile endpoint is intended to be used by the Sixgill Reach SDKs for iOS and Android. The IoT endpoint is intended to ingest generic JSON data. IoT channels require a schema to be configured before data is sent over Ingress. See the [Schemas](http://docs.sixgill.com/schemas.html) guide for more information.\n"
+    "description": "The Ingress API allows devices to register with and send data to the Sixgill Sense platform. Currently, the API is is compatible with mobile (iOS, Android) and generic IoT devices, and it supports both JSON and Protobuf formatted data. \n\nThe API is separated into two endpoints: mobile and IoT. The mobile endpoint is intended to be used by the Sixgill Reach SDKs for iOS and Android. The IoT endpoint is intended to ingest generic JSON data. IoT channels require a schema to be configured before data is sent over Ingress. See the [Schemas](/guides/channels/schemas) guide for more information.\n"
   },
   "paths": {
     "/v1/registration": {
