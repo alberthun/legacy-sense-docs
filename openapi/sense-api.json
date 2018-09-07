@@ -3,7 +3,7 @@
   "info": {
     "title": "Sense Api",
     "version": "2.0.0",
-    "description": "Something\n"
+    "description": "The Sense API is a RESTful JSON API that allows developers to access the majority of the Sense platform’s functionality\n"
   },
   "paths": {
     "/v2/login": {

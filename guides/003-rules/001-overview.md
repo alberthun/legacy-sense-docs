@@ -1,7 +1,7 @@
 ---
-title: Overview
+title: Rules API Guide
 date: "2015-05-01T22:12:03.284Z"
-description: "Building Rules with Sense"
+description: "Building Rules with the Sense API"
 ---
 
 A rule defines the set of automated actions that are performed when one or more conditions for sensor data are met. Sensor data can come from mobile or IoT devices. Rules must be created within a project that includes the desired data channels to be processed. Rules can be used to send an SMS, push, email, or webhook when an event occurs and can be run at certain times of the day.

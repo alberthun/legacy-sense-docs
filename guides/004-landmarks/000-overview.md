@@ -1,5 +1,5 @@
 ---
-title: Landmarks
+title: Landmarks API Guide
 ---
 
 Landmarks are geographical points of interest (POIs) defined by a perimeter. Landmarks can be used as conditions to rules that evaluate a device's proximity to an area. A rule may check if a device has entered, exited, is inside, or outside the landmark. The Landmark API provides several options for defining landmarks.
