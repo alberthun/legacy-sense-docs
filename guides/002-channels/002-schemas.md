@@ -13,7 +13,7 @@ To create a schema through the dashboard
 1. Go to **Channels**
 2. In the left sidebar under Schemas, click **+ Add Schema**
 
-![](images/schema_adding_schema.png)
+![](./images/schema_adding_schema.png)
 
 3. **Name & Details** - Enter a name for the schema in "Name" field
 4. **Define Fields** - Use this section to specify the format of your schema
@@ -45,7 +45,7 @@ Add the final attribute named "humidity" in a similar manner.
 
 5. When finished, click **Create Schema**  Your schema should look like the following:
 
-![](images/schema_json_schema_example.png)
+![](./images/schema_json_schema_example.png)
 
 To create a schema using the API:
 
