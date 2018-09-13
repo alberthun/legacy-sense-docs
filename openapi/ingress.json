@@ -218,7 +218,7 @@
         }
       }
     },
-    "/v1/mobile/beacons": {
+    "/v1/mobile/ibeacons": {
       "get": {
         "summary": "Get the device's configuration",
         "description": "The beacons endpoint returns the beacons to be whitelisted for the device. The limit of beacons to return can be specified using the ‘count’ query string parameter. *In order to listen for beacon UUIDs, iOS requires that the beacons be whitelisted.*",

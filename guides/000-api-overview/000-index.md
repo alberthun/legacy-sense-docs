@@ -20,9 +20,9 @@ Endpoint: https://sense-api.sixgill.com
 
 The Sense API authenticates requests with a user-specific JSON web token through Bearer authentication.
 
-To get this token, the user makes a POST [/v2/login](/apis/sense-api#/Authenticate/post_v2_login) request with their email and password combination.
+To get this token, the user makes a POST [/v2/login](/apis/sense-api#/Authenticate/post_v2_login) request with their email and password combination. _These are the same credentials used to log into your account on the dashboard._
 
-Once a token has been generated, it can be used as the token for many requests. Note that certain calls require a token that includes the organization ID, such as creating a rule. To get this new token, use GET [/v2/organizations](/apis/sense-api#/Organizations/get_v2_organizations) to get the organization ID, then POST [/v2/login](/apis/sense-api#/Authenticate/post_v2_login) by passing in the organizationId along with the email and password.
+Once a token has been generated, it can be used as the token for many requests. However, please note that certain calls, such as creating a rule, require a token that includes the organization ID. To get this new token, use GET [/v2/organizations](/apis/sense-api#/Organizations/get_v2_organizations) to get the organization ID, then POST [/v2/login](/apis/sense-api#/Authenticate/post_v2_login) by passing in the organizationId along with the email and password. 
 
 
 ## Ingress API

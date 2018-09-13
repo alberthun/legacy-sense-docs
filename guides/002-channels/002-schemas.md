@@ -45,7 +45,7 @@ Add the final attribute named "humidity" in a similar manner.
 
 5. When finished, click **Create Schema**  Your schema should look like the following:
 
-![](./images/schema_json_schema_example.png)
+![](images/schema_json_schema_example.png)
 
 To create a schema using the API:
 
