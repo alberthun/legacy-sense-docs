@@ -14,7 +14,7 @@ const Content = styled.div`
 export default () => (
   <Footer>
     <Content>
-      Sixgill Developer Documentation | [support@sixgill.com](mailto:support@sixgill.com)
+      Sixgill Developer Documentation
     </Content>
   </Footer>
 );
