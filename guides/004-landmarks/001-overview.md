@@ -7,7 +7,7 @@ Landmarks are geographical points of interest (POIs) defined by a perimeter. Lan
 
 Landmarks can be added within the **Add New Rule** or through the Landmarks section.
 
-![](images/landmark_add_new.png)
+
 
 1. In the dashboard, go to Projects > Landmarks
 2. Click **Add New Landmark**

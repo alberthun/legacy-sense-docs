@@ -34,17 +34,17 @@ Once you have been invited to join an existing organization, you will receive an
 2. Enter your full name and desired password. Read and accept the terms of service.
 3. Click "Accept Inviation" to sign in to the organization's dashboard.
 
-![](images/dash_accept_invite.png)
+![](./images/dash_accept_invite.png)
 
 ## Channels
 A data Channel is a source of data that flows into the Sense platform. For example, a Channel could include all iOS devices with an app that uses the Sense Reach iOS SDK. Channels are collections of mobile apps that use the Sense SDKs, or of any other devices that write to the Sense Ingress API. See [Channels Overview](/guides/channels/overview) for more information on creating and using channels.
 
 ## API Keys
-To send sensor data to the platform using the Ingress API or the mobile SDKs, you will need to authenticate using an API key for the respective channel - eg, iOS devices use an iOS channel, IoT devices use an IoT channel, etc. You can get these keys from the **Channels** page on the dashboard.
+To send sensor data to the platform using the Ingress API or the mobile SDKs, you will need to authenticate using an API key for the respective channel - eg, iOS devices use an iOS channel, IoT devices use an IoT channel, etc. You can get these keys from the **Channels** section on the dashboard.
 
 1. In the dashboard, go to Channels
-2. Click the appropriate channel on the left, or create a new channel.
-3. Copy an existing key from **Api Keys** section, or click **Generate New ApiKey** to create another for the same channel.
+2. Click the appropriate channel on the left, or [create a new channel](/guides/channels/overview).
+3. Copy an existing key from **Api Keys** section, or click **Generate New ApiKey** to create another for that channel.
 
 ## Configuring a Channel for Push
 In order to receive Push notifications, the Channel will need to be configured with mobile keys depending on the app you are using to stream data. For iOS, you will need to upload the Push certificate for your app as a **.p12 file**. For Android, you will need the Firebase key or Google Cloud Messaging key used by the app.
@@ -68,14 +68,14 @@ The selected messaging type should be listed on the left.
 _Note: If you are using the Sync 2.0 demo app and would like to test the Send Push action, please contact support@sixgill.com to configure your Channel with the proper push certificate_  
 
 ## Connecting Devices
-Device sensor data is ingested into Sense through the [Ingress API](http://docs.sixgill.com/ingress-api.html). For Android and iOS devices, this can be done by integrating the Reach SDK into a mobile app. The SDK handles sensor gathering at configurable intervals, and automatically sends the data to the Ingress API. **The SDKs are authenticated using the API keys for their respective channels.**
+Device sensor data is ingested into Sense through the [Ingress API](/apis/ingress). For Android and iOS devices, this can be done by integrating the Reach SDK into a mobile app. The SDK handles sensor gathering at configurable intervals, and automatically sends the data to the Ingress API. The Sixgill Sync 2.0 demo app uses the Reach SDK as well as the Sense API to showcase the sensor ingestion capabilities of the platform. **The SDKs are authenticated using the [API keys](##api-keys) for their respective channels.**
 
-### iOS
+### iOS SDK
 
 [Sixgill Reach iOS SDK and User Guide](/guides/sdks/ios)
 *updated July 19th, 2018*
 
-### Android
+### Android SDK
 
 [Sixgill Reach Android SDK and User Guide](/guides/sdks/android)
 *updated July 19th, 2018*
@@ -87,32 +87,36 @@ Users can also demo the mobile SDK capabilities by using the Sixgill Sync 2.0 de
 
 [Sixgill Sync 2.0 for Android](https://play.google.com/store/apps/details?id=sync.sixgill.com.sync)
 
-1. Download the app on your device using the link above
-2. Accept the Terms of Service
+Pre-reqs:
+A dashboard account. See [Creating an Account](#creating-an-account) for details
+A [Channel](#channels) for your device type.
+
+1. Download and open the app on your device.
+2. Accept the Terms of Service.
 3. Allow the requested permissions for the sensor you woud like to enable. For example, to use the location sensors and gather location data, you will need to enable Location Services.
-4. Login with your Sense account credentials. _These are the same credentials used to log into your account on the dashboard._
+4. Login with your Sense account credentials. _These are the same credentials used to log into your account on the dashboard._ 
+![](./images/ios_login_screen.jpg)
+
 5. Select the channel you wish to connect to.
+![](./images/ios_select_channel.PNG)
 
-
-![](images/508297263.png)
-
-You will be asked to select your project and channel.
-
-![](images/508297271.png)![](images/508330046.png)
+You will be asked to select your project. If your project isn't listed, make sure you've selected the correct channel. The channel is configured to work with a select group of projects.
+![](./images/ios_select_project.jpg)
 
 3. Your device will now connect to your selected Channel. The app will begin collecting sensor data events for ingestion by the Sense platform.
+![](./images/ios_log_information.jpg)
 
-You will know that Sync is connected by checking your Log Information pane. The Data section should be populated with your device data.
+You will know that Sync is connected by checking your Log tab. This will begin to populate with events being emitted from the device to the Sense platform.
   
 
 ### IoT Devices
 
 The platform is able to ingest generic IoT sensor data. Developers will need to use the [Ingress API](/apis/ingress) to send data to the IoT events endpoint.
 
-1.  [Schemas](/guides/channels/schemas) may be required depending on the format of your sensor data. Contact [support@sixgill.com](mailto:support@sixgill.com) with any questions regarding setting up your channel for IoT data.
+1. [Schemas](/guides/channels/schemas) are required in order to make the most of your sensor data. Contact [support@sixgill.com](mailto:support@sixgill.com) with any questions regarding setting up your channel for IoT data.
 2. Create an **IoT Devices** Channel if you do not have one already and select the Schema you created.
-3.  Use the Channel API keys to register your IoT device. Use the JSON Web Token in the response to authenticate your future requests.
-4.  You can begin sending sensor data to the IoT events endpoint using a gateway or other agent.  
+3. Use the Channel API keys to register your IoT device. Use the JSON Web Token in the response to authenticate your future requests.
+4. You can begin sending sensor data to the IoT events endpoint using a gateway or other agent.  
 
 See the IoT Events section of the [Ingress API](/apis/ingress#/Mobile/post_v1_iot_events) docs for more information.
   

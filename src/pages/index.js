@@ -138,12 +138,13 @@ class IndexPage extends Component {
           <div>
             <h3>Sense 2.0 Product Brief</h3>
             <p>
-              Sense features and benefits provide a unique combination of
-              technology, services and capacity-maximizing capabilities. With
-              continuous sensor data collection and real-time understanding,
-              Sense helps enterprises know what assets are available, where they
-              are and their operating state while keeping behaviors and actions
-              on track.
+              Sixgill Sense 2.0 is a complete IoT sensor data platform solution that 
+              enables enterprise-wide unified ingestion and sensor data processing 
+              for the rapid and uniform development of enterprise applications. With 
+              features including a massively scalable architecture, real-time rule 
+              triggers, and advanced data correlation features like proximity, the 
+              IoT sensor data platform produces actionable, context-enriched insights 
+              for sensor and location data.
             </p>
           </div>
           <div>

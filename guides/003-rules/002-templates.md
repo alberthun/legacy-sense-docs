@@ -1,7 +1,7 @@
 ---
 title: Templates
 description: "Using dynamic templates to enhance messaging"
----# Templates
+---
 
 ## Introduction
 

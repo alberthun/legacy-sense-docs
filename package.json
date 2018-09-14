@@ -48,7 +48,7 @@
   },
   "scripts": {
     "start": "gatsby develop",
-    "build": "gatsby build --noUglify",
+    "build": "rm -rf .cache/* && gatsby build --noUglify --prefix-paths",
     "serve": "gatsby serve",
     "lint": "eslint src --fix",
     "dockerize": ". dockerize.sh"
