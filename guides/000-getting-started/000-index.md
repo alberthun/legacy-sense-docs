@@ -94,16 +94,14 @@ A [Channel](#channels) for your device type.
 1. Download and open the app on your device.
 2. Accept the Terms of Service.
 3. Allow the requested permissions for the sensor you woud like to enable. For example, to use the location sensors and gather location data, you will need to enable Location Services.
+
 4. Login with your Sense account credentials. _These are the same credentials used to log into your account on the dashboard._ 
 ![](./images/ios_login_screen.jpg)
 
-5. Select the channel you wish to connect to.
-![](./images/ios_select_channel.PNG)
+5. Select the channel and corresponding project you wish to connect to. If your project isn't listed, make sure you've selected the correct channel. The channel is configured to work with a select group of projects.
+![](./images/ios_select_channel.jpg)![](./images/ios_select_project.jpg)
 
-You will be asked to select your project. If your project isn't listed, make sure you've selected the correct channel. The channel is configured to work with a select group of projects.
-![](./images/ios_select_project.jpg)
-
-3. Your device will now connect to your selected Channel. The app will begin collecting sensor data events for ingestion by the Sense platform.
+6. Your device will now connect to your selected channel. The app will begin collecting sensor data events for ingestion by the Sense platform.
 ![](./images/ios_log_information.jpg)
 
 You will know that Sync is connected by checking your Log tab. This will begin to populate with events being emitted from the device to the Sense platform.
