@@ -11,10 +11,10 @@ Sixgill's Reach SDK can be installed by manually downloading and including an An
 
 **Manual**
 
-Download the [latest Reach Android Archive](https://raw.githubusercontent.com/sixgill/docs/update-usr-guide/android/reach-android-1.1.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).
+Download the [latest Reach Android Archive](https://raw.githubusercontent.com/sixgill/docs/update-usr-guide/android/reach-android-1.2.3.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).
 
 Once added as your app's dependency, add the following dependencies to your app level build file-
-```java
+```
     implementation 'com.google.protobuf:protobuf-java:3.0.0'
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-protobuf:2.3.0'
