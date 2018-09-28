@@ -10,7 +10,6 @@ A rule defines the set of automated actions that are performed when one or more 
 Example:
 ```json
 {
-      "id": "01CRBK9RF3FKSQNF0GQ3TMY9P8",
       "projectId": "01CRACTV5SA6QGB9N6HY6DEVF6",
       "name": "New rule",
       "type": "cloud",
@@ -72,6 +71,7 @@ Example:
     }
 ```
 Fields:
+* projectId - ID of the project this rule is associated with
 * name - (required) Name of the rule
 * type - cloud or edge
 * tags - (optional) tags associated with thi rule
