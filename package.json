@@ -25,7 +25,7 @@
   "devDependencies": {},
   "scripts": {
     "start": "gatsby develop",
-    "build": "rm -rf .cache/* && gatsby build",
+    "build": "rm -rf .cache/* && gatsby build --prefix-paths",
     "postbuild": "rm -rf docs && mv public docs",
     "serve": "gatsby serve",
     "lint": "eslint src --fix",
