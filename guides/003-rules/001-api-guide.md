@@ -33,8 +33,7 @@ Example:
         "ids": ["01CRPPFG5Q4F58HGM8D5H37ED3"],
         "type": "enterLandmark",
         "attribute": "event.location.position",
-        "channelId": "01CRDS6EJC9SHVADJWCVXB0V45",
-        "description": "When device from \"My iOS Channel\" is enter landmark \"Santa Monica Pier\""
+        "channelId": "01CRDS6EJC9SHVADJWCVXB0V45"
       }]
     }]
   }],
@@ -202,14 +201,12 @@ Example:
     "ids": ["01CRF31GB0JTX2392AJMTHDME0"],
     "type": "insideLandmark",
     "attribute": "event.location.position",
-    "channelId": "01CRDS6EJC9SHVADJWCVXB0V45",
-    "description": "When device from \"My iOS Channel\" is inside landmark \"WeWork\""
+    "channelId": "01CRDS6EJC9SHVADJWCVXB0V45"
   }, {
     "ids": ["01CRPPFG5Q4F58HGM8D5H37ED3"],
     "type": "insideLandmark",
     "attribute": "event.location.position",
-    "channelId": "01CRDS6EJC9SHVADJWCVXB0V45",
-    "description": "When device from \"My iOS Channel\" is inside landmark \"Santa Monica Pier\""
+    "channelId": "01CRDS6EJC9SHVADJWCVXB0V45"
   }]
 }
 ```
@@ -236,14 +233,12 @@ Example:
   "ids": ["01CRPPFG5Q4F58HGM8D5H37ED3"],
   "type": "enterLandmark",
   "attribute": "event.location.position",
-  "channelId": "01CRDS6EJC9SHVADJWCVXB0V45",
-  "description": "When device from \"My iOS Channel\" is enter landmark \"Santa Monica Pier\""
+  "channelId": "01CRDS6EJC9SHVADJWCVXB0V45"
 }
 ```
 
    
 ### Scheduling
-*optional*
 Schedules are defined in the **conditionsObject** as a separate item joined together with an "and" clause. The following conditionsObject describes an insideLandmark rule that only applies from September 26, 2018 to October, 6, 2018, from 9am to 5pm Monday to Fridays, in the New York timezone (specified under the rule's "properties" object). Schedules are optional. By default, the rule will be enabled within 5 mminutes of activation and will run indefinitely until it is disabled.
 
 * date - to and from dates when the rule is valid, in milliseconds
