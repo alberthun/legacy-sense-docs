@@ -10,29 +10,78 @@ A rule defines the set of automated actions that are performed when one or more 
 Example:
 ```json
 {
-	"name": "enter gym - push",
-	"description": "",
-	"throttleInSeconds": 0,
-	"actions": [{
-		"type": "push",
-		"subject": "Welcome to the gym!",
-		"message": "Have a great workout"
-	}],
-	"logicalCondition": {
-		"and": [{
-			"type": "enter landmark",
-			"landmarkId": "01C85HTS8AG7WAYKW24WP74ZYX"
-		}]
-	},
-	"enabled": true
-}
+      "projectId": "01CRACTV5SA6QGB9N6HY6DEVF6",
+      "name": "New rule",
+      "type": "cloud",
+      "tags": "[]",
+      "description": "",
+      "actions": [
+        {
+          "type": "email",
+          "message": "test",
+          "subject": "test",
+          "recipients": {
+            "emails": [
+              "klarsen@sixgill.com"
+            ]
+          }
+        }
+      ],
+      "conditions": "(event.channelId == '01CRBG7HVM0KW8PEX1HK7VZSZR' && insideLandmark(('01CRBK63PB7DR1419M76VR6KC9'), event.location.position) && event.channelId == '01CRBG7HVM0KW8PEX1HK7VZSZR' && event.location.velocity == 'something')",
+      "conditionsObject": [
+        {
+          "type": "and",
+          "items": [
+            {
+              "type": "schedule"
+            },
+            {
+              "type": "and",
+              "items": [
+                {
+                  "ids": [
+                    "01CRBK63PB7DR1419M76VR6KC9"
+                  ],
+                  "type": "insideLandmark",
+                  "attribute": "event.location.position",
+                  "channelId": "01CRBG7HVM0KW8PEX1HK7VZSZR"
+                },
+                {
+                  "type": "matchAttribute",
+                  "value": "something",
+                  "operator": "==",
+                  "attribute": "event.location.velocity",
+                  "channelId": "01CRBG7HVM0KW8PEX1HK7VZSZR"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "properties": {
+        
+      },
+      "gatewayIds": [
+        
+      ],
+      "channelIds": [
+        
+      ],
+   	  "enabled": false
+    }
 ```
 Fields:
+* projectId - ID of the project this rule is associated with
 * name - (required) Name of the rule
+* type - cloud or edge
+* tags - (optional) tags associated with thi rule
 * description - (optional) Description of rule
-* throttleInSeconds - (optional) Specifies the minimum amount of time between executing the action for this rule (in seconds). For example, if set to 300 the action will be executed no more than once every 5 minutes. Defaults to 0
 * actions - Describes what will occur when the condition is satisfied. See [Actions](#actions) for more details.
-* logicalCondition - (optional) Describes the conditions that must be met in order to execute the action(s). A condition can be composed of one or more predicates joined with boolean operators. See [Conditions](#conditions) for more details.
+* conditions - (read-only) the free-form version of the conditions set for this rule, automatically translated from the *conditionsObject*	
+* conditionsObject - Describes the conditions that must be met in order to execute the action(s). A condition can be composed of one or more predicates joined with boolean operators. See [Conditions](#conditions) for more details.
+* properties - (optional) Stores items that are used in conditions, such as a schedule.
+* gatewayIds - IDs of gateways to be included in the rule
+* channelIds - IDs of channels to be included in the rule
 * enabled - The state of the rule. If true, the rule is actively running; if false, it is disabled.
 
 ## Actions
@@ -135,20 +184,31 @@ Conditions are composed of one or more predicates. Predicates can be joined with
 #### "and"
 
 Description:
-	This is a boolean operator that allows you to combine other predicates with "AND" semantics. All predicates combined with "AND" must evaluate to true for the condition to be met.
+	This is a boolean operator for the conditionsObject that allows you to combine other predicates with "AND" semantics. All predicates combined with "AND" must evaluate to true for the condition to be met.
 	
-> The following example checks for the specific device to be inside a landmark.
+> The following example checks if the device is inside a landmark AND traveling at a specifci velocity
 
 Example:
 ```json
-"logicalCondition": {
-	"and": [{
-		"type": "inside landmark",
-		"landmarkId": "01C92NZT6WPQ0J87YVQDE72GGS"
-	}, {
-		"type": "event free form",
-		"predicate": "deviceId == '01CGH777EWVP0E6EZZYH7P2JK0'"
-	}]
+ {
+	  "type": "and",
+	  "items": [
+	    {
+	      "ids": [
+	        "01CRBK63PB7DR1419M76VR6KC9"
+	      ],
+	      "type": "insideLandmark",
+	      "attribute": "event.location.position",
+	      "channelId": "01CRBG7HVM0KW8PEX1HK7VZSZR"
+	    },
+	    {
+	      "type": "matchAttribute",
+	      "value": "something",
+	      "operator": "==",
+	      "attribute": "event.location.velocity",
+	      "channelId": "01CRBG7HVM0KW8PEX1HK7VZSZR"
+	    }
+      ]
 }
 ```
 
@@ -161,19 +221,26 @@ Description:
 
 Example:
 ```json
-"logicalCondition": {
-    "not": [{
-	"type": "event occurred between times of day",
-      	"timeZone": "America/Detroit",
-      	"startInSecondsSinceMidnight": 57600,
-      	"endInSecondsSinceMidnight": 63000
-    }, {
-      "and": [{
-        "type": "inside landmark",
-        "landmarkId": "01C92NZT6WPQ0J87YVQDE72GGX"
-      }]
-    }]
-  }
+ {
+	  "type": "not",
+	  "items": [
+	    {
+	      "ids": [
+	        "01CRBK63PB7DR1419M76VR6KC9"
+	      ],
+	      "type": "insideLandmark",
+	      "attribute": "event.location.position",
+	      "channelId": "01CRBG7HVM0KW8PEX1HK7VZSZR"
+	    },
+	    {
+	      "type": "matchAttribute",
+	      "value": "something",
+	      "operator": "==",
+	      "attribute": "event.location.velocity",
+	      "channelId": "01CRBG7HVM0KW8PEX1HK7VZSZR"
+	    }
+      ]
+}
 ```
 
 #### "or"
@@ -196,58 +263,6 @@ Example:
 }
 ```
 ### Predicates
-
-#### always false
-
-Description:
-	This predicate is always false.  It is typically used for testing.
-
-Example:
-```json
-"logicalCondition": {
-	"type": "always false"
-}
-```
-
-#### always true
-
-Description:
-	This predicate is always true.  It is typically used for testing.
-
-
-Example:
-```json
-"logicalCondition": {
-	"type": "always true"
-}
-```
-     
-#### event free form
-
-Description:
-	This predicate allows you to evaluate a specific event field in free-form fashion, typically used for IoT event payloads. 
-
-Fields:
-* type - "event free form"
-* predicate - String representing the freeform equation to be evaluated. This is typically constructed off of the event payload that will be received for the device. 
-
-> The following example triggers the rule when the data.tempF value in the event payload is equal to 67.
-Example:
-```json
-"logicalCondition": {
- 	"type": "event free form",
- 	"predicate": "data.tempF == 67"
- }
-```
-
-> An example payload that would trigger the above condition:
-
-```json
-"data":{
-     "tempF":67,
-     "humidity":23
-}
-```
 
 #### enter landmark
 
