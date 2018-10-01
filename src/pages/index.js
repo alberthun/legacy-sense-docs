@@ -4,6 +4,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Button from '../components/Button';
 
+import Theme from '../components/Theme';
+
 const Hero = styled.div`
   z-index: 1;
   background-image: linear-gradient(
@@ -100,66 +102,69 @@ class IndexPage extends Component {
 
   render() {
     return (
-      <div>
-        <Header currentPath={this.props.location.pathname} fixed />
-        <Hero>
-          <section>
-            <h2>Sixgill</h2>
-            <h3>
-              We are a backbone for governance of the Internet of Everything.
-              Sixgill enables the governance of connected assets—people, places
-              and things—with our universal sensor data services platform for
-              easier, faster, and more flexible IoE application development. We
-              unlock the value of IoE by taking noisy, voluminous data and
-              identifying exception events—the valuable data intersections that
-              are pertinent to business problems that our customers care about
-              in the moment.
-            </h3>
-            <Button to="/guides/getting-started" large>
-              Get Started
-            </Button>
-            <Button to="/apis/overview" large transparent>
-              API Docs
-            </Button>
-          </section>
-        </Hero>
-        <Philosophy>
-          <div>
-            <h3>Sixgill Sense: How it Works</h3>
-            <p>
-              Sense features and benefits provide a unique combination of
-              technology, services and capacity-maximizing capabilities. With
-              continuous sensor data collection and real-time understanding,
-              Sense helps enterprises know what assets are available, where they
-              are and their operating state while keeping behaviors and actions
-              on track.
-            </p>
-          </div>
-          <div>
-            <h3>Sense 2.0 Product Brief</h3>
-            <p>
-              Sixgill Sense 2.0 is a complete IoT sensor data platform solution that 
-              enables enterprise-wide unified ingestion and sensor data processing 
-              for the rapid and uniform development of enterprise applications. With 
-              features including a massively scalable architecture, real-time rule 
-              triggers, and advanced data correlation features like proximity, the 
-              IoT sensor data platform produces actionable, context-enriched insights 
-              for sensor and location data.
-            </p>
-          </div>
-          <div>
-            <h3>Sense 2.0 Architecture White Paper</h3>
-            <p>
-              Sense solves fragmentation and integration problems with a common,
-              cross-enterprise architecture unbounded for scale and unrestricted
-              for extensibility and deployment. Sense fits within the
-              infrastructure of any enterprise for development of a wide range
-              of task-specific applications for sensor-equipped assets.
-            </p>
-          </div>
-        </Philosophy>
-        <Footer />
-      </div>
+      <Theme>
+        <div>
+          <Header currentPath={this.props.location.pathname} fixed />
+          <Hero>
+            <section>
+              <h2>Sixgill</h2>
+              <h3>
+                We are a backbone for governance of the Internet of Everything.
+                Sixgill enables the governance of connected assets—people,
+                places and things—with our universal sensor data services
+                platform for easier, faster, and more flexible IoE application
+                development. We unlock the value of IoE by taking noisy,
+                voluminous data and identifying exception events—the valuable
+                data intersections that are pertinent to business problems that
+                our customers care about in the moment.
+              </h3>
+              <Button to="/guides/getting-started" large>
+                Get Started
+              </Button>
+              <Button to="/apis/overview" large transparent>
+                API Docs
+              </Button>
+            </section>
+          </Hero>
+          <Philosophy>
+            <div>
+              <h3>Sixgill Sense: How it Works</h3>
+              <p>
+                Sense features and benefits provide a unique combination of
+                technology, services and capacity-maximizing capabilities. With
+                continuous sensor data collection and real-time understanding,
+                Sense helps enterprises know what assets are available, where
+                they are and their operating state while keeping behaviors and
+                actions on track.
+              </p>
+            </div>
+            <div>
+              <h3>Sense 2.0 Product Brief</h3>
+              <p>
+                Sixgill Sense 2.0 is a complete IoT sensor data platform
+                solution that enables enterprise-wide unified ingestion and
+                sensor data processing for the rapid and uniform development of
+                enterprise applications. With features including a massively
+                scalable architecture, real-time rule triggers, and advanced
+                data correlation features like proximity, the IoT sensor data
+                platform produces actionable, context-enriched insights for
+                sensor and location data.
+              </p>
+            </div>
+            <div>
+              <h3>Sense 2.0 Architecture White Paper</h3>
+              <p>
+                Sense solves fragmentation and integration problems with a
+                common, cross-enterprise architecture unbounded for scale and
+                unrestricted for extensibility and deployment. Sense fits within
+                the infrastructure of any enterprise for development of a wide
+                range of task-specific applications for sensor-equipped assets.
+              </p>
+            </div>
+          </Philosophy>
+          <Footer />
+        </div>
+      </Theme>
     );
   }
 }

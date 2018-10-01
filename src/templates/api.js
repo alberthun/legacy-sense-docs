@@ -1,8 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
-import SwaggerUI from 'swagger-ui';
-import 'swagger-ui/dist/swagger-ui.css';
 
 import Header from '../components/Header';
 import Nav from '../components/Nav';
@@ -40,18 +38,10 @@ function DisableAuthorizePlugin() {
 }
 
 class Api extends React.Component {
-  componentDidMount() {
-    SwaggerUI({
-      dom_id: '#ui',
-      spec: JSON.parse(this.props.pathContext.page.spec),
-      plugins: [DisableTryItOutPlugin, DisableAuthorizePlugin],
-      defaultModelsExpandDepth: -1,
-      deepLinking: true
-    });
-  }
+  componentDidMount() {}
   render() {
     const { location } = this.props;
-    const { nav } = this.props.pathContext;
+    const { nav } = this.props.pageContext;
 
     return (
       <div>

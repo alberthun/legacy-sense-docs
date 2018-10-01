@@ -1,4 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router';
+// import { Redirect } from 'react-router';
 
-export default ({ pathContext }) => <Redirect to={pathContext.to} />;
+export default ({ pageContext }) => <div>redirect {pageContext.to}</div>;

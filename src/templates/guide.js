@@ -1,17 +1,11 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
-import Rehype from 'rehype-react';
 
 import Header from '../components/Header';
 import Nav from '../components/Nav';
-import Request from '../components/Request';
 import Sidebar from '../components/Sidebar';
-
-const renderAst = new Rehype({
-  createElement: React.createElement,
-  components: { request: Request }
-}).Compiler;
+import Theme from '../components/Theme';
 
 const Documentation = styled.main`
   float: left;
@@ -29,19 +23,19 @@ const DocContents = styled.div`
   /**
    * Code 💻
    */
-      
-pre {
-    white-space: pre-wrap;       /* Since CSS 2.1 */
-    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-    white-space: -pre-wrap;      /* Opera 4-6 */
-    white-space: -o-pre-wrap;    /* Opera 7 */
-    word-wrap: break-word;       /* Internet Explorer 5.5+ */
-	padding: 16px;
+
+  pre {
+    white-space: pre-wrap; /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+    padding: 16px;
     overflow: auto;
     line-height: 1.45;
     background-color: #f6f8fa;
     border-radius: 3px;
-}
+  }
   code {
     background: #f4f7fb;
     padding: 0 0.25em;
@@ -159,30 +153,32 @@ const DocHeader = styled.header`
   }
 `;
 
-export default ({ pathContext, location }) => {
-  const { page, nav } = pathContext;
+export default ({ pageContext, location }) => {
+  const { page, nav } = pageContext;
   const description = page.frontmatter.description ? (
     <p>{page.frontmatter.description}</p>
   ) : (
     ''
   );
-
+  console.log(page);
   return (
-    <div>
-      <Helmet>
-        <title>{page.frontmatter.title} &middot; Sixgill </title>
-      </Helmet>
-      <Header currentPath={location.pathname} fixed />
-      <Nav nav={nav} currentPath={location.pathname} />
-      <Documentation>
-        <DocHeader>
-          <h1>{page.frontmatter.title}</h1>
-          {description}
-        </DocHeader>
+    <Theme>
+      <div>
+        <Helmet>
+          <title>{page.frontmatter.title} &middot; Sixgill </title>
+        </Helmet>
+        <Header currentPath={location.pathname} fixed />
+        <Nav nav={nav} currentPath={location.pathname} />
+        <Documentation>
+          <DocHeader>
+            <h1>{page.frontmatter.title}</h1>
+            {description}
+          </DocHeader>
 
-        <DocContents>{renderAst(page.htmlAst)}</DocContents>
-        <Sidebar headings={page.headings} />
-      </Documentation>
-    </div>
+          <DocContents dangerouslySetInnerHTML={{ __html: page.html }} />
+          <Sidebar headings={page.headings} />
+        </Documentation>
+      </div>
+    </Theme>
   );
 };
