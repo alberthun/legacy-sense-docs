@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const Wrapper = styled.aside`
   position: fixed;
   top: 0;
-  padding: 64px 2em 2em 2em;
+  padding: 114px 2em 2em 2em;
   width: 20%;
   overflow: auto;
   right: 0;
