@@ -16,6 +16,10 @@ const Logo = styled.h1`
   a {
     color: inherit;
     text-decoration: inherit;
+
+    &:hover {
+      color: inherit;
+    }
   }
 `;
 
@@ -86,7 +90,9 @@ export default ({ currentPath, fixed, nav }) => (
             verticalAlign: 'top'
           }}
         >
-          Developer Documentation
+          <a href="/">
+            Developer Documentation
+          </a>
         </h5>
       </Logo>
       {!nav ? (

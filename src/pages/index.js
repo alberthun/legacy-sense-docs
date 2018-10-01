@@ -243,7 +243,7 @@ class IndexPage extends Component {
               </div>
             </Philosophy>
             <Philosophy>
-              <div style={{ textAlign: 'center', borderTop: '1px solid #ddd', padding: '20px 0' }}>
+              <div style={{ textAlign: 'center', borderTop: '1px solid #ddd', padding: '20px 0', display: 'flex', flexDirection: 'column' }}>
                 <h2>
                   Questions?
                   <br />
@@ -251,7 +251,6 @@ class IndexPage extends Component {
                 </h2>
                 <br />
                 <LinkButton href="mailto:developers@sixgill.com">Contact us</LinkButton>
-                <br />
                 <br />
               </div>
             </Philosophy>
