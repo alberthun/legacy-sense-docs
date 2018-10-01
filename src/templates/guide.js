@@ -165,7 +165,10 @@ export default ({ pageContext, location }) => {
     <Theme>
       <div>
         <Helmet>
-          <title>{page.frontmatter.title} &middot; Sixgill </title>
+          <title>
+            {page.frontmatter.title} &middot; Sixgill Sense IoT Developer
+            Documentation
+          </title>
         </Helmet>
         <Header currentPath={location.pathname} fixed />
         <Nav nav={nav} currentPath={location.pathname} />

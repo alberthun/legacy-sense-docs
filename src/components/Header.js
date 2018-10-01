@@ -72,9 +72,22 @@ export default ({ currentPath, fixed, nav }) => (
     <Header fixed={fixed}>
       <Logo>
         <Link to="/">
-          <img src={SixgillLogo} alt="Sixgill Logo" style={{ height: '70px' }} />
+          <img
+            src={SixgillLogo}
+            alt="Sixgill Logo"
+            style={{ height: '70px' }}
+          />
         </Link>
-        <h5 style={{ display: 'inline-block', margin: '27px 0 0 30px', fontWeight: 'bold', verticalAlign: 'top' }}>Developer Documentation</h5>
+        <h5
+          style={{
+            display: 'inline-block',
+            margin: '27px 0 0 30px',
+            fontWeight: 'bold',
+            verticalAlign: 'top'
+          }}
+        >
+          Developer Documentation
+        </h5>
       </Logo>
       {!nav ? (
         <ul>
@@ -88,17 +101,14 @@ export default ({ currentPath, fixed, nav }) => (
               Get Started
             </Link>
           </li>
-          <li>
-            |
-          </li>
+          <li>|</li>
           <li>
             <Link
               className={classnames({
                 active:
-                  currentPath.startsWith('/api') &&
-                  currentPath !== '/apis/overview'
+                  currentPath.startsWith('/api') && currentPath !== '/apis'
               })}
-              to="/apis/overview"
+              to="/apis"
             >
               API Docs
             </Link>

@@ -103,7 +103,7 @@ exports.createPages = ({ actions, graphql }) => {
     const apiParent = {
       title: 'API Documentation',
       children: [],
-      path: `/apis/overview`
+      path: `/apis`
     };
     nav.push(apiParent);
 

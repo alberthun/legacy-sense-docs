@@ -106,37 +106,66 @@ class IndexPage extends Component {
         <div>
           <Header currentPath={this.props.location.pathname} fixed />
           <Hero>
-            <section style={{ paddingRight: '50px', borderRight: '1px solid #5cc468', marginTop: '40px', marginBottom: '40px' }}>
-              <img src={SenseLogo} alt="Sixgill Sense Logo" style={{ height: '70px', margin: '0 0 10px 0' }} />
-              <h3><b>The Sensor Data Destination</b></h3>
+            <section
+              style={{
+                paddingRight: '50px',
+                borderRight: '1px solid #5cc468',
+                marginTop: '40px',
+                marginBottom: '40px'
+              }}
+            >
+              <img
+                src={SenseLogo}
+                alt="Sixgill Sense Logo"
+                style={{ height: '70px', margin: '0 0 10px 0' }}
+              />
+              <h3>
+                <b>The Sensor Data Destination</b>
+              </h3>
               <p>
-                Sixgill Sense enables developers to quickly and easily acquire sensor data in any volume and velocity, understand it, and act on it programmatically. Sense  universally  supports  the  data  service requirements  of  any  sensor-dependent application.
+                Sixgill Sense enables developers to quickly and easily acquire
+                sensor data in any volume and velocity, understand it, and act
+                on it programmatically. Sense universally supports the data
+                service requirements of any sensor-dependent application.
               </p>
-              <p>
-                It’s your sensor data destination.
-              </p>
+              <p>It’s your sensor data destination.</p>
             </section>
-            <section style={{ marginTop: '40px', marginBottom: '40px', paddingLeft: '40px', paddingRight: '40px' }}>
+            <section
+              style={{
+                marginTop: '40px',
+                marginBottom: '40px',
+                paddingLeft: '40px',
+                paddingRight: '40px'
+              }}
+            >
               <h4>
                 <b>Sixgill Sense for Developers</b>
               </h4>
               <p>
-                Deploy, collaborate, and iterate with one backbone system that puts you and your IoT development needs first.
+                Deploy, collaborate, and iterate with one backbone system that
+                puts you and your IoT development needs first.
               </p>
               <p>
                 <ul>
                   <li>Fast, easy device setup and connection</li>
-                  <li>Full-featured portal with anywhere, anytime debugging mobile application</li>
-                  <li>Highly visual dashboard for real-time analytics, administration and monitoring</li>
-                  <li>Built-in geofencing and highly visual process for rules assignment  and triggered actions</li>
+                  <li>
+                    Full-featured portal with anywhere, anytime debugging mobile
+                    application
+                  </li>
+                  <li>
+                    Highly visual dashboard for real-time analytics,
+                    administration and monitoring
+                  </li>
+                  <li>
+                    Built-in geofencing and highly visual process for rules
+                    assignment and triggered actions
+                  </li>
                 </ul>
               </p>
               <p style={{ textAlign: 'center', marginTop: '30px' }}>
-                <Button to="/guides/getting-started">
-                  Get Started
-                </Button>
+                <Button to="/guides/getting-started">Get Started</Button>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <Button to="/apis/overview" transparent>
+                <Button to="/apis" transparent>
                   API Docs
                 </Button>
               </p>
