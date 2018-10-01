@@ -13,7 +13,7 @@ To create a schema through the dashboard
 1. Go to **Channels**
 2. In the left sidebar under Schemas, click **+ Add Schema**
 
-![](/images/schema_adding_schema.png)
+![](images/schema_add_schema.png)
 
 3. **Name & Details** - Enter a name for the schema in "Name" field
 4. **Define Fields** - Use this section to specify the format of your schema
@@ -45,62 +45,9 @@ Add the final attribute named "humidity" in a similar manner.
 
 5. When finished, click **Create Schema**  Your schema should look like the following:
 
-![](images/schema_json_schema_example.png)
+![](images/schema_json_example.png)
 
-To create a schema using the API:
-
-##### POST /v2/schemas
-
-Fields:
-* name - the name of this schema
-* format - "json" for a JSON formatted data
-* fields - the object representation of the structure of your data. Supports multiple levels of nested fields.
-	* id - the name of your attribute
-	* type - the type of attribute: 'object', 'string', 'float', 'integer', 'timestamp', 'datetime'
-```json
-{
-	"name": "my schema",
-	"format": "json",
-	"fields": [{
-		"id": "data",
-		"type": "object",
-		"fields": [{
-			"id": "humidity",
-			"type": "integer"
-		}, {
-			"id": "tempF",
-			"type": "integer"
-		}]
-	}]
-}
-```
-`Code: 201`
-```json
-{
-	"data": {
-		"id": "01CMDMCSF92P5ZSHKE119R9BTE",
-		"name": "test 3",
-		"format": "json",
-		"organizationId": "01C54H1MTA8K8ZZ0B7WNB3P0N6",
-		"fields": [{
-			"id": "data",
-			"type": "object",
-			"fields": [{
-					"id": "humidity",
-					"type": "integer"
-				},
-				{
-					"id": "tempF",
-					"type": "integer"
-				}
-			]
-		}],
-		"createdAt": "2018-08-08T20:42:03Z",
-		"updatedAt": "2018-08-08T20:42:03Z"
-	}
-}
-```
-
+Schemas can also be created using the API.
 
 ## Assigning a Schema
 

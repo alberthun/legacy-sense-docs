@@ -73,12 +73,12 @@ Device sensor data is ingested into Sense through the [Ingress API](/apis/ingre
 ### iOS SDK
 
 [Sixgill Reach iOS SDK and User Guide](/guides/sdks/ios)
-*updated July 19th, 2018*
+*updated September 28th, 2018*
 
 ### Android SDK
 
 [Sixgill Reach Android SDK and User Guide](/guides/sdks/android)
-*updated July 19th, 2018*
+*updated September 28th, 2018*
   
 ### Sixgill Sync 2.0
 Users can also demo the mobile SDK capabilities by using the Sixgill Sync 2.0 demo application, available on the App Store and (coming soon) the Google Play Store.
@@ -86,6 +86,8 @@ Users can also demo the mobile SDK capabilities by using the Sixgill Sync 2.0 de
 [Sixgill Sync 2.0 for iOS](https://itunes.apple.com/us/app/sixgill-sync-2-0/id1272269863?mt=8)
 
 [Sixgill Sync 2.0 for Android](https://play.google.com/store/apps/details?id=sync.sixgill.com.sync)
+
+_Updated Sync 2.0 app to be released early October 2018_
 
 Pre-reqs:
 A dashboard account. See [Creating an Account](#creating-an-account) for details
@@ -120,7 +122,7 @@ See the IoT Events section of the [Ingress API](/apis/ingress#/Mobile/post_v1_io
   
 #### Schemas
 
-Device data needs to be mapped to fields so you can trigger rules and view analytics. This is done using Schemas. Mobile devices (iOS, Android) have predefined schemas that you can use with our SDK and you don’t need to configure them.  
+Device data needs to be mapped to fields so you can trigger rules and view analytics. This is done using [Schemas](/guides/channels/schemas). Mobile devices (iOS, Android) have predefined schemas that you can use with our SDK and you don’t need to configure them.  
 
 For IoT devices you need to first create a custom schema. You can send any kind of data with IoT devices. It is recommended that you generate IoT schema based on your event payload. Once your schema is defined you can use it in a Channel and see data being ingested. You can update a schema if necessary at a later time.
 

@@ -13,14 +13,15 @@ Channels are created based on the type of device that will connect to it. A chan
 1.  In the dashboard, go to Channels. If this is your organization's first channel, you will be presented with an Intro screen. Click **Add New Channel**
 
 
-![](/images/add_new_channel.png)
+![](./images/add_new_channel.png)
 
 2.  Click on the type of channel you would like to create
     -  Select **iOS Mobile Devices** to create a channel for iOS data for apps using the Sense Reach iOS SDK
     -  Select **Android Mobile Devices** to create a channel for Android data for apps using the Sense Reach Android SDK
     -  Select **IoT Devices** to create a channel for generic IoT data that will be sent using the Sense Ingress API
 3.  Enter a name for your channel. Channel names must be unique to your account.
+4. 	Enter the name of one or more projects to assign your channel to. Rules created under these projects will be able to use this channel as a data source.
 
-This will create a Channel for the type of data you wish to ingest.
+This will create a Channel for the type of data you wish to ingest. 
 
 See the [Channels API docs](/apis/sense-api#/) for creating and managing channels through the API.

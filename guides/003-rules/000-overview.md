@@ -15,7 +15,7 @@ Rules are at the heart of device interactivity within the Sense platform. Rules
 
 Landmark - A landmark is a geofence around a certain location. It can be a circle, polygon, or rectable.
 
-![](/images/rule_add_new_landmark.png)
+![](images/rule_add_new_landmark.png)
 
 **When will the event happen?**   
 First select WHEN the event will trigger in relation to the landmark.  
@@ -48,8 +48,8 @@ Attribute - a custom condition or freeform condition which allows you to specify
  
 ### Adding an Action
 An action is the behavior that is executed when the conditions are met. An action can be in the form of sending an SMS, a Push message, an email, a webhook, or a combination of actions.  
-a) Click *New Action* under the Actions section
-b) Select your desired action by clicking on the action: SMS, Email, Send Push, Webhook   
+
+Under the Actions section, select your desired action by clicking on the action: SMS, Email, Send Push, Webhook   
 
 #### SMS  
 - **Message** - Enter the SMS message to be sent to recipients   

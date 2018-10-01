@@ -10,78 +10,53 @@ A rule defines the set of automated actions that are performed when one or more 
 Example:
 ```json
 {
-      "projectId": "01CRACTV5SA6QGB9N6HY6DEVF6",
-      "name": "New rule",
-      "type": "cloud",
-      "tags": "[]",
-      "description": "",
-      "actions": [
-        {
-          "type": "email",
-          "message": "test",
-          "subject": "test",
-          "recipients": {
-            "emails": [
-              "klarsen@sixgill.com"
-            ]
-          }
-        }
-      ],
-      "conditions": "(event.channelId == '01CRBG7HVM0KW8PEX1HK7VZSZR' && insideLandmark(('01CRBK63PB7DR1419M76VR6KC9'), event.location.position) && event.channelId == '01CRBG7HVM0KW8PEX1HK7VZSZR' && event.location.velocity == 'something')",
-      "conditionsObject": [
-        {
-          "type": "and",
-          "items": [
-            {
-              "type": "schedule"
-            },
-            {
-              "type": "and",
-              "items": [
-                {
-                  "ids": [
-                    "01CRBK63PB7DR1419M76VR6KC9"
-                  ],
-                  "type": "insideLandmark",
-                  "attribute": "event.location.position",
-                  "channelId": "01CRBG7HVM0KW8PEX1HK7VZSZR"
-                },
-                {
-                  "type": "matchAttribute",
-                  "value": "something",
-                  "operator": "==",
-                  "attribute": "event.location.velocity",
-                  "channelId": "01CRBG7HVM0KW8PEX1HK7VZSZR"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "properties": {
-        
-      },
-      "gatewayIds": [
-        
-      ],
-      "channelIds": [
-        
-      ],
-   	  "enabled": false
+  "projectId": "01CRDS7BVRPPDGC6FEE5EXDRP0",
+  "name": "Entering Santa Monica Pier",
+  "type": "cloud",
+  "description": "",
+  "actions": [{
+    "type": "email",
+    "message": "Welcome to the Pier",
+    "subject": "Enjoy your stay!",
+    "recipients": {
+      "emails": ["test@test.com"]
     }
+  }],
+  "conditions": "event.channelId == '01CRDS6EJC9SHVADJWCVXB0V45' && enterLandmark(('01CRPPFG5Q4F58HGM8D5H37ED3'), event.location.position)",
+  "conditionsObject": [{
+    "type": "and",
+    "items": [{
+      "type": "schedule"
+    }, {
+      "type": "and",
+      "items": [{
+        "ids": ["01CRPPFG5Q4F58HGM8D5H37ED3"],
+        "type": "enterLandmark",
+        "attribute": "event.location.position",
+        "channelId": "01CRDS6EJC9SHVADJWCVXB0V45",
+        "description": "When device from \"My iOS Channel\" is enter landmark \"Santa Monica Pier\""
+      }]
+    }]
+  }],
+  "properties": {},
+  "gatewayIds": [],
+  "channelIds": [],
+  "generator": "custom",
+  "enabled": true
+}
 ```
 Fields:
 * projectId - ID of the project this rule is associated with
 * name - (required) Name of the rule
 * type - cloud or edge
-* tags - (optional) tags associated with thi rule
 * description - (optional) Description of rule
 * actions - Describes what will occur when the condition is satisfied. See [Actions](#actions) for more details.
-* conditions - (read-only) the free-form version of the conditions set for this rule, automatically translated from the *conditionsObject*	
-* conditionsObject - Describes the conditions that must be met in order to execute the action(s). A condition can be composed of one or more predicates joined with boolean operators. See [Conditions](#conditions) for more details.
-* properties - (optional) Stores items that are used in conditions, such as a schedule.
+* conditions - the free-form version of the conditions defined for this rule. This is automatically translated from the more structured **conditionsObject**, and is optional as long as a valid conditionsObject exists. See [Conditions](#conditions) for more details.
+* conditionsObject - Describes the conditions that must be met in order to execute the action(s). A condition can be composed of one or more items joined with boolean operator types. See [Conditions](#conditions) for more details.
+* properties - (optional) Stores items that are used in conditions, such as a timezone.
 * gatewayIds - IDs of gateways to be included in the rule
 * channelIds - IDs of channels to be included in the rule
+* generator - How the rule was generated
 * enabled - The state of the rule. If true, the rule is actively running; if false, it is disabled.
 
 ## Actions
@@ -177,16 +152,16 @@ Example:
 ```   
 
 ## Conditions
-Conditions are composed of one or more predicates. Predicates can be joined with boolean operators to form a logical expression that can be evaluated.
+Conditions for the rule are specified either using the advanced, free-form style, or using a more simple, structured format of the **conditionsObject**. Rules created with conditionsObjects will automatically be translated into their free-form condition. Conditions are composed of one or more items joined with boolean operators to form a logical expression that can be evaluated.
 
 ### Operators
 
 #### "and"
 
 Description:
-	This is a boolean operator for the conditionsObject that allows you to combine other predicates with "AND" semantics. All predicates combined with "AND" must evaluate to true for the condition to be met.
+	This is a boolean operator for the conditionsObject that allows you to combine other items with "AND" semantics. All items combined with "AND" must evaluate to true for the condition to be met.
 	
-> The following example checks if the device is inside a landmark AND traveling at a specifci velocity
+> The following example checks if the device is inside a landmark AND traveling at a specific velocity
 
 Example:
 ```json
@@ -212,265 +187,92 @@ Example:
 }
 ```
 
-#### "not"
-
-Description:
-	This is a boolean operator that allows you to negate a predicate with "NOT" semantics. The predicate must not evaluate to true for the condition to be met.
-
-> The following example uses "NOT" to include a schedule of when the rule should not be triggered.
-
-Example:
-```json
- {
-	  "type": "not",
-	  "items": [
-	    {
-	      "ids": [
-	        "01CRBK63PB7DR1419M76VR6KC9"
-	      ],
-	      "type": "insideLandmark",
-	      "attribute": "event.location.position",
-	      "channelId": "01CRBG7HVM0KW8PEX1HK7VZSZR"
-	    },
-	    {
-	      "type": "matchAttribute",
-	      "value": "something",
-	      "operator": "==",
-	      "attribute": "event.location.velocity",
-	      "channelId": "01CRBG7HVM0KW8PEX1HK7VZSZR"
-	    }
-      ]
-}
-```
-
 #### "or"
 
 Description:
-	This is a boolean operator that allows you to combine other predicates with "OR" semantics. Either predicate must evaluate to true for the condition to be met.
+	This is a boolean operator that allows you to combine items with "OR" semantics. Either predicate must evaluate to true for the condition to be met.
 
 > The following condition checks whether the device is inside one landmark or the other.
 
 Example:
 ```json
-"logicalCondition": {
-	"or": [{
-		"type": "inside landmark",
-		"landmarkId": "01C85HTS8AG7WAYKW24WP74ZYA"
-	}, {
-		"type": "inside landmark",
-		"landmarkId": "01C92NZT6WPQ0J87YVQDE72GGF"
-	}]
+{
+  "type": "or",
+  "items": [{
+    "ids": ["01CRF31GB0JTX2392AJMTHDME0"],
+    "type": "insideLandmark",
+    "attribute": "event.location.position",
+    "channelId": "01CRDS6EJC9SHVADJWCVXB0V45",
+    "description": "When device from \"My iOS Channel\" is inside landmark \"WeWork\""
+  }, {
+    "ids": ["01CRPPFG5Q4F58HGM8D5H37ED3"],
+    "type": "insideLandmark",
+    "attribute": "event.location.position",
+    "channelId": "01CRDS6EJC9SHVADJWCVXB0V45",
+    "description": "When device from \"My iOS Channel\" is inside landmark \"Santa Monica Pier\""
+  }]
 }
 ```
-### Predicates
 
-#### enter landmark
+### Landmark Conditions
 
-Description:
-	This is predicate allows you to evaluate whether or not a device event entered a landmark that it was previously outside of. Landmarks are specific by the landmarkId. To specify multiple landmarks, you can join together multiple predicates with an operator.
+The conditionsObject accepts specific landmark condition types to define geofence triggers. In these examples, the value of the **event.location.position** attribute is compared against the landmark boundary to determine the device's proximity to the landmark.
 
 Fields:
-* type - "enter landmark"
-* landmarkId - ID of the landmark to compare the device's location against
+* id -  ID of the landmark to compare the device's position against
+* type - One of the following: enterLandmark, exitLandmark, insideLandmark, outsideLandmark
+  * enterLandmark - Evaluate whether or not a device event entered a landmark that it was previously outside of.
+  * exitLandmark - Evaluate whether or not a device has exited a landmark that it was previously inside of.
+  * insideLandmark - Evaluate whether or not a device is inside of a given landmark.
+  * outsideLandmark - Evaluate whether or not a device event is outside of a given landmark. 
+* attribute - the attribute in the device payload that will be used for evaluation
+* channelId - ID of the channel to be used as the data source for this condition
 
-> The following example checks if the device was previously outside the landmark 01C92NZT6WCQ0J87YVQDE72GGA and is now inside it.
+> The following example checks if the device was previously outside the landmark and is now inside it.
 
 Example:
 ```json
-"logicalCondition": {
-	"type": "enter landmark",
-	"landmarkId": "01C92NZT6WCQ0J87YVQDE72GGA"
+{
+  "ids": ["01CRPPFG5Q4F58HGM8D5H37ED3"],
+  "type": "enterLandmark",
+  "attribute": "event.location.position",
+  "channelId": "01CRDS6EJC9SHVADJWCVXB0V45",
+  "description": "When device from \"My iOS Channel\" is enter landmark \"Santa Monica Pier\""
 }
 ```
 
-#### exit landmark
    
-Description:
-	This predicate allows you to evaluate whether or not a device exited a landmark that it was previously inside of. To specify multiple landmarks, you can join together multiple predicates with an operator.
+### Scheduling
+*optional*
+Schedules are defined in the **conditionsObject** as a separate item joined together with an "and" clause. The following conditionsObject describes an insideLandmark rule that only applies from September 26, 2018 to October, 6, 2018, from 9am to 5pm Monday to Fridays, in the New York timezone (specified under the rule's "properties" object). Schedules are optional. By default, the rule will be enabled within 5 mminutes of activation and will run indefinitely until it is disabled.
 
-Fields:
-* type - "exit landmark"
-* landmarkId - ID of the landmark to compare the device's location against
-
-> The following example checks if the device was previously inside the landmark and is now outside of it.
-
-Example:
-```json
-"logicalCondition": {
-	"type": "exit landmark",
-	"landmarkId": "01C92NZTCWPQ0J87YVQDE72GGA"
-}
-```
-	
-#### inside landmark
-
-Description:
-	This predicate allows you to evaluate whether or not a device is inside of a given landmark. To specify multiple landmarks, you can join together multiple predicates with an operator.
-
-Fields:
-* type - "inside landmark"
-* landmarkId - ID of the landmark to compare the device's location against
-
-> The following example checks if the device is inside the landmark.
+* date - to and from dates when the rule is valid, in milliseconds
+* weekdays - days when the rule is valid (0 = sunday, 1 = monday, etc)
+* timeOfDay - to and from hours of the day when the rule is valid, in seconds from midnight
 
 Example:
 ```json
-"logicalCondition": {
-	"type": "inside landmark",
-	"landmarkId": "01C92NZTCWPQ0J87YVQDE72GGA"
-}
+"conditionsObject": [{
+    "type": "and",
+    "items": [{
+      "type": "schedule",
+      "date": {
+        "from": 1537977600000,
+        "to": 1538841600000
+      },
+      "weekDays": [1, 2, 3, 4, 5],
+      "timeOfDay": {
+        "from": 32400,
+        "to": 61200
+      }
+    }, {
+      "type": "and",
+      "items": [{
+        "attribute": "event.location.position",
+        "channelId": "01CRDS6EJC9SHVADJWCVXB0V45",
+        "type": "insideLandmark",
+        "ids": ["01CRF31GB0JTX2392AJMTHDME0"]
+      }]
+    }]
+  }]
 ```
-
-#### outside landmark
-
-Description:
-	This predicate allows you to evaluate whether or not a device event is outside of a given landmark. To specify multiple landmarks, you can join together multiple predicates with an operator.
-
-Fields:
-* type - "outside landmark"
-* landmarkId - ID of the landmark to compare the device's location against
-
-> The following example checks if the device is outside the landmark.
-
-Example:
-```json
-"logicalCondition": {
-	"type": "outside landmark",
-	"landmarkId": "01C92NZTCWPQ0J87YVQDE72GGJ"
-}
-```
-   
-#### landmark has all tags
-
-Description:
-	This predicate allows you to evaluate whether or not a given landmark has all of the tags specified. 
-
-Fields:
-* type - "landmark has all tags"
-* landmark_id - the ID of the landmark whose tags should be checked
-* tags - an array of strings representing the tags to be checked for this landmark
-
-> The following example checks if the device has entered the landmark that it was not in previously AND if the landmark has both of the tags "music" and "has_wifi" assigned to it.
-
-Example:
-```json
-"logicalCondition": {
-      "and": [{
-        "type": "landmark has all tags",
-        "landmark_id": "01CHNRNYKM4SH9EPNRJC62H1PJ",
-        "tags": ["music", "has_wifi"]
-      },{
-        "type": "enter landmark",
-        "landmarkId": "01CHNRNYKM4SH9EPNRJC62H1PJ"
-      }] 
-}
-```
-
-#### landmark has any tags
-
-Description:
-	This predicate allows you to evaluate whether or not a given landmark has any of the tags specified.
-	
-Fields:
-* type - "landmark has any tags"
-* landmark_id - the ID of the landmark whose tags should be checked
-* tags - an array of strings representing the tags to be checked for this landmark
-
-> The following example checks if the device is inside the landmark AND if the landmark specified has either of the "music" or "has_wifi" tags assigned to it.
- 
-Example:
-```json
-"logicalCondition": {
-      "and": [{
-        "type": "landmark has any tags",
-        "landmark_id": "01CHNRNYKM4SH9EPNRJC62H1PJ",
-        "tags": ["music", "has_wifi"]
-      },{
-        "type": "inside landmark",
-        "landmarkId": "01CHNRNYKM4SH9EPNRJC62H1PJ"
-      }] 
-}
-```
-   
-#### event occurred after
-
-Description:
-	This predicate allows you to evaluate whether an event occurred after a given time.
-
-Fields:
-* type = "event occurred after"
-* moment - timestamp in ISO8601 format that will be used for comparison against the event's timestamp
-
-> The following example checks if the event is timestamped after 2017-01-01T00:00:00Z 
-
-Example:
-```json
-"logicalCondition": {
-	"type": "event occurred after",
-	"moment": "2017-01-01T00:00:00Z",
-}
-```
-
-### event occurred before
-
-Description:
-	This predicate allows you to evaluate whether an event occurred before a given time.
-	
-Fields:
-* type - "event occurred before"
-* moment - timestamp in ISO8601 format that will be used for comparison against the event's timestamp
-
-> The following example checks if the event is timestamped before 2017-01-01T00:00:00Z
-
-Example:
-```json
-"logicalCondition": {
-	"type": "event occurred before",
-	"moment": "2017-01-01T00:00:00Z",
-}
-```
-
-#### event occurred between times of day
-
-Description:
-	This is a predicate that allows you to evaluate whether an event occurred between two given times. 
-
-Fields:
-* type - "event occurred between times of day",
-* startInSecondsSinceMidnight - Start time in seconds since midnight
-* endInSecondsSinceMidnight - End time in seconds since midnight
-* An identifier from the IANA Timezone Database which identifies the timezone that should be used for the schedule 
-
-> The following example checks if the event is timestamped between 4:00pm and 6:00pm in the Detroit timezone.
-
-Example:
-```json
-"logicalCondition": {
-	"type": "event occurred between times of day",
-	"startInSecondsSinceMidnight": 57600,
-	"endInSecondsSinceMidnight": 64800,
-	"timeZone": "America/Detroit"
-}
-```
-
-#### event occurred on day of week
-
-Description:
-	This predicate allows you to evaluate whether an event occurred on a given day of the week.
-
-Fields:
-* type - "event occurred on day of week"
-* dayOfWeek - The integer representing the day of the week (0 = Sunday, 1 = Monday, 2 = Tuesday, etc)
-* timeZone - An identifier from the IANA Timezone Database which identifies the timezone that should be used for the schedule
-
-> The following example checks if the event occurred on a specific day of the week.
-
-Example:
-```json
-"logicalCondition": {
-	"type": "event occurred on day of week",
-	"dayOfWeek": 0,
-	"timeZone": "America/Los_Angeles"
-}
-```
-
