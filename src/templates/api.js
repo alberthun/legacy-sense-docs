@@ -1,21 +1,40 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import styled from 'styled-components';
 
 import Header from '../components/Header';
 import Theme from '../components/Theme';
 
 class Api extends React.Component {
-  componentDidMount() {}
+  componentDidMount() {
+    const { id } = this.props.pageContext;
+    const url = id === 'ingress' ? '/ingress.json' : '/sense-api.json';
+    const interval = setInterval(() => {
+      if (window.Redoc) {
+        clearInterval(interval);
+      }
+      window.Redoc.init(
+        url,
+        {
+          scrollYOffset: 114
+        },
+        document.getElementById('redoc'),
+        (er) => {
+          console.log(er);
+        }
+      );
+    }, 100);
+  }
   render() {
     const { location } = this.props;
-    const { id } = this.props.pageContext;
 
     return (
       <Theme>
         <div>
           <Helmet>
-            <title>Sixgill Sense IoT Developer Documentation</title>
+            <title>
+              {this.props.pageContext.name} - Sixgill Sense IoT Developer
+              Documentation
+            </title>
             <meta
               name="description"
               content="Sixgill Sense for Developers: Deploy, collaborate, and iterate quickly, easily and flexibly with one backbone system for your sensor data dependent IoT applications."
@@ -25,10 +44,7 @@ class Api extends React.Component {
             </script>
           </Helmet>
           <Header currentPath={location.pathname} fixed />
-          <redoc
-            scroll-y-offset={114}
-            spec-url={id === 'ingress' ? '/ingress.json' : '/sense-api.json'}
-          />
+          <div id={'redoc'} />
         </div>
       </Theme>
     );
