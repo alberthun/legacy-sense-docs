@@ -107,25 +107,25 @@ exports.createPages = ({ actions, graphql }) => {
     };
     nav.push(apiParent);
 
-    /*
-    result.data.allOpenApiSpec.edges.forEach(({ node }) => {
+    [
+      { name: 'Ingress Api', id: 'ingress' },
+      { name: 'Sense Api', id: 'sense-api' }
+    ].forEach((node) => {
       apiParent.children.push({
-        title: node.title,
+        title: node.name,
         children: [],
-        path: `/apis/${node.name}`
+        path: `/apis/${node.id}`
       });
 
       createPage({
-        path: `apis/${node.name}`,
+        path: `apis/${node.id}`,
         component: path.resolve(`./src/templates/api.js`),
         context: {
           id: node.id,
-          page: node,
-          nav
+          page: node
         }
       });
     });
-    */
 
     result.data.allMarkdownRemark.edges.forEach((res) => {
       if (!res.node) return;
