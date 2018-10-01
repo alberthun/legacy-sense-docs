@@ -42,36 +42,19 @@ function createGuidePages(c, createPage, context) {
   }
 }
 
-exports.createPages = ({ boundActionCreators, graphql }) => {
-  const { createPage } = boundActionCreators;
+exports.createPages = ({ actions, graphql }) => {
+  const { createPage } = actions;
 
   return graphql(`
     {
-      allOpenApiSpec {
-        edges {
-          node {
-            id
-            name
-            title
-            spec
-            childrenOpenApiSpecPath {
-              tag
-              description
-              name
-            }
-          }
-        }
-      }
-
       allMarkdownRemark(
         limit: 1000
         sort: { order: ASC, fields: fileAbsolutePath }
-        filter: { fileAbsolutePath: { regex: "/guides/" } }
       ) {
         edges {
           node {
             fileAbsolutePath
-            htmlAst
+            html
             headings {
               value
               depth
@@ -120,24 +103,26 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     const apiParent = {
       title: 'API Documentation',
       children: [],
-      path: `/apis/overview`
+      path: `/apis`
     };
     nav.push(apiParent);
 
-    result.data.allOpenApiSpec.edges.forEach(({ node }) => {
+    [
+      { name: 'Ingress Api', id: 'ingress' },
+      { name: 'Sense Api', id: 'sense-api' }
+    ].forEach((node) => {
       apiParent.children.push({
-        title: node.title,
+        title: node.name,
         children: [],
-        path: `/apis/${node.name}`
+        path: `/apis/${node.id}`
       });
 
       createPage({
-        path: `apis/${node.name}`,
+        path: `apis/${node.id}`,
         component: path.resolve(`./src/templates/api.js`),
         context: {
           id: node.id,
-          page: node,
-          nav
+          page: node
         }
       });
     });

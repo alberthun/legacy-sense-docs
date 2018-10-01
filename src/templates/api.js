@@ -1,69 +1,50 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import styled from 'styled-components';
-import SwaggerUI from 'swagger-ui';
-import 'swagger-ui/dist/swagger-ui.css';
 
 import Header from '../components/Header';
-import Nav from '../components/Nav';
-
-const ApiDocs = styled.main`
-  float: left;
-  width: 55%;
-  margin-left: 20%;
-  padding: 2em 4em;
-
-  @media ${(props) => props.theme.mobile} {
-    width: 100%;
-    margin: 0;
-  }
-`;
-
-function DisableTryItOutPlugin() {
-  return {
-    statePlugins: {
-      spec: {
-        wrapSelectors: {
-          allowTryItOutFor: () => () => false
-        }
-      }
-    }
-  };
-}
-
-function DisableAuthorizePlugin() {
-  return {
-    wrapComponents: {
-      authorizeBtn: () => () => null
-    }
-  };
-}
+import Theme from '../components/Theme';
 
 class Api extends React.Component {
   componentDidMount() {
-    SwaggerUI({
-      dom_id: '#ui',
-      spec: JSON.parse(this.props.pathContext.page.spec),
-      plugins: [DisableTryItOutPlugin, DisableAuthorizePlugin],
-      defaultModelsExpandDepth: -1,
-      deepLinking: true
-    });
+    const { id } = this.props.pageContext;
+    const url = id === 'ingress' ? '/ingress.json' : '/sense-api.json';
+    const interval = setInterval(() => {
+      if (window.Redoc) {
+        clearInterval(interval);
+      }
+      window.Redoc.init(
+        url,
+        {
+          scrollYOffset: 114
+        },
+        document.getElementById('redoc'),
+        (er) => {
+          console.log(er);
+        }
+      );
+    }, 100);
   }
   render() {
     const { location } = this.props;
-    const { nav } = this.props.pathContext;
+    const { name } = this.props.pageContext.page;
 
     return (
-      <div>
-        <Helmet>
-          <title>&middot; Sixgill </title>
-        </Helmet>
-        <Header currentPath={location.pathname} fixed />
-        <Nav nav={nav} currentPath={location.pathname} />
-        <ApiDocs>
-          <div id="ui" />
-        </ApiDocs>
-      </div>
+      <Theme>
+        <div>
+          <Helmet>
+            <title>{name} - Sixgill Sense IoT Developer Documentation</title>
+            <meta
+              name="description"
+              content="Sixgill Sense for Developers: Deploy, collaborate, and iterate quickly, easily and flexibly with one backbone system for your sensor data dependent IoT applications."
+            />
+            <script src="https://cdn.jsdelivr.net/npm/redoc/bundles/redoc.standalone.js">
+              {' '}
+            </script>
+          </Helmet>
+          <Header currentPath={location.pathname} fixed />
+          <div id={'redoc'} />
+        </div>
+      </Theme>
     );
   }
 }

@@ -3,6 +3,8 @@ import Link from 'gatsby-link';
 import classnames from 'classnames';
 import styled from 'styled-components';
 
+import SixgillLogo from '../../static/sixgill-logo.svg';
+
 const Logo = styled.h1`
   font-size: 1.5em;
   margin: 0;
@@ -18,7 +20,7 @@ const Logo = styled.h1`
 `;
 
 const Header = styled.header`
-  border-top: 3px solid ${(props) => props.theme.colors.primary};
+  // border-top: 3px solid ${(props) => props.theme.colors.primary};
   border-bottom: 1px solid #f0f0f0;
   position: ${(props) => (props.fixed ? 'fixed' : 'relative')};
   top: 0;
@@ -59,7 +61,7 @@ const Offset = ({ fixed, children }) =>
   fixed ? (
     <div>
       {children}
-      <div style={{ height: '68px' }} />
+      <div style={{ height: '114px' }} />
     </div>
   ) : (
     children
@@ -69,7 +71,23 @@ export default ({ currentPath, fixed, nav }) => (
   <Offset fixed={fixed}>
     <Header fixed={fixed}>
       <Logo>
-        <Link to="/">&lt;docs.sixgill&gt;</Link>
+        <Link to="/">
+          <img
+            src={SixgillLogo}
+            alt="Sixgill Logo"
+            style={{ height: '70px' }}
+          />
+        </Link>
+        <h5
+          style={{
+            display: 'inline-block',
+            margin: '27px 0 0 30px',
+            fontWeight: 'bold',
+            verticalAlign: 'top'
+          }}
+        >
+          Developer Documentation
+        </h5>
       </Logo>
       {!nav ? (
         <ul>
@@ -80,17 +98,17 @@ export default ({ currentPath, fixed, nav }) => (
               })}
               to="/guides/getting-started"
             >
-              Getting started
+              Get Started
             </Link>
           </li>
+          <li>|</li>
           <li>
             <Link
               className={classnames({
                 active:
-                  currentPath.startsWith('/api') &&
-                  currentPath !== '/apis/overview'
+                  currentPath.startsWith('/api') && currentPath !== '/apis'
               })}
-              to="/apis/overview"
+              to="/apis"
             >
               API Docs
             </Link>

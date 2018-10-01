@@ -1,4 +1,9 @@
 import React from 'react';
-import { Redirect } from 'react-router';
+import Redirect from '../components/Redirect';
+class RedirectTemplate extends React.Component {
+  render() {
+    return <Redirect to={this.props.pathContext.to} />;
+  }
+}
 
-export default ({ pathContext }) => <Redirect to={pathContext.to} />;
+export default RedirectTemplate;

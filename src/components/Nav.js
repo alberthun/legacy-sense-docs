@@ -59,29 +59,31 @@ export default ({ currentPath, nav }) => {
             <List inner>
               {parent.children.map((child) => (
                 <ListItem key={child.path} inner>
-                  <Link
-                    to={child.path}
-                    className={classnames({
-                      active: currentPath === child.path
-                    })}
-                  >
-                    {child.title}
-                    <List inner>
-                      {child.children &&
-                        child.children.map((c) => (
-                          <ListItem key={c.path} inner>
-                            <Link
-                              to={c.path}
-                              className={classnames({
-                                active: currentPath === c.path
-                              })}
-                            >
-                              {c.title}
-                            </Link>
-                          </ListItem>
-                        ))}
-                    </List>
-                  </Link>
+                  <span>
+                    <Link
+                      to={child.path}
+                      className={classnames({
+                        active: currentPath === child.path
+                      })}
+                    >
+                      {child.title}
+                    </Link>
+                      <List inner>
+                        {child.children &&
+                          child.children.map((c) => (
+                            <ListItem key={c.path} inner>
+                              <Link
+                                to={c.path}
+                                className={classnames({
+                                  active: currentPath === c.path
+                                })}
+                              >
+                                {c.title}
+                              </Link>
+                            </ListItem>
+                          ))}
+                      </List>
+                  </span>
                 </ListItem>
               ))}
             </List>

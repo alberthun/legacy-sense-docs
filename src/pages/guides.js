@@ -1,6 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router';
+import Redirect from '../components/Redirect';
 
-const Docs = () => <Redirect to="/guides/getting-started" />;
-
-export default Docs;
+export default () => <Redirect to="/guides/getting-started" />;

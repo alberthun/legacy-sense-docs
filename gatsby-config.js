@@ -1,19 +1,3 @@
-const path = require('path');
-const fs = require('fs');
-
-const fromJson = (filePath) => {
-  return new Promise((resolve, reject) => {
-    fs.readFile(filePath, 'utf8', (err, data) => {
-      if (err) {
-        reject(err);
-        return;
-      }
-
-      resolve(data);
-    });
-  });
-};
-
 module.exports = {
   siteMetadata: {
     title: 'Docs Sixgill',
@@ -21,24 +5,6 @@ module.exports = {
     siteUrl: 'https://docs.sixgill.com/'
   },
   plugins: [
-    `gatsby-plugin-react-next`,
-    {
-      resolve: `gatsby-source-openapi-aggregate`,
-      options: {
-        specs: [
-          {
-            name: 'sense-api',
-            resolve: () =>
-              fromJson(path.resolve(__dirname, './openapi/sense-api.json'))
-          },
-          {
-            name: 'ingress',
-            resolve: () =>
-              fromJson(path.resolve(__dirname, './openapi/ingress.json'))
-          }
-        ]
-      }
-    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -58,12 +24,6 @@ module.exports = {
             }
           },
           {
-            resolve: 'live-example',
-            options: {
-              'curl request': 'request'
-            }
-          },
-          {
             resolve: 'gatsby-remark-images',
             options: {
               // It's important to specify the maxWidth (in pixels) of
@@ -77,6 +37,7 @@ module.exports = {
       }
     },
     'gatsby-plugin-styled-components',
+    /*
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
@@ -85,7 +46,7 @@ module.exports = {
         // trackingId: `ADD YOUR TRACKING ID HERE`,
       }
     },
-    'gatsby-plugin-offline',
+    */
     'gatsby-plugin-react-helmet'
   ]
 };
