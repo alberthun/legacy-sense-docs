@@ -169,6 +169,10 @@ export default ({ pageContext, location }) => {
             {page.frontmatter.title} &middot; Sixgill Sense IoT Developer
             Documentation
           </title>
+          <meta
+            name="description"
+            content="Sixgill Sense for Developers: Deploy, collaborate, and iterate quickly, easily and flexibly with one backbone system for your sensor data dependent IoT applications."
+          />
         </Helmet>
         <Header currentPath={location.pathname} fixed />
         <Nav nav={nav} currentPath={location.pathname} />
