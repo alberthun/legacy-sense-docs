@@ -105,6 +105,7 @@ const LinkButton = styled.a`
   align-self: center;
   width: 200px;
   flex-grow: 0;
+  margin-top: 10px;
 
   &:hover {
     transform: translateY(-2px);
@@ -242,7 +243,7 @@ class IndexPage extends Component {
               </div>
             </Philosophy>
             <Philosophy>
-              <div style={{ textAlign: 'center' }}>
+              <div style={{ textAlign: 'center', borderTop: '1px solid #ddd', padding: '20px 0' }}>
                 <h2>
                   Questions?
                   <br />
