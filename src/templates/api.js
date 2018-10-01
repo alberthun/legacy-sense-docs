@@ -26,15 +26,13 @@ class Api extends React.Component {
   }
   render() {
     const { location } = this.props;
+    const { name } = this.props.pageContext.page;
 
     return (
       <Theme>
         <div>
           <Helmet>
-            <title>
-              {this.props.pageContext.name} - Sixgill Sense IoT Developer
-              Documentation
-            </title>
+            <title>{name} - Sixgill Sense IoT Developer Documentation</title>
             <meta
               name="description"
               content="Sixgill Sense for Developers: Deploy, collaborate, and iterate quickly, easily and flexibly with one backbone system for your sensor data dependent IoT applications."
