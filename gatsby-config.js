@@ -1,5 +1,4 @@
 module.exports = {
-  pathPrefix: '/sense-docs',
   siteMetadata: {
     title: 'Docs Sixgill',
     description: 'Sixgill documentation.',
