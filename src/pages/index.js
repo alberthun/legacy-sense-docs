@@ -7,7 +7,14 @@ import Button from '../components/Button';
 import Link from 'gatsby-link';
 
 import Theme from '../components/Theme';
+
 import SenseLogo from '../../static/sixgill-sense-logo-inverted.svg';
+import IconAdminTools from '../../static/admin-tools.svg';
+import IconExtensiblePlatform from '../../static/extensible-platform.svg';
+import IconRealTime from '../../static/real-time.svg';
+import IconSaasApplications from '../../static/saas-applications.svg';
+import IconSecurity from '../../static/security.svg';
+import IconSensorIngestion from '../../static/sensor-ingestion.svg';
 
 const Hero = styled.div`
   z-index: 1;
@@ -199,6 +206,115 @@ class IndexPage extends Component {
             </Hero>
             <Philosophy>
               <div>
+                <h2 style={{ textAlign: 'center', marginBottom: '50px' }}>Sixgill Sense Platform Is Purpose-Built For Fast, Easy, and Flexible IoT Application Development</h2>
+                <br />
+              </div>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-around',
+                  textAlign: 'center'
+                }}
+              >
+                <div
+                  style={{
+                    width: '30%',
+                    display: 'flex',
+                    flexDirection: 'column'
+                  }}
+                >
+                  <img
+                    src={IconSaasApplications}
+                    alt="Icon SaaS Applications"
+                    style={{ width: '100px', height: '100px', margin: '0 auto' }}
+                  />
+                  <h5>RAPIDLY DEPLOY SENSOR-INFORMED APPLICATIONS</h5>
+                </div>
+                <div
+                  style={{
+                    width: '30%',
+                    display: 'flex',
+                    flexDirection: 'column'
+                  }}
+                >
+                  <img
+                    src={IconSensorIngestion}
+                    alt="Icon Sensor Ingestion"
+                    style={{ width: '100px', height: '100px', margin: '0 auto' }}
+                  />
+                  <h5>AGGREGATE DEVICE AND SENSOR DATA</h5>
+                </div>
+                <div
+                  style={{
+                    width: '30%',
+                    display: 'flex',
+                    flexDirection: 'column'
+                  }}
+                >
+                  <img
+                    src={IconRealTime}
+                    alt="Icon Real Time"
+                    style={{ width: '100px', height: '100px', margin: '0 auto' }}
+                  />
+                  <h5>REAL-TIME ACTION BASED ON CUSTOMIZABLE RULES</h5>
+                </div>
+              </div>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-around',
+                  textAlign: 'center',
+                  marginTop: '40px'
+                }}
+              >
+                <div
+                  style={{
+                    width: '30%',
+                    display: 'flex',
+                    flexDirection: 'column'
+                  }}
+                >
+                  <img
+                    src={IconExtensiblePlatform}
+                    alt="Icon Extensible Platform"
+                    style={{ width: '100px', height: '100px', margin: '0 auto' }}
+                  />
+                  <h5>EXTENSIBLE PLATFORM THROUGH CUSTOM PLUGINS</h5>
+                </div>
+                <div
+                  style={{
+                    width: '30%',
+                    display: 'flex',
+                    flexDirection: 'column'
+                  }}
+                >
+                  <img
+                    src={IconAdminTools}
+                    alt="Icon Admin Tools"
+                    style={{ width: '100px', height: '100px', margin: '0 auto' }}
+                  />
+                  <h5>SYSTEM ADMINISTRATION AND MONITORING TOOLS</h5>
+                </div>
+                <div
+                  style={{
+                    width: '30%',
+                    display: 'flex',
+                    flexDirection: 'column'
+                  }}
+                >
+                  <img
+                    src={IconSecurity}
+                    alt="Icon Security"
+                    style={{ width: '100px', height: '100px', margin: '0 auto' }}
+                  />
+                  <h5>SECURITY</h5>
+                </div>
+              </div>
+            </Philosophy>
+            <Philosophy>
+              <div style={{ borderTop: '1px solid #ddd', paddingTop: '30px' }}>
                 <h2 style={{ textAlign: 'center' }}>Helpful Resources</h2>
                 <br />
               </div>

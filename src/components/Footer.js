@@ -92,7 +92,7 @@ export default () => (
               <a href="https://www.sixgill.com/company">Company</a>
             </li>
             <li>
-              <a href="https://www.sixgill.com/developers">Developer</a>
+              <a href="https://www.sixgill.com/developers">Developers</a>
             </li>
             <li>
               <a href="https://www.sixgill.com/resources">Resources</a>
