@@ -38,6 +38,36 @@ const Header = styled.header`
   z-index: 99;
   height: auto;
 
+  @media (max-width: 414px) {
+    flex-direction: column;
+    padding: 1em 2em;
+
+    h1 {
+      display: flex;
+      flex: 1;
+    }
+
+    img {
+      height: 50px !important;
+    }
+
+    h5 {
+      font-size: 0.875em !important;
+      margin: 2px 0 0 30px !important;
+    }
+
+    ul {
+      display: flex;
+      flex: 1;
+      margin-top: 8px !important;
+      align-self: start;
+    }
+
+    li:first-child {
+      margin-left: 0;
+    }
+  }
+
   ul {
     padding: 0;
     list-style: none;
