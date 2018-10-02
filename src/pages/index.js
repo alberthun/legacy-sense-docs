@@ -114,16 +114,16 @@ const LinkButton = styled.a`
 `;
 
 class IndexPage extends Component {
-  componentDidMount() {}
+  componentDidMount() {
+    console.log('hello');
+  }
 
   render() {
     return (
       <Theme>
         <div>
           <Helmet>
-            <title>
-              Sixgill Sense IoT Developer Documentation
-            </title>
+            <title>Sixgill Sense IoT Developer Documentation</title>
             <meta
               name="description"
               content="Sixgill Sense for Developers: Deploy, collaborate, and iterate quickly, easily and flexibly with one backbone system for your sensor data dependent IoT applications."
@@ -175,8 +175,8 @@ class IndexPage extends Component {
                   <ul>
                     <li>Fast, easy device setup and connection</li>
                     <li>
-                      Full-featured portal with anywhere, anytime debugging mobile
-                      application
+                      Full-featured portal with anywhere, anytime debugging
+                      mobile application
                     </li>
                     <li>
                       Highly visual dashboard for real-time analytics,
@@ -202,55 +202,96 @@ class IndexPage extends Component {
                 <h2 style={{ textAlign: 'center' }}>Helpful Resources</h2>
                 <br />
               </div>
-              <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
-                <div style={{ width: '30%', display: 'flex', flexDirection: 'column' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-around'
+                }}
+              >
+                <div
+                  style={{
+                    width: '30%',
+                    display: 'flex',
+                    flexDirection: 'column'
+                  }}
+                >
                   <h3>Sixgill Sense: How it Works</h3>
                   <p>
                     Sense features and benefits provide a unique combination of
-                    technology, services and capacity-maximizing capabilities. With
-                    continuous sensor data collection and real-time understanding,
-                    Sense helps enterprises know what assets are available, where
-                    they are and their operating state while keeping behaviors and
-                    actions on track.
+                    technology, services and capacity-maximizing capabilities.
+                    With continuous sensor data collection and real-time
+                    understanding, Sense helps enterprises know what assets are
+                    available, where they are and their operating state while
+                    keeping behaviors and actions on track.
                   </p>
-                  <LinkButton href="https://www.sixgill.com/platform">Learn More</LinkButton>
+                  <LinkButton href="https://www.sixgill.com/platform">
+                    Learn More
+                  </LinkButton>
                 </div>
-                <div style={{ width: '30%', display: 'flex', flexDirection: 'column' }}>
+                <div
+                  style={{
+                    width: '30%',
+                    display: 'flex',
+                    flexDirection: 'column'
+                  }}
+                >
                   <h3>Sense 2.0 Product Brief</h3>
                   <p>
                     Sixgill Sense 2.0 is a complete IoT sensor data platform
                     solution that enables enterprise-wide unified ingestion and
-                    sensor data processing for the rapid and uniform development of
-                    enterprise applications. With features including a massively
-                    scalable architecture, real-time rule triggers, and advanced
-                    data correlation features like proximity, the IoT sensor data
-                    platform produces actionable, context-enriched insights for
-                    sensor and location data.
+                    sensor data processing for the rapid and uniform development
+                    of enterprise applications. With features including a
+                    massively scalable architecture, real-time rule triggers,
+                    and advanced data correlation features like proximity, the
+                    IoT sensor data platform produces actionable,
+                    context-enriched insights for sensor and location data.
                   </p>
-                  <LinkButton href="https://www.sixgill.com/sdm_downloads/sixgill-sense-2-0-product-brief">Learn More</LinkButton>
+                  <LinkButton href="https://www.sixgill.com/sdm_downloads/sixgill-sense-2-0-product-brief">
+                    Learn More
+                  </LinkButton>
                 </div>
-                <div style={{ width: '30%', display: 'flex', flexDirection: 'column' }}>
+                <div
+                  style={{
+                    width: '30%',
+                    display: 'flex',
+                    flexDirection: 'column'
+                  }}
+                >
                   <h3>Sense 2.0 Architecture White Paper</h3>
                   <p>
                     Sense solves fragmentation and integration problems with a
-                    common, cross-enterprise architecture unbounded for scale and
-                    unrestricted for extensibility and deployment. Sense fits within
-                    the infrastructure of any enterprise for development of a wide
-                    range of task-specific applications for sensor-equipped assets.
+                    common, cross-enterprise architecture unbounded for scale
+                    and unrestricted for extensibility and deployment. Sense
+                    fits within the infrastructure of any enterprise for
+                    development of a wide range of task-specific applications
+                    for sensor-equipped assets.
                   </p>
-                  <LinkButton href="https://www.sixgill.com/sdm_downloads/sixgill-sense-2-0-architecture-white-paper">Learn More</LinkButton>
+                  <LinkButton href="https://www.sixgill.com/sdm_downloads/sixgill-sense-2-0-architecture-white-paper">
+                    Learn More
+                  </LinkButton>
                 </div>
               </div>
             </Philosophy>
             <Philosophy>
-              <div style={{ textAlign: 'center', borderTop: '1px solid #ddd', padding: '20px 0', display: 'flex', flexDirection: 'column' }}>
+              <div
+                style={{
+                  textAlign: 'center',
+                  borderTop: '1px solid #ddd',
+                  padding: '20px 0',
+                  display: 'flex',
+                  flexDirection: 'column'
+                }}
+              >
                 <h2>
                   Questions?
                   <br />
                   We're here to help.
                 </h2>
                 <br />
-                <LinkButton href="mailto:developers@sixgill.com">Contact us</LinkButton>
+                <LinkButton href="mailto:developers@sixgill.com">
+                  Contact us
+                </LinkButton>
                 <br />
               </div>
             </Philosophy>

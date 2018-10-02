@@ -160,7 +160,6 @@ export default ({ pageContext, location }) => {
   ) : (
     ''
   );
-  console.log(page);
   return (
     <Theme>
       <div>
