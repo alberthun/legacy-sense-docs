@@ -122,7 +122,7 @@ See the IoT Events section of the [Ingress API](/apis/ingress#/Mobile/post_v1_io
   
 #### Schemas
 
-Device data needs to be mapped to fields so you can trigger rules and view analytics. This is done using [Schemas](/guides/channels/schemas). Mobile devices (iOS, Android) have predefined schemas that you can use with our SDK and you don’t need to configure them.  
+Device data needs to be mapped to fields so you can trigger rules and view analytics. This is done using [Schemas](/guides/channels/schemas). Mobile devices (iOS, Android) have predefined schemas that you can use with our SDK that don't require configuration.
 
 For IoT devices you need to first create a custom schema. You can send any kind of data with IoT devices. It is recommended that you generate IoT schema based on your event payload. Once your schema is defined you can use it in a Channel and see data being ingested. You can update a schema if necessary at a later time.
 

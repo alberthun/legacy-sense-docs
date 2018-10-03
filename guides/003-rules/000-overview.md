@@ -8,12 +8,17 @@ Rules are at the heart of device interactivity within the Sense platform. Rules
 ## Creating a Rule
 
 1. In the dashboard, go to Projects > Rules
-2. Click **Add New Rule**
-3. Enter the condition(s) for the rule. You can choose from a *Landmark Condition* or *Attribute Condition*
+2. Click **Add New Rule**. Select whether you are creating a **Managed** or **Advanced** rule. A Managed rule provides a simple UI for building your rule. Use **Advanced** if you know the exact expression you will need to evaluate for your rule. 
 
-### Adding a Landmark Condition  
+3. Enter the condition(s) for the rule. When adding conditions, be sure to select whether these are **AND or OR** conditions.  
+**AND** is selected by default, meaning the device will need to satisfy all conditions to trigger the rule. For example, a device needs to be inside a landmark AND also be an iOS device to trigger the rule.  
+**OR** can be used if the device only needs to satisfy one condition to trigger the rule. For example, a device needs to either be inside a landmark OR be an iOS device to trigger the rule.
 
-Landmark - A landmark is a geofence around a certain location. It can be a circle, polygon, or rectable.
+4. In the Add-Condition drop-down, select **Add Match Attribute Condition** or **Add Location Condition**
+
+### Adding a Location Condition
+
+Location conditions are based on the proximity of device's around a landmark.nA landmark is a geofence around a certain location. It can be a circle, polygon, or rectable.
 
 ![](images/rule_add_new_landmark.png)
 
@@ -40,11 +45,8 @@ For testing purposes, we recommend adding a landmark around your current geograp
 Landmarks for the project can also be created separately in the **Landmarks** section. You can then select these landmarks when creating a rule under **Select From Project Landmarks**.
 
 ### Adding an Attribute Condition
-Attribute - a custom condition or freeform condition which allows you to specify attributes/properties and the logical condition(s) to be evaluated. These conditions can be simple using pre-defined attributes (Manufacturer, Device Type) or written to be more complex using the Advanced editor. The attributes being compared in the conditions will need to exist in the data stream for the device.
 
-4. When adding conditions, be sure to select whether these are **AND or OR** conditions.  
-**AND** is selected by default, meaning the device will need to satisfy all conditions to trigger the rule. For example, a device needs to be inside a landmark AND also be an iOS device to trigger the rule.  
-**OR** can be used if the device only needs to satisfy one condition to trigger the rule. For example, a device needs to either be inside a landmark OR be an iOS device to trigger the rule.
+Attribute conditions evaluate a certain property within the sensor data stream. An attribute is a custom condition or freeform condition which allows you to specify attribute. These conditions can be simple using pre-defined options such as location.position.lat or location.accuracy. The attributes being compared in these conditions will need to exist in the data stream for the device.
  
 ### Adding an Action
 An action is the behavior that is executed when the conditions are met. An action can be in the form of sending an SMS, a Push message, an email, a webhook, or a combination of actions.  

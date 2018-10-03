@@ -19,9 +19,8 @@ Endpoint: https://sense-api.sixgill.com
 
 The Sense API authenticates requests with a user-specific JSON web token through Bearer authentication.
 
-To get this token, the user makes a POST [/v2/login](/apis/sense-api#/Authenticate/post_v2_login) request with their email and password combination. _These are the same credentials used to log into your account on the dashboard._
+To get this token, the user makes a POST [/v2/login](/apis/sense-api/#tag/authenticate/paths/~1v2~1login/post) request with their email and password combination. _These are the same credentials used to log into your account on the dashboard._
 
-Once a token has been generated, it can be used as the token for many requests. However, please note that certain calls, such as creating a rule, require a token that includes the organization ID. To get this new token, use GET [/v2/organizations](/apis/sense-api#/Organizations/get_v2_organizations) to get the organization ID, then POST [/v2/login](/apis/sense-api#/Authenticate/post_v2_login) by passing in the organizationId along with the email and password.
 
 ## Ingress API
 
@@ -36,4 +35,4 @@ Endpoint: http://sense-ingress-api.sixgill.com
 
 #### Authentication
 
-To register with the Ingress API, devices POST [/v1/registration](/apis/ingress#/Register/post_v1_registration) info and a valid API Key, which can be found in the dashboard under the [Channels](/guides/channels/overview) section for the appropriate channel. On successful authentication, a JSON web token is returned, along with the ID for the organization it's registered with.
+To register with the Ingress API, devices POST [/v1/registration](/apis/ingress#tag/Register/paths/~1v1~1registration/post) info and a valid API Key, which can be found in the dashboard under the [Channels](/guides/channels/overview) section for the appropriate channel. On successful authentication, a JSON web token is returned, along with the ID for the organization it's registered with.
