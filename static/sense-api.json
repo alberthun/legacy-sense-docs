@@ -9,7 +9,21 @@
     "": {
       "operationId": "get",
       "get": {
-        "responses": {},
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "version": "0.1.1"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         "summary": "api version"
       }
     },
@@ -94,7 +108,7 @@
                 "examples": {
                   "default": {
                     "value": {
-                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSUVpXN1JDTjdOUEcySFZCTVdEUTRFRCIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JRWlc3VFQzRlIzTTIzNlNISzQ1VE1NIiwia2lkIjoidXNlciIsImlhdCI6MTUzODQwMzQ3NSwiZXhwIjoxNTQwOTk1NDc1fQ.UXq6DwRLOw9A_SWeldXKn5JsuHA7knx6T7Gyqf6d3BY"
+                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSWlY2NUgxR1pNMjU2V0RFSllTRVhaSiIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JaVjY1TTFaMzNHUjRKNFlFQk5SRzFDIiwia2lkIjoidXNlciIsImlhdCI6MTUzODY2Njk5MywiZXhwIjoxNTQxMjU4OTkzfQ.FGCozwoyl00rmpi3am9zskLPeB8xFiF3bA_JZ5eU97E"
                     }
                   }
                 }
@@ -139,7 +153,7 @@
                 "examples": {
                   "default": {
                     "value": {
-                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSUVpXODFCOEQyQzVTVzJGMzg1Q0RCVyIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JRWlc4NDVITkU0TkI3NjFZUkgwWDQ2Iiwia2lkIjoidXNlciIsImlhdCI6MTUzODQwMzQ3NSwiZXhwIjoxNTQwOTk1NDc1fQ.lJXF8PnBxd5vMMosLhdG5Bmmg5Nw3Qh7DMCRdYu7GCo"
+                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSWlY2NVhRNzY0QTI4UVBLQlA4MEMzRyIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JaVjY2MENHQUhCTlFaMjdXQVRYUTJTIiwia2lkIjoidXNlciIsImlhdCI6MTUzODY2Njk5MywiZXhwIjoxNTQxMjU4OTkzfQ.s1eRTzgmI9WpRj4z-EJ2wd2_RsPDs75pDNBxknmlj8A"
                     }
                   }
                 }
@@ -218,7 +232,7 @@
                   "default": {
                     "value": {
                       "data": {
-                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSUVpXOEI4Q1E5N1A3WVlBVFlCU1M2TSIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JRWlc4RTE4VlI5WjJWRFdOVktGNjNCIiwia2lkIjoidXNlciIsImlhdCI6MTUzODQwMzQ3NiwiZXhwIjoxNTQwOTk1NDc2fQ.bo7YGjqX2wzsxQmGu9uRKsVuEcppddEPDTFcVAhgubU"
+                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSWlY2Njc5RlNYV0dXWDFLNVNSUlo5NiIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JaVjY2QUJFVkFIREVTWFAxQU5XV0dNIiwia2lkIjoidXNlciIsImlhdCI6MTUzODY2Njk5NCwiZXhwIjoxNTQxMjU4OTk0fQ.eOezbUx1bTKpc6AC92vWWc-UqK_1ftzLOcF-lDlyO7g"
                       }
                     }
                   }
@@ -261,7 +275,7 @@
                 "examples": {
                   "default": {
                     "value": {
-                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSUVpXOEhEV0NBSzVQNUZUNVNEWDJGWCIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JRWlc4TTFaRlJUN1lCNlRBQVMwQ1NaIiwia2lkIjoidXNlciIsImlhdCI6MTUzODQwMzQ3NiwiZXhwIjoxNTQwOTk1NDc2fQ.DbN7v31ib_Sj8Oex6njfa578_ZMFbXEdlV-KyFoNCT0"
+                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSWlY2NkU3MjA1Rk5RUkNONU1EWUo1WSIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JaVjY2SEJLR04wRlFYTTNKSlRBVlBQIiwia2lkIjoidXNlciIsImlhdCI6MTUzODY2Njk5NCwiZXhwIjoxNTQxMjU4OTk0fQ.Of5-alZvmnlE4X6x0UJHq_U0ZHhLIwpJXAn5Wc6wnbY"
                     }
                   }
                 }
@@ -319,7 +333,7 @@
                 "examples": {
                   "default": {
                     "value": {
-                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSUVpXN1k4RDlaSEhNSlNIQ1pZWVo1NSIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JRWlc3WTJQOTlKUTM4QTE3TUNNOTlLIiwia2lkIjoidXNlciIsImlhdCI6MTUzODQwMzQ3NSwiZXhwIjoxNTQwOTk1NDc1fQ.stELbiZusV7qARu2O6J2PvTW9Y6LhaLNOGYrp2d6f-g"
+                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSWlY2NVNCRjIxM1ExRkJQWkdYS1dSOSIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JaVjY1UzFSVkhWSzg5UlMyQlRLWTJKIiwia2lkIjoidXNlciIsImlhdCI6MTUzODY2Njk5MywiZXhwIjoxNTQxMjU4OTkzfQ.OpAm2dqlmyKrSH-VPj6yv2xSl9vUwwiKhcdycLHn9eg"
                     }
                   }
                 }
@@ -349,13 +363,13 @@
                     "value": {
                       "data": [
                         {
-                          "id": "01CRQZWGQFFT30CPC7YP7C58K3",
+                          "id": "01CRZV6E6KTP99B71WP4RTY0PH",
                           "name": "monsterbob",
-                          "email": "email-0.19786380989951313@bob.com",
+                          "email": "email-0.2326632509699671@bob.com",
                           "verifiedEmail": false,
                           "locale": {},
-                          "createdAt": "2018-10-01T12:18:04.000Z",
-                          "updatedAt": "2018-10-01T12:18:04.000Z",
+                          "createdAt": "2018-10-04T13:30:02.000Z",
+                          "updatedAt": "2018-10-04T13:30:02.000Z",
                           "permissions": {
                             "admin": true
                           },
@@ -384,13 +398,13 @@
                   "default": {
                     "value": {
                       "data": {
-                        "id": "01CRQZWGW890801DSG6QJ2NDEM",
+                        "id": "01CRZV6EBXJHZJEZ7JKT8ZVGT5",
                         "name": "monsterbob",
-                        "email": "email-0.7088081702728637@bob.com",
+                        "email": "email-0.8561172843733889@bob.com",
                         "verifiedEmail": false,
                         "locale": {},
-                        "createdAt": "2018-10-01T12:18:04.000Z",
-                        "updatedAt": "2018-10-01T12:18:04.000Z"
+                        "createdAt": "2018-10-04T13:30:02.000Z",
+                        "updatedAt": "2018-10-04T13:30:02.000Z"
                       }
                     }
                   }
@@ -436,15 +450,15 @@
                   "default": {
                     "value": {
                       "data": {
-                        "id": "01CRQZWGZQNMBQV625658KGE3R",
+                        "id": "01CRZV6EFVBPJGP505P1FNP4XD",
                         "name": "monsterbob",
-                        "email": "email-0.515096486078674@bob.com",
+                        "email": "email-0.5794396370922767@bob.com",
                         "verifiedEmail": false,
                         "locale": {
                           "timezone": "Europa/Amsterdam"
                         },
-                        "createdAt": "2018-10-01T12:18:04.000Z",
-                        "updatedAt": "2018-10-01T14:18:04.761Z"
+                        "createdAt": "2018-10-04T13:30:02.000Z",
+                        "updatedAt": "2018-10-04T15:30:02.463Z"
                       }
                     }
                   }
@@ -508,10 +522,10 @@
                     "value": {
                       "data": [
                         {
-                          "id": "01CRQZWHNXKZYPT5KEW98YE8B1",
+                          "id": "01CRZV6HTY2SJWX15XYTNTHS04",
                           "name": "my organization",
-                          "createdAt": "2018-10-01T12:18:05.000Z",
-                          "updatedAt": "2018-10-01T12:18:05.000Z",
+                          "createdAt": "2018-10-04T13:30:05.000Z",
+                          "updatedAt": "2018-10-04T13:30:05.000Z",
                           "permissions": {
                             "admin": true
                           }
@@ -552,10 +566,10 @@
                   "default": {
                     "value": {
                       "data": {
-                        "id": "01CRQZWHT1BTJTQ0S2XQK011GK",
-                        "name": "new organization 1538403485494",
-                        "updatedAt": "2018-10-01T14:18:05.505Z",
-                        "createdAt": "2018-10-01T14:18:05.505Z",
+                        "id": "01CRZV6J2N0VZX26QQZY8Y2F8B",
+                        "name": "new organization 1538667006019",
+                        "updatedAt": "2018-10-04T15:30:06.037Z",
+                        "createdAt": "2018-10-04T15:30:06.037Z",
                         "permissions": {
                           "admin": true
                         }
@@ -584,12 +598,38 @@
       ],
       "operationId": "delete-v2-organizations-:organization",
       "patch": {
-        "responses": {},
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": {
+                        "id": "01CRZV6J5XWNNZK2K5BVVQJQQB",
+                        "name": "new name",
+                        "createdAt": "2018-10-04T13:30:06.000Z",
+                        "updatedAt": "2018-10-04T15:30:06.163Z",
+                        "permissions": {
+                          "admin": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         "summary": "update organization by id",
         "tags": ["organizations"]
       },
       "delete": {
-        "responses": {},
+        "responses": {
+          "204": {
+            "description": "success"
+          }
+        },
         "summary": "delete organization by id",
         "tags": ["organizations"]
       }
@@ -606,15 +646,15 @@
                     "value": {
                       "data": [
                         {
-                          "id": "01CRQZWF4KVHRJNV6SKE680T3D",
-                          "organizationId": "01CRQZWF428EYCFSSVNWQBYHJ4",
-                          "schemaId": "01CRQZWF4KE8Z0X48VYHFYS6RK",
+                          "id": "01CRZV6F9ZEWJFP2M4QMM9DK89",
+                          "organizationId": "01CRZV6F9KN9FNX80HJT1XCKCK",
+                          "schemaId": "01CRZV6F9ZBR6YCV8M6EMTEPA7",
                           "name": "my project",
                           "type": "android",
                           "method": "",
                           "credentials": null,
-                          "createdAt": "2018-10-01T12:18:02.000Z",
-                          "updatedAt": "2018-10-01T12:18:02.000Z",
+                          "createdAt": "2018-10-04T13:30:03.000Z",
+                          "updatedAt": "2018-10-04T13:30:03.000Z",
                           "projectIds": []
                         }
                       ]
@@ -675,13 +715,13 @@
                   "default": {
                     "value": {
                       "data": {
-                        "id": "01CRQZWF9NVD66QXET37KH1SE6",
+                        "id": "01CRZV6FGZ5RDRBZTKWVHXEEYW",
                         "name": "new name",
                         "type": "gateway",
-                        "schemaId": "01CRQZWF8VGVFEFVNCY2BJS0X9",
-                        "organizationId": "01CRQZWF8CBKE403FDS643ADWZ",
-                        "updatedAt": "2018-10-01T14:18:02.933Z",
-                        "createdAt": "2018-10-01T14:18:02.933Z",
+                        "schemaId": "01CRZV6FEX6GMJ1ZSHZJANXFAV",
+                        "organizationId": "01CRZV6FE4B3SMZ95KAV0DWTWX",
+                        "updatedAt": "2018-10-04T15:30:03.423Z",
+                        "createdAt": "2018-10-04T15:30:03.423Z",
                         "projectIds": []
                       }
                     }
@@ -762,7 +802,32 @@
             }
           }
         },
-        "responses": {},
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": {
+                        "id": "01CRZV6FTK37VAXVS9APF18QFH",
+                        "organizationId": "01CRZV6FSZDVQ8E7QZHE9VFMBR",
+                        "schemaId": "01CRZV6FTKXRE9723YP8XVP4WJ",
+                        "name": "new name",
+                        "type": "android",
+                        "method": "",
+                        "credentials": null,
+                        "createdAt": "2018-10-04T13:30:03.000Z",
+                        "updatedAt": "2018-10-04T15:30:03.778Z",
+                        "projectIds": ["01CRZV6FTDFGS52MKWS934H5M2"]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         "summary": "update channel by id",
         "tags": ["channels"]
       },
@@ -770,6 +835,44 @@
         "responses": {},
         "summary": "delete channel by id",
         "tags": ["channels"]
+      }
+    },
+    "/v2/channels/:channel/config": {
+      "parameters": [
+        {
+          "name": "channel",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "operationId": "post-v2-channels-:channel-config",
+      "get": {
+        "responses": {}
+      },
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "config": {
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false,
+                "required": ["config"]
+              }
+            }
+          }
+        },
+        "responses": {}
       }
     },
     "/v2/channels/:channel/api-keys": {
@@ -885,8 +988,8 @@
                     "value": {
                       "data": [
                         {
-                          "id": "01CRQZW99NXCNPNCWQ32E2WR7F",
-                          "organizationId": "01CRQZW998HSPEZ7BQX3PM48DH",
+                          "id": "01CRZV6BS3C4EKFK3YV5WQXERW",
+                          "organizationId": "01CRZV6BRPWHCMAQGQAM8RC1K4",
                           "name": "some name",
                           "format": "json",
                           "type": "default",
@@ -897,8 +1000,8 @@
                               "isArray": true
                             }
                           ],
-                          "createdAt": "2018-10-01T12:17:56.000Z",
-                          "updatedAt": "2018-10-01T12:17:56.000Z"
+                          "createdAt": "2018-10-04T13:29:59.000Z",
+                          "updatedAt": "2018-10-04T13:29:59.000Z"
                         }
                       ]
                     }
@@ -920,10 +1023,10 @@
                   "default": {
                     "value": {
                       "data": {
-                        "id": "01CRQZW95PMSBBXTQSY59NW3VY",
+                        "id": "01CRZV6BN8ENE69J1410ZD0JYX",
                         "type": "default",
-                        "organizationId": "01CRQZW94HSGTSM0WREYXYTJS5",
-                        "name": "name 1538403476637",
+                        "organizationId": "01CRZV6BM545070B4A5ENT0386",
+                        "name": "name 1538666999441",
                         "format": "json",
                         "fields": [
                           {
@@ -931,8 +1034,8 @@
                             "type": "string"
                           }
                         ],
-                        "updatedAt": "2018-10-01T14:17:56.662Z",
-                        "createdAt": "2018-10-01T14:17:56.662Z"
+                        "updatedAt": "2018-10-04T15:29:59.464Z",
+                        "createdAt": "2018-10-04T15:29:59.464Z"
                       }
                     }
                   }
@@ -958,17 +1061,83 @@
       ],
       "operationId": "delete-v2-schemas-:schema",
       "patch": {
-        "responses": {},
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": {
+                        "id": "01CRZV6C45ZN2DNQPSHSYD2K3C",
+                        "organizationId": "01CRZV6C3VJ1R7AFBKWTG0B50Y",
+                        "name": "schema-name",
+                        "format": "json",
+                        "type": "default",
+                        "fields": [
+                          {
+                            "id": "path",
+                            "type": "string",
+                            "isArray": true
+                          },
+                          {
+                            "id": "other",
+                            "type": "string"
+                          }
+                        ],
+                        "createdAt": "2018-10-04T13:29:59.000Z",
+                        "updatedAt": "2018-10-04T15:30:00.062Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         "summary": "update schema by id",
         "tags": ["schemas"]
       },
       "get": {
-        "responses": {},
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": {
+                        "id": "01CRZV6BWHF5VPBQ6BKFT3G5WJ",
+                        "organizationId": "01CRZV6BW9DFVFCA7WDGHYTEVM",
+                        "name": "some name",
+                        "format": "json",
+                        "type": "default",
+                        "fields": [
+                          {
+                            "id": "path",
+                            "type": "string",
+                            "isArray": true
+                          }
+                        ],
+                        "createdAt": "2018-10-04T13:29:59.000Z",
+                        "updatedAt": "2018-10-04T13:29:59.000Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         "summary": "get schema by id",
         "tags": ["schemas"]
       },
       "delete": {
-        "responses": {},
+        "responses": {
+          "204": {
+            "description": "success"
+          }
+        },
         "summary": "delete schema by id",
         "tags": ["schemas"]
       }
@@ -985,12 +1154,12 @@
                     "value": {
                       "data": [
                         {
-                          "id": "01CRQZWG0HB94SJ9DVCKDZKA6F",
-                          "organizationId": "01CRQZWG00NPGRWNW0F5C7EP5V",
+                          "id": "01CRZV6GA3CQEYWM6CRBREHB51",
+                          "organizationId": "01CRZV6G9SMGPP3WZT3KGJ8VSD",
                           "name": "my project",
-                          "createdAt": "2018-10-01T12:18:03.000Z",
-                          "updatedAt": "2018-10-01T12:18:03.000Z",
-                          "channelIds": ["01CRQZWG0PSYXFJQ5PWNAP5VVF"]
+                          "createdAt": "2018-10-04T13:30:04.000Z",
+                          "updatedAt": "2018-10-04T13:30:04.000Z",
+                          "channelIds": ["01CRZV6GA7HWRFFR8RZYS77WJN"]
                         }
                       ]
                     }
@@ -1035,12 +1204,12 @@
                   "default": {
                     "value": {
                       "data": {
-                        "id": "01CRQZWG6231ZMFN8S9245E966",
+                        "id": "01CRZV6GFVS3ZRGWT6YCXTKNTG",
                         "name": "new project",
-                        "organizationId": "01CRQZWG51Z1WZBKK32BG1KZ82",
-                        "updatedAt": "2018-10-01T14:18:03.842Z",
-                        "createdAt": "2018-10-01T14:18:03.842Z",
-                        "channelIds": ["01CRQZWG5C4ZSB7SEKYQS9DC2M"]
+                        "organizationId": "01CRZV6GEJ9039MD0E5G4B71Q4",
+                        "updatedAt": "2018-10-04T15:30:04.411Z",
+                        "createdAt": "2018-10-04T15:30:04.411Z",
+                        "channelIds": ["01CRZV6GET0PNEME9FMDG6CDPS"]
                       }
                     }
                   }
@@ -1102,12 +1271,37 @@
             }
           }
         },
-        "responses": {},
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": {
+                        "id": "01CRZV6GJZSHH0B71Q0J04B954",
+                        "organizationId": "01CRZV6GJRM49Y1YB0620S687W",
+                        "name": "new project",
+                        "createdAt": "2018-10-04T13:30:04.000Z",
+                        "updatedAt": "2018-10-04T15:30:04.529Z",
+                        "channelIds": []
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         "summary": "update project by id",
         "tags": ["projects"]
       },
       "delete": {
-        "responses": {},
+        "responses": {
+          "204": {
+            "description": "success"
+          }
+        },
         "summary": "delete project by id",
         "tags": ["projects"]
       }
@@ -1124,8 +1318,8 @@
                     "value": {
                       "data": [
                         {
-                          "id": "01CRQZWCEQ59W29VYSE165E9KM",
-                          "projectId": "01CRQZWCEJ31SM9RCHWA3NQ3TH",
+                          "id": "01CRZV6D3CF3DDDC2YWQTVP2NX",
+                          "projectId": "01CRZV6D39EMX1F53J60VSGKHJ",
                           "name": "rule",
                           "type": "cloud",
                           "description": "",
@@ -1134,8 +1328,8 @@
                           "conditions": "event.path == 1",
                           "gatewayIds": [],
                           "channelIds": [],
-                          "createdAt": "2018-10-01T12:18:00.000Z",
-                          "updatedAt": "2018-10-01T12:18:00.000Z",
+                          "createdAt": "2018-10-04T13:30:00.000Z",
+                          "updatedAt": "2018-10-04T13:30:00.000Z",
                           "generator": "custom",
                           "enabled": true
                         }
@@ -1162,14 +1356,14 @@
                   "default": {
                     "value": {
                       "data": {
-                        "id": "01CRQZWD0TQQ4SYEG866QB74GY",
+                        "id": "01CRZV6DKX2SN736S998DNCE1M",
                         "conditionsAndActions": [],
                         "gatewayIds": [],
                         "channelIds": [],
                         "generator": "custom",
                         "name": "somename",
                         "type": "cloud",
-                        "projectId": "01CRQZWD01K2WAEXK3ATDXYRC9",
+                        "projectId": "01CRZV6DKD98BCKM8C9WCSG2CV",
                         "conditionsObject": [
                           {
                             "type": "and",
@@ -1213,8 +1407,8 @@
                         "enabled": true,
                         "properties": {},
                         "conditions": "(timeOfDay('<', 1) && timeOfDay('>', 100) && date('<', '2018-09-05T06:11:24.000Z') && event.channelId == 'someid' && event.name == 'monster')",
-                        "updatedAt": "2018-10-01T14:18:00.603Z",
-                        "createdAt": "2018-10-01T14:18:00.603Z"
+                        "updatedAt": "2018-10-04T15:30:01.469Z",
+                        "createdAt": "2018-10-04T15:30:01.469Z"
                       }
                     }
                   }
@@ -1249,6 +1443,58 @@
       },
       "patch": {
         "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": {
+                        "id": "01CRZV6DQ03R6Z0BSXKN9X03YP",
+                        "projectId": "01CRZV6DPW82A3MNM3EBJ6GMR0",
+                        "name": "new name",
+                        "type": "cloud",
+                        "description": "",
+                        "actions": [
+                          {
+                            "type": "sms",
+                            "message": "hello world",
+                            "recipients": {
+                              "reflect": true,
+                              "telephoneNumbers": ["12342323"]
+                            }
+                          }
+                        ],
+                        "conditionsAndActions": [],
+                        "conditions": "event.channelId == 'someid' && event.name == 'tony\\'s'",
+                        "conditionsObject": [
+                          {
+                            "type": "and",
+                            "items": [
+                              {
+                                "type": "matchAttribute",
+                                "channelId": "someid",
+                                "attribute": "event.name",
+                                "operator": "==",
+                                "value": "tony's",
+                                "description": "When event (event.name) from \"unknown channel someid\" is equal to tony's"
+                              }
+                            ]
+                          }
+                        ],
+                        "gatewayIds": [],
+                        "channelIds": [],
+                        "createdAt": "2018-10-04T13:30:01.000Z",
+                        "updatedAt": "2018-10-04T15:30:01.593Z",
+                        "generator": "custom",
+                        "enabled": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
           "500": {
             "description": "failed to convert to valid conditions"
           }
@@ -1257,7 +1503,11 @@
         "tags": ["rules"]
       },
       "delete": {
-        "responses": {},
+        "responses": {
+          "204": {
+            "description": "success"
+          }
+        },
         "summary": "delete rule by id",
         "tags": ["rules"]
       }
@@ -1389,13 +1639,14 @@
                     "value": {
                       "data": [
                         {
-                          "id": "01CRQZWE3V4DEJSXEBB78G6Y6H",
+                          "id": "01CRZV69450D6QXHFX02EJAZRD",
                           "sensors": "",
-                          "channelId": "01CRQZWE2VNTHSBSFRAPCR6G1W",
-                          "organizationId": "01CRQZWE2JJXPK7MAW8H91QGE0",
+                          "name": "device",
+                          "channelId": "01CRZV693CMZXTD4DV9XMC2705",
+                          "organizationId": "01CRZV69334Y4ZV7ABE7NYXERS",
                           "tags": ["working"],
-                          "updatedAt": "2018-10-01T14:18:01.723Z",
-                          "createdAt": "2018-10-01T14:18:01.723Z"
+                          "updatedAt": "2018-10-04T15:29:56.870Z",
+                          "createdAt": "2018-10-04T15:29:56.870Z"
                         }
                       ],
                       "meta": {
@@ -1456,12 +1707,13 @@
                   "default": {
                     "value": {
                       "data": {
-                        "id": "01CRQZWE9JA4R02JS6BWNJZACT",
+                        "id": "01CRZV6992FWCRYXEKX28SNTS6",
                         "sensors": "",
-                        "channelId": "01CRQZWE8Q3Q5KYAME2VCASHS1",
-                        "organizationId": "01CRQZWE8BSRM10QABGWZBDR3C",
-                        "updatedAt": "2018-10-01T14:18:01.907Z",
-                        "createdAt": "2018-10-01T14:18:01.907Z",
+                        "name": "device",
+                        "channelId": "01CRZV698FASNB62H94DB9MNGQ",
+                        "organizationId": "01CRZV6987TGC94CMTC43RHXY6",
+                        "updatedAt": "2018-10-04T15:29:57.026Z",
+                        "createdAt": "2018-10-04T15:29:57.026Z",
                         "tags": []
                       }
                     }
@@ -1516,13 +1768,145 @@
             }
           }
         },
-        "responses": {},
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": {
+                        "id": "01CRZV69G746SPHKYHW42BTWR5",
+                        "channelId": "01CRZV69G3ZEFP84BDAZ8JHQ41",
+                        "organizationId": "01CRZV69FVZS52MER2BE7197ZD",
+                        "manufacturer": "",
+                        "model": "",
+                        "name": "new name",
+                        "type": "",
+                        "sensors": "",
+                        "createdAt": "2018-10-04T13:29:57.000Z",
+                        "updatedAt": "2018-10-04T15:29:57.293Z",
+                        "tags": []
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         "summary": "update device by id",
         "tags": ["devices"]
       },
       "delete": {
-        "responses": {},
+        "responses": {
+          "204": {
+            "description": "success"
+          }
+        },
         "summary": "delete device by id",
+        "tags": ["devices"]
+      }
+    },
+    "/v2/devices/:device/config": {
+      "parameters": [
+        {
+          "name": "device",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "operationId": "post-v2-devices-:device-config",
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": {
+                        "cadence": 0
+                      },
+                      "includes": [
+                        {
+                          "type": "channel",
+                          "data": {
+                            "cadence": 10000
+                          }
+                        },
+                        {
+                          "type": "effective",
+                          "data": {
+                            "cadence": 0
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "set device config",
+        "tags": ["devices"]
+      },
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "config": {
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false,
+                "required": ["config"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": {
+                        "cadence": 0
+                      },
+                      "includes": [
+                        {
+                          "type": "channel",
+                          "data": {
+                            "cadence": 10000
+                          }
+                        },
+                        {
+                          "type": "effective",
+                          "data": {
+                            "cadence": 0
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "set device config",
         "tags": ["devices"]
       }
     },
@@ -1581,9 +1965,9 @@
                     "value": {
                       "data": [
                         {
-                          "id": "01CRQZW6GV06KJ45PZT3X6Z5DV",
+                          "id": "01CRZV67K15XYSC035Z8V16FQA",
                           "name": "landmarkA",
-                          "projectId": "01CRQZW6GRY4N0YRGZPTS6GKD0",
+                          "projectId": "01CRZV67JXN7H3GV0TS1XWHBHB",
                           "type": "geometry",
                           "model": {
                             "type": "circle",
@@ -1594,12 +1978,12 @@
                             }
                           },
                           "createdAt": 0,
-                          "organizationId": "01CRQZW6GFMX0XP5JE3VK13WM7"
+                          "organizationId": "01CRZV67JGR9XHBFJTH2NWCWA4"
                         },
                         {
-                          "id": "01CRQZW6H82CJ25XT30915BY1F",
+                          "id": "01CRZV67KJ8XYFAR12DTF8RNWG",
                           "name": "landmarkB",
-                          "projectId": "01CRQZW6GRY4N0YRGZPTS6GKD0",
+                          "projectId": "01CRZV67JXN7H3GV0TS1XWHBHB",
                           "type": "geometry",
                           "model": {
                             "type": "polygon",
@@ -1621,7 +2005,7 @@
                             }
                           },
                           "createdAt": 10,
-                          "organizationId": "01CRQZW6GFMX0XP5JE3VK13WM7"
+                          "organizationId": "01CRZV67JGR9XHBFJTH2NWCWA4"
                         }
                       ],
                       "meta": {
@@ -1800,9 +2184,9 @@
                   "default": {
                     "value": {
                       "data": {
-                        "id": "01CRQZW6XGQV569FKDSX9W7VCK",
+                        "id": "01CRZV680JRTVR77TWV1A5TP8R",
                         "name": "landmark",
-                        "projectId": "01CRQZW6WXHGX84XJE5PAK1HV1",
+                        "projectId": "01CRZV6802G2MFB8NE7EMRW660",
                         "type": "geometry",
                         "model": {
                           "type": "rectangle",
@@ -1817,8 +2201,8 @@
                             }
                           }
                         },
-                        "updatedAt": "2018-10-01T14:17:54.352Z",
-                        "createdAt": "2018-10-01T14:17:54.352Z"
+                        "updatedAt": "2018-10-04T15:29:55.731Z",
+                        "createdAt": "2018-10-04T15:29:55.731Z"
                       }
                     }
                   }
@@ -2009,12 +2393,52 @@
             }
           }
         },
-        "responses": {},
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": {
+                        "id": "01CRZV684BSHKRNQAYGCFBVGRK",
+                        "projectId": "01CRZV68479AP4MPKPDBMKQYZB",
+                        "name": "new name",
+                        "type": "geometry",
+                        "tags": null,
+                        "address": "",
+                        "model": {
+                          "type": "rectangle",
+                          "geometry": {
+                            "nw": {
+                              "lat": 45.6361321,
+                              "lon": 13.061487599999964
+                            },
+                            "se": {
+                              "lat": 45.6361321,
+                              "lon": 13.061487599999964
+                            }
+                          }
+                        },
+                        "createdAt": "2018-10-04T13:29:55.000Z",
+                        "updatedAt": "2018-10-04T15:29:55.873Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         "summary": "update landmark by id",
         "tags": ["landmark"]
       },
       "delete": {
-        "responses": {},
+        "responses": {
+          "204": {
+            "description": "success"
+          }
+        },
         "summary": "delete landmark by id",
         "tags": ["landmark"]
       }
@@ -2040,7 +2464,7 @@
                     "type": "string"
                   },
                   "to": {
-                    "default": 1538403490032,
+                    "default": 1538667010566,
                     "oneOf": [
                       {
                         "type": "string"
@@ -2106,11 +2530,11 @@
                     "value": {
                       "data": [
                         {
-                          "id": "01CRQZWB131JPG03SYMSR65X15",
-                          "organizationId": "01CRQZWB0QMW2QPKGVFX94GPZ7",
-                          "channelId": "01CRQZWB0ZH5RY9A5JXHJ5YW5Q",
-                          "deviceId": "01CRQZWB12KHWQ6F2PH7BJNDFY",
-                          "serverReceivedAt": "2018-09-30T11:12:20.172Z",
+                          "id": "01CRZV6AMW853X1MKBWKEHDYMZ",
+                          "organizationId": "01CRZV6AMH9079D6JEYBAF9EFY",
+                          "channelId": "01CRZV6AMRKC4P3NWHPAQRRYXR",
+                          "deviceId": "01CRZV6AMWJ2AAP8WA800SGYJC",
+                          "serverReceivedAt": "2018-10-03T08:57:08.906Z",
                           "payload": {
                             "tempC": 23
                           }
@@ -2216,22 +2640,22 @@
                         {
                           "value": 20,
                           "count": 3,
-                          "ts": "2018-09-26T22:00:00.000Z"
+                          "ts": "2018-09-29T22:00:00.000Z"
                         },
                         {
                           "value": null,
                           "count": 0,
-                          "ts": "2018-09-27T22:00:00.000Z"
+                          "ts": "2018-09-30T22:00:00.000Z"
                         },
                         {
                           "value": null,
                           "count": 0,
-                          "ts": "2018-09-28T22:00:00.000Z"
+                          "ts": "2018-10-01T22:00:00.000Z"
                         },
                         {
                           "value": 20,
                           "count": 3,
-                          "ts": "2018-09-29T22:00:00.000Z"
+                          "ts": "2018-10-02T22:00:00.000Z"
                         }
                       ],
                       "meta": {
@@ -2264,12 +2688,12 @@
                     "value": {
                       "data": [
                         {
-                          "id": "01CRQZWJHGMJK79BKJQRVX9KDC",
-                          "organizationId": "01CRQZWJH6MQFCSCHP6SAD7WMS",
+                          "id": "01CRZV6H3YPQB0D1H2V5E7QYXF",
+                          "organizationId": "01CRZV6H3JRR2SFMBV90ACE3Z3",
                           "name": "my gateway",
-                          "createdAt": "2018-10-01T12:18:06.000Z",
-                          "updatedAt": "2018-10-01T12:18:06.000Z",
-                          "syncedAt": "2018-10-01T12:18:06.000Z"
+                          "createdAt": "2018-10-04T13:30:05.000Z",
+                          "updatedAt": "2018-10-04T13:30:05.000Z",
+                          "syncedAt": "2018-10-04T13:30:05.000Z"
                         }
                       ]
                     }
@@ -2330,12 +2754,37 @@
             }
           }
         },
-        "responses": {},
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": {
+                        "id": "01CRZV6H7X80CHV81C7SP27J75",
+                        "organizationId": "01CRZV6H7N0B7ATJ4QRTVQT5Q1",
+                        "name": "my awesome gateway",
+                        "createdAt": "2018-10-04T13:30:05.000Z",
+                        "updatedAt": "2018-10-04T15:30:05.203Z",
+                        "syncedAt": "2018-10-04T13:30:05.000Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         "summary": "update gateway by id",
         "tags": ["gateways"]
       },
       "delete": {
-        "responses": {},
+        "responses": {
+          "204": {
+            "description": "success"
+          }
+        },
         "summary": "delete gateway by id",
         "tags": ["gateways"]
       }
