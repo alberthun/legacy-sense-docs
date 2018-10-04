@@ -75,6 +75,38 @@ const Hero = styled.div`
       margin: 0 0 2em 0;
     }
   }
+
+  section.left-section {
+    padding-right: 50px;
+    border-right: 1px solid #5cc468;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  section.right-section {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media (max-width: 414px) {
+    section.left-section {
+      margin-top: 0px;
+      padding-left: 10px;
+      padding-right: 10px;
+      border-right: 0;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #5cc468;
+    }
+
+    section.right-section {
+      margin-top: 0;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-bottom: 0;
+    }
+  }
 `;
 
 const Philosophy = styled.section`
@@ -98,6 +130,30 @@ const Philosophy = styled.section`
     div {
       width: 90%;
       margin: auto;
+    }
+  }
+
+  .row-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+  }
+
+  .one-third {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+  }
+
+  @media (max-width: 414px) {
+    .row-wrap {
+      flex-direction: column;
+    }
+
+    .one-third {
+      width: 90%;
+      margin-top: 20px;
     }
   }
 `;
@@ -139,14 +195,7 @@ class IndexPage extends Component {
           <div>
             <Header currentPath={this.props.location.pathname} fixed />
             <Hero>
-              <section
-                style={{
-                  paddingRight: '50px',
-                  borderRight: '1px solid #5cc468',
-                  marginTop: '40px',
-                  marginBottom: '40px'
-                }}
-              >
+              <section className="left-section">
                 <img
                   src={SenseLogo}
                   alt="Sixgill Sense Logo"
@@ -163,14 +212,7 @@ class IndexPage extends Component {
                 </p>
                 <p>It’s your sensor data destination.</p>
               </section>
-              <section
-                style={{
-                  marginTop: '40px',
-                  marginBottom: '40px',
-                  paddingLeft: '40px',
-                  paddingRight: '40px'
-                }}
-              >
+              <section className="right-section">
                 <h4>
                   <b>Sixgill Sense for Developers</b>
                 </h4>
@@ -209,21 +251,8 @@ class IndexPage extends Component {
                 <h2 style={{ textAlign: 'center', marginBottom: '50px' }}>Sixgill Sense Platform Is Purpose-Built For Fast, Easy, and Flexible IoT Application Development</h2>
                 <br />
               </div>
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'space-around',
-                  textAlign: 'center'
-                }}
-              >
-                <div
-                  style={{
-                    width: '30%',
-                    display: 'flex',
-                    flexDirection: 'column'
-                  }}
-                >
+              <div className="row-wrap">
+                <div className="one-third">
                   <img
                     src={IconSaasApplications}
                     alt="Icon SaaS Applications"
@@ -231,13 +260,7 @@ class IndexPage extends Component {
                   />
                   <h5>RAPIDLY DEPLOY SENSOR-INFORMED APPLICATIONS</h5>
                 </div>
-                <div
-                  style={{
-                    width: '30%',
-                    display: 'flex',
-                    flexDirection: 'column'
-                  }}
-                >
+                <div className="one-third">
                   <img
                     src={IconSensorIngestion}
                     alt="Icon Sensor Ingestion"
@@ -245,13 +268,7 @@ class IndexPage extends Component {
                   />
                   <h5>AGGREGATE DEVICE AND SENSOR DATA</h5>
                 </div>
-                <div
-                  style={{
-                    width: '30%',
-                    display: 'flex',
-                    flexDirection: 'column'
-                  }}
-                >
+                <div className="one-third">
                   <img
                     src={IconRealTime}
                     alt="Icon Real Time"
@@ -260,22 +277,8 @@ class IndexPage extends Component {
                   <h5>REAL-TIME ACTION BASED ON CUSTOMIZABLE RULES</h5>
                 </div>
               </div>
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'space-around',
-                  textAlign: 'center',
-                  marginTop: '40px'
-                }}
-              >
-                <div
-                  style={{
-                    width: '30%',
-                    display: 'flex',
-                    flexDirection: 'column'
-                  }}
-                >
+              <div className="row-wrap">
+                <div className="one-third">
                   <img
                     src={IconExtensiblePlatform}
                     alt="Icon Extensible Platform"
@@ -283,13 +286,7 @@ class IndexPage extends Component {
                   />
                   <h5>EXTENSIBLE PLATFORM THROUGH CUSTOM PLUGINS</h5>
                 </div>
-                <div
-                  style={{
-                    width: '30%',
-                    display: 'flex',
-                    flexDirection: 'column'
-                  }}
-                >
+                <div className="one-third">
                   <img
                     src={IconAdminTools}
                     alt="Icon Admin Tools"
@@ -297,13 +294,7 @@ class IndexPage extends Component {
                   />
                   <h5>SYSTEM ADMINISTRATION AND MONITORING TOOLS</h5>
                 </div>
-                <div
-                  style={{
-                    width: '30%',
-                    display: 'flex',
-                    flexDirection: 'column'
-                  }}
-                >
+                <div className="one-third">
                   <img
                     src={IconSecurity}
                     alt="Icon Security"
@@ -318,20 +309,8 @@ class IndexPage extends Component {
                 <h2 style={{ textAlign: 'center' }}>Helpful Resources</h2>
                 <br />
               </div>
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'space-around'
-                }}
-              >
-                <div
-                  style={{
-                    width: '30%',
-                    display: 'flex',
-                    flexDirection: 'column'
-                  }}
-                >
+              <div className="row-wrap">
+                <div className="one-third">
                   <h3>Sixgill Sense: How it Works</h3>
                   <p>
                     Sense features and benefits provide a unique combination of
@@ -345,13 +324,7 @@ class IndexPage extends Component {
                     Learn More
                   </LinkButton>
                 </div>
-                <div
-                  style={{
-                    width: '30%',
-                    display: 'flex',
-                    flexDirection: 'column'
-                  }}
-                >
+                <div className="one-third">
                   <h3>Sense 2.0 Product Brief</h3>
                   <p>
                     Sixgill Sense 2.0 is a complete IoT sensor data platform
@@ -367,13 +340,7 @@ class IndexPage extends Component {
                     Learn More
                   </LinkButton>
                 </div>
-                <div
-                  style={{
-                    width: '30%',
-                    display: 'flex',
-                    flexDirection: 'column'
-                  }}
-                >
+                <div className="one-third">
                   <h3>Sense 2.0 Architecture White Paper</h3>
                   <p>
                     Sense solves fragmentation and integration problems with a
