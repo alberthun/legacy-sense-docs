@@ -1852,7 +1852,7 @@
             }
           }
         },
-        "summary": "set device config",
+        "summary": "get device config",
         "tags": ["devices"]
       },
       "post": {
