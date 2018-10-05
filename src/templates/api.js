@@ -13,7 +13,7 @@ class Api extends React.Component {
         clearInterval(interval);
       }
       window.Redoc.init(
-        url,
+        `${url}?version=${Date.now()}`,
         {
           scrollYOffset: 114
         },
