@@ -15,6 +15,23 @@ const Footer = styled.footer`
 const Content = styled.div`
   display: flex;
   flex-direction: row;
+
+  > div {
+    display: flex;
+  }
+
+  @media (max-width: 414px) {
+    flex-direction: column;
+
+    .footer-logo {
+      align-self: center;
+      margin-bottom: 20px;
+    }
+  }
+
+  .links-copyright-wrap {
+    flex-direction: column;
+  }
 `;
 
 const FooterLinks = styled.ul`
@@ -42,6 +59,19 @@ const FooterLinks = styled.ul`
       text-decoration: underline;
     }
   }
+
+  @media (max-width: 414px) {
+    text-align: center;
+    margin-left: 0;
+    margin-bottom: 10px;
+
+    li {
+      border-right: 0;
+      margin-left: 20px;
+      margin-top: 10px;
+      padding: 0 !important;
+    }
+  }
 `;
 
 const CopyrightNotice = styled.div`
@@ -56,6 +86,13 @@ const CopyrightNotice = styled.div`
       text-decoration: underline;
     }
   }
+
+  @media (max-width: 414px) {
+    text-align: center;
+    margin-left: 0;
+    margin-bottom: 20px;
+    font-size: 0.875em;
+  }
 `;
 
 const SocialIcons = styled.div`
@@ -64,19 +101,22 @@ const SocialIcons = styled.div`
   align-self: flex-end;
   justify-self: flex-end;
   margin-bottom: 5px;
+
+  @media (max-width: 414px) {}
+    align-self: center;
 `;
 
 export default () => (
   <Footer>
     <Content>
-      <div style={{ display: 'flex' }}>
+      <div className="footer-logo">
         <img
           src={SixgillLogoInverted}
           alt="Sixgill Logo"
           style={{ height: '70px' }}
         />
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div className="links-copyright-wrap">
         <div>
           <FooterLinks>
             <li>

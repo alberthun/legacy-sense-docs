@@ -37,6 +37,20 @@ const Hero = styled.div`
     width: 45%;
   }
 
+  section.left-section {
+    padding-right: 50px;
+    border-right: 1px solid #5cc468;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  section.right-section {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
   h2 {
     margin-top: 1.5rem;
     font-size: 3.5em;
@@ -55,7 +69,7 @@ const Hero = styled.div`
   }
 
   @media ${(props) => props.theme.tablet} {
-    padding: 50px 15px;
+    padding: 30px 40px 30px 40px;
     flex-direction: column;
 
     h2 {
@@ -66,28 +80,23 @@ const Hero = styled.div`
       font-size: 1.25em;
     }
 
-    section:first-child,
-    section:last-child {
-      width: 100%;
+    section.left-section {
+      margin-top: 20px;
+      padding-left: 10px;
+      padding-right: 10px;
+      border-right: 0;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #5cc468;
+      width: 95%;
     }
 
-    section:first-child {
-      margin: 0 0 2em 0;
+    section.right-section {
+      margin-top: 0;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-bottom: 0;
+      width: 95%;
     }
-  }
-
-  section.left-section {
-    padding-right: 50px;
-    border-right: 1px solid #5cc468;
-    margin-top: 40px;
-    margin-bottom: 40px;
-  }
-
-  section.right-section {
-    margin-top: 40px;
-    margin-bottom: 40px;
-    padding-left: 40px;
-    padding-right: 40px;
   }
 
   @media (max-width: 414px) {
@@ -238,7 +247,7 @@ class IndexPage extends Component {
                   </ul>
                 </p>
                 <p style={{ textAlign: 'center', marginTop: '30px' }}>
-                  <Button to="/guides/getting-started">Get Started</Button>
+                  <Button style={{ marginBottom: '10px' }} to="/guides/getting-started">Get Started</Button>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <Button to="/apis" transparent>
                     API Docs
