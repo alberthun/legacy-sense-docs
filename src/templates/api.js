@@ -7,7 +7,10 @@ import Theme from '../components/Theme';
 class Api extends React.Component {
   componentDidMount() {
     const { id } = this.props.pageContext;
-    const url = id === 'ingress' ? '/ingress.json' : '/sense-api.json';
+    const url =
+      id === 'ingress'
+        ? '/ingress.json'
+        : 'https://sense-api-node.staging.sixgill.io/openapi.json';
     const interval = setInterval(() => {
       if (window.Redoc) {
         clearInterval(interval);
