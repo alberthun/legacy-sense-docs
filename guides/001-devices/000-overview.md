@@ -7,7 +7,9 @@ description: "Connecting devices to Sense"
 
 Developers can connect mobile devices to the Sense platform easily using the Reach SDK. Device sensor data is pulled into Sense through the Ingress API. For mobile devices, this can be done by integrating the Reach SDK into a mobile app. The SDK handles sensor gathering (GPS, WiFi, beacons, activity and motion, etc) at configurable intervals, and automatically sends the data to the Ingress API. The SDKs are authenticated using the API keys for their respective channels.
 
-The SDK is available for both [iOS](/guides/sdks/ios) and [Android](/guides/sdks/android).
+Read more about the [SDKs](/guides/devices/sdk-overview).
+
+The SDK is available for both [iOS](/guides/devices/ios-sdk) and [Android](/guides/devices/android-sdk).
 
 ## IoT
 
@@ -23,7 +25,6 @@ See the IoT Events section of the [Ingress API](/apis/ingress#/Mobile/post_v1_io
 ## Managing Devices
 
 The Sense platform offers a variety of options for managing devices through the dashboard or the APIs.
-
 
 ### Getting Devices by ID 
 
@@ -49,3 +50,4 @@ On the dashboard:
 2) Find the device on the list
 3) Click on the Actions icon at the end of the row
 4) Make desired changes to your config and click **Update**
+

@@ -158,7 +158,7 @@ Conditions for the rule are specified either using the advanced, free-form style
 #### "and"
 
 Description:
-	This is a boolean operator for the conditionsObject that allows you to combine other items with "AND" semantics. All items combined with "AND" must evaluate to true for the condition to be met.
+	This is a boolean operator for the conditionsObject that allows you to combine conditions with "AND" semantics. All items combined with "AND" must evaluate to true for the condition to be met.
 	
 > The following example checks if the device is inside a landmark AND traveling at a specific velocity
 
@@ -189,7 +189,7 @@ Example:
 #### "or"
 
 Description:
-	This is a boolean operator that allows you to combine items with "OR" semantics. Either predicate must evaluate to true for the condition to be met.
+	This is a boolean operator that allows you to combine conditions with "OR" semantics. Either predicate must evaluate to true for the condition to be met.
 
 > The following condition checks whether the device is inside one landmark or the other.
 
@@ -239,7 +239,7 @@ Example:
 
    
 ### Scheduling
-Schedules are defined in the **conditionsObject** as a separate item joined together with an "and" clause. The following conditionsObject describes an insideLandmark rule that only applies from September 26, 2018 to October, 6, 2018, from 9am to 5pm Monday to Fridays, in the New York timezone (specified under the rule's "properties" object). Schedules are optional. By default, the rule will be enabled within 5 mminutes of activation and will run indefinitely until it is disabled.
+Schedules are defined in the **conditionsObject** as a separate item joined to other conditions with an "and" clause. The following conditionsObject describes an insideLandmark rule that only applies from September 26, 2018 to October, 6, 2018, from 9am to 5pm Monday to Fridays, in the New York timezone (specified under the rule's "properties" object). Schedules are optional. By default, the rule will be enabled within 5 mminutes of activation and will run indefinitely until it is disabled.
 
 * date - to and from dates when the rule is valid, in milliseconds
 * weekdays - days when the rule is valid (0 = sunday, 1 = monday, etc)
