@@ -22,7 +22,7 @@ Rules are at the heart of device interactivity within the Sense platform. Rules
 
 Location conditions are based on the proximity of device's around a landmark.nA landmark is a geofence around a certain location. It can be a circle, polygon, or rectable.
 
-![](images/rule_add_new_landmark.png)
+![](/images/rule_add_new_landmark.png)
 
 **When will the event happen?**   
 First select WHEN the event will trigger in relation to the landmark.  
