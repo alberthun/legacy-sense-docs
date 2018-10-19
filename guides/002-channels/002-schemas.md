@@ -13,7 +13,7 @@ To create a schema through the dashboard
 1. Go to **Channels**
 2. In the left sidebar under Schemas, click **+ Add Schema**
 
-![](./images/schema_add_schema.png)
+![](images/schema_add_schema.png)
 
 3. **Name & Details** - Enter a name for the schema in "Name" field
 4. **Define Fields** - Use this section to specify the format of your schema

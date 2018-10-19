@@ -3,14 +3,14 @@ title: Gateway Deployment
 description: "Deploying the Gateway for Edge Rule Processing"
 ---
 
-Pre-requisites:
-A Sense account
-Sixgill Gateway binary
-Sixgill Agent
+## Pre-requisites:
+- A Sense account
+- Sixgill Gateway binary
+- Sixgill Agent
 
 _Please contact [Sixgill Support](support@sixgill.com) and request the appropriate gateway and agent for your architecture/platform_
 
-## Deploying the Sixgill Gateway
+## Deploying Sixgill Gateway
 
 The Sixgill Gateway is a small lightweight executable that ingests data from connected devices running the Sixgill Agent.  It determines how to route inbound data via a local rules module, and take action when appropriate
 
@@ -44,5 +44,5 @@ Once the prerequisites have been completed, you can run the gateway. Either sche
 Now that the gateway is up and running, you’ll want to connect a device.  To do this, you’ll first want to make sure that the device has a Sixgill Agent installed.  If this is complete, then you’ll need to configure the Agent to talk to the gateway.  Depending on your local network setup, this will be the local intranet address and port running the Sixgill Gateway.
 
 
-### Putting it all Together
+## Putting it all Together
 Now that you have your device connected to your gateway, you may want certain rules to run on your new gateway. Log in to the Sixgill Dashboard and make a new Edge Rule. Specify the Gateway ID, and within minutes you’ll have your new rule running on the edge.

@@ -15,7 +15,7 @@ to the platform or can be configured to be completely network gapped. All compon
 designed to utilize multiple CPU cores so a single process binary can fully utilize a target device’s
 hardware if desired.
 
-![](./images/sense_edge_ai_diagram.png)
+![](/images/sense_edge_ai_diagram.png)
 
 Sense Edge AI extends the power of the Sense platform for end-to-end, edge-to-cloud sensor data services.
 
