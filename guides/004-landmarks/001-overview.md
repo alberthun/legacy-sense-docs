@@ -10,13 +10,13 @@ There are 3 ways to add a landmark on Sense:
 1. In the dashboard, go to Projects > Landmarks
 2. Click **Add New Landmark**
 
-![](images/landmark_create_landmark.png)
+![](./images/landmark_create_landmark.png)
 
 3. Move the map or use Google Addresses to center the map as needed, or select from Existing Landmarks  
 4. Use the Drawing Tools to create a geofence around your desired area  
 5. Click **Use Geofence**  
 
-![](images/landmark_use_geofence.png)
+![](./images/landmark_use_geofence.png)
 
 6. Enter a name for the landmark  
 7. Click **Create Landmark** to save

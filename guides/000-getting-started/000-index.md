@@ -34,7 +34,7 @@ Once you have been invited to join an existing organization, you will receive an
 2. Enter your full name and desired password. Read and accept the terms of service.
 3. Click "Accept Inviation" to sign in to the organization's dashboard.
 
-![](images/dash_accept_invite.png)
+![](./images/dash_accept_invite.png)
 
 ## Channels
 A data Channel is a source of data that flows into the Sense platform. For example, a Channel could include all iOS devices with an app that uses the Sense Reach iOS SDK. Channels are collections of mobile apps that use the Sense SDKs, or of any other devices that write to the Sense Ingress API. See [Channels Overview](/guides/channels/overview) for more information on creating and using channels.
