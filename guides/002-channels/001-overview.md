@@ -13,7 +13,7 @@ Channels are created based on the type of device that will connect to it. A chan
 1.  In the dashboard, go to Channels. If this is your organization's first channel, you will be presented with an Intro screen. Click **Add New Channel**
 
 
-![](images/add_new_channel.png)
+![](./images/add_new_channel.png)
 
 2.  Click on the type of channel you would like to create
     -  Select **iOS Mobile Devices** to create a channel for iOS data for apps using the Sense Reach iOS SDK
