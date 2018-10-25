@@ -33,7 +33,7 @@ On the dashboard:
 2) Find the device on the list
 3) Click on the row to expand and display device details. 
 
-To get device details through the API, see [get device ID](https://docs.sixgill.com/apis/sense-api#tag/devices/paths/~1v2~1devices~1:id/get)
+To get device details through the API, see [get device ID](/apis/sense-api#tag/devices/paths/~1v2~1devices~1:id/get)
 
 ### Look Up Device By Alias
 
@@ -43,11 +43,21 @@ See [look up device by alias](https://docs.sixgill.com/apis/sense-api#tag/device
 
 ### Managing Mobile Configuration
 
-Mobile devices have a configuration that controls cadence, sensors, event time-to-live, and maximum event cache storage. This configuratio can be set through the dashboard
+Mobile devices have a configuration that controls cadence, sensors, event time-to-live, and maximum event cache storage. This configuration can be set through the dashboard, or through the API. 
 
 On the dashboard:
 1) Go to the Devices tab
 2) Find the device on the list
-3) Click on the Actions icon at the end of the row
-4) Make desired changes to your config and click **Update**
+3) Click on the gear icon at the end of the row under **Actions**
+4) Make desired changes to your config
+
+- To change the tracking cadence, set **Cadence** to a different value (in seconds). The minimum is 30 seconds.
+- To stop a device from tracking altogether, uncheck the **Enabled** option
+
+_Note: These configurations can only be applied to Reach SDK-enabled mobile devices_
+
+5) Click **Update** to save the changes. As long as the device is running the Reach SDK, it will sync the config on the next cadence update. For example, if the previous cadence was 300 seconds (5 minutes) and you update the config to a 30 second cadence, you may have to wait up to 5 minutes for the device to sync its config and apply the changes.
+
+
+To get and set the device configuration through the API, see [get config](/apis/sense-api#tag/devices/paths/~1v2~1devices~1:device~1config/get) and [set config](/apis/sense-api#tag/devices/paths/~1v2~1devices~1:device~1config/post)
 

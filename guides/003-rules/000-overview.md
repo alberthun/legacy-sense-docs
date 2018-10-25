@@ -5,22 +5,31 @@ description: "Building Rules with Sense"
 
 Rules are at the heart of device interactivity within the Sense platform. Rules define conditions around devices and sensor data and specify the actions to trigger when the conditions are met. For example, devices entering a geofence or coming within range of a beacon could trigger a notification to another device, send an email to a recipient, or post data to another web service. Rules can be complex and perform multiple actions or include data from multiple channels.
 
-## Creating a Managed Rule
+## Creating a Rule
 
 1. In the dashboard, go to Projects > Rules
-2. Click **Add New Rule**. First, select whether you are creating **Cloud Rules** or **Edge Rules**. Cloud Rules process sensor data ingested on the cloud-level. Edge Rules are downloaded to the device and can process incoming sensor data and trigger actions without having to send the data to an external system.
+2. Click **Add New Rule**. First, select whether you are creating **Cloud Rules** or **Edge Rules**. 
+- Cloud Rules process sensor data ingested on the cloud-level. 
+- Edge Rules are downloaded to the device and can process incoming sensor data and trigger actions without having to send the data to an external system.
 
-3. Select whether you are creating a **Managed** or **Advanced** rule. A Managed rule provides a simple UI for building your rule. Use **Advanced** if you know the exact expression you will need to evaluate for your rule. 
+3. Select whether you want to create a **Managed** or **Advanced** rule. The **Managed Rule** interface provides a UI to walk you through building and configuring your rule. Use **Advanced** to compose the exact, free-form expression you will need to evaluate for your rule. See [Advanded Rule Creation](#advanced-rule-creation) for details.
 
-3. Enter the condition(s) for the rule. When adding conditions, be sure to select whether these are **AND or OR** conditions.  
-**AND** is selected by default, meaning the device will need to satisfy all conditions to trigger the rule. For example, a device needs to be inside a landmark AND also be an iOS device to trigger the rule.  
-**OR** can be used if the device only needs to satisfy one condition to trigger the rule. For example, a device needs to either be inside a landmark OR be an iOS device to trigger the rule.
+### Managed Rule Creation
 
-4. In the Add-Condition drop-down, select **Add Match Attribute Condition** or **Add Location Condition**
+1. Select **Managed** and click "Continue"
 
-### Adding a Location Condition
+![](./images/managed_rule_create.png)
 
-Location conditions are based on the proximity of device's around a landmark.nA landmark is a geofence around a certain location. It can be a circle, polygon, or rectable.
+2. Enter the condition(s) for the rule. When adding conditions, be sure to select whether these are **AND or OR** conditions. 
+
+- **AND** is selected by default, meaning the device will need to satisfy all conditions to trigger the rule. For example, a device needs to be inside a landmark AND also be an iOS device to trigger the rule.  
+- **OR** can be used if the device only needs to satisfy one condition to trigger the rule. For example, a device needs to either be inside a landmark OR be an iOS device to trigger the rule.
+
+3. In the Add-Condition drop-down, select **Add Match Attribute Condition** or **Add Location Condition**
+
+#### Adding a Location Condition
+ 
+Location conditions are based on the proximity of device's around a landmark. A landmark is a geofence around a certain location. It can be a circle, polygon, or rectable.
 
 ![](./images/rule_add_new_landmark.png)
 
@@ -46,20 +55,52 @@ For testing purposes, we recommend adding a landmark around your current geograp
 
 Landmarks for the project can also be created separately in the **Landmarks** section. You can then select these landmarks when creating a rule under **Select From Project Landmarks**.
 
-### Adding an Attribute Condition
+#### Adding a Match Attribute Condition
 
-Attribute conditions evaluate a certain property within the sensor data stream. An attribute is a custom condition or freeform condition which allows you to specify attribute. These conditions can be simple using pre-defined options such as location.position.lat or location.accuracy. The attributes being compared in these conditions will need to exist in the data stream for the device.
+Attribute conditions evaluate a certain property within the sensor data stream, known as **attributes**, and compare it against some value. 
 
-## Creating an Advanced Rule
-1. In the dashboard, go to Projects > Rules
-2. Click **Add New Rule**. First, select whether you are creating **Cloud Rules** or **Edge Rules**. Cloud Rules process sensor data ingested on the cloud-level. Edge Rules are downloaded to the device and can process incoming sensor data and trigger actions without having to send the data to an external system.
+More advanced expressions involving attributes can be done using [Advanded Rule Creation](#advanced-rule-creation). The attributes being compared in these conditions need to exist in the data stream for the device.
 
-3. Select whether you are creating a **Managed** or **Advanced** rule. Only use **Advanced** if you know the exact expression you will need to evaluate for your rule. 
+1. Under **Select Channel**, select the channel to be used in the condition. The channel you select should be receiving a data stream that includes the attribute to be matched.
 
-4. A sample condition is already populated: event.attribute.number > 1
-You can use the free-form text area to enter expressions as the conditions for your rule.
+The **Attribute** drop-down is pre-populated with fields taken from the channel's schema.
 
- 
+2. Under **Attribute**, select the field you want to evaluate. 
+3. Select the **Comparator** option for this condition
+4. Enter the value this attributed is being compared to
+
+For example, the following attribute condition tests whether the value in the field "temp" is greater than 73
+
+![](./images/attribute_condition_entered.png)
+
+
+### Advanced Rule Creation
+
+1. Select **Advanced** and click "Continue"
+
+![](./images/advanced_rule_create.png)
+
+2. In the **Conditions** text area, a sample condition is already populated: 
+```
+event.attribute.number > 1
+```
+
+Replace this with the free-form expression to be evaluated as the conditions for your rule. Certain Javascript functions can be included. In this example, the event is from channelId "01CSEX91A9R0BN400NFZ34GQHZ" and event.payload.location needs to be inside landmark 01CSVQGJQ51QENCJ2X02VQASXW
+
+```
+event.channelId == "01CSEX91A9R0BN400NFZ34GQHZ" && landmark("inside", ["01CSVQGJQ51QENCJ2X02VQASXW"], event.payload.location)
+```
+
+Functions include:
+
+- landmark(trigger, landmarkIds, event.payload.location) - returns true if event.payload.location match trigger and landmark boundaries
+- match(event.payload.attribute, string, flags) - returns true if attribute matches string
+- toDate(isostring) - convert isostring to date
+- now(timezone) - return the current date in given timezone
+- minutesOfDay(timezone) - returns minutes of the day in given timezone
+- dayOfWeek(timezone) - returns day of the week (sunday-saturday : 0 - 6) in given timezone
+
+
 ## Adding Actions
 An action is the behavior that is executed when the conditions are met. An action can be in the form of sending an SMS, a Push message, an email, a webhook, or a combination of actions.  
 
