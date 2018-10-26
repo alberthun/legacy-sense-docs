@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const Wrapper = styled.nav`
   position: fixed;
   padding: 0 2em 4em 2em;
-  height: 100vh;
+  height: calc(100vh - 114px);
   width: 20%;
   overflow: auto;
   background: #f9fbfd;
