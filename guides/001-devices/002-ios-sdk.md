@@ -29,7 +29,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-pod 'SixgillSDK', '~> 1.2.0'
+pod 'SixgillSDK', '~> 1.2.1'
 end
 ```
 
@@ -89,13 +89,17 @@ If you wish to configure SDK endpoints or start/stop sending events data to Sixg
 - andShouldSendDataToServer = true => allowing to send events to Sixgill server
 - andShouldSendDataToServer = false => restricting to send events to Sixgill server
 ```objc
-SGSDKConfigManager *config = [[SGSDKConfigManager alloc] initWithIngressURL:"INGRESS_URL" shouldSendDataToServer:true phoneNumber:"PHONE_NUMBER"];
+NSMutableDictionary<NSString*, NSString*> *aliases = [[NSMutableDictionary alloc] init];
+[aliases setValue:"YOUR_PHONE_NUMBER" forKey:@"PHONE_NUMBER"];
+SGSDKConfigManager *config = [[SGSDKConfigManager alloc] initWithIngressURL:"INGRESS_URL" shouldSendDataToServer:true aliases:aliases];
 [[SGSDK sharedInstance] startWithAPIKey:"YOUR_API_KEY" andConfig:config];
 ```
 
 One more version of the method is available that let's you asynchronously intercept if the initialisation was successful or not.
 ```objc
-SGSDKConfigManager *config = [[SGSDKConfigManager alloc] initWithIngressURL:"INGRESS_URL" shouldSendDataToServer:true phoneNumber:"PHONE_NUMBER"];
+NSMutableDictionary<NSString*, NSString*> *aliases = [[NSMutableDictionary alloc] init];
+[aliases setValue:"YOUR_PHONE_NUMBER" forKey:@"PHONE_NUMBER"];
+SGSDKConfigManager *config = [[SGSDKConfigManager alloc] initWithIngressURL:"INGRESS_URL" shouldSendDataToServer:true aliases:aliases];
 
 [[SGSDK sharedInstance] startWithAPIKey:"YOUR_API_KEY" andConfig:config 
     andSuccessHandler:^{
