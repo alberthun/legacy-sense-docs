@@ -29,7 +29,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-pod 'SixgillSDK'
+pod 'SixgillSDK', '~> 1.2.0'
 end
 ```
 
@@ -65,6 +65,10 @@ _locationManager.delegate = self;
 
 Navigate to App Settings > Capabilities and switch Push Notifications to On. Confirm that push notifications has been enabled by checking the App Bundle ID on your Apple Developer account.
 
+### Access WiFi Information (for iOS 12 and later)
+
+Navigate to App Settings > Capabilities and switch Access WiFi Information to On.
+
 ### Core Motion
 
 In your app's Info.plist file add the key `NSMotionUsageDescription` with a string value. Set the string value to the message you want to be displayed to your users when your app requests permission to use the core motion services.
@@ -85,13 +89,13 @@ If you wish to configure SDK endpoints or start/stop sending events data to Sixg
 - andShouldSendDataToServer = true => allowing to send events to Sixgill server
 - andShouldSendDataToServer = false => restricting to send events to Sixgill server
 ```objc
-SGSDKConfigManager *config = [[SGSDKConfigManager alloc] initWithIngressURL:"INGRESS_URL" andShouldSendDataToServer:true];
+SGSDKConfigManager *config = [[SGSDKConfigManager alloc] initWithIngressURL:"INGRESS_URL" shouldSendDataToServer:true phoneNumber:"PHONE_NUMBER"];
 [[SGSDK sharedInstance] startWithAPIKey:"YOUR_API_KEY" andConfig:config];
 ```
 
 One more version of the method is available that let's you asynchronously intercept if the initialisation was successful or not.
 ```objc
-SGSDKConfigManager *config = [[SGSDKConfigManager alloc] initWithIngressURL:"INGRESS_URL" andShouldSendDataToServer:true];
+SGSDKConfigManager *config = [[SGSDKConfigManager alloc] initWithIngressURL:"INGRESS_URL" shouldSendDataToServer:true phoneNumber:"PHONE_NUMBER"];
 
 [[SGSDK sharedInstance] startWithAPIKey:"YOUR_API_KEY" andConfig:config 
     andSuccessHandler:^{
@@ -136,6 +140,11 @@ ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
 [SGSDK setPushToken:hexToken];
 ```
 
+In your app delegate's `applicationWillTerminate` method add the following code to store events in offline mode:
+```objc
+[SGSDK saveCoreDataContext]
+```
+
 ### SDK functonalities
 Reach provides following methods to expose it's dfferent functionalities-
 
@@ -146,7 +155,7 @@ To start Reach sensors, call enable
 [SGSDK enable];
 ```
 
-Just as initWithAPIKey, enable takes in callbacks as well to notify of success and failure event while starting the SDK services.
+Just as startWithAPIKey, enable takes in callbacks as well to notify of success and failure event while starting the SDK services.
 ```objc
 [SGSDK enable:^{
         // SDK running successfully
