@@ -3,20 +3,6 @@ title: Getting Started
 description: "A guide for on-boarding users and devices onto the Sense platform"
 ---
 
-*   [Create a Sixgill Sense account](#creating-an-account)
-    *   [Joining an Existing Organization](#joining-an-existing-organization)
-*   [Channels](#channels)
-    *    [API Authentication](#api-keys)
-*   [Configuring a Channel for Push](#configuring-a-channel-for-push)
-    *   [Apple Push](#apple-push)
-    *   [Android Push](#android-push)
-*   [Connecting Devices](#connecting-devices)
-    *   [iOS](#ios)
-    *   [Android](#android)
-    *   [IoT Devices](#iot-devices)
-*  [Rules](#rules)
-*  [Landmarks](#landmarks)
-
 ## Creating an Account
 ----------------------------------
 
