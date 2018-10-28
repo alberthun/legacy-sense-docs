@@ -80,13 +80,13 @@ Device sensor data is ingested into Sense through the [Ingress API](/apis/ingre
 
 ### iOS SDK
 
-[Sixgill Reach iOS SDK and User Guide](/guides/sdks/ios)
-*updated September 28th, 2018*
+[Sixgill Reach iOS SDK and User Guide](/guides/devices/ios-sdk)
+*updated October 28th, 2018*
 
 ### Android SDK
 
-[Sixgill Reach Android SDK and User Guide](/guides/sdks/android)
-*updated September 28th, 2018*
+[Sixgill Reach Android SDK and User Guide](/guides/devices/android-sdk)
+*updated October 28th, 2018*
   
 ### Sixgill Sync 2.0
 Users can also demo the mobile SDK capabilities by using the Sixgill Sync 2.0 demo application, available on the App Store and (coming soon) the Google Play Store.
@@ -95,7 +95,7 @@ Users can also demo the mobile SDK capabilities by using the Sixgill Sync 2.0 de
 
 [Sixgill Sync 2.0 for Android](https://play.google.com/store/apps/details?id=sync.sixgill.com.sync)
 
-_Updated Sync 2.0 app to be released early October 2018_
+_Updated Sync 2.0 apps for both platforms to be released November 2018_
 
 Pre-reqs:
 A dashboard account. See [Creating an Account](#creating-an-account) for details
