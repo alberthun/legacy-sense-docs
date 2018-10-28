@@ -11,7 +11,7 @@ Sixgill's Reach SDK can be installed by manually downloading and including an An
 
 **Manual**
 
-Download the [latest Reach Android Archive](https://raw.githubusercontent.com/sixgill/docs/update-usr-guide/android/reach-android-1.2.3.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).
+Download the [latest Reach Android Archive](https://raw.githubusercontent.com/sixgill/sense-docs/ReachConfig-update/android/reach-android-1.2.4.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).
 
 Once added as your app's dependency, add the following dependencies to your app level build file-
 ```
@@ -93,7 +93,7 @@ Using the Reach SDK is simple.  Once initialized and enabled, the SDK will run i
 
 ### SDK Initialization
 
-For Sixgill hosted applications, initialise SDK before actually enabling it in you application:
+For Sixgill hosted applications, initialise SDK before actually enabling it in your application:
 
 ```java
 /**
@@ -103,11 +103,23 @@ For Sixgill hosted applications, initialise SDK before actually enabling it in y
 */
 Reach.initWithAPIKey(context, "YOUR_API_KEY");
 ```
+SDK behavior and settings can be set by passing an object of `ReachConfig` as third parameter to `initWithAPIKey`. The parameter and it's properties are optional, you can skip one or more properties as well as the whole object. **But it's highly recommended that you pass a ReachConfig with alias map attached to it.**
 
-If you wish to configure SDK endpoints pass `ReachConfig` object as third param to `initWithAPIKey`: 
+`Alias` is a `Map` of `String` key-value pair where key can be any consistent string with a value unique to each device, can be Phone Number, IMEI, MAC Address etc. Aliases help the Sense Platform uniquely identify each device over multiple sessions and reinstalls thus keeping all the data from one device at single place.
+
+Other than `Alias`, you can set few more properties to `ReachConfig` object for different purposes. Following are all the options used in `ReachConfig`:
+
+- to set device alias
 ```java
+Map<String, String> aliases = new HashMap<>();
+/**
+* the key and value can contain any string.
+* As far as key is consistent and value is unique per device, alias is valid.
+*/
+aliases.put("phone", "<USER PHONE NUMBER>");
+
 ReachConfig config = new ReachConfig();
-config.setIngressURL("<YOUR SDK ENDPOINT>");
+config.setAliases(aliases); // defaults to empty Map
 /**
 * @param context {@link Context}
 * @param apiKey {@link String}
@@ -116,6 +128,34 @@ config.setIngressURL("<YOUR SDK ENDPOINT>");
 */
 Reach.initWithAPIKey(context, apiKey, reachConfig)
 ```
+
+- to configure SDK endpoints: 
+```java
+ReachConfig config = new ReachConfig();
+config.setIngressURL("<YOUR SDK ENDPOINT>"); //defaults to Sense Production URL
+/**
+* @param context {@link Context}
+* @param apiKey {@link String}
+* @param reachConfig {@link ReachConfig}
+* @return void
+*/
+Reach.initWithAPIKey(context, apiKey, reachConfig)
+```
+
+- to tell the Reach SDK not to send events to Sense servers instead just broadcast them to the app and delete from local database:
+```java
+ReachConfig config = new ReachConfig();
+config.setSendEvents(false); //defaults to true
+/**
+* @param context {@link Context}
+* @param apiKey {@link String}
+* @param reachConfig {@link ReachConfig}
+* @return void
+*/
+Reach.initWithAPIKey(context, apiKey, reachConfig)
+```
+
+
 One more version of the method is available that let's you asynchronously intercept if the initialisation was successfull or not.
 ```java
 ReachConfig config = new ReachConfig();
@@ -182,41 +222,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 }
 ```
 
-### Choosing Providers
-
-Reach offers some 3rd party provider options for indoors positioning.
-To enable a provider you have to explicitly set *Location Provider* before calling `Reach.enable`
-Currently, there are two providers available, Indoors and IndoorAtlas. Choosing a provider to run is completely optional.
-For scenarios where a provider is not able to give user position, Reach fallbacks to GPS positioning.
-
-```java
-public class MainApplication extends Application {
-    public IReachProvider mIndoorsProvider;
-    public IReachProvider mIndoorAtlasProvider;
-    public void onCreate() {
-        super.onCreate();
-        mIndoorsProvider = new IndoorsProvider();
-        mIndoorAtlasProvider = new IndoorAtlasProvider();
-        Reach.initWithAPIKey(this,"YOUR_API_KEY");
-        Reach.setLocationProvider(mIndoorsProvider, this); /* OR */ Reach.setLocationProvider(mIndoorAtlasProvider, this);
-    }
-
-    ...
-
-    @Override
-    public void onTerminate() {
-        super.onTerminate();
-        Reach.releaseLocationProvider(mIndoorsProvider, this); /* OR */ Reach.releaseLocationProvider(mIndoorAtlasProvider, this);
-    }
-}
-```
-> Note: choosing a provider is completely optional not a mandatory step
-
-**You can only use one provider at a time. The provider set later will auto replace the previous one.**
-**To prevent memory leaks, always release location provider in *Application* class *onTerminate* lifecycle.**
-
 ### Reach functonalities
-Other than `initWithAPIKey`, `setLocationProvider` and `releaseLocationProvider` mentioned above, Reach provides following methods to expose it's dfferent functionalities-
+Other than `initWithAPIKey` mentioned above, Reach provides following methods to expose it's dfferent functionalities-
 
 To start Reach sensors, call `enable` passing a `Context`.
 
@@ -318,12 +325,12 @@ To get FitnessOtions used by Reach
 Reach.fitnessOptions()
 ```
 
-To acquire fitness permissions from user's google account with oAuth
+To acquire fitness permissions from user's Google account with oAuth
 ```java
 /**
 * @param requestingActivity {@link android.app.Activity}
-* the activity requesting fitness permissions, should overide onActivityResult to catch the success and cancel cases
-* the request code will be Reach.FITNESS_REQUEST and success result shold resolve with Activity.RESULT_OK in case of success
+* the activity requesting fitness permissions, should override onActivityResult to catch the success and cancel cases
+* the request code will be Reach.FITNESS_REQUEST and success result should resolve with Activity.RESULT_OK in case of success
 */
 Reach.getFitnessPermissions(requestingActivity)
 ```
