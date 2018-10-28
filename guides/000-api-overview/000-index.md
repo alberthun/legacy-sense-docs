@@ -13,7 +13,7 @@ The Sense API is a RESTful JSON API that allows developers to access the majorit
 - Specifying additional data attributes or time constraints for evaluation
 - Building rules around these various conditions and the corresponding actions to be executed
 
-Endpoint: https://sense-api.sixgill.com
+Endpoint: https://sense-api.sixgill.com | [Sense API Docs](/apis/sense-api)
 
 #### Authentication
 
@@ -31,7 +31,7 @@ The Ingress API is a key component that allows data ingestion into Sense, enabli
 - Mobile devices post sensor data payloads to the Ingress mobile endpoint, sending device location, power and activity state, and readings of nearby beacons and WiFis
 - IoT devices post sensor data payloads to the Ingress IoT endpoint
 
-Endpoint: http://sense-ingress-api.sixgill.com
+Endpoint: http://sense-ingress-api.sixgill.com | [Ingress API Docs](/apis/ingress)
 
 #### Authentication
 

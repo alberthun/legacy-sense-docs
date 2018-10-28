@@ -9,7 +9,7 @@ Reach is the Sixgill mobile SDK for edge processing and data collection with sup
 
 **LANDMARKS** are project-specific points of interest that define proximity. They can be composed of virtual boundaries (geofences), Wi-Fi access points, or beacons. **RULES** define conditions around mobile devices, landmarks, and sensor data and can trigger actions when the condition is met. For example, the condition might be proximity to a person, place, or thing as indicated by entering a geofence or coming within range of a beacon. Example **ACTIONS** are messages delivered to the mobile device, sending an email to a recipient, or posting data to a web service in order to trigger existing business logic. 
 
-![](/images/sdk_diagram.jpeg)
+![](images/sdk_diagram.jpeg)
 
 ##Capabilities
 The Sixgill Reach SDK allows mobile developers to easily integrate the capabilities of the Sixgill platform into their application via a lightweight module with APIs. These capabilities include:

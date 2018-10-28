@@ -10,6 +10,7 @@ const Wrapper = styled.aside`
   width: 20%;
   overflow: auto;
   right: 0;
+  height: 100%;
 
   @media ${props => props.theme.mobile} {
     display: none;

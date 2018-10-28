@@ -4,8 +4,9 @@ date: "2015-05-01T22:12:03.284Z"
 description: "Building Rules with the Sense API"
 ---
 
-A rule defines the set of automated actions that are performed when one or more conditions for sensor data are met. Sensor data can come from mobile or IoT devices. Rules must be created within a project that includes the desired data channels to be processed. Rules can be used to send an SMS, push, email, or webhook when an event occurs and can be run at certain times of the day.
+A rule defines the set of automated actions that are performed when one or more conditions for sensor data are met. Sensor data can come from mobile or IoT devices. Rules can be used to send an SMS, push, email, or webhook when an event occurs and can be run at certain times of the day. 
 
+_Note: Be sure the project being used is tied to the appropriate data channels to be processed in the rule_
 
 Example:
 ```json
@@ -50,7 +51,7 @@ Fields:
 * type - cloud or edge
 * description - (optional) Description of rule
 * actions - Describes what will occur when the condition is satisfied. See [Actions](#actions) for more details.
-* conditions - the free-form version of the conditions defined for this rule. This is automatically translated from the more structured **conditionsObject**, and is optional as long as a valid conditionsObject exists. See [Conditions](#conditions) for more details.
+* conditions - the free-form expression to be evaluated for this rule. It may include Javascript in the expression. This is automatically translated from the more structured **conditionsObject**, and is optional as long as a valid conditionsObject exists. See [Conditions](#conditions) for more details.
 * conditionsObject - Describes the conditions that must be met in order to execute the action(s). A condition can be composed of one or more items joined with boolean operator types. See [Conditions](#conditions) for more details.
 * properties - (optional) Stores items that are used in conditions, such as a timezone.
 * gatewayIds - IDs of gateways to be included in the rule
@@ -239,7 +240,10 @@ Example:
 
    
 ### Scheduling
-Schedules are defined in the **conditionsObject** as a separate item joined to other conditions with an "and" clause. The following conditionsObject describes an insideLandmark rule that only applies from September 26, 2018 to October, 6, 2018, from 9am to 5pm Monday to Fridays, in the New York timezone (specified under the rule's "properties" object). Schedules are optional. By default, the rule will be enabled within 5 mminutes of activation and will run indefinitely until it is disabled.
+Schedules are optional date/time parameters that define when the rule is valid. By default, the rule will be enabled within 5 mminutes of activation and will run indefinitely until it is disabled.
+
+Schedules parameters be defined in the **conditionsObject** as an item joined to other conditions with an "and" clause. The following conditionsObject describes an insideLandmark rule that only applies from September 26, 2018 to October, 6, 2018, from 9am to 5pm Monday to Fridays, in the New York timezone. Timezone is specified under the rule's "properties" object. 
+
 
 * date - to and from dates when the rule is valid, in milliseconds
 * weekdays - days when the rule is valid (0 = sunday, 1 = monday, etc)
@@ -271,3 +275,13 @@ Example:
     }]
   }]
 ```
+
+Schedule parameters can also be defined using an advanced Javascript condition **conditions**.
+
+Examples:
+- toDate(isostring) - convert isostring to date
+- now(timezone) - return the current date in given timezone
+- minutesOfDay(timezone) - returns minutes of the day in given timezone
+- dayOfWeek(timezone) - returns day of the week (sunday-saturday : 0 - 6) in given timezone
+
+See the Advanced Rules section of the Rules Overview for more information.
