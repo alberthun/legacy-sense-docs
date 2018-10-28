@@ -7,11 +7,9 @@ A data channel is a source of data that flows into the Sense platform. For examp
 
 Channels are created based on the type of device that will connect to it. A channel can be of type iOS, Android, or IoT.
 
-
 ## Creating a Channel
 
 1.  In the dashboard, go to Channels. If this is your organization's first channel, you will be presented with an Intro screen. Click **Add New Channel**
-
 
 ![](./images/add_new_channel.png)
 
@@ -22,6 +20,4 @@ Channels are created based on the type of device that will connect to it. A chan
 3.  Enter a name for your channel. Channel names must be unique to your account.
 4. 	Enter the name of one or more projects to assign your channel to. Rules created under these projects will be able to use this channel as a data source.
 
-This will create a Channel for the type of data you wish to ingest. 
-
-See the [Channels API docs](/apis/sense-api#/) for creating and managing channels through the API.
+This will create a Channel for the type of data you wish to ingest. See the [Channels API docs](/apis/sense-api#/) for creating and managing channels through the API.

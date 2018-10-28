@@ -35,4 +35,4 @@ Endpoint: http://sense-ingress-api.sixgill.com | [Ingress API Docs](/apis/ingres
 
 #### Authentication
 
-To register with the Ingress API, devices POST [/v1/registration](/apis/ingress#tag/Register/paths/~1v1~1registration/post) info and a valid API Key, which can be found in the dashboard under the [Channels](/guides/channels/overview) section for the appropriate channel. On successful authentication, a JSON web token is returned, along with the ID for the organization it's registered with.
+To register with the Ingress API, devices POST [/v1/registration](/apis/ingress#tag/Register/paths/~1v1~1registration/post) info and [a valid API Key](/guides/getting-started#authenticating-devices), which can be found in the dashboard under the [Channels](/guides/channels/overview) section for the appropriate channel. On successful authentication, a JSON web token is returned along with the ID for the organization it's registered with.

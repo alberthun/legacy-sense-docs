@@ -1,6 +1,6 @@
 ---
-title: Overview
-description: "Connecting devices to Sense"
+title: Device Management
+description: "Connecting and managing devices in Sense"
 ---
 
 ## Connecting Mobile Devices
@@ -29,9 +29,9 @@ The Sense platform offers a variety of options for managing devices through the 
 ### Getting Devices by ID 
 
 On the dashboard:
-1) Go to the Devices tab
-2) Find the device on the list
-3) Click on the row to expand and display device details. 
+1. Go to the Devices tab
+2. Find the device on the list
+3. Click on the row to expand and display device details. 
 
 To get device details through the API, see [get device ID](/apis/sense-api#tag/devices/paths/~1v2~1devices~1:id/get)
 
@@ -46,10 +46,10 @@ See [look up device by alias](https://docs.sixgill.com/apis/sense-api#tag/device
 Mobile devices have a configuration that controls cadence, sensors, event time-to-live, and maximum event cache storage. This configuration can be set through the dashboard, or through the API. 
 
 On the dashboard:
-1) Go to the Devices tab
-2) Find the device on the list
-3) Click on the gear icon at the end of the row under **Actions**
-4) Make desired changes to your config
+1. Go to the Devices tab
+2. Find the device on the list
+3. Click on the gear icon at the end of the row under **Actions**
+4. Make desired changes to your config
 
 - To change the tracking cadence, set **Cadence** to a different value (in seconds). The minimum is 30 seconds.
 - To stop a device from tracking altogether, uncheck the **Enabled** option
