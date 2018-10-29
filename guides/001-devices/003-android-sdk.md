@@ -39,13 +39,13 @@ Some of these permissions are requirements, but some can be optionally omitted t
 
 | Permission | Required | Omission Effect |
 | --- | --- | --- |
-| ACCESS_FINE_LOCATION | Yes | SDK inactive |
-| ACCESS_COARSE_LOCATION | Yes | SDK inactive |
-| ACCESS_WIFI_STATE | No | Disable Wifi detection|
+| ACCESS\_\FINE\_LOCATION | Yes | SDK inactive |
+| ACCESS\_COARSE\_LOCATION | Yes | SDK inactive |
+| ACCESS\_WIFI\_STATE | No | Disable Wifi detection|
 | BLUETOOTH | No | Disable Beacon detection|
-| BLUETOOTH_ADMIN | No | Disable Beacon detection|
+| BLUETOOTH\_ADMIN | No | Disable Beacon detection|
 | INTERNET | Yes | SDK inactive |
-| ACTIVITY_RECOGNITION | No | Disable User Activity detection |
+| ACTIVITY\_RECOGNITION | No | Disable User Activity detection |
 
 For Android platforms that require Runtime Permissions, it is up to the developer using the Reach SDK to get all required permissions from user depending on which sensors are being used.
 If permissions are not requested or not granted by the user, the specific sensors will collect any data.
