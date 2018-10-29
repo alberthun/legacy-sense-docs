@@ -32,6 +32,13 @@ To send sensor data to the platform using the Ingress API or the mobile SDKs, yo
 2. Click the appropriate channel on the left, or [create a new channel](/guides/channels/overview).
 3. Copy an existing key from **Api Keys** section, or click **Generate New ApiKey** to create another for that channel.
 
+This API key is then used for SDK authentication: 
+- [iOS SDK initialization](/guides/devices/ios-sdk#sdk-initialization)
+- [Android SDK initialization](/guides/devices/android-sdk#sdk-initialization)
+
+...or if registering a device with the Ingress API directly:
+[Ingress Registration](/apis/ingress#tag/Register/paths/~1v1~1registration/post)
+
 ### Sense API Authentication
 
 The Sense API authenticates requests with a user-specific JSON web token through Bearer authentication.

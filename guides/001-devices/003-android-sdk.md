@@ -93,7 +93,7 @@ Using the Reach SDK is simple.  Once initialized and enabled, the SDK will run i
 
 ### SDK Initialization
 
-For Sixgill hosted applications, initialise SDK before actually enabling it in your application:
+For Sixgill hosted applications, initialize SDK before actually enabling it in your application:
 
 ```java
 /**
@@ -103,11 +103,11 @@ For Sixgill hosted applications, initialise SDK before actually enabling it in y
 */
 Reach.initWithAPIKey(context, "YOUR_API_KEY");
 ```
-SDK behavior and settings can be set by passing an object of `ReachConfig` as third parameter to `initWithAPIKey`. The parameter and it's properties are optional, you can skip one or more properties as well as the whole object. **But it's highly recommended that you pass a ReachConfig with alias map attached to it.**
+SDK behavior and settings can be set by passing an object of `ReachConfig` as third parameter to `initWithAPIKey`. The parameter and its properties are optional, and you can skip one or more properties as well as the whole object. **It's highly recommended that you pass a ReachConfig with alias map attached to it.**
 
-`Alias` is a `Map` of `String` key-value pair where key can be any consistent string with a value unique to each device, can be Phone Number, IMEI, MAC Address etc. Aliases help the Sense Platform uniquely identify each device over multiple sessions and reinstalls thus keeping all the data from one device at single place.
+`Aliases` is a `Map` of `String` key-value pairs where key can be any consistent string with a value unique to each device. It can be Phone Number, IMEI, MAC Address etc. Aliases help the Sense Platform uniquely identify each device over multiple sessions and reinstalls, thus keeping all the data from one device at single place.
 
-Other than `Alias`, you can set few more properties to `ReachConfig` object for different purposes. Following are all the options used in `ReachConfig`:
+Other than `Alias`, you can set other properties in `ReachConfig` object for different purposes. Following are all the options used in `ReachConfig`:
 
 - to set device alias
 ```java
@@ -142,7 +142,7 @@ config.setIngressURL("<YOUR SDK ENDPOINT>"); //defaults to Sense Production URL
 Reach.initWithAPIKey(context, apiKey, reachConfig)
 ```
 
-- to tell the Reach SDK not to send events to Sense servers instead just broadcast them to the app and delete from local database:
+- if you wish to send data to your own servers, tell the Reach SDK not to send events to Sense servers but instead just broadcast them to the app and delete from local database:
 ```java
 ReachConfig config = new ReachConfig();
 config.setSendEvents(false); //defaults to true
@@ -156,20 +156,20 @@ Reach.initWithAPIKey(context, apiKey, reachConfig)
 ```
 
 
-One more version of the method is available that let's you asynchronously intercept if the initialisation was successfull or not.
+One more version of the method is available that let's you asynchronously intercept if the initialization was successfull or not.
 ```java
 ReachConfig config = new ReachConfig();
 config.setIngressURL("<YOUR SDK ENDPOINT>");
 ReachCallback callback = new ReachCallback() {
     @Override
     public void onReachSuccess() {
-        //can be used enable SDK here as initialisation was successful
+        //can be used enable SDK here as initialization was successful
         Reach.enable(context)
     }
 
     @Override
     public void onReachFailure(String s) {
-        // initialisation failed, code to fallback logic goes here
+        // initialization failed, code to fallback logic goes here
     }
 };
 /**

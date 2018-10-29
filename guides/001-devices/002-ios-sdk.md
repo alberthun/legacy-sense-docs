@@ -14,7 +14,7 @@ CocoaPods is a dependency manager for Cocoa projects. You can install it with th
 $ gem install cocoapods
 ```
 
-Initialise podfile:
+Initialize podfile:
 ```
 $ pod init
 ```
@@ -95,7 +95,7 @@ SGSDKConfigManager *config = [[SGSDKConfigManager alloc] initWithIngressURL:"ING
 [[SGSDK sharedInstance] startWithAPIKey:"YOUR_API_KEY" andConfig:config];
 ```
 
-One more version of the method is available that let's you asynchronously intercept if the initialisation was successful or not.
+One more version of the method is available that lets you asynchronously intercept if the initialization was successful or not:
 ```objc
 NSMutableDictionary<NSString*, NSString*> *aliases = [[NSMutableDictionary alloc] init];
 [aliases setValue:"YOUR_PHONE_NUMBER" forKey:@"PHONE_NUMBER"];
@@ -103,10 +103,10 @@ SGSDKConfigManager *config = [[SGSDKConfigManager alloc] initWithIngressURL:"ING
 
 [[SGSDK sharedInstance] startWithAPIKey:"YOUR_API_KEY" andConfig:config 
     andSuccessHandler:^{
-        //can be used enable SDK here as initialisation was successful
+        //can be used enable SDK here as initialization was successful
         
     } andFailureHandler:^(NSString *msg) {
-        // initialisation failed, code to fallback logic goes here    
+        // initialization failed, code to fallback logic goes here    
         
     }
 ];
