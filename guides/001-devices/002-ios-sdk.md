@@ -29,7 +29,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-pod 'SixgillSDK', '~> 1.2.1'
+pod 'SixgillSDK', '~> 1.2.2'
 end
 ```
 
@@ -85,21 +85,46 @@ For Sixgill hosted applications, start SDK before actually enabling it in you ap
 [[SGSDK sharedInstance] startWithAPIKey:"YOUR_API_KEY"];
 ```
 
-If you wish to configure SDK endpoints or start/stop sending events data to Sixgill Server pass config as parameter in startWithAPIKey:
-- andShouldSendDataToServer = true => allowing to send events to Sixgill server
-- andShouldSendDataToServer = false => restricting to send events to Sixgill server
+SDK behavior and settings can be set by passing an object of `SGSDKConfigManager` as second parameter to `startWithAPIKey`. The parameter and its properties are optional, and you can skip one or more properties as well as the whole object. **It's highly recommended that you pass a SGSDKConfigManager with alias map attached to it.**
+
+`Aliases` is a `Dictionary` of `String` key-value pairs where key can be any consistent string with a value unique to each device. It can be Phone Number, IMEI, MAC Address etc. Aliases help the Sense Platform uniquely identify each device over multiple sessions and reinstalls, thus keeping all the data from one device at single place.
+
+Other than `Alias`, you can set other properties in `SGSDKConfigManager` object for different purposes. Following are all the options used in `SGSDKConfigManager`:
+
+- to set device alias
 ```objc
 NSMutableDictionary<NSString*, NSString*> *aliases = [[NSMutableDictionary alloc] init];
-[aliases setValue:"YOUR_PHONE_NUMBER" forKey:@"PHONE_NUMBER"];
-SGSDKConfigManager *config = [[SGSDKConfigManager alloc] initWithIngressURL:"INGRESS_URL" shouldSendDataToServer:true aliases:aliases];
+/**
+* the key and value can contain any string.
+* As far as key is consistent and value is unique per device, alias is valid.
+*/
+[aliases setValue:@"USER_PHONE_NUMBER" forKey:@"phone"];
+
+SGSDKConfigManager *config = [[SGSDKConfigManager alloc] init];
+config.aliases = aliases; // defaults to empty Map
+
+[[SGSDK sharedInstance] startWithAPIKey:"YOUR_API_KEY" andConfig:config];
+```
+
+- to configure SDK endpoints: 
+```objc
+SGSDKConfigManager *config = [[SGSDKConfigManager alloc] init];
+config.ingressURL = "YOUR_INGRESS_URL"; //defaults to Sense Production URL
+
+[[SGSDK sharedInstance] startWithAPIKey:"YOUR_API_KEY" andConfig:config];
+```
+
+- if you wish to send data to your own servers, tell the Reach SDK not to send events to Sense servers but instead just broadcast them to the app and delete from local database:
+```objc
+SGSDKConfigManager *config = [[SGSDKConfigManager alloc] init];
+config.shouldSendDataToServer = false; //defaults to true
+
 [[SGSDK sharedInstance] startWithAPIKey:"YOUR_API_KEY" andConfig:config];
 ```
 
 One more version of the method is available that lets you asynchronously intercept if the initialization was successful or not:
 ```objc
-NSMutableDictionary<NSString*, NSString*> *aliases = [[NSMutableDictionary alloc] init];
-[aliases setValue:"YOUR_PHONE_NUMBER" forKey:@"PHONE_NUMBER"];
-SGSDKConfigManager *config = [[SGSDKConfigManager alloc] initWithIngressURL:"INGRESS_URL" shouldSendDataToServer:true aliases:aliases];
+SGSDKConfigManager *config = [[SGSDKConfigManager alloc] init];
 
 [[SGSDK sharedInstance] startWithAPIKey:"YOUR_API_KEY" andConfig:config 
     andSuccessHandler:^{
