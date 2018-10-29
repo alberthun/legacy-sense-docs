@@ -39,7 +39,7 @@ Some of these permissions are requirements, but some can be optionally omitted t
 
 | Permission | Required | Omission Effect |
 | --- | --- | --- |
-| ACCESS\_\FINE\_LOCATION | Yes | SDK inactive |
+| ACCESS\_FINE\_LOCATION | Yes | SDK inactive |
 | ACCESS\_COARSE\_LOCATION | Yes | SDK inactive |
 | ACCESS\_WIFI\_STATE | No | Disable Wifi detection|
 | BLUETOOTH | No | Disable Beacon detection|
