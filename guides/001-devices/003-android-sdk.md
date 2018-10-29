@@ -156,7 +156,7 @@ Reach.initWithAPIKey(context, apiKey, reachConfig)
 ```
 
 
-One more version of the method is available that let's you asynchronously intercept if the initialization was successfull or not.
+One more version of the method is available that lets you asynchronously intercept if the initialization was successful or not.
 ```java
 ReachConfig config = new ReachConfig();
 config.setIngressURL("<YOUR SDK ENDPOINT>");
@@ -191,11 +191,11 @@ public class MainApplication extends Application {
     }
 }
 ```
-> Note: `initWithAPIKey` must be called and executed successfully, at least once before using Reach SDK at all.
+> Note: `initWithAPIKey` must be called and executed successfully *at least once* before using Reach SDK at all.
 
 ### Integrating Push Notifications
 
-Services for token refreshes and receiving messages are required to [integrate push notifications](https://firebase.google.com/docs/cloud-messaging/).  Once a push notification is received it is based to the Reach SDK for processing.  If your application hasn't integrated push yet, simply create the following classes and add the services to your AndroidManifest.xml.  Otherwise just add the calls to the Reach SDK. Be sure to set the API key for Firebase Cloud Messaging through the dashboard. See [Configuring Your Channel for Push](http://docs.sixgill.com/start.html#configuring-a-channel-for-push) in the Getting Started Guide.
+Services for token refreshes and receiving messages are required to [integrate push notifications](https://firebase.google.com/docs/cloud-messaging/). Once a push notification is received it is based to the Reach SDK for processing. If your application hasn't integrated push yet, simply create the following classes and add the services to your AndroidManifest.xml. Otherwise just add the calls to the Reach SDK. Be sure to set the API key for Firebase Cloud Messaging through the dashboard. See [Configuring Your Channel for Push](/guides/getting-started#configuring-a-channel-for-push) in the Getting Started Guide.
 
 AndroidManifest.xml
 ```xml 
@@ -282,7 +282,7 @@ To get Sixgill Device ID:
 ```java
 /**
 * @param context {@link Context}
-* @return String - SixGill DeviceId
+* @return String - Sixgill DeviceId
 */
 Reach.deviceId(context)
 ```
@@ -337,7 +337,7 @@ Reach.getFitnessPermissions(requestingActivity)
 > Note: To use Reach SDK with Google Fitness API, you need to register an OAUTH 2.0 client and sign your debug and release builds accordingly. For details on step by step integration, please refer to https://developers.google.com/fit/android/get-api-key
 
 
-To listen to push notifications from SixGill, register broadcast listeners with `IntentFilter` of `Reach.PUSH_BROADCAST`
+To listen to push notifications from Sixgill, register broadcast listeners with `IntentFilter` of `Reach.PUSH_BROADCAST`
 
 ```java
 const pushReceiver = new BroadcastReceiver(){

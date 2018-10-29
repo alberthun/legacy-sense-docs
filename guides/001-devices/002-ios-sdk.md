@@ -20,7 +20,7 @@ $ pod init
 ```
 
 
-Specify following in your ```Podfile```
+Specify the following in your ```Podfile```
 ```
 source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/sixgill/SixgillPodSpecs.git'
@@ -52,7 +52,7 @@ $ pod install
    - location-services
    - gps
 2. In your app's Info.plist file, add the keys  `NSLocationWhenInUseUsageDescription`, `NSLocationAlwaysAndWhenInUseUsageDescription` with string values. Set the string values to the messages you want to be displayed to your users when your app requests permission to use the location services. An example would be something like `Weather uses your location to provide you with accurate forecasts wherever you go.`
-3. If your app supports iOS 10 and earlier, also add the key `NSLocationAlwaysUsageDescription` with a string value. Set the string value with message similar to above.
+3. If your app supports iOS 10 and earlier, also add the key `NSLocationAlwaysUsageDescription` with a string value. Set the string value to a similar message.
 
 After you've followed the above steps, you are ready to request permission from the user to use location services using the SGDK's requestLocationPermission call:
 
@@ -80,7 +80,7 @@ Using the Reach SDK is simple. Once initialized and enabled, the SDK will run in
 
 ### SDK Initialization
 
-For Sixgill hosted applications, start SDK before actually enabling it in you application:
+For Sixgill hosted applications, start SDK before actually enabling it in your application:
 ```objc
 [[SGSDK sharedInstance] startWithAPIKey:"YOUR_API_KEY"];
 ```
@@ -114,7 +114,7 @@ SGSDKConfigManager *config = [[SGSDKConfigManager alloc] initWithIngressURL:"ING
 
 ### SDK Stop
 
-In your app, when you want to stop the SDK, add the following code:
+When you want to stop the SDK, add the following code:
 
 ```objc
 [SGSDK disable];
@@ -134,7 +134,7 @@ To hook the Reach SDK up to your app's push notification, implement the followin
 [SGSDK didReceivePushNotificationPayload:userInfo withCompletionHandler:completionHandler];
 ```
 
-In your app delegate's `didRegisterForRemoteNotificationsWithDeviceToken` method add the following code to register device token:
+In your app delegate's `didRegisterForRemoteNotificationsWithDeviceToken` method, add the following code to register device token:
 ```objc
 const unsigned *tokenBytes = [deviceToken bytes];
 NSString *hexToken = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x",
@@ -144,7 +144,7 @@ ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
 [SGSDK setPushToken:hexToken];
 ```
 
-In your app delegate's `applicationWillTerminate` method add the following code to store events in offline mode:
+In your app delegate's `applicationWillTerminate` method, add the following code to store events in offline mode:
 ```objc
 [SGSDK saveCoreDataContext]
 ```
