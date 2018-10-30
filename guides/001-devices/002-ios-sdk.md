@@ -35,7 +35,7 @@ end
 
 Then, run the following command:
 ```
-$ pod install
+$ pod update
 ```
 
 ## SDK Configuration
