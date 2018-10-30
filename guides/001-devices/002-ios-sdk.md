@@ -94,15 +94,11 @@ Other than `Alias`, you can set other properties in `SGSDKConfigManager` object 
 - to set device alias
 ```objc
 NSMutableDictionary<NSString*, NSString*> *aliases = [[NSMutableDictionary alloc] init];
-/**
-* the key and value can contain any string.
-* As far as key is consistent and value is unique per device, alias is valid.
-*/
+// the key and value can contain any string.
+// you must ensure that key is consistent and value is unique per device
 [aliases setValue:@"USER_PHONE_NUMBER" forKey:@"phone"];
-
 SGSDKConfigManager *config = [[SGSDKConfigManager alloc] init];
 config.aliases = aliases; // defaults to empty Map
-
 [[SGSDK sharedInstance] startWithAPIKey:"YOUR_API_KEY" andConfig:config];
 ```
 
@@ -110,7 +106,6 @@ config.aliases = aliases; // defaults to empty Map
 ```objc
 SGSDKConfigManager *config = [[SGSDKConfigManager alloc] init];
 config.ingressURL = "YOUR_INGRESS_URL"; //defaults to Sense Production URL
-
 [[SGSDK sharedInstance] startWithAPIKey:"YOUR_API_KEY" andConfig:config];
 ```
 
@@ -118,21 +113,17 @@ config.ingressURL = "YOUR_INGRESS_URL"; //defaults to Sense Production URL
 ```objc
 SGSDKConfigManager *config = [[SGSDKConfigManager alloc] init];
 config.shouldSendDataToServer = false; //defaults to true
-
 [[SGSDK sharedInstance] startWithAPIKey:"YOUR_API_KEY" andConfig:config];
 ```
 
-One more version of the method is available that lets you asynchronously intercept if the initialization was successful or not:
+- a version of the method is available that lets you asynchronously intercept if the initialization was successful or not:
 ```objc
 SGSDKConfigManager *config = [[SGSDKConfigManager alloc] init];
-
 [[SGSDK sharedInstance] startWithAPIKey:"YOUR_API_KEY" andConfig:config 
     andSuccessHandler:^{
-        //can be used enable SDK here as initialization was successful
-        
+        //can be used enable SDK here as initialization was successful  
     } andFailureHandler:^(NSString *msg) {
         // initialization failed, code to fallback logic goes here    
-        
     }
 ];
 ```
