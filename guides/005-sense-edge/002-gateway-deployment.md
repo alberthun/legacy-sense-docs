@@ -1,6 +1,6 @@
 ---
 title: Reach Edge Agent (Beta)
-description: "Deploying the Gateway for Edge Rule Processing"
+description: "Reach Edge Agent Guide"
 ---
 
 ## Introduction
