@@ -75,7 +75,13 @@ In your app's Info.plist file add the key `NSMotionUsageDescription` with a stri
 
 ## Usage
 
-Using the Reach SDK is simple. Once initialized and enabled, the SDK will run in the background.
+Using the Reach SDK is simple. Once initialized and enabled, the SDK will run in the background. 
+
+To use the SDK functions, be sure to add the following @import statement to your header:
+
+```objc
+@import SixgillSDK;
+```
 
 
 ### SDK Initialization

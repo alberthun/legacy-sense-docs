@@ -9,7 +9,7 @@ The Sixgill Sense Gateway (beta) is a lightweight version of our production syst
 
 ## Installation
 
-The Sixgill Sense Gateway is currently in Beta.  For access please contact [Sixgill Support](support@sixgill.com) and request access.  Windows, Mac, and Linux are currently supported.    
+The Sixgill Sense Gateway is currently in Beta.  For access please contact [Sixgill Support](mailto:support@sixgill.com) and request access.  Windows, Mac, and Linux are currently supported.    
 
 ## Usage
 
