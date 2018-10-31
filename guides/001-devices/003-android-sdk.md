@@ -105,30 +105,30 @@ Reach.initWithAPIKey(context, "YOUR_API_KEY");
 ```
 SDK behavior and settings can be set by passing an object of `ReachConfig` as third parameter to `initWithAPIKey`. The parameter and its properties are optional, and you can skip one or more properties as well as the whole object. **It's highly recommended that you pass a ReachConfig with alias map attached to it.**
 
+You can set properties in `ReachConfig` object for different purposes. Following are all the options used in `ReachConfig`:
+
+#### Set Device Aliases
 `Aliases` is a `Map` of `String` key-value pairs where key can be any consistent string with a value unique to each device. It can be Phone Number, IMEI, MAC Address etc. Aliases help the Sense Platform uniquely identify each device over multiple sessions and reinstalls, thus keeping all the data from one device at single place.
 
-Other than `Alias`, you can set other properties in `ReachConfig` object for different purposes. Following are all the options used in `ReachConfig`:
-
-- to set device alias
 ```java
 Map<String, String> aliases = new HashMap<>();
-/**
+/**      
 * the key and value can contain any string.
-* As far as key is consistent and value is unique per device, alias is valid.
-*/
+* you must ensure that key is consistent and value is unique per device.
+*/      
 aliases.put("phone", "<USER PHONE NUMBER>");
 ReachConfig config = new ReachConfig();
 config.setAliases(aliases); // defaults to empty Map
-/**
+/**           
 * @param context {@link Context}
 * @param apiKey {@link String}
 * @param reachConfig {@link ReachConfig}
 * @return void
-*/
+*/         
 Reach.initWithAPIKey(context, apiKey, reachConfig)
 ```
 
-- to configure SDK endpoints: 
+#### Configure SDK Endpoints
 ```java
 ReachConfig config = new ReachConfig();
 config.setIngressURL("<YOUR SDK ENDPOINT>"); //defaults to Sense Production URL
@@ -141,7 +141,8 @@ config.setIngressURL("<YOUR SDK ENDPOINT>"); //defaults to Sense Production URL
 Reach.initWithAPIKey(context, apiKey, reachConfig)
 ```
 
-- if you wish to send data to your own servers, tell the Reach SDK not to send events to Sense servers but instead just broadcast them to the app and delete from local database:
+#### Send Sensor Data to External Servers
+If you wish to send data to your own servers, use **setSendEvents** to disabling sending to Sense servers but instead just broadcast them to the app and delete from local database:
 ```java
 ReachConfig config = new ReachConfig();
 config.setSendEvents(false); //defaults to true
@@ -154,8 +155,10 @@ config.setSendEvents(false); //defaults to true
 Reach.initWithAPIKey(context, apiKey, reachConfig)
 ```
 
+The app can then [get the sensor data](#getting-sensor-data-events) and handle the networking to send the data to an external endpoint.
 
-One more version of the method is available that lets you asynchronously intercept if the initialization was successful or not.
+#### Using the Reach Callback
+A version of the method is available that lets you asynchronously intercept if the initialization was successful or not.
 ```java
 ReachConfig config = new ReachConfig();
 config.setIngressURL("<YOUR SDK ENDPOINT>");
@@ -334,6 +337,7 @@ Reach.getFitnessPermissions(requestingActivity)
 ```
 > Note: To use Reach SDK with Google Fitness API, you need to register an OAUTH 2.0 client and sign your debug and release builds accordingly. For details on step by step integration, please refer to https://developers.google.com/fit/android/get-api-key
 
+#### Listening for Push Notifications
 
 To listen to push notifications from Sixgill, register broadcast listeners with `IntentFilter` of `Reach.PUSH_BROADCAST`
 
@@ -347,6 +351,8 @@ const pushReceiver = new BroadcastReceiver(){
 LocalBroadcastManager manager = LocalBroadcastManager.getInstance(context);
 manager.registerReceiver(pushReceiver, new IntentFilter(Reach.PUSH_BROADCAST));
 ```
+
+#### Getting Sensor Data Events
 
 To get the latest `Ingress.Event` generated from the Reach SDK, register broadcast listeners with `IntentFilter` of `Reach.EVENT_BROADCAST`. You'll get the Base64 encoded `Ingress.Event` object in intent payload
 

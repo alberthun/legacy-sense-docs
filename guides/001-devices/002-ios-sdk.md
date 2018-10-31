@@ -83,7 +83,6 @@ To use the SDK functions, be sure to add the following @import statement to your
 @import SixgillSDK;
 ```
 
-
 ### SDK Initialization
 
 For Sixgill hosted applications, start SDK before actually enabling it in your application:
@@ -93,11 +92,12 @@ For Sixgill hosted applications, start SDK before actually enabling it in your a
 
 SDK behavior and settings can be set by passing an object of `SGSDKConfigManager` as second parameter to `startWithAPIKey`. The parameter and its properties are optional, and you can skip one or more properties as well as the whole object. **It's highly recommended that you pass a SGSDKConfigManager with alias map attached to it.**
 
+You can set certain properties in `SGSDKConfigManager` object for different purposes. Following are all the options used in `SGSDKConfigManager`:
+
+#### Set Device Aliases
+
 `Aliases` is a `Dictionary` of `String` key-value pairs where key can be any consistent string with a value unique to each device. It can be Phone Number, IMEI, MAC Address etc. Aliases help the Sense Platform uniquely identify each device over multiple sessions and reinstalls, thus keeping all the data from one device at single place.
 
-Other than `Alias`, you can set other properties in `SGSDKConfigManager` object for different purposes. Following are all the options used in `SGSDKConfigManager`:
-
-- to set device alias
 ```objc
 NSMutableDictionary<NSString*, NSString*> *aliases = [[NSMutableDictionary alloc] init];
 // the key and value can contain any string.
@@ -105,41 +105,42 @@ NSMutableDictionary<NSString*, NSString*> *aliases = [[NSMutableDictionary alloc
 [aliases setValue:@"USER_PHONE_NUMBER" forKey:@"phone"];
 SGSDKConfigManager *config = [[SGSDKConfigManager alloc] init];
 config.aliases = aliases; // defaults to empty Map
+
 [[SGSDK sharedInstance] startWithAPIKey:"YOUR_API_KEY" andConfig:config];
 ```
 
-- to configure SDK endpoints: 
+#### Configure SDK Endpoints 
 ```objc
 SGSDKConfigManager *config = [[SGSDKConfigManager alloc] init];
 config.ingressURL = "YOUR_INGRESS_URL"; //defaults to Sense Production URL
+
 [[SGSDK sharedInstance] startWithAPIKey:"YOUR_API_KEY" andConfig:config];
 ```
 
-- if you wish to send data to your own servers, tell the Reach SDK not to send events to Sense servers but instead just broadcast them to the app and delete from local database:
+#### Send Event Data to External Servers
+If you wish to send data to your own servers, use **shouldSendDataToServer** to disabling sending to Sense servers but instead just broadcast them to the app and delete from local database:
 ```objc
 SGSDKConfigManager *config = [[SGSDKConfigManager alloc] init];
 config.shouldSendDataToServer = false; //defaults to true
+
 [[SGSDK sharedInstance] startWithAPIKey:"YOUR_API_KEY" andConfig:config];
 ```
 
-- a version of the method is available that lets you asynchronously intercept if the initialization was successful or not:
+The app can then [get the sensor data](#getting-sensor-data-events) and handle the networking to send the data to an external endpoint.
+
+#### Using the Reach Callback
+A version of the method is available that lets you asynchronously intercept if the initialization was successful or not:
 ```objc
 SGSDKConfigManager *config = [[SGSDKConfigManager alloc] init];
 [[SGSDK sharedInstance] startWithAPIKey:"YOUR_API_KEY" andConfig:config 
     andSuccessHandler:^{
-        //can be used enable SDK here as initialization was successful  
+        //can be used enable SDK here as initialization was successful 
+
     } andFailureHandler:^(NSString *msg) {
         // initialization failed, code to fallback logic goes here    
+
     }
 ];
-```
-
-### SDK Stop
-
-When you want to stop the SDK, add the following code:
-
-```objc
-[SGSDK disable];
 ```
 
 ### Integrating Push Notifications
@@ -176,12 +177,12 @@ Reach provides following methods to expose it's dfferent functionalities-
 
 Enable SDK only after initialization of SDK is successful
 
-To start Reach sensors, call enable
+To start Reach sensors, call `enable`
 ```objc
 [SGSDK enable];
 ```
 
-Just as startWithAPIKey, enable takes in callbacks as well to notify of success and failure event while starting the SDK services.
+Just as startWithAPIKey, `enable` takes in callbacks as well to notify of success and failure event while starting the SDK services.
 ```objc
 [SGSDK enable:^{
         // SDK running successfully
@@ -230,7 +231,9 @@ for (NSDictionary *d in locations) {
 }
 ```
 
-To get the sensor updates:
+#### Getting Sensor Data Events
+
+To register for the sensor updates:
 
 - In class where you want this data, extend that class with  `SensorUpdateDelegate`.
 - On viewDidAppear, do this
