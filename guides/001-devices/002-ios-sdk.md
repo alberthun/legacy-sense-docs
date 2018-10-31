@@ -168,7 +168,7 @@ In your app delegate's `applicationWillTerminate` method, add the following code
 ### SDK functonalities
 Reach provides following methods to expose it's dfferent functionalities-
 
-Enable SDK only after initalisation of SDK is successful
+Enable SDK only after initialization of SDK is successful
 
 To start Reach sensors, call enable
 ```objc
