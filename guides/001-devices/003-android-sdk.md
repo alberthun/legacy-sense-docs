@@ -117,7 +117,6 @@ Map<String, String> aliases = new HashMap<>();
 * As far as key is consistent and value is unique per device, alias is valid.
 */
 aliases.put("phone", "<USER PHONE NUMBER>");
-
 ReachConfig config = new ReachConfig();
 config.setAliases(aliases); // defaults to empty Map
 /**
@@ -166,7 +165,6 @@ ReachCallback callback = new ReachCallback() {
         //can be used enable SDK here as initialization was successful
         Reach.enable(context)
     }
-
     @Override
     public void onReachFailure(String s) {
         // initialization failed, code to fallback logic goes here
