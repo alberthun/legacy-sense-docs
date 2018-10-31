@@ -1,48 +1,57 @@
 ---
-title: Gateway Deployment
+title: Gateway (Beta)
 description: "Deploying the Gateway for Edge Rule Processing"
 ---
 
-## Pre-requisites:
-- A Sense account
-- Sixgill Gateway binary
-- Sixgill Agent
+## Introduction
 
-_Please contact [Sixgill Support](support@sixgill.com) and request the appropriate gateway and agent for your architecture/platform_
+The Sixgill Sense Gateway (beta) is a lightweight version of our production system's pipeline in an embeddable version for edge computing.  It is designed to run on "Gateway" devices that aggregates data and processes data from sensors without their own processing capabilities.  The Sixgill Sense Gateway can serve many use cases such as reducing networking costs by only propagating exceptional events or preserving privacy by taking actions on data that never touches the cloud.  Gateways can be configured via the Sixgill Dash or Sense API enabled dynamic capabilities on the edge.   
 
-## Deploying Sixgill Gateway
+## Installation
 
-The Sixgill Gateway is a small lightweight executable that ingests data from connected devices running the Sixgill Agent.  It determines how to route inbound data via a local rules module, and take action when appropriate
+The Sixgill Sense Gateway is currently in Beta.  For access please contact [Sixgill Support](support@sixgill.com) and request access.  Windows, Mac, and Linux are currently supported.    
 
-### Requesting the Binary
-Sixgill maintains builds for many architectures. Make sure you request the appropriate one for your needs.
+## Usage
 
-### Installing the Binary
-The binary has few dependencies. It will need a local installation of SqlLite3 and the following env variables set:
+The Sixgill Sense Gateway (beta) runs as a binary on a "Gateway" device.  To start the gateway run the following command:  
 
+```
+sense-gateway -assets=my_dir -parent="https://sense-ingress-api.sixgill.com" -apikey=MY-KEY-12345 -port=8080
+```
 
-**Variable**|**Description**
+**Flag**|**Description**
 -|-
-**INGRESS\_IP\_WITH_PORT** | Ingress address and port of gateway
-**JWT\_SIGNING\_KEY**  | JWT key for device registrations
-**PARENT\_INGRESS** | parent gateway ingress
-**PARENT\_STATS** | Parent gateway stats
-**STATS\_URL** | URL for stats service
-**ORG\_ID** | Organization ID for authentication
-**DISABLE\_AUTHENTICATION** | Disable auth for testing
-**DB\_PERSISTER\_DB\_PATH** | Reference to locatl Sqlite3 File
+**assets** | Directory to store required assets
+**parent** | Parent (defaults to Sense production) intance
+**apikey** | Gateway API Key retrieved from the Sense Dash
+**port** | Gateway's listening port
 
-If you’re running Ubuntu or another flavor of Linux on your hardware, you can use a package manager to get the sqllite3 dependency.
+Running the binary, with the proper flag values, registers the gateway to the parent making it visible in Sense Dash.  Once running, the gateway will auto-update its internal set of rules and configuration settings and listen on the given port for incoming sensor data.  The Gateway operates using the same REST API interface as the Sense Ingress API.  For example, to register a device with the gateway:
 
-Run:
-```sudo apt-get install sqlite3```
+```bash
+curl -X POST http://localhost:8080/v1/registration -d `{
+  "apiKey": "12345ABCDEF",
+  "properties": {
+    "model": "iPhone",
+    "type": "iOS"
+  }
+}`
+```
 
-### Running the Gateway
-Once the prerequisites have been completed, you can run the gateway. Either schedule the gateway as a service or execute the binary to start the gateway.  Right away, the gateway will register with its parent and begin listening on its assigned port.
+To send event data to the gateway:
 
-### Connecting a Device
-Now that the gateway is up and running, you’ll want to connect a device.  To do this, you’ll first want to make sure that the device has a Sixgill Agent installed.  If this is complete, then you’ll need to configure the Agent to talk to the gateway.  Depending on your local network setup, this will be the local intranet address and port running the Sixgill Gateway.
-
-
-## Putting it all Together
-Now that you have your device connected to your gateway, you may want certain rules to run on your new gateway. Log in to the Sixgill Dashboard and make a new Edge Rule. Specify the Gateway ID, and within minutes you’ll have your new rule running on the edge.
+```bash
+curl -X POST http://localhost:8080/v1/events -d `{
+  "timestamp": 1529462707,
+  "locations": [
+    {
+      "timestamp": 1529462707,
+      "latitude": 43.09569324585551,
+      "longitude": -77.5658711003336,
+      "velocity": 12.2,
+      "course": 77.9,
+      "accuracy": 10.4
+    }
+  ]
+}`
+```
