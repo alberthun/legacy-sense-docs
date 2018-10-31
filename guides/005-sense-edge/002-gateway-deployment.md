@@ -55,3 +55,5 @@ curl -X POST http://localhost:8080/v1/events -d `{
   ]
 }`
 ```
+
+Check out our documentation on rules to get a full sense of what's possible with the Sense Gateway's edge computing capabilities. 
