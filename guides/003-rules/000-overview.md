@@ -35,10 +35,10 @@ Location conditions are based on the proximity of device's around a landmark. A 
 
 **When will the event happen?**   
 First select WHEN the event will trigger in relation to the landmark.  
-a) Inside Area - Trigger when device is inside this landmark
-b) Exit Area - Trigger when the device was previously inside this landmark, and then leaves it   
-c) Enter Area - Trigger when the device was previously outside this landmark, and then enters it    
-d) Outside Area - Trigger when the device is outside this landmark  
+- Inside Area - Trigger when device is inside this landmark
+- Exit Area - Trigger when the device was previously inside this landmark, and then leaves it   
+- Enter Area - Trigger when the device was previously outside this landmark, and then enters it    
+- Outside Area - Trigger when the device is outside this landmark  
 
 **Which location do you want the event to trigger from?**  
 Next, select the landmark for this condition

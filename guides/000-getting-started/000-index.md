@@ -6,7 +6,7 @@ description: "A guide for on-boarding users and devices onto the Sense platform"
 ## Creating an Account
 You will need an account to get started with Sixgill Sense. You can sign up one of two ways: you will either create your organization OR you will be invited to an existing one. If you are creating own organization, follow these steps. If you are joining an organization created by someone else, skip to [Joining an Existing Organization](#joining-an-existing-organization)
 
-1.  Go to [sense-dashboard.sixgill.com](http://dash.sixgill.com) and sign up for an account. You will be required to validate your email address.
+1.  Go to [dash.sixgill.com](http://dash.sixgill.com) and sign up for an account. You will be required to validate your email address.
     
 2.  Once you are signed in, you can add other users to your organization through the Admin tab.
 

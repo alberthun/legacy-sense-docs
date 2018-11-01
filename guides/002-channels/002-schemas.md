@@ -12,13 +12,10 @@ To connect IoT devices, you will first need to define a custom schema. You can s
 To create a schema through the dashboard
 1. Go to **Channels**
 2. In the left sidebar under Schemas, click **+ Add Schema**
-
 ![](./images/schema_add_schema.png)
 
 3. **Name & Details** - Enter a name for the schema in "Name" field
 4. **Define Fields** - Use this section to specify the format of your schema
-
-
 Here is a simple example:
 To define a schema for a JSON payload such as
 ```json
@@ -32,19 +29,11 @@ add each attribute individually under the **Define Fields** section.
 - Click **Add new attribute**  
 - In the **Attribute Location** drop-down, ensure that "root" is selected
 - In the **Attribute Identifier** field, enter "data"
-- In the **Data Type** drop-down, select "Object"
+-In the **Data Type** drop-down, select "Object"
 - Click **Create Attribute** 
-Next, add the second attribute named "tempF" the same way:  
-- Click **Add new attribute**
-- In the **Attribute Location** drop-down, select "data"
-- In the **Attribute Identifier** field, enter "tempF"
-- In the **Data Type** drop-down, select "Integer"
-- Click **Create Attribute**
+Next, add the second attribute named "tempF" the same way.
 
-Add the final attribute named "humidity" in a similar manner. 
-
-5. When finished, click **Create Schema**  Your schema should look like the following:
-
+Add the final attribute named "humidity" in a similar manner. When finished, click **Create Schema**  Your schema should look like the following:
 ![](images/schema_json_example.png)
 
 Schemas can also be created using the API.

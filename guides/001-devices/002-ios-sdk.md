@@ -29,7 +29,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-pod 'SixgillSDK', '~> 1.2.2'
+pod 'SixgillSDK', '~> 1.2.5'
 end
 ```
 
