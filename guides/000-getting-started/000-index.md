@@ -33,8 +33,8 @@ To send sensor data to the platform using the Ingress API or the mobile SDKs, yo
 3. Copy an existing key from **Api Keys** section, or click **Generate New ApiKey** to create another for that channel.
 
 This API key is then used for SDK authentication: 
-- [iOS SDK initialization](/guides/devices/ios-sdk#sdk-initialization)
-- [Android SDK initialization](/guides/devices/android-sdk#sdk-initialization)
+- [iOS SDK initialization](/guides/sdks/ios-sdk#sdk-initialization)
+- [Android SDK initialization](/guides/sdks/android-sdk#sdk-initialization)
 
 ...or if registering a device with the Ingress API directly:
 [Ingress Registration](/apis/ingress#tag/Register/paths/~1v1~1registration/post)
@@ -71,12 +71,12 @@ Device sensor data is ingested into Sense through the [Ingress API](/apis/ingre
 
 ### iOS SDK
 
-[Sixgill Reach iOS SDK and User Guide](/guides/devices/ios-sdk)
+[Sixgill Reach iOS SDK and User Guide](/guides/sdks/ios-sdk)
 *updated October 28th, 2018*
 
 ### Android SDK
 
-[Sixgill Reach Android SDK and User Guide](/guides/devices/android-sdk)
+[Sixgill Reach Android SDK and User Guide](/guides/sdks/android-sdk)
 *updated October 28th, 2018*
   
 ### Sixgill Sync 2.0
