@@ -110,7 +110,7 @@ SDK behavior and settings can be set by passing an object of `ReachConfig` as th
 You can set properties in `ReachConfig` object for different purposes. Following are all the options used in `ReachConfig`:
 
 #### Set Device Aliases
-`Aliases` is a `Map` of `String` key-value pairs where key can be any consistent string with a value unique to each device. It can be Phone Number, IMEI, MAC Address etc. Aliases help the Sense Platform uniquely identify each device over multiple sessions and reinstalls, thus keeping all the data from one device at single place.
+`Aliases` is a `Map` of `String` key-value pairs where key can be any consistent string with a value unique to each device. It can be Phone Number, IMEI, MAC Address etc. Aliases help the Sense Platform uniquely identify each device over multiple sessions and reinstalls, thus keeping all the data from one device under a single ID.
 
 ```java
 Map<String, String> aliases = new HashMap<>();

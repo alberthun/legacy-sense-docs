@@ -59,73 +59,73 @@ Fields:
 Rules trigger one or more actions when an event occurs. Available actions include sending an SMS, a push notification to a device, sending an email, or invoking a webhook. 
 
 ### push
-  Sends a push notification to the triggering mobile device. *Requires a mobile app using the Reach SDK.*
+Sends a push notification to the triggering mobile device. *Requires a mobile app using the Reach SDK.*
 
-  Fields:
-  * type - "push"
-  * subject - (string) the subject content of the push message
-  * message - (string) the body of the push message. [Templates](http://docs.sixgill.com/templates.html) can be used which will be replaced dynamically when the rule is triggered
+Fields:
+* type - "push"
+* subject - (string) the subject content of the push message
+* message - (string) the body of the push message. [Templates](http://docs.sixgill.com/templates.html) can be used which will be replaced dynamically when the rule is triggered
 
-  Example:
-  ```json
-  "actions": [{
-          "type": "push",
-          "subject": "Welcome to the gym!",
-          "message": "Have a great workout"
-  }]
-  ```
+Example:
+```json
+"actions": [{
+        "type": "push",
+        "subject": "Welcome to the gym!",
+        "message": "Have a great workout"
+}]
+```
 
 ### email
-  Sends an email to one or more recipients when the rule is triggered.
+Sends an email to one or more recipients when the rule is triggered.
 
-  Fields:
-  * type - "email"
-  * subject - (string) the subject content of the email
-  * message - (string) the body of the email. [Templates](http://docs.sixgill.com/templates.html) can be used which will be replaced dynamically when the rule is triggered
-  * recipients - an object specifying an array of email addresses to send to when the rule is triggered
+Fields:
+* type - "email"
+* subject - (string) the subject content of the email
+* message - (string) the body of the email. [Templates](http://docs.sixgill.com/templates.html) can be used which will be replaced dynamically when the rule is triggered
+* recipients - an object specifying an array of email addresses to send to when the rule is triggered
 
-  Example:
-  ```json
-  "actions":[{
-    	"type": "email",
-    	"subject": "entering gym",
-    	"message": "have a great workout",
-    	"recipients": {
-    		"emails": ["test@test.com"]
-  	}
-  }]
-  ```
+Example:
+```json
+"actions":[{
+  	"type": "email",
+  	"subject": "entering gym",
+  	"message": "have a great workout",
+  	"recipients": {
+  		"emails": ["test@test.com"]
+	}
+}]
+```
 
 ### webhook 
-  Invokes a webhook to a web service. This is typically used to send HTTP requests to external systems when a rule is triggered.
+Invokes a webhook to a web service. This is typically used to send HTTP requests to external systems when a rule is triggered.
 
-  Fields:
+Fields:
 
-  * type - "webhook"
-  * method - (required) POST, PUT, PATCH, DELETE
-  * headers - (optional) An object specifying the request headers. See example below.
-  * url - (required) the URL of the request. [Templates](http://docs.sixgill.com/templates.html) can be used which will be replaced dynamically when the rule is triggered
-  * body - (optional) the request payload. [Templates](http://docs.sixgill.com/templates.html) can be used which will be replaced dynamically when the rule is triggered
-  * username - (optional) username for authorization
-  * password - (optional) password for authorization
+* type - "webhook"
+* method - (required) POST, PUT, PATCH, DELETE
+* headers - (optional) An object specifying the request headers. See example below.
+* url - (required) the URL of the request. [Templates](http://docs.sixgill.com/templates.html) can be used which will be replaced dynamically when the rule is triggered
+* body - (optional) the request payload. [Templates](http://docs.sixgill.com/templates.html) can be used which will be replaced dynamically when the rule is triggered
+* username - (optional) username for authorization
+* password - (optional) password for authorization
 
-  > The following example sends a POST request to https://sixgill.com with a simple JSON payload. 
+> The following example sends a POST request to https://sixgill.com with a simple JSON payload. 
 
-  Example:
-  ```json
-  "actions":[{ 
-           "type":"webhook",
-           "method":"POST",
-           "headers":{ 
-              "header":"Content-Type",
-              "value":"text/json"
-           },
-           "url":"https://sixgill.com",
-           "body":"{\"test\": \"test\"}",
-           "username":"username",
-           "password":"password"
-  }]
-  ```
+Example:
+```json
+"actions":[{ 
+         "type":"webhook",
+         "method":"POST",
+         "headers":{ 
+            "header":"Content-Type",
+            "value":"text/json"
+         },
+         "url":"https://sixgill.com",
+         "body":"{\"test\": \"test\"}",
+         "username":"username",
+         "password":"password"
+}]
+```
 
 ### SMS
 Sends an SMS to the specified recipient telephone numbers.
@@ -241,39 +241,84 @@ Example:
 ### Scheduling
 Schedules are optional date/time parameters that define when the rule is valid. By default, the rule will be enabled within 5 mminutes of activation and will run indefinitely until it is disabled.
 
-Schedules parameters be defined in the **conditionsObject** as an item joined to other conditions with an "and" clause. The following conditionsObject describes an insideLandmark rule that only applies from September 26, 2018 to October, 6, 2018, from 9am to 5pm Monday to Fridays, in the New York timezone. Timezone is specified under the rule's "properties" object. 
+Schedules parameters be defined in the **conditionsObject** as an item joined to other conditions with an "and" clause. The following conditionsObject describes an enter landmark rule that only applies from September 26, 2018 to October, 6, 2018, from 9am to 5pm Monday to Fridays, in the New York timezone. Timezone is specified under the rule's "properties" object. 
 
 
-* date - to and from dates when the rule is valid, in milliseconds
-* weekdays - days when the rule is valid (0 = sunday, 1 = monday, etc)
-* timeOfDay - to and from hours of the day when the rule is valid, in seconds from midnight
+* date - to and from dates when the rule is valid, in ISO 8601 date format
+* weekDays - days when the rule is valid (0 = Sunday, 1 = Monday, etc)
+* minutesOfDay - to and from hours of the day when the rule is valid, in seconds from midnight
 
 Example:
 ```json
-"conditionsObject": [{
+"conditionsObject": [
+  {
     "type": "and",
-    "items": [{
-      "type": "schedule",
-      "date": {
-        "from": 1537977600000,
-        "to": 1538841600000
+    "items": [
+      {
+        "date": {
+          "to": "2018-11-09T11:00:00.000Z", // date rule expires
+          "from": "2018-11-08T11:00:00.000Z" // date rule takes effect
+        },
+        "type": "schedule",
+        "timezone": "Europe\/Amsterdam",
+        "weekDays": [ // days when the rule is valid (0 = Sunday, 1 = Monday, etc)
+          1,
+          0,
+          2,
+          3,
+          4
+        ],
+        "minutesOfDay": { // time of day when rule is enabled
+          "to": 630, // ends at 10:30 
+          "from": 600 // starts at 10
+        }
       },
-      "weekDays": [1, 2, 3, 4, 5],
-      "timeOfDay": {
-        "from": 32400,
-        "to": 61200
+      {
+        "type": "and",
+        "items": [
+          {
+            "ids": [
+              "01CVM7VQ5J5PSMJ46F5S1YATSN"
+            ],
+            "type": "landmark",
+            "trigger": "inside",
+            "attribute": "event.payload.location.position",
+            "channelId": "01CV0MRZF3FM06GCKSFKMDZXHG",
+            "description": "When device from \"test3\" is inside landmark \"Javastraat 134\""
+          }
+        ]
       }
-    }, {
+    ]
+  }
+]
+```
+
+The attribute condition can also be used to check the payload timestamp.
+Example:
+```json
+"conditionsObject": [
+    {
       "type": "and",
-      "items": [{
-        "attribute": "event.location.position",
-        "channelId": "01CRDS6EJC9SHVADJWCVXB0V45",
-        "type": "landmark",
-        "trigger": "enter",
-        "ids": ["01CRF31GB0JTX2392AJMTHDME0"]
-      }]
-    }]
-  }]
+      "items": [
+        {
+          "type": "schedule",
+          "timezone": "Europe\/Amsterdam"
+        },
+        {
+          "type": "and",
+          "items": [
+            {
+              "type": "attribute",
+              "value": 1,
+              "operator": "==",
+              "attribute": "event.payload.location.timestamp",
+              "channelId": "01CV0MRZF3FM06GCKSFKMDZXHG"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 ```
 
 Schedule parameters can also be defined using an advanced Javascript condition **conditions**.

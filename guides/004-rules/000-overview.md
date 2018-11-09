@@ -25,7 +25,9 @@ Rules are at the heart of device interactivity within the Sense platform. Rules
 - **AND** is selected by default, meaning the device will need to satisfy all conditions to trigger the rule. For example, a device needs to be inside a landmark AND also be an iOS device to trigger the rule.  
 - **OR** can be used if the device only needs to satisfy one condition to trigger the rule. For example, a device needs to either be inside a landmark OR be an iOS device to trigger the rule.
 
-3. In the Add-Condition drop-down, select **Add Match Attribute Condition** or **Add Location Condition**
+3. In the Add-Condition drop-down, select **Add Attribute Condition** or **Add Location Condition**
+
+4. Be sure to **Select Channel** in the drop-down. This will determine which channel or data source the rule will be evaluated against.
 
 #### Adding a Location Condition
  
@@ -55,7 +57,7 @@ For testing purposes, we recommend adding a landmark around your current geograp
 
 Landmarks for the project can also be created separately in the **Landmarks** section. You can then select these landmarks when creating a rule under **Select From Project Landmarks**.
 
-#### Adding a Match Attribute Condition
+#### Adding an Attribute Condition
 
 Attribute conditions evaluate a certain property within the sensor data stream, known as **attributes**, and compare it against some value. 
 
