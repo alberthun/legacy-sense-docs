@@ -1,3 +1,3 @@
 ---
-title: Sense Edge AI
+title: Sense Edge
 ---

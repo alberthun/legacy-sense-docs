@@ -69,9 +69,9 @@ Fields:
 Example:
 ```json
 "actions": [{
-        "type": "push",
-        "subject": "Welcome to the gym!",
-        "message": "Have a great workout"
+  "type": "push",
+  "subject": "Welcome to the gym!",
+  "message": "Have a great workout"
 }]
 ```
 
@@ -87,11 +87,11 @@ Fields:
 Example:
 ```json
 "actions":[{
-  	"type": "email",
-  	"subject": "entering gym",
-  	"message": "have a great workout",
-  	"recipients": {
-  		"emails": ["test@test.com"]
+	"type": "email",
+	"subject": "entering gym",
+	"message": "have a great workout",
+	"recipients": {
+		"emails": ["test@test.com"]
 	}
 }]
 ```
@@ -114,16 +114,16 @@ Fields:
 Example:
 ```json
 "actions":[{ 
-         "type":"webhook",
-         "method":"POST",
-         "headers":{ 
-            "header":"Content-Type",
-            "value":"text/json"
-         },
-         "url":"https://sixgill.com",
-         "body":"{\"test\": \"test\"}",
-         "username":"username",
-         "password":"password"
+  "type":"webhook",
+  "method":"POST",
+  "headers":{ 
+    "header":"Content-Type",
+    "value":"text/json"
+  },
+  "url":"https://sixgill.com",
+  "body":"{\"test\": \"test\"}",
+  "username":"username",
+  "password":"password"
 }]
 ```
 
@@ -145,7 +145,7 @@ Example:
 	}
 }]
 ```   
-
+  
 ## Conditions
 Conditions for the rule are specified either using the advanced, free-form style, or using a more simple, structured format of the **conditionsObject**. Rules created with conditionsObjects will automatically be translated into their free-form condition. Conditions are composed of one or more items joined with boolean operators to form a logical expression that can be evaluated.
 
@@ -161,25 +161,25 @@ Description:
 Example:
 ```json
  {
-	  "type": "and",
-	  "items": [
-	    {
-	      "ids": [
-	        "01CRBK63PB7DR1419M76VR6KC9"
-	      ],
-        "type": "landmark",
-        "trigger": "enter",
-	      "attribute": "event.location.position",
-	      "channelId": "01CRBG7HVM0KW8PEX1HK7VZSZR"
-	    },
-	    {
-	      "type": "matchAttribute",
-	      "value": "something",
-	      "operator": "==",
-	      "attribute": "event.location.velocity",
-	      "channelId": "01CRBG7HVM0KW8PEX1HK7VZSZR"
-	    }
-      ]
+  "type": "and",
+  "items": [
+    {
+      "ids": [
+        "01CRBK63PB7DR1419M76VR6KC9"
+      ],
+      "type": "landmark",
+      "trigger": "enter",
+      "attribute": "event.location.position",
+      "channelId": "01CRBG7HVM0KW8PEX1HK7VZSZR"
+    },
+    {
+      "type": "matchAttribute",
+      "value": "something",
+      "operator": "==",
+      "attribute": "event.location.velocity",
+      "channelId": "01CRBG7HVM0KW8PEX1HK7VZSZR"
+    }
+    ]
 }
 ```
 
@@ -284,7 +284,7 @@ Example:
             "trigger": "inside",
             "attribute": "event.payload.location.position",
             "channelId": "01CV0MRZF3FM06GCKSFKMDZXHG",
-            "description": "When device from \"test3\" is inside landmark \"Javastraat 134\""
+            "description": "When device from \"test3\" is inside landmark \"Anylane 123\""
           }
         ]
       }
