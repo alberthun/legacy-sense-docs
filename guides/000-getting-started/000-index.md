@@ -20,8 +20,13 @@ Once you have been invited to join an existing organization, you will receive an
 
 ![](images/dash_accept_invite.png)
 
-## Channels
-A data Channel is a source of data that flows into the Sense platform. For example, a Channel could include all iOS devices with an app that uses the Sense Reach iOS SDK. Channels are collections of mobile apps that use the Sense SDKs, or of any other devices that write to the Sense Ingress API. See [Channels Overview](/guides/channels/overview) for more information on creating and using channels.
+## Creating Channels
+A data channel is a type of data that connects to the Sense platform. For example, a channel could include all iOS devices with an app that integrates the Reach SDK. Channels respresent types of data that write to the Sense Ingress API. See [Channels Overview](/guides/channels/overview) for more information on creating and using channels.
+
+## Choose Your Integration
+
+1. API
+2. Reach SDK - 
 
 ## API Authentication
 
@@ -89,8 +94,8 @@ Users can also demo the mobile SDK capabilities by using the Sixgill Sync 2.0 de
 _Updated Sync 2.0 apps for both platforms to be released November 2018_
 
 Pre-reqs:
-A dashboard account. See [Creating an Account](#creating-an-account) for details
-A [Channel](#channels) for your device type.
+* A dashboard account. See [Creating an Account](#creating-an-account) for details
+* A [Channel](#channels) for your device type.
 
 1. Download and open the app on your device.
 2. Accept the Terms of Service.
