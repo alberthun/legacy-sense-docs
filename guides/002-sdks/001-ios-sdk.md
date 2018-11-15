@@ -120,7 +120,7 @@ config.ingressURL = "YOUR_INGRESS_URL"; //defaults to Sense Production URL
 ```
 
 #### Send Event Data to External Servers
-If you wish to send data to your own servers, use **shouldSendDataToServer** to disabling sending to Sense servers but instead just broadcast them to the app and delete from local database:
+If you wish to send data to your own servers, use **shouldSendDataToServer** to disable sending to Sense servers but instead just broadcast it to the app, then delete from local database:
 ```objc
 SGSDKConfigManager *config = [[SGSDKConfigManager alloc] init];
 config.shouldSendDataToServer = false; //defaults to true
@@ -128,7 +128,7 @@ config.shouldSendDataToServer = false; //defaults to true
 [[SGSDK sharedInstance] startWithAPIKey:"YOUR_API_KEY" andConfig:config];
 ```
 
-The app can then [get the sensor data](#getting-sensor-data-events) and handle the networking to send the data to an external endpoint.
+The app can then [get the sensor data](#getting-sensor-data-events) to perform some other action, such as routing it to an external endpoint.
 
 #### Using the Reach Callback
 A version of the method is available that lets you asynchronously intercept if the initialization was successful or not:
