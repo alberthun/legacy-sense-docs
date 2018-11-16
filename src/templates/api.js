@@ -9,7 +9,7 @@ class Api extends React.Component {
     const { id } = this.props.pageContext;
     const url =
       id === 'ingress'
-        ? '/ingress.json'
+        ? `//${window.location.host}/ingress.json`
         : 'https://sense-api-node.staging.sixgill.io/openapi.json';
     const interval = setInterval(() => {
       if (window.Redoc) {
