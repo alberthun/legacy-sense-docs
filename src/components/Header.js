@@ -103,7 +103,7 @@ const Offset = ({ fixed, children }) =>
 
 export default ({ currentPath, fixed, nav }) => (
   <Offset fixed={fixed}>
-    <Header fixed={fixed}>
+    <Header className="topNav" fixed={fixed}>
       <Logo>
         <Link to="/">
           <img
@@ -120,9 +120,7 @@ export default ({ currentPath, fixed, nav }) => (
             verticalAlign: 'top'
           }}
         >
-          <a href="/">
-            Developer Documentation
-          </a>
+          <a href="/">Developer Documentation</a>
         </h5>
       </Logo>
       {!nav ? (

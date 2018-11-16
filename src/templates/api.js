@@ -18,7 +18,8 @@ class Api extends React.Component {
       window.Redoc.init(
         `${url}?version=${Date.now()}`,
         {
-          scrollYOffset: 114
+          scrollYOffset: '.topNav',
+          nativeScrollbars: true
         },
         document.getElementById('redoc'),
         (er) => {
