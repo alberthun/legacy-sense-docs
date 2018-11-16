@@ -169,6 +169,8 @@ ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
 [SGSDK setPushToken:hexToken];
 ```
 
+### Save Events (required) 
+
 In your app delegate's `applicationWillTerminate` method, add the following code to store events in offline mode:
 ```objc
 [SGSDK saveCoreDataContext]
