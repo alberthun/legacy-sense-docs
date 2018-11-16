@@ -15,9 +15,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "apiKey"
-                ],
+                "required": ["apiKey"],
                 "properties": {
                   "apiKey": {
                     "example": "12345ABCDEF",
@@ -35,9 +33,7 @@
             }
           }
         },
-        "tags": [
-          "Register"
-        ],
+        "tags": ["Register"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -70,9 +66,7 @@
       "post": {
         "summary": "Send sensor data from mobile devices using the SDK",
         "description": "Mobile devices can create “events” that fire on a cadence specified in their configuration. Events send information on a device’s location, power and activity state, as well as timestamped readings of nearby beacons and wifis. Since events fire “updates” in FIFO order, downstream data processing can assume that each new update is the most recent. Updates do not include event configuration, device properties or user attributes unless one of them has changed since the last update. NOTE: timestamp is specified in milliseconds",
-        "tags": [
-          "Mobile"
-        ],
+        "tags": ["Mobile"],
         "requestBody": {
           "required": true,
           "content": {
@@ -170,9 +164,7 @@
       "get": {
         "summary": "Get the device's configuration",
         "description": "The Ingress API assigns every mobile device a configuration. This configuration specifies whether or not the device’s SDK should be enabled; how often the device should send data, or its collection cadence; what type of sensors it should use; and how long its local data should persist, or its event TTL.",
-        "tags": [
-          "Mobile"
-        ],
+        "tags": ["Mobile"],
         "responses": {
           "200": {
             "description": "",
@@ -220,8 +212,8 @@
     },
     "/v1/mobile/ibeacons": {
       "get": {
-        "summary": "Get the device's configuration",
-        "description": "The beacons endpoint returns the beacons to be whitelisted for the device. The limit of beacons to return can be specified using the ‘count’ query string parameter. *In order to listen for beacon UUIDs, iOS requires that the beacons be whitelisted.*",
+        "summary": "Get ibeacons for ios",
+        "description": "The beacons endpoint returns the beacons to be whitelisted for the device (IOS only). The limit of beacons to return can be specified using the ‘count’ query string parameter. *In order to listen for beacon UUIDs, iOS requires that the beacons be whitelisted.*",
         "parameters": [
           {
             "in": "query",
@@ -232,9 +224,7 @@
             "description": "The max number of beacons to retrieve"
           }
         ],
-        "tags": [
-          "Mobile"
-        ],
+        "tags": ["Mobile"],
         "responses": {
           "200": {
             "description": "",
@@ -263,13 +253,11 @@
         }
       }
     },
-    "/v1/iot/events": {
+    "/v1/events": {
       "post": {
         "summary": "Send sensor data from IoT devices",
         "description": "IoT devices can send sensor data events to this endpoint for ingestion into the Sense pipeline.",
-        "tags": [
-          "Mobile"
-        ],
+        "tags": ["Mobile"],
         "requestBody": {
           "required": true,
           "content": {
