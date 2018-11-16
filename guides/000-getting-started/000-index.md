@@ -20,12 +20,12 @@ Once you have been invited to join an existing organization, you will receive an
 
 ![](images/dash_accept_invite.png)
 
-## Channels
-A data Channel is a source of data that flows into the Sense platform. For example, a Channel could include all iOS devices with an app that uses the Sense Reach iOS SDK. Channels are collections of mobile apps that use the Sense SDKs, or of any other devices that write to the Sense Ingress API. See [Channels Overview](/guides/channels/overview) for more information on creating and using channels.
+## Creating a Channel
+A data channel is a type of data that flows into the Sense platform. A channel could consist of all iOS devices with an app that integrates the Reach SDK, or a specific sensor type. In general, are collections of devices that write to the Sense Ingress API. Creating a channel is the first step in connecting devices to the platform. See [Channels Overview](/guides/channels/overview) for more information on creating and using channels.
 
-## API Authentication
+## Authentication
 
-### Authenticating Devices
+### Devices API Keys
 To send sensor data to the platform using the Ingress API or the mobile SDKs, you will need to authenticate using an API key for the respective channel - eg, iOS devices use an iOS channel, IoT devices use an IoT channel, etc. You can get these keys from the **Channels** section on the dashboard.
 
 1. In the dashboard, go to Channels
@@ -45,26 +45,6 @@ The Sense API authenticates requests with a user-specific JSON web token through
 
 To get this token, the user makes a POST /v2/login request with their email and password combination. These are the same credentials used to log into your account on the dashboard.
 
-## Configuring a Channel for Push
-In order to receive Push notifications, the Channel will need to be configured with mobile keys depending on the app you are using to stream data. For iOS, you will need to upload the Push certificate for your app as a **.p12 file**. For Android, you will need the Firebase key or Google Cloud Messaging key used by the app.
-
-1. Go to Channels
-2. Select the mobile channel you wish to add mobile keys for.
-3. Click **Manage Mobile Keys** at the top right corner  
-
-### Apple Push ###
-- If this is an iOS channel, select the type of Environment this certificate is configured for - **Development** or **Production**. This needs to match the certificate type for Push to work so double-check that you have selected the correct option.
-- Click "Choose File" and select the .p12 file from your system.
-- Click **Save**  
-The certificate type should be listed on the left.
-
-### Android Push ###
-- If this is an Android channel, select the messaging type you will be using - **Google Cloud Messaging** or **Firebase Cloud Messaging**. This needs to match the messaging type used by the app, so double-check that you have selected the correct option.
-- Enter the API key
-- Click **Save**  
-The selected messaging type should be listed on the left.
-
-_Note: If you are using the Sync 2.0 demo app and would like to test the Send Push action, please contact support@sixgill.com to configure your Channel with the proper push certificate_  
 
 ## Connecting Devices
 Device sensor data is ingested into Sense through the [Ingress API](/apis/ingress). For Android and iOS devices, this can be done by integrating the Reach SDK into a mobile app. The SDK handles sensor gathering at configurable intervals, and automatically sends the data to the Ingress API. The Sixgill Sync 2.0 demo app uses the Reach SDK as well as the Sense API to showcase the sensor ingestion capabilities of the platform. **The SDKs are authenticated using the [API keys](##api-keys) for their respective channels.**
@@ -108,31 +88,29 @@ A [Channel](#channels) for your device type.
 You will know that Sync is connected by checking your Log tab. This will begin to populate with events being emitted from the device to the Sense platform.
   
 
-### IoT Devices
+### Connecting Other Devices (IoT devices, Sensors)
 
-The platform is able to ingest generic IoT sensor data. Developers will need to use the [Ingress API](/apis/ingress) to send data to the IoT events endpoint.
+The platform is able to ingest generic sensor data. Use the IoT Devices channel type to connect all other devices. Developers can use the [Ingress API](/apis/ingress) directly to send data to the IoT events endpoint, or run a [Reach Edge Agent](/guides/sense-edge/gateway-deployment) on a gateway device.
 
-1. [Schemas](/guides/channels/schemas) are required in order to make the most of your sensor data. Contact [support@sixgill.com](mailto:support@sixgill.com) with any questions regarding setting up your channel for IoT data.
+1. [Schemas](/guides/channels/schemas) are required in order to make the most of your sensor data. Contact [support@sixgill.com](mailto:support@sixgill.com) with any questions regarding setting up your schema for data ingestion.
 2. Create an **IoT Devices** Channel if you do not have one already and select the Schema you created.
 3. Use the Channel API keys to register your IoT device. Use the JSON Web Token in the response to authenticate your future requests.
-4. You can begin sending sensor data to the IoT events endpoint using a gateway or other agent.  
+4. You can begin sending sensor data to the IoT events endpoint.  
 
 See the IoT Events section of the [Ingress API](/apis/ingress#/Mobile/post_v1_iot_events) docs for more information.
   
-#### Schemas
+#### Setting up Schemas
 
-Device data needs to be mapped to fields so you can trigger rules and view analytics. This is done using [Schemas](/guides/channels/schemas). Mobile devices (iOS, Android) have predefined schemas that you can use with our SDK that don't require configuration.
-
-For IoT devices you need to first create a custom schema. You can send any kind of data with IoT devices. It is recommended that you generate IoT schema based on your event payload. Once your schema is defined you can use it in a Channel and see data being ingested. You can update a schema if necessary at a later time.
+In the Sense platform, the structure of device data is mapped to fields and data types in order to perform functions such as triggering rules and generating analytics. This is done using [Schemas](/guides/channels/schemas). Mobile devices (iOS, Android) use predefined schemas that are compatible with the Reach SDK.
 
 
-## Rules
+## Adding Rules
 Rules are at the heart of device interactivity within the Sense platform. Rules define conditions around devices and sensor data and specify the actions to trigger when the conditions are met. For example, devices entering a geofence or coming within range of a beacon could trigger a notification to another device, send an email to a recipient, or post data to another web service. Rules can be complex and perform multiple actions or include data from multiple channels.
 
 See the [Rules overview](/guides/rules/overview) for more information on creating rules.
 
 
-## Landmarks
-Landmarks are geographical points of interest (POIs) defined by a perimeter. Landmarks can be used as conditions to rules that evaluate a device's proximity to an area. A rule may check if a device has entered, exited, is inside, or outside the landmark. The Landmark API provides several options for defining landmarks.
+## Adding Landmarks
+Landmarks, also known as geofences, are geographical points of interest (POIs) defined by a perimeter. Landmarks can be used as conditions to rules that evaluate a device's proximity to an area. A rule may check if a device has entered, exited, is inside, or outside the landmark. The Landmark API provides several options for defining landmarks.
 
 See the [Landmarks overview](/guides/landmarks/overview) for more information on adding landmarks.

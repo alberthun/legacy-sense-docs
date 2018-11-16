@@ -5,7 +5,7 @@ description: "Data mapping to help you make Sense of your data"
 
 In order to provide the most optimal rule evaluation and analytics features, the data coming through the channel need to be mapped to specific data types. This mapping is done using schemas assigned to each channel. A schema defines what the fields in your sensor data payloads represent. For example, you may want to define that a specific field is an integer so that you can trigger a rule when that value reaches above or below a certain threshold. Mobile devices (iOS, Android) that connect using the Reach SDKs will use predefined schemas which are automatically assigned to the iOS and Android channels. No additional configuration is needed for mobile devices that connect using the SDK.
 
-To connect IoT devices, you will first need to define a custom schema. You can send any kind of data with IoT devices, but it is recommended that you generate the schema based on the event payload being sent by the device. Once your schema is defined you can assign it to your IoT channel which will allow the data to be ingested. You can update a schema if necessary at a later time.
+For all other devices connecting to the platform using an IoT devices channel, a custom schema is required. Since any kind of data can be sent, and it is recommended that you generate the IoT schema based on your event payload. Once your schema is defined you can assign it to a channel to begin streaming events. You can update a schema if necessary at a later time.
 
 ## Creating a Schema
 

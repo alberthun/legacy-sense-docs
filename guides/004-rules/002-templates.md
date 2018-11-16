@@ -41,7 +41,7 @@ The Template Data Model is the structured data that's fed into the templates. He
 
 Field|Type|Description|Usage
 -|-|-|-
-ID| string | Unique Identifier (String) | {{.Device.String}}
+ID| string | Unique Identifier (String) | {{.Device.ID}}
 CreatedAt | time.Time | When the device was created | {{.Device.CreatedAt}}
 UpdatedAt | time.Time | When the device was update | {{.Device.UpdatedAt}}
 Manufacturer | string | Name of the manufacturer | {{.Device.Manufacturer}}

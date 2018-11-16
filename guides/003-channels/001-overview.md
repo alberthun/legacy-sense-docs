@@ -3,9 +3,11 @@ title: Channels Overview
 description: "Using Channels in Sense"
 ---
 
-A data channel is a source of data that is connected to the Sense platform. For example, a channel could include iOS devices running a Reach-enabled app. Channels are collections of mobile devices enabled with the Reach SDK, or other devices that connect to the Sense Ingress API or Reach Edge agent (gateway).
+A data channel is a type of data that flows into the Sense platform. A channel could consist of all iOS devices with an app that integrates the Reach SDK, or a specific sensor type. Channels are created based on the type of device that will connect to it. A channel can be of type iOS, Android, or IoT. 
 
-Channels are created based on the type of device that will connect to it. A channel can be of type iOS, Android, or IoT. Each channel uses its own API key for authentication.
+Creating a channel is the first step in connecting devices to the platform.
+
+_Note: Each channel uses its own API key for authentication._
 
 ## Creating a Channel
 
@@ -29,7 +31,28 @@ This will create a Channel for the type of data you wish to ingest.
 3. Edit the name or projects the channel is assigned to. You also have the option to delete the channel. _Note: Deleting a channel will impact the devices connected to it._
 4. Click **Update** when you have completed your changes.
 
-## Channels API
+## Using the Channels API
 
 See the [Channels API docs](/apis/sense-api#tag/channels) for creating and managing channels through the API.
 
+
+## Configuring a Channel for Push
+In order to receive Push notifications, the Channel will need to be configured with mobile keys depending on the app you are using to stream data. For iOS, you will need to upload the Push certificate for your app as a **.p12 file**. For Android, you will need the Firebase key or Google Cloud Messaging key used by the app.
+
+1. Go to Channels
+2. Select the mobile channel you wish to add mobile keys for.
+3. Click **Manage Mobile Keys** at the top right corner  
+
+### Apple Push ###
+- If this is an iOS channel, select the type of Environment this certificate is configured for - **Development** or **Production**. This needs to match the certificate type for Push to work so double-check that you have selected the correct option.
+- Click "Choose File" and select the .p12 file from your system.
+- Click **Save**  
+The certificate type should be listed on the left.
+
+### Android Push ###
+- If this is an Android channel, select the messaging type you will be using - **Google Cloud Messaging** or **Firebase Cloud Messaging**. This needs to match the messaging type used by the app, so double-check that you have selected the correct option.
+- Enter the API key
+- Click **Save**  
+The selected messaging type should be listed on the left.
+
+_Note: If you are using the Sync 2.0 demo app and would like to test the Send Push action, please contact support@sixgill.com to configure your Channel with the proper push certificate_  
