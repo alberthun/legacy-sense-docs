@@ -375,6 +375,9 @@ BroadcastReceiver mEventReceiver = new BroadcastReceiver() {
 
 LocalBroadcastManager manager = LocalBroadcastManager.getInstance(this);
 manager.registerReceiver(mEventReceiver, new IntentFilter(Reach.EVENT_BROADCAST));
+
+// to unregister the listner when not in use or context is destroyed
+manager.unregisterReceiver(mEventReceiver);
 ```
 > Note: to prevent memory leaks, always make sure to unregister receivers when not in use or context is destroyed.
 See [unregistering receivers](https://developer.android.com/reference/android/support/v4/content/LocalBroadcastManager#unregisterReceiver(android.content.BroadcastReceiver))
