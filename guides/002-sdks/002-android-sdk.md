@@ -355,20 +355,29 @@ manager.registerReceiver(pushReceiver, new IntentFilter(Reach.PUSH_BROADCAST));
 
 #### Getting Sensor Data Events
 
-To get the latest `Ingress.Event` generated from the Reach SDK, register broadcast listeners with `IntentFilter` of `Reach.EVENT_BROADCAST`. You'll get the Base64 encoded `Ingress.Event` object in intent payload
+To get the latest `Ingress.Event` generated from the Reach SDK, register [local broadcast](https://developer.android.com/reference/android/support/v4/content/LocalBroadcastManager) listeners with `IntentFilter` of `Reach.EVENT_BROADCAST`. You'll get the Base64 encoded `Ingress.Event` object in intent payload
 
 ```java
 BroadcastReceiver mEventReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            Bundle bundle = intent.getExtras();
-            if (bundle != null) {
-                String encodedEvent = bundle.getString(Reach.EVENT_DATA);
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        Bundle bundle = intent.getExtras();
+        if (bundle != null) {
+            String encodedEvent = bundle.getString(Reach.EVENT_DATA);
+            if(encodedEvent != null) {
                 byte[] b = Base64.decode(encodedEvent, Base64.DEFAULT);
-                Ingress.Event event = Ingress.Event.parseFrom(b);
+                Ingress.Event  event = Ingress.Event.parseFrom(b);
             }
         }
-    };
+    }
+};
+
+
+LocalBroadcastManager manager = LocalBroadcastManager.getInstance(this);
+manager.registerReceiver(mEventReceiver, new IntentFilter(Reach.EVENT_BROADCAST));
+
+// to unregister the listner when not in use or context is destroyed
+manager.unregisterReceiver(mEventReceiver);
 ```
 > Note: to prevent memory leaks, always make sure to unregister receivers when not in use or context is destroyed.
-See [unregistering receivers](https://developer.android.com/reference/android/content/Context.html#unregisterReceiver(android.content.BroadcastReceiver))
+See [unregistering receivers](https://developer.android.com/reference/android/support/v4/content/LocalBroadcastManager#unregisterReceiver(android.content.BroadcastReceiver))
