@@ -203,16 +203,6 @@ To stop Reach sensors:
 [SGSDK disable];
 ```
 
-To get Reach logs:
-```objc
-[SGSDK logs];
-```
-
-To clear Reach logs:
-```objc
-[SGSDK clearLogs];
-```
-
 To get Sixgill Device ID:
 ```objc
 [SGSDK deviceId];
@@ -221,18 +211,6 @@ To get Sixgill Device ID:
 To force sensors update:
 ```objc
 [SGSDK forceSensorUpdate];
-```
-
-To get sensor update event location:
-```
-NSArray *locations = [SGSDK sensorUpdateHistory:count];
-
-for (NSDictionary *d in locations) {
-    NSNumber *lat = d[@"lat"];
-    NSNumber *lon = d[@"lon"];
-    float laf = lat.floatValue;
-    float lof = lon.floatValue;
-}
 ```
 
 #### Getting Sensor Data Events
