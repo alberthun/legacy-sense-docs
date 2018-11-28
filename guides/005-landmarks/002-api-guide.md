@@ -4,8 +4,6 @@ title: Landmarks API Guide
 
 Landmarks, or geofences, are geographical points of interest (POIs) defined by a perimeter. Landmarks are often used as a condition of a rule to evaluate a device's proximity to an area. A rule may check if a device has entered, exited, is inside, or outside the landmark. See [Landmark Conditions](/guides/rules/api-guide#landmark-conditions) in the Rules API guide for more information on using landmarks in rules.
 
-*Please double-check your coordinates when creating landmarks via the API. It may be helpful to check the dashboard and verify that they are created in the desired location.*
-
 Example:
 ```json
 {
