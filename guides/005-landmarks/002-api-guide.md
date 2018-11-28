@@ -2,158 +2,106 @@
 title: Landmarks API Guide
 ---
 
-Landmarks are geographical points of interest (POIs) defined by a perimeter. Landmarks can be used as conditions to rules that evaluate a device's proximity to an area. A rule may check if a device has entered, exited, is inside, or outside the landmark. The Landmark API provides several options for defining landmarks.
+Landmarks, or geofences, are geographical points of interest (POIs) defined by a perimeter. Landmarks are often used as a condition of a rule to evaluate a device's proximity to an area. A rule may check if a device has entered, exited, is inside, or outside the landmark. See [Landmark Conditions](/guides/rules/api-guide#landmark-conditions) in the Rules API guide for more information on using landmarks in rules.
 
 *Please double-check your coordinates when creating landmarks via the API. It may be helpful to check the dashboard and verify that they are created in the desired location.*
 
 Example:
 ```json
 {
-    "address": "123 Lane Rd",
-    "model": {
-        "geometry": {
-            "center": {
-                "lat": 34.069076,
-                "lon": -118.444846
-            },
-            "radius": 750
-        },
-        "type": "circle"
-    },
-    "name": "UCLA",
-    "type": "geometry"
+	"shape": {
+		"type": "circle",
+		"radius": 431.24315046869395,
+		"coordinates": [-118.4968901261501, 34.009050781957086]
+	},
+	"name": "Santa Monica circle",
+	"address": null,
+	"projectId": "01CW6N0PAGB2RX3PSRWSM9FDHX"
 }
 ```
 Fields:
-* type - "geometry"
+* shape - (required) A geoshape that defines the bounding area of the landmark. See [Shapes](#shapes) for more information
 * name - (required) Name of the landmark
-* address - (optional) 
-* model - (required) Specifies the geometrical model this landmarks is based on.
-  * geometry - (required) - Specifies the coordinates for this particular shape. [See Geometry Models](#geometry-models) for more information on required fields for each type
-  * type - (required) Shape of this landmark. Must be one of the following: circle, rectangle, polygon   
- 
- 
-## Geometry Models
+* address - (optional) Address of landmark
+* projectId - ID of the project this landmark belongs to
 
-The model describes the geometric shape and geographic location surrounding the perimeter of the landmark.
+ 
+ 
+## Shapes
+
+A model that describes the geometric shape and geographic location surrounding the perimeter of the landmark.
+
+_Please note: This model follows the [Elasticsearch definition of geoshape](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-shape.html). In GeoJSON and WKT, and therefore Elasticsearch, the correct coordinate order is longitude, latitude (X, Y) within coordinate arrays. This differs from many Geospatial APIs (e.g., Google Maps) that generally use the colloquial latitude, longitude (Y, X)._
 
 ### circle
 
-Description: A landmark defined by a circle around a central latitude and longitude. Radius is in **meters**.
+Description: A circle specified by a center point and radius with units in **meters**.
 
 Fields:
 * type - "circle"
-* geometry - (required)
-	* center - the coordinates (lat, long) specifying the center of the circle
-* radius - the radius of the circle in meters
+* radius - distance from the center of the circle to the perimeter
+* coordinates - the geographical points (longitude, latitude) specifying the center of the circle
 
-> The following example creates a circle with a radius of 750m around the point 34.069076, -118.444846.
+> The following example defines a circle around the Santa Monica Pier.
 
 Example:
 ```json
-"model": {
-	"geometry": {
-		"center": {
-			"lat": 34.069076,
-  			"lon": -118.444846
-  		},
-		"radius": 750
-  	},
-	"type": "circle"
+{
+	"type": "circle",
+	"radius": 347.8844954300416,
+	"coordinates": [-118.49735821940999, 34.00862590188913]
 }
 ```
 
-### rectangle
+### envelope
 
-Description: A landmark defined by a rectangle specified by its northwestern (NW) and southeastern (sw) points.
+Description: A landmark defined by a bounding rectangle, or envelope, specified by only the top left and bottom right points.
 
 Fields:
-* type - "circle"
-* geometry - (required)
-	* nw - (required) the coordinates (lat, long) specifying the northwestern most point of this rectangle
-	* sw - (required) the coordinates (lat, long) specifying the southwestern most point of this rectangle
+* type - "envelope"
+* coordinates - the geographical points (longitude, latitude) specifying the top left (northwestern) and the bottom right (southeastern) corner of the bounding rectangle
 	
-> The following example creates a rectangle around Marina Del Rey using the northwestern and southeasten coordinates of the area.
+> The following example defines a rectangle around the Santa Monica Pier using the northwestern and southeasten coordinates of the area.
 	
 Example:
 ```json
-"model": {
-	"geometry": {
-    		"nw": {
-    			"lat": 33.98709612420996,
-			"lon": -118.46703218199536
-    		},
-    		"se": {
-			"lat": 33.96460416426154,
-			"lon": -118.44797776915355
-    		}
-	},
-  	"type": "circle"
+{
+	"type": "envelope",
+	"coordinates": [
+		[-118.49373430430006, 34.00731755046173],
+		[-118.5007295054109, 34.01112402948093]
+	]
 }
 ```
 
 ### polygon
 
-Description: A landmark defined by a polygon specified by a series of points.
+Description: A closed polygon whose first and last point must match, thus requiring n + 1 vertices to create an n-sided polygon and a minimum of 4 vertices.
+
 
 Fields:
 * type - "polygon"
-* geometry - (required)
-	* points - an set of coordinates specifying the perimeter of the polygon
+* coordinates - the geographical points (longitude, latitude) specifying the vertices of the polygon
 
-> The following example creates a polygon around the specified area of the Santa Monica Pier.
+> The following example defines a polygon around the specified area of the Santa Monica Pier.
 
 Example:
 ```json
-"model": {
+{
 	"type": "polygon",
-	"geometry": {
-		"points": [{
-			"lat": 34.00849749651098,
-			"lon": -118.49859443652542
-		}, {
-			"lat": 34.00983154378065,
-			"lon": -118.49699583995255
-		}, {
-			"lat": 34.010498559556034,
-			"lon": -118.49594441401871
-		}, {
-			"lat": 34.00990269237967,
-			"lon": -118.49527922618302
-		}, {
-			"lat": 34.00770595189094,
-			"lon": -118.49803653705033
-		}, {
-			"lat": 34.00781267743858,
-			"lon": -118.49832621562393
-		}, {
-			"lat": 34.00804391566499,
-			"lon": -118.49820819842728
-		}, {
-			"lat": 34.00831962195817,
-			"lon": -118.49847641932877
-		}, {
-			"lat": 34.00725236681703,
-			"lon": -118.49965659129532
-		}, {
-			"lat": 34.007536969499505,
-			"lon": -118.50026813495072
-		}, {
-			"lat": 34.0078304650168,
-			"lon": -118.50001064288529
-		}, {
-			"lat": 34.007874933946106,
-			"lon": -118.49976387965592
-		}, {
-			"lat": 34.008132853276734,
-			"lon": -118.49921670901688
-		}, {
-			"lat": 34.008470815351814,
-			"lon": -118.49869099604996
-		}, {
-			"lat": 34.00863090218105,
-			"lon": -118.49845496165665
-		}]
-	}
+	"coordinates": [
+		[
+			[-118.50088165976331, 34.00744764114932],
+			[-118.49822090842054, 34.00929753728191],
+			[-118.50010918356702, 34.01064935897037],
+			[-118.49787758566663, 34.01178771843661],
+			[-118.49830673910901, 34.01363752001817],
+			[-118.49581764914319, 34.013139500480044],
+			[-118.49444435812757, 34.01022247023586],
+			[-118.49770592428968, 34.007376490493286],
+			[-118.49856423117444, 34.00773224317736],
+			[-118.49985169150159, 34.00687843423184]
+		]
+	]
 }
 ```
