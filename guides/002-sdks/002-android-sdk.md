@@ -381,3 +381,4 @@ manager.unregisterReceiver(mEventReceiver);
 ```
 > Note: to prevent memory leaks, always make sure to unregister receivers when not in use or context is destroyed.
 See [unregistering receivers](https://developer.android.com/reference/android/support/v4/content/LocalBroadcastManager#unregisterReceiver(android.content.BroadcastReceiver))
+

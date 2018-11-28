@@ -5,7 +5,7 @@ description: ""
 # Sixgill Reach iOS SDK Setup
 The Sixgill Reach iOS SDK v2 is a package for collecting iOS device sensor data for use with the Sixgill Sense platform. In order to fully utilize the Reach SDK, permissions will have to be requested at app level to enable features using Core Location, Push Notifications, and Core Motion. The SDK supports iOS deployment target SDK versions 10.1 and above.
 
- Follow the guides below to configure your app.
+Follow the guides below to configure your app.
 
 ## Installation
 To integrate Sixgill into your Xcode project, use CocoaPods.
