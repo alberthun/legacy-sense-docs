@@ -13,7 +13,7 @@ Sixgill's Reach SDK can be installed by manually downloading and including an An
 
 **Manual**
 
-Download the [latest Reach Android Archive](https://raw.githubusercontent.com/sixgill/sense-docs/master/android/reach-android-1.2.5.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).
+Download the [latest Reach Android Archive](https://raw.githubusercontent.com/sixgill/sense-docs/master/android/reach-android-1.2.6.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).
 
 Once added as your app's dependency, add the following dependencies to your app level build file-
 ```
