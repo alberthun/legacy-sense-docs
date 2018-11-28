@@ -385,7 +385,7 @@ See [unregistering receivers](https://developer.android.com/reference/android/su
 
 ## Android Tracking Limitations
 
-Over the years, Android and iOS have implemented various measures to limit background processing and conserve battery power. The Reach SDK uses a foreground service to be exempt from Android's Doze and App Standby modes. However, it has found that Android's power-saving measures can still impact an app's ability to track persistently over a long period of time. To further complicate the matters, device manufacturers may add their own optimization features. For best results and optimal functionality, it is recommended that:
+Over the years, Android and iOS have implemented various measures to limit background processing and conserve battery power. The Reach SDK uses a foreground service to be exempt from Android's Doze and App Standby modes. However, it has been found that Android's power-saving measures can still impact an app's ability to track persistently over a long period of time. To further complicate the matters, device manufacturers may add their own optimization features. For best results and optimal functionality, it is recommended that:
 
 * devices not be in power-save mode when the app is running
 * devices whitelist the app from any power-saving modes or battery optimization features
