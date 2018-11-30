@@ -280,4 +280,7 @@ To register for the sensor updates:
             NSString *floorsDescended = attributes[@"FLOORS-DESCENDED"];
         }
         ```
-    
+
+## iOS Tracking Limitations
+
+Over the years, Android and iOS have implemented various measures to limit background processing and conserve battery power. The Reach SDK is designed to run indefinitely for long periods of time. However, there may be times when iOS terminates an app in the background due to low-memory in order to free up space. It is up to the app developer to engage their users to interact with the app and bring it to the foreground from time-to-time, such as with the use of local notifications.
