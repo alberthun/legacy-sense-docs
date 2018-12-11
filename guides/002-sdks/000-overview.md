@@ -18,12 +18,12 @@ The Sixgill Reach SDK allows mobile developers to easily integrate the capabilit
 Collect and send sensor data to Sixgill Sense on a configurable time-based cadence.  During the collection window, Reach will query all of a device’s sensors for individual readings. This data is normalized and aggregated into a single collection that can be passed to the Sense platform. Data is synced whenever connectivity is available, and the SDK operates efficiently in the background to save on data limits and battery. Data collection can be dynamically configured from the cloud based on the application needs and device context.
 
 ####Mobile Sensor data collected:
-Beacons
-GPS
-Wifi
-Cellular Signal
-Battery Level
-Accelerometer (for activity state such as walking / running)
+* Beacons
+* GPS
+* Wifi
+* Cellular Signal
+* Battery Level
+* Accelerometer (for activity state such as walking / running)
 
 ###Push Notifications
 The Sixgill Reach service provides mobile application developers a way to trigger push notifications to a mobile application based on device and sensor information. Messages can be plain text or formatted content. Message Event Notification can occur via the mobile platform push mechanism (i.e. Apple APNS, Google GCM) or through the use of device-side polling.
