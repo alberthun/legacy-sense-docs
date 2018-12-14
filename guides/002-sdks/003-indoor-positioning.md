@@ -1,8 +1,8 @@
 ---
-draft: Indoor Positioning
+title: Indoor Positioning in Reach
+description: "Using Indoor Positioning capabilities"
 ---
 
-Sixgill provides indoor positioning capabilities with its Reach SDK. The currently supported integrations are IndoorAtlas and 
+Reach provides indoor positioning capabilities as part of the the SDK by partnering with experienced indoor navigation providers such as [IndoorAtlas](https://www.indooratlas.com/) and [Phunware](http://phunware.com/).
 
-IndoorAtlas
-
+Indoor positioning requires beaconing, preparing the indoor venue, configuring beacons, and fingerprinting the space. A signed POC for indoor positioning is required to advise or assist clients in completing these tasks.
