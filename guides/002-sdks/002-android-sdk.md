@@ -1,7 +1,7 @@
 ---
 title: Reach Android SDK
 description: ""
-Version: 1.2.7
+Version: 1.2.8
 ---
 # Sixgill Reach Android SDK Setup
 The Sixgill Reach Android SDK is a package for collecting android device sensor data for use with the Sixgill Sense platform. In order to fully utilize the Reach SDK, permissions will have to be requested at app level to enable features using Location, Push Notifications, and Wifi Sensors. The SDK is "plug and play" and only requires configuration. Reach SDK supports android SDK versions from 21 through 29. We currently do not support versions below Android 5.0. If you have a need to support a specific older version of Android, please reach out to [Sixgill Support](mailto:support@sixgill.com).
@@ -9,7 +9,7 @@ The Sixgill Reach Android SDK is a package for collecting android device sensor 
 Follow the guides below to configure your app.
 
 ## Release Notes
-* 1.2.7 - Customizable sticky notifications
+* 1.2.8 - Added support for Indoor Atlas as indoor location provider
 
 ## Installation
 
@@ -17,7 +17,7 @@ Sixgill's Reach SDK can be installed by manually downloading and including an An
 
 **Manual**
 
-Download the [latest Reach Android Archive](https://raw.githubusercontent.com/sixgill/sense-docs/master/android/reach-android-1.2.7.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).
+Download the [latest Reach Android Archive](https://raw.githubusercontent.com/sixgill/sense-docs/master/android/reach-android-1.2.8.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).
 
 Once added as your app's dependency, add the following dependencies to your app level build file-
 ```
@@ -404,6 +404,107 @@ manager.unregisterReceiver(mEventReceiver);
 ```
 > Note: to prevent memory leaks, always make sure to unregister receivers when not in use or context is destroyed.
 See [unregistering receivers](https://developer.android.com/reference/android/support/v4/content/LocalBroadcastManager#unregisterReceiver(android.content.BroadcastReceiver))
+
+
+## How to use Indoor location providers
+Reach SDK support Indoor Atlas as the indoor location provider. To use Indoor Atlas with your application, you need to option the API Key and API secret from [Indoor Atlas](https://indooratlas.freshdesk.com/support/solutions/articles/36000050559-creating-applications-and-api-keys). Once the key is optained, you can put the values in your Android manifest
+```xml
+<meta-data
+    android:name="com.indooratlas.android.sdk.API_KEY"
+    android:value="your-api-key-will-go-here" />
+<meta-data
+    android:name="com.indooratlas.android.sdk.API_SECRET"
+    android:value="your-api-secret-will-go-here" />
+```
+Running Reach SDK with indoor providers require you to add `WAKE_LOCK` permission
+```xml
+<uses-permission android:name="android.permission.WAKE_LOCK" />
+```
+Add the Indoor Atlas Maven repository in your root level gradle file
+```gradle
+maven {
+    // maven repository for indoor atlas
+    url "http://indooratlas-ltd.bintray.com/mvn-public"
+}
+```
+Add Indoor atlas as a dependency in your app's gradle
+```gradle
+/* Indoor Atlas */
+implementation 'com.indooratlas.android:indooratlas-android-sdk:2.8.3@aar'
+```
+In order to properly use the Indoor Atlas in the background, you need to create an instance of Indoor Atlas provider in application class
+```java
+public class App extends Application {
+    private static App instance = null;
+    private IReachProvider provider = null;
+
+    public static App getInstance(){
+        return instance;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        instance = this;
+        /*
+            Get instance of Indoor Atlas provider. This call will throw an error if failed to
+            retrieve API Key and API secret from manifest.
+        */
+        provider = IndoorAtlasProvider.getInstance(this);
+
+        /* Set the location provider for Reach SDK */
+        Reach.setLocationProvider(provider, this);
+    }
+}
+```
+
+Set the provider instance as a location provider to the Reach SDK
+```java
+Reach.setLocationProvider(provider, this);
+```
+Implement `IndoorAtlasCallback` in your class where you want to get the data from Indoor atlas, for example
+```java
+public class ProviderDemoActivity extends AppCompatActivity implements IndoorAtlasCallback {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_provider);
+        // enable the Reach SDK
+        Reach.enable(this);
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        IndoorAtlasProvider.getInstance(this).setProviderEventCallback(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        IndoorAtlasProvider.getInstance(this).removeProviderEventCallback(this);
+    }
+
+    @Override
+    public void onIndoorLocationChanged(PointF pointF) {
+
+    }
+
+    @Override
+    public void onEnterFloorPlan(IAFloorPlan iaFloorPlan, String s) {
+
+    }
+
+    @Override
+    public void onExitFloorPlan(IAFloorPlan iaFloorPlan) {
+
+    }
+}
+```
+
+The `IndoorAtlasCallback` will provide you 3 methods
+- onIndoorLocationChanged : `onIndoorLocationChanged` will be fired when the location is changed. It will provide you the X and Y co-ordinate relative to the floor plan. Using these details you can mark where a user is on the given floor
+- onEnterFloorPlan : `onEnterFloorPlan` will be fired when the user enters any floor. It will provide you the floor plan details and a URL for the floor plan image
+- onExitFloorPlan : `onExitFloorPlan` will be fired when a user exits a floor
 
 
 ## Android Tracking Limitations
