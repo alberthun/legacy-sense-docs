@@ -407,7 +407,7 @@ See [unregistering receivers](https://developer.android.com/reference/android/su
 
 
 ## How to use Indoor location providers
-Reach SDK support Indoor Atlas as the indoor location provider. To use Indoor Atlas with your application, you need to option the API Key and API secret from [Indoor Atlas](https://indooratlas.freshdesk.com/support/solutions/articles/36000050559-creating-applications-and-api-keys). Once the key is optained, you can put the values in your Android manifest
+Reach SDK support Indoor Atlas as the indoor location provider. To use Indoor Atlas with your application, you need to obtain the API Key and API secret from [Indoor Atlas](https://indooratlas.freshdesk.com/support/solutions/articles/36000050559-creating-applications-and-api-keys). Once the keys are obtained, you need to put them in your Android manifest as meta values.
 ```xml
 <meta-data
     android:name="com.indooratlas.android.sdk.API_KEY"
