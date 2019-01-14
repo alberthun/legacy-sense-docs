@@ -1,7 +1,7 @@
 ---
 title: Reach iOS SDK
 description: ""
-Version: 1.2.15
+Version: 1.3.0-beta.56
 ---
 # Sixgill Reach iOS SDK Setup
 The Sixgill Reach iOS SDK v2 is a package for collecting iOS device sensor data for use with the Sixgill Sense platform. In order to fully utilize the Reach SDK, permissions will have to be requested at app level to enable features using Core Location, Push Notifications, and Core Motion. The SDK supports iOS deployment target SDK versions 10.1 and above. If you have a need to support a specific older version of iOS, please reach out to [Sixgill Support](mailto:support@sixgill.com).
@@ -9,7 +9,7 @@ The Sixgill Reach iOS SDK v2 is a package for collecting iOS device sensor data 
 Follow the guides below to configure your app.
 
 ## Release Notes
-* 1.2.15 - Fixed issue with SDK location
+* 1.3.0-beta.56 - Support indoor atlas provider
 
 ## Installation
 To integrate Sixgill into your Xcode project, use CocoaPods.
@@ -35,7 +35,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-pod 'SixgillSDK', '~> 1.2.15'
+pod 'SixgillSDK', '~> 1.3.0-beta.56'
 end
 ```
 
@@ -284,6 +284,56 @@ To register for the sensor updates:
             NSString *floorsDescended = attributes[@"FLOORS-DESCENDED"];
         }
         ```
+        
+## How to use Indoor location providers
+Reach SDK provides support for Indoor Atlas as a provider.
+
+Running Reach SDK with indoor providers requires you to disable bitcode
+- In the project build settings, make sure you have enabled All settings to be visible.
+- The Build Options are the 4th section down. Select No for the Enable Bitcode option.
+
+To use this, you need to obtain Indoor Atlas API Key and API Secret from [Indoor Atlas](https://indooratlas.freshdesk.com/support/solutions/articles/36000050559-creating-applications-and-api-keys). Once the key is obtained, set the provider manager's instance as atlas provider to the Reach SDK
+```objc
+```objc
+SGAtlasProvider *atlasProvider = [[SGAtlasProvider alloc] initWithApiKey:@"YOUR_API_KEY" secretKey:@"YOUR_SECRET_KEY"];
+[[SGSDK sharedInstance] setProviderManager:atlasProvider];
+```
+```
+Conform `SGAtlasDelegate` in your ViewController where you want to get the data from Indoor atlas, for example
+```objc
+@interface MapViewController : UIViewController <SGAtlasDelegate>
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+
+    [[SGSDK sharedInstance] providerManager].providerDelegate = self;
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[SGSDK sharedInstance] providerManager].providerDelegate = nil;
+}
+
+- (void)didUpdateLocation:(IALocation *)location andPoint:(CGPoint)point{
+
+}
+
+- (void)didEnterRegionWithFloorMap:(IAFloorPlan *)floorplan andImage:(NSData *)imageData {
+
+}
+
+- (void)didExitRegion {
+
+}
+
+@end
+```
+
+The `SGAtlasDelegate` will provide you 3 methods
+- didUpdateLocation : `didUpdateLocation` will be fired when the location is changed. It will provide you the location object which gives latitude, longitude, floor-level of your current position. The other argument gives CGPoint i.e. your X and Y co-ordinate relative to the floor plan. Using these details you can mark where a user is on the given floor.
+- didEnterRegionWithFloorMap : `didEnterRegionWithFloorMap` will be fired when the user enters indoor-region. It will provide you the floor plan details and an image data for the floor plan image.
+- didExitRegion : `didExitRegion` will be fired when a user exits indoor-region.
+
 
 ## iOS Tracking Limitations
 
