@@ -8,8 +8,22 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/guides`,
-        name: 'pages'
+        path: `${__dirname}/pages/guides`,
+        name: 'guides'
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/pages/apis`,
+        name: 'apis'
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/pages/sdks`,
+        name: 'sdks'
       }
     },
     {

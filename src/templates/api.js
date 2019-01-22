@@ -15,6 +15,8 @@ class Api extends React.Component {
       if (window.Redoc) {
         clearInterval(interval);
       }
+      if (!window.Redoc) return;
+
       window.Redoc.init(
         `${url}?version=${Date.now()}`,
         {

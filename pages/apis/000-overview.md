@@ -1,6 +1,5 @@
 ---
 title: APIs
-path: /apis
 ---
 
 ## Sense API
@@ -20,7 +19,6 @@ Endpoint: https://sense-api.sixgill.com | [Sense API Docs](/apis/sense-api)
 The Sense API authenticates requests with a user-specific JSON web token through Bearer authentication.
 
 To get this token, the user makes a POST [/v2/login](/apis/sense-api/#tag/authenticate/paths/~1v2~1login/post) request with their email and password combination. _These are the same credentials used to log into your account on the dashboard._
-
 
 ## Ingress API
 

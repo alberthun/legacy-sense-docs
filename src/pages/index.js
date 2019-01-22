@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Button from '../components/Button';
-import Link from 'gatsby-link';
 
 import Theme from '../components/Theme';
 
@@ -247,7 +246,12 @@ class IndexPage extends Component {
                   </ul>
                 </p>
                 <p style={{ textAlign: 'center', marginTop: '30px' }}>
-                  <Button style={{ marginBottom: '10px' }} to="/guides/getting-started">Get Started</Button>
+                  <Button
+                    style={{ marginBottom: '10px' }}
+                    to="/guides/getting-started"
+                  >
+                    Get Started
+                  </Button>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <Button to="/apis" transparent>
                     API Docs
@@ -257,7 +261,10 @@ class IndexPage extends Component {
             </Hero>
             <Philosophy>
               <div>
-                <h2 style={{ textAlign: 'center', marginBottom: '50px' }}>Sixgill Sense Platform Is Purpose-Built For Fast, Easy, and Flexible IoT Application Development</h2>
+                <h2 style={{ textAlign: 'center', marginBottom: '50px' }}>
+                  Sixgill Sense Platform Is Purpose-Built For Fast, Easy, and
+                  Flexible IoT Application Development
+                </h2>
                 <br />
               </div>
               <div className="row-wrap">
@@ -265,7 +272,11 @@ class IndexPage extends Component {
                   <img
                     src={IconSaasApplications}
                     alt="Icon SaaS Applications"
-                    style={{ width: '100px', height: '100px', margin: '0 auto' }}
+                    style={{
+                      width: '100px',
+                      height: '100px',
+                      margin: '0 auto'
+                    }}
                   />
                   <h5>RAPIDLY DEPLOY SENSOR-INFORMED APPLICATIONS</h5>
                 </div>
@@ -273,7 +284,11 @@ class IndexPage extends Component {
                   <img
                     src={IconSensorIngestion}
                     alt="Icon Sensor Ingestion"
-                    style={{ width: '100px', height: '100px', margin: '0 auto' }}
+                    style={{
+                      width: '100px',
+                      height: '100px',
+                      margin: '0 auto'
+                    }}
                   />
                   <h5>AGGREGATE DEVICE AND SENSOR DATA</h5>
                 </div>
@@ -281,7 +296,11 @@ class IndexPage extends Component {
                   <img
                     src={IconRealTime}
                     alt="Icon Real Time"
-                    style={{ width: '100px', height: '100px', margin: '0 auto' }}
+                    style={{
+                      width: '100px',
+                      height: '100px',
+                      margin: '0 auto'
+                    }}
                   />
                   <h5>REAL-TIME ACTION BASED ON CUSTOMIZABLE RULES</h5>
                 </div>
@@ -291,7 +310,11 @@ class IndexPage extends Component {
                   <img
                     src={IconExtensiblePlatform}
                     alt="Icon Extensible Platform"
-                    style={{ width: '100px', height: '100px', margin: '0 auto' }}
+                    style={{
+                      width: '100px',
+                      height: '100px',
+                      margin: '0 auto'
+                    }}
                   />
                   <h5>EXTENSIBLE PLATFORM THROUGH CUSTOM PLUGINS</h5>
                 </div>
@@ -299,7 +322,11 @@ class IndexPage extends Component {
                   <img
                     src={IconAdminTools}
                     alt="Icon Admin Tools"
-                    style={{ width: '100px', height: '100px', margin: '0 auto' }}
+                    style={{
+                      width: '100px',
+                      height: '100px',
+                      margin: '0 auto'
+                    }}
                   />
                   <h5>SYSTEM ADMINISTRATION AND MONITORING TOOLS</h5>
                 </div>
@@ -307,7 +334,11 @@ class IndexPage extends Component {
                   <img
                     src={IconSecurity}
                     alt="Icon Security"
-                    style={{ width: '100px', height: '100px', margin: '0 auto' }}
+                    style={{
+                      width: '100px',
+                      height: '100px',
+                      margin: '0 auto'
+                    }}
                   />
                   <h5>SECURITY</h5>
                 </div>

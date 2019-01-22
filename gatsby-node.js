@@ -7,27 +7,51 @@ function stripOrderingNumbers(str) {
   return str.replace(/^(\d+-)/, '');
 }
 
-function getMarkdownPath({ fileAbsolutePath }) {
-  const ext = path.extname(fileAbsolutePath);
-  const file = stripOrderingNumbers(path.basename(fileAbsolutePath, ext));
+function getMarkdownPath(dirPath, { absolutePath }, root) {
+  const ext = path.extname(absolutePath);
+  const file = stripOrderingNumbers(path.basename(absolutePath, ext));
   const dir = stripOrderingNumbers(
     path
-      .dirname(fileAbsolutePath)
+      .dirname(absolutePath)
       .split(path.sep)
       .pop()
   );
 
-  return `/guides/${dir}${file === 'index' ? '' : `/${file}`}`;
+  return `${dirPath}${root ? '' : dir + '/'}${
+    file === 'index' ? '' : `${file}`
+  }`;
+}
+
+function slugify(text) {
+  return text
+    .toString()
+    .toLowerCase()
+    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+    .replace(/\-\-+/g, '-') // Replace multiple - with single -
+    .replace(/^-+/, '') // Trim - from start of text
+    .replace(/-+$/, ''); // Trim - from end of text
+}
+
+function convertNode(node) {
+  return {
+    ...(node.childMarkdownRemark || {}),
+    name: node.name
+  };
+}
+
+function getFolder(folderPath) {
+  const paths = folderPath.split('/');
+  return paths[paths.length - 2];
 }
 
 function createGuidePages(c, createPage, context) {
-  const nodePath = getMarkdownPath(c.node);
   if (c.children && c.children.length) {
     createPage({
-      path: nodePath,
+      path: c.path,
       component: redirectTemplate,
       context: {
-        to: getMarkdownPath(c.children[0].node)
+        to: c.children[0].path
       }
     });
     c.children.forEach((child) => {
@@ -35,111 +59,160 @@ function createGuidePages(c, createPage, context) {
     });
   } else {
     createPage({
-      path: nodePath,
-      component: documentationTemplate,
-      context: { page: c.node, ...context }
+      path: c.path,
+      component: c.component || documentationTemplate,
+      context: { page: c.node && convertNode(c.node), ...context }
     });
   }
 }
 
-exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions;
+function getMenuSection(graphql, { title, path: folderPath, folderName }) {
+  const section = {
+    title,
+    path: folderPath,
+    children: []
+  };
 
   return graphql(`
     {
-      allMarkdownRemark(
-        limit: 1000
-        sort: { order: ASC, fields: fileAbsolutePath }
-      ) {
+      allFile(filter: { sourceInstanceName: { eq: "${folderName}" } }, limit: 1000) {
         edges {
           node {
-            fileAbsolutePath
-            html
-            headings {
-              value
-              depth
-            }
-            frontmatter {
-              title
-              description
-              path
+            absolutePath
+            name
+
+            childMarkdownRemark {
+              html
+              headings {
+                value
+                depth
+              }
+              frontmatter {
+                title
+                description
+              }
             }
           }
         }
       }
     }
   `).then((result) => {
-    const nav = [];
+    const files = (
+      (result.data && result.data.allFile && result.data.allFile.edges) ||
+      []
+    )
+      .map((c) => c.node)
+      .filter((node) => {
+        if (!node || !node.childMarkdownRemark) {
+          return false;
+        }
+        return true;
+      });
 
-    const guideParent = {
-      title: 'Guides',
-      children: [],
-      path: `/guides/`
-    };
-    nav.push(guideParent);
-
-    result.data.allMarkdownRemark.edges.forEach((res) => {
-      if (!res.node) return;
-      const { node } = res;
-      if (node.frontmatter.path) return;
-      if (node.fileAbsolutePath.indexOf('index') > 0) {
-        guideParent.children.push({
-          title: node.frontmatter.title,
-          node,
-          children: [],
-          path: getMarkdownPath(node)
-        });
-      } else {
-        const parent = guideParent.children[guideParent.children.length - 1];
-
-        parent.children.push({
-          title: node.frontmatter.title,
-          node,
-          path: getMarkdownPath(node)
-        });
-      }
+    files.forEach((node, index) => {
+      if (!node.absolutePath.includes('index.md')) return;
+      section.children.push({
+        index: index,
+        title: node.childMarkdownRemark.frontmatter.title,
+        node,
+        folderId: getFolder(node.absolutePath),
+        children: [],
+        path: getMarkdownPath(folderPath, node)
+      });
     });
 
-    const apiParent = {
-      title: 'API Documentation',
-      children: [],
-      path: `/apis`
-    };
-    nav.push(apiParent);
+    files.forEach((node) => {
+      if (node.absolutePath.includes('index.md')) return;
 
+      let root = false;
+      let parent = section.children.find(
+        (c) => c.folderId === getFolder(node.absolutePath)
+      );
+
+      if (!parent) {
+        root = true;
+        parent = section;
+      }
+
+      parent.children.push({
+        root: root,
+        title: node.childMarkdownRemark.frontmatter.title,
+        node,
+        path: getMarkdownPath(folderPath, node, root)
+      });
+    });
+
+    (section.children || []).forEach((section) => {
+      if (section.children && section.children.length) {
+        section.path = section.children[0].path;
+      }
+      (section.children || []).sort((a, b) => {
+        if (a.node.absolutePath < b.node.absolutePath) return -1;
+        if (a.node.absolutePath > b.node.absolutePath) return 1;
+        return 0;
+      });
+    });
+
+    section.children.sort((a, b) => {
+      if (!a.root) {
+        if (a.folderId < b.folderId) return -1;
+        if (a.folderId > b.folderId) return 1;
+      } else {
+        if (a.node.absolutePath < b.node.absolutePath) return -1;
+        if (a.node.absolutePath > b.node.absolutePath) return 1;
+      }
+      return 0;
+    });
+
+    return section;
+  });
+}
+
+exports.createPages = async ({ actions, graphql }) => {
+  const { createPage } = actions;
+
+  const nav = [];
+  const promises = [];
+
+  await getMenuSection(graphql, {
+    title: 'SDKs',
+    path: '/sdks/',
+    folderName: 'sdks'
+  }).then((section) => {
+    nav.push(section);
+  });
+
+  await getMenuSection(graphql, {
+    title: 'Guides',
+    path: '/guides/',
+    folderName: 'guides'
+  }).then((section) => {
+    nav.push(section);
+  });
+
+  await getMenuSection(graphql, {
+    title: 'API Documentation',
+    path: '/apis/',
+    folderName: 'apis'
+  }).then((section) => {
     [
       { name: 'Ingress Api', id: 'ingress' },
       { name: 'Sense Api', id: 'sense-api' }
     ].forEach((node) => {
-      apiParent.children.push({
+      section.children.push({
+        component: path.resolve(`./src/templates/api.js`),
         title: node.name,
+        node: node,
         children: [],
         path: `/apis/${node.id}`
       });
-
-      createPage({
-        path: `apis/${node.id}`,
-        component: path.resolve(`./src/templates/api.js`),
-        context: {
-          id: node.id,
-          page: node
-        }
-      });
     });
 
-    result.data.allMarkdownRemark.edges.forEach((res) => {
-      if (!res.node) return;
-      const { node } = res;
-      if (node.frontmatter.path) {
-        createPage({
-          path: node.frontmatter.path,
-          component: documentationTemplate,
-          context: { page: node, nav }
-        });
-      }
-    });
+    nav.push(section);
+  });
 
-    guideParent.children.forEach((c) => {
+  nav.forEach((section) => {
+    section.children.forEach((c) => {
       createGuidePages(c, createPage, { nav });
     });
   });

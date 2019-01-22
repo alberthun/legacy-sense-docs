@@ -12,7 +12,7 @@ const Wrapper = styled.aside`
   right: 0;
   height: 100%;
 
-  @media ${props => props.theme.mobile} {
+  @media ${(props) => props.theme.mobile} {
     display: none;
   }
 `;
@@ -25,7 +25,7 @@ const List = styled.ul`
 `;
 
 const ListItem = styled.li`
-  margin: 0 0 0.5rem ${props => props.depth - 2}rem;
+  margin: 0 0 0.5rem ${(props) => props.depth - 2}rem;
 
   a {
     color: inherit;
@@ -44,7 +44,6 @@ export default ({ headings, extras }) => {
   const slugger = new GithubSlugger();
   const mainHeaders = headings.filter(({ depth }) => depth <= 3);
   if (mainHeaders.length + keys(extras).length < 3) return <aside />;
-
   return (
     <Wrapper>
       <List>

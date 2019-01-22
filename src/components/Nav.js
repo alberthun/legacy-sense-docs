@@ -68,21 +68,21 @@ export default ({ currentPath, nav }) => {
                     >
                       {child.title}
                     </Link>
-                      <List inner>
-                        {child.children &&
-                          child.children.map((c) => (
-                            <ListItem key={c.path} inner>
-                              <Link
-                                to={c.path}
-                                className={classnames({
-                                  active: currentPath === c.path
-                                })}
-                              >
-                                {c.title}
-                              </Link>
-                            </ListItem>
-                          ))}
-                      </List>
+                    <List inner>
+                      {child.children &&
+                        child.children.map((c) => (
+                          <ListItem key={c.path} inner>
+                            <Link
+                              to={c.path}
+                              className={classnames({
+                                active: currentPath === c.path
+                              })}
+                            >
+                              {c.title}
+                            </Link>
+                          </ListItem>
+                        ))}
+                    </List>
                   </span>
                 </ListItem>
               ))}
