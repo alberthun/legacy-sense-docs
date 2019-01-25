@@ -212,11 +212,11 @@ To get Sixgill Device ID:
 [SGSDK deviceId];
 ```
 
-To force sensors update, it give data sensor's data in `SensorUpdateDelegate`:
+To force sensors to update on-demand:
 ```objc
 [SGSDK forceSensorUpdate];
 ```
-
+This will return sensor data in `SensorUpdateDelegate`
 
 #### Getting Sensor Data Events
 
