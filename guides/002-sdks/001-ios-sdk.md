@@ -212,10 +212,11 @@ To get Sixgill Device ID:
 [SGSDK deviceId];
 ```
 
-To force sensors update:
+To force sensors to update on-demand:
 ```objc
 [SGSDK forceSensorUpdate];
 ```
+This will return sensor data in `SensorUpdateDelegate`
 
 #### Getting Sensor Data Events
 
@@ -284,6 +285,21 @@ To register for the sensor updates:
             NSString *floorsDescended = attributes[@"FLOORS-DESCENDED"];
         }
         ```
+    - Errors
+    ```
+    NSArray<Error *> *errors = sensorData.errorArray;
+    ```
+    
+#### SDK Errors
+- Motion Activity Not Available:
+    Code: 1, Message: Motion data not available on the current device
+- Motion Activity Not Enabled:
+    Code: 2, Message: Motion activity not enabled
+- Motion Permission Missing:
+    Code: 3, Message: Motion permission missing
+- Location Permission Missing:
+    Code: 4, Message: Location permission missing
+    
 
 ## iOS Tracking Limitations
 
