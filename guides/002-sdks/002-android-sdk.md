@@ -326,11 +326,11 @@ To set device push token:
 Reach.setPushToken(context, token)
 ```
 
-To force sensors update (on demand sensor update):
+To force sensors update (on-demand sensor update):
 ```java
 /**
 * @param context {@link Context}
-* @param duration {duration of collection window in miliseconds}, defaults to 20 miliseconds
+* @param duration {duration of collection window in milliseconds}, defaults to 20 milliseconds
 * @return void
 */
 Reach.forceSensorUpdate(context, long duration)
