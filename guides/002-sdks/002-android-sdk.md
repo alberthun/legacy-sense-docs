@@ -118,7 +118,13 @@ SDK behavior and settings can be set by passing an object of `ReachConfig` as th
 You can set properties in `ReachConfig` object for different purposes. Following are all the options used in `ReachConfig`:
 
 #### Set Device Aliases
-`Aliases` is a `Map` of `String` key-value pairs where key can be any consistent string with a value unique to each device. It can be Phone Number, IMEI, MAC Address etc. Aliases help the Sense Platform uniquely identify each device over multiple sessions and reinstalls, thus keeping all the data from one device under a single ID.
+`Aliases` is a `Map` of `String` key-value pairs where key can be any consistent string with a value unique to each device. It can be Phone Number, IMEI, MAC Address, or some other machine ID. Aliases help the Sense Platform uniquely identify each device over multiple sessions and reinstalls, thus keeping all the data from one device under a single ID.
+
+Every machine ID or unique ID for Android requires some kind of hardware or software identifier (or combination of the two) to generate one unique value. These can include:
+- WiFi MAC address (user can change device)
+- Bluetooth MAC address (the user can change device)
+- Telephony manager (the user might not give permission)
+- Android device ID (can be null in many cases)
 
 ```java
 Map<String, String> aliases = new HashMap<>();
@@ -326,7 +332,7 @@ To set device push token:
 Reach.setPushToken(context, token)
 ```
 
-To force sensors update (on-demand sensor update):
+To force sensors to update on-demand:
 ```java
 /**
 * @param context {@link Context}
@@ -335,6 +341,7 @@ To force sensors update (on-demand sensor update):
 */
 Reach.forceSensorUpdate(context, long duration)
 ```
+This will generate an updated `Ingress.Event` object with the latest sensor data.
 
 To perform actions based on Push Notifications:
 ```java
@@ -410,16 +417,15 @@ manager.unregisterReceiver(mEventReceiver);
 > Note: to prevent memory leaks, always make sure to unregister receivers when not in use or context is destroyed.
 See [unregistering receivers](https://developer.android.com/reference/android/support/v4/content/LocalBroadcastManager#unregisterReceiver(android.content.BroadcastReceiver))
 
-#### Error code and messages
-In case if any permission is missing for any sensor, Reach SDK will generate and error message with error code, which can be then optained from `Ingress.Event`
-- Activity permission is missing
-    - Error code: 1, Message: Activity Permission is missing
-- Location permission is missing
-    - Error code: 4, Message: Location Permission is missing
-- WIFI permission is missing
-    - Error code: 6, Message: Wifi Permission is missing
-- Beacon permission is missing
-    - Error code: 7, Message: Beacon Permission is missing  
+#### Error Codes
+In case any permission is missing for any sensor, Reach SDK will generate and error message with an error code, which can be then obtained from `Ingress.Event`
+
+Error Code | Message | Description
+--- | --- | ---
+1 | Activity permission is missing | Activity permission is not enabled on the device
+4 | Location permission is missing| Location permission is not enabled on the device
+6 | WIFI permission is missing|  WiFi permission is not enabled on the device
+7 | Beacon permission missing | Beacon permission is not enabled on the device
 
 You can get the error object from `Ingress.Event` object
 ```java

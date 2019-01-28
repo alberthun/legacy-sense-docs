@@ -11,7 +11,7 @@ The Sixgill Reach iOS SDK v2 is a package for collecting iOS device sensor data 
 Follow the guides below to configure your app.
 
 ## Release Notes
-* 1.2.16 - Force Sensor Update and Show errors in event
+* 1.2.16 - Force sensor update and return errors in Ingress.Event
 
 ## Installation
 To integrate Sixgill into your Xcode project, use CocoaPods.
@@ -104,7 +104,13 @@ You can set certain properties in `SGSDKConfigManager` object for different purp
 
 #### Set Device Aliases
 
-`Aliases` is a `Dictionary` of `String` key-value pairs where key can be any consistent string with a value unique to each device. It can be Phone Number, IMEI, MAC Address etc. Aliases help the Sense Platform uniquely identify each device over multiple sessions and reinstalls, thus keeping all the data from one device under a single ID.
+`Aliases` is a `Dictionary` of `String` key-value pairs where key can be any consistent string with a value unique to each device. It can be Phone Number, IMEI, MAC Address, or some other machine ID. Aliases help the Sense Platform uniquely identify each device over multiple sessions and reinstalls, thus keeping all the data from one device under a single ID. 
+
+Examples of machine IDs that can be used as an alias to uniquely identify an iOS device:
+- UDID (unique device identifier) access, using [[UIDevice currentDevice] uniqueIdentifier], is no longer allowed (deprecated).
+- Advertising ID is unique to each device, used for serving ads, but it gets reset when users limit ad tracking (or reset this id from Settings)
+- DeviceCheck framework: Using DeviceCheck APIs, in combination with a server-to-server APIs, developers can set and query two bits of data per device. It also maintains the user's privacy by not disclosing any user or device information. Works for iOS 11 and above also require some apple specific backend work. Used mainly to identify devices that have already taken advantage of a promotional offer that you provide, or to flag a device that you’ve determined to be fraudulent.
+- Vendor identifier uniquely identifies the device to the app’s vendor. The value changes when a user deletes all the vendor’s apps from the device and reinstalls one or more of them, but this problem can be resolved using Keychain.
 
 ```objc
 NSMutableDictionary<NSString*, NSString*> *aliases = [[NSMutableDictionary alloc] init];
@@ -218,7 +224,7 @@ To force sensors to update on-demand:
 ```objc
 [SGSDK forceSensorUpdate];
 ```
-This will return sensor data in `SensorUpdateDelegate`
+This will return sensor data in `SensorUpdateDelegate`.
 
 #### Getting Sensor Data Events
 
@@ -292,16 +298,16 @@ To register for the sensor updates:
     NSArray<Error *> *errors = sensorData.errorArray;
     ```
     
-#### SDK Errors
-- Motion Activity Not Available:
-    Code: 1, Message: Motion data not available on the current device
-- Motion Activity Not Enabled:
-    Code: 2, Message: Motion activity not enabled
-- Motion Permission Missing:
-    Code: 3, Message: Motion permission missing
-- Location Permission Missing:
-    Code: 4, Message: Location permission missing
-    
+#### Error Codes
+In case any permission is missing for any sensor, Reach SDK will generate and error message with an error code, which can be then obtained from `Ingress.Event`
+
+Error Code | Message | Description
+--- | --- | ---
+1 | Motion data not available on the current device | Motion data not available at this time
+2 | Motion activity not enabled | Motion activity is not enabled on the device
+3 | Motion permission missing |  Motion permission is not enabled on the device
+4 | Location permission missing | Location permission is not enabled on the device
+
 
 ## iOS Tracking Limitations
 
