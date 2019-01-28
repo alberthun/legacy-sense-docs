@@ -6,7 +6,7 @@ Version: 1.2.9
 # Sixgill Reach Android SDK Setup
 The Sixgill Reach Android SDK is a package for collecting android device sensor data for use with the Sixgill Sense platform. In order to fully utilize the Reach SDK, permissions will have to be requested at app level to enable features using Location, Push Notifications, and Wifi Sensors. The SDK is "plug and play" and only requires configuration. Reach SDK supports android SDK versions from 21 through 29. We currently do not support versions below Android 5.0. If you have a need to support a specific older version of Android, please reach out to [Sixgill Support](mailto:support@sixgill.com).
 
-Follow the guides below to configure your app.
+Please see the [Android sample app](https://github.com/sixgill/reach-android-sample) for a working example showing how to use the Reach SDK.
 
 ## Release Notes
 * 1.2.9 

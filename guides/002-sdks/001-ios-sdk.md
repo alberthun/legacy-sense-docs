@@ -8,7 +8,7 @@ Version: 1.2.16
 # Sixgill Reach iOS SDK Setup
 The Sixgill Reach iOS SDK v2 is a package for collecting iOS device sensor data for use with the Sixgill Sense platform. In order to fully utilize the Reach SDK, permissions will have to be requested at app level to enable features using Core Location, Push Notifications, and Core Motion. The SDK supports iOS deployment target SDK versions 10.1 and above. If you have a need to support a specific older version of iOS, please reach out to [Sixgill Support](mailto:support@sixgill.com).
 
-Follow the guides below to configure your app.
+Please see the [iOS sample app](https://github.com/sixgill/reach-ios-sample) for a working example showing how to use the Reach SDK.
 
 ## Release Notes
 * 1.2.16 - Force sensor update and return errors in Ingress.Event
@@ -308,6 +308,16 @@ Error Code | Message | Description
 3 | Motion permission missing |  Motion permission is not enabled on the device
 4 | Location permission missing | Location permission is not enabled on the device
 
+To check the errors, you can call `event.errorArray.count` method and `event.errorArray` method.
+
+```
+Event e = events[indexPath.row]
+ if(e.errorArray.count > 0){
+    let errors = e.errorArray as NSArray as! [SixgillSDK.Error]
+    let errorCode = errors[0].errorCode
+    let errorMessage = errors[0].errorMessage
+}
+```
 
 ## iOS Tracking Limitations
 
