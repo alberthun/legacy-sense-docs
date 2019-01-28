@@ -1,7 +1,7 @@
 ---
 title: Reach Android SDK
 description: ""
-Version: 1.2.7
+Version: 1.2.9
 ---
 # Sixgill Reach Android SDK Setup
 The Sixgill Reach Android SDK is a package for collecting android device sensor data for use with the Sixgill Sense platform. In order to fully utilize the Reach SDK, permissions will have to be requested at app level to enable features using Location, Push Notifications, and Wifi Sensors. The SDK is "plug and play" and only requires configuration. Reach SDK supports android SDK versions from 21 through 29. We currently do not support versions below Android 5.0. If you have a need to support a specific older version of Android, please reach out to [Sixgill Support](mailto:support@sixgill.com).
@@ -9,7 +9,11 @@ The Sixgill Reach Android SDK is a package for collecting android device sensor 
 Follow the guides below to configure your app.
 
 ## Release Notes
-* 1.2.7 - Customizable sticky notifications
+* 1.2.9 
+    - On demand sensor update
+    - Rules integration
+    - Notification integration
+    - Error code and messages
 
 ## Installation
 
@@ -17,7 +21,7 @@ Sixgill's Reach SDK can be installed by manually downloading and including an An
 
 **Manual**
 
-Download the [latest Reach Android Archive](https://raw.githubusercontent.com/sixgill/sense-docs/master/android/reach-android-1.2.7.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).
+Download the [latest Reach Android Archive](https://raw.githubusercontent.com/sixgill/sense-docs/master/android/reach-android-1.2.9.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).
 
 Once added as your app's dependency, add the following dependencies to your app level build file-
 ```
@@ -322,13 +326,14 @@ To set device push token:
 Reach.setPushToken(context, token)
 ```
 
-To force sensors update:
+To force sensors update (on-demand sensor update):
 ```java
 /**
 * @param context {@link Context}
+* @param duration {duration of collection window in milliseconds}, defaults to 20 milliseconds
 * @return void
 */
-Reach.forceSensorUpdate(context)
+Reach.forceSensorUpdate(context, long duration)
 ```
 
 To perform actions based on Push Notifications:
@@ -404,6 +409,26 @@ manager.unregisterReceiver(mEventReceiver);
 ```
 > Note: to prevent memory leaks, always make sure to unregister receivers when not in use or context is destroyed.
 See [unregistering receivers](https://developer.android.com/reference/android/support/v4/content/LocalBroadcastManager#unregisterReceiver(android.content.BroadcastReceiver))
+
+#### Error code and messages
+In case if any permission is missing for any sensor, Reach SDK will generate and error message with error code, which can be then optained from `Ingress.Event`
+- Activity permission is missing
+    - Error code: 1, Message: Activity Permission is missing
+- Location permission is missing
+    - Error code: 4, Message: Location Permission is missing
+- WIFI permission is missing
+    - Error code: 6, Message: Wifi Permission is missing
+- Beacon permission is missing
+    - Error code: 7, Message: Beacon Permission is missing  
+
+You can get the error object from `Ingress.Event` object
+```java
+Ingress.Event event = Ingress.Event.parseFrom(b);
+event.getErrorCount(); // returns the number of event objects
+List<Ingress.Error> errors = event.getErrorList(); // returns the error list
+errors.get(0).getErrorMessage(); // returns the error message
+errors.get(0).getErrorCode(); // returns the error code
+```              
 
 
 ## Android Tracking Limitations
