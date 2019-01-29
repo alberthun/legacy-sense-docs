@@ -14,6 +14,8 @@ Please see the [Android sample app](https://github.com/sixgill/reach-android-sam
     - Rules integration
     - Notification integration
     - Error code and messages
+    - Fixed minor bug related to network call which prevented sending events to SG server
+    - Capped maximum number of WIFI and Beacon to 20
 
 ## Installation
 
