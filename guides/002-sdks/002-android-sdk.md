@@ -95,7 +95,7 @@ Permissions required by SDK are:
 On devices that require runtime permissions, request and acquire the required permissions from the user before starting Reach SDK.
 
 > For more info see [Requesting runtime permissions](https://developer.android.com/training/permissions/requesting.html)
-
+***
 ## Usage
 Using the Reach SDK is simple.  Once initialized and enabled, the SDK will run in the background.
 
@@ -254,9 +254,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 }
 ```
+***
+### Reach Functionalities
+Reach provides following methods to expose its various functionalities
 
-### Reach functonalities
-Other than `initWithAPIKey` mentioned above, Reach provides following methods to expose it's dfferent functionalities-
+#### Starting Reach
+You should enable the SDK only after initialization of SDK is successful.
 
 To start Reach sensors, call `enable` passing a `Context`.
 
@@ -299,6 +302,7 @@ ReachCallback callback = new ReachCallback() {
 Reach.enable(context, true, callback);
 ```
 
+#### Stopping Reach
 
 To stop Reach sensors, call `disable` passing a `Context`.
 
@@ -310,6 +314,8 @@ To stop Reach sensors, call `disable` passing a `Context`.
 Reach.disable(context);
 ```
 
+#### Sixgill Device ID
+
 To get Sixgill Device ID:
 
 ```java
@@ -319,7 +325,7 @@ To get Sixgill Device ID:
 */
 Reach.deviceId(context)
 ```
-
+#### Set Device Push Token
 To set device push token:
 ```java
 /**
@@ -330,7 +336,8 @@ To set device push token:
 Reach.setPushToken(context, token)
 ```
 
-To force sensors to update on-demand:
+#### Force Sensor Update
+To force all available sensors to update on-demand:
 ```java
 /**
 * @param context {@link Context}
@@ -341,7 +348,9 @@ Reach.forceSensorUpdate(context, long duration)
 ```
 This will generate an updated `Ingress.Event` object with the latest sensor data.
 
-To get an on-demand location update
+#### On-demand Location
+
+To get an on-demand location update:
 ```java
 /**
 * @param context {@link Context}
@@ -359,6 +368,9 @@ Reach.getLocation(context, new ReachLocationCallback(){
     }
 });
 ```
+The success and error responses are returned in a callback.
+
+#### Process Push Command
 
 To perform actions based on Push Notifications:
 ```java
@@ -370,7 +382,8 @@ To perform actions based on Push Notifications:
 Reach.processCommand(remoteMessage, context)
 ```
 
-To get FitnessOtions used by Reach
+#### Fitness Options
+To get FitnessOptions used by Reach
 ```java
 /**
     returns fitness optiopns with read permissions for DataType.TYPE_STEP_COUNT_DELTA and DataType.TYPE_DISTANCE_DELTA
@@ -459,7 +472,7 @@ errors.get(0).getErrorMessage(); // returns the error message
 errors.get(0).getErrorCode(); // returns the error code
 ```              
 
-
+***
 ## Android Tracking Limitations
 
 Over the years, Android and iOS have implemented various measures to limit background processing and conserve battery power. The Reach SDK uses a foreground service to be exempt from Android's Doze and App Standby modes. However, it has been found that Android's power-saving measures can still impact an app's ability to track persistently over a long period of time. To further complicate the matters, device manufacturers may add their own optimization features. For best results and optimal functionality, it is recommended that:

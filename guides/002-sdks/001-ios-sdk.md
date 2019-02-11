@@ -45,7 +45,7 @@ Then, run the following command:
 ```
 $ pod update
 ```
-
+***
 ## SDK Configuration
 ## Permission Configuration
 
@@ -81,6 +81,7 @@ Navigate to App Settings > Capabilities and switch Access WiFi Information to On
 
 In your app's Info.plist file add the key `NSMotionUsageDescription` with a string value. Set the string value to the message you want to be displayed to your users when your app requests permission to use the core motion services.
 
+***
 ## Usage
 
 Using the Reach SDK is simple. Once initialized and enabled, the SDK will run in the background. 
@@ -187,11 +188,13 @@ In your app delegate's `applicationWillTerminate` method, add the following code
 ```objc
 [SGSDK saveCoreDataContext]
 ```
+***
+### Reach Functionalities
+Reach provides the following methods to expose various functionalities.
 
-### SDK functonalities
-Reach provides following methods to expose it's dfferent functionalities-
+#### Starting Reach
 
-Enable SDK only after initialization of SDK is successful
+You should enable the SDK only after initialization of SDK is successful.
 
 To start Reach sensors, call `enable`
 ```objc
@@ -210,23 +213,29 @@ Just as startWithAPIKey, `enable` takes in callbacks as well to notify of succes
 ];
 ```
 
-To stop Reach sensors:
+#### Stopping Reach
+* To stop Reach sensors:
 ```objc
 [SGSDK disable];
 ```
 
+#### Sixgill Device ID
 To get Sixgill Device ID:
 ```objc
 [SGSDK deviceId];
 ```
 
-To force sensors to update on-demand:
+#### Force Sensor Update
+To force all available sensors to update on-demand:
 ```objc
 [SGSDK forceSensorUpdate];
 ```
 This will return sensor data in `SensorUpdateDelegate`.
 
-To force location update:
+
+#### On-Demand Location
+
+To get an on-demand location update:
 ```objc
 [SGSDK getLocationWithSuccessHandler:^(Location *location) {
 
@@ -234,6 +243,7 @@ To force location update:
 
 }];
 ```
+The success and error responses are returned in a callback.
 
 #### Getting Sensor Data Events
 
@@ -333,7 +343,7 @@ Event e = events[indexPath.row]
     let errorMessage = errors[0].errorMessage
 }
 ```
-
+***
 ## iOS Tracking Limitations
 
 Over the years, Android and iOS have implemented various measures to limit background processing and conserve battery power. The Reach SDK is designed to run indefinitely for long periods of time. However, there may be times when iOS terminates an app in the background due to low-memory in order to free up space. It is up to the app developer to engage their users to interact with the app and bring it to the foreground from time-to-time, such as with the use of local notifications.
