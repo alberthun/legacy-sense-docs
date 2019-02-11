@@ -10,8 +10,8 @@ Please see the [Android sample app](https://github.com/sixgill/reach-android-sam
 
 ## Release Notes
 * 1.2.10 
-    - On demand sensor update
-    - On demand location update
+    - Force sensor update
+    - On-demand location update
 
 ## Installation
 
@@ -446,7 +446,7 @@ Error Code | Message | Description
 7 | Beacon permission missing | Beacon permission is not enabled on the device
 8 | No beacon found | Beacon data not found
 9 | No activity found | Activity data not found
-10 | No wifi found | WIFI data not found
+10 | No wifi found | WiFi data not found
 11 | No power found | Power data not found
 
 
