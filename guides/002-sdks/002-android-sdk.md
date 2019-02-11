@@ -349,10 +349,12 @@ To get on demand location update
 * @return void
 */
 Reach.getLocation(context, new ReachLocationCallback(){
-    void onLocationSuccess(Ingress.Location location){
+     @Override
+    public void onLocationSuccess(Ingress.Location location) {
 
     }
-    void onLocationFailure(Ingress.Error error){
+    @Override
+    public void onLocationFailure(Ingress.Error error) {
         
     }
 });
