@@ -1,7 +1,7 @@
 ---
 title: Reach iOS SDK
 description: ""
-Version: 1.2.16
+Version: 1.2.19
 
 
 ---
@@ -11,7 +11,7 @@ The Sixgill Reach iOS SDK v2 is a package for collecting iOS device sensor data 
 Please see the [iOS sample app](https://github.com/sixgill/reach-ios-sample) for a working example showing how to use the Reach SDK.
 
 ## Release Notes
-* 1.2.16 - Force sensor update and return errors in Ingress.Event
+* 1.2.16 - Force location update and improved errors.
 
 ## Installation
 To integrate Sixgill into your Xcode project, use CocoaPods.
@@ -37,7 +37,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-pod 'SixgillSDK', '~> 1.2.16'
+pod 'SixgillSDK', '~> 1.2.19'
 end
 ```
 
@@ -226,6 +226,15 @@ To force sensors to update on-demand:
 ```
 This will return sensor data in `SensorUpdateDelegate`.
 
+To force location update:
+```objc
+[SGSDK getLocationWithSuccessHandler:^(Location *location) {
+
+} andFailureHandler:^(Error *error) {
+
+}];
+```
+
 #### Getting Sensor Data Events
 
 To register for the sensor updates:
@@ -307,6 +316,12 @@ Error Code | Message | Description
 2 | Motion activity not enabled | Motion activity is not enabled on the device
 3 | Motion permission missing |  Motion permission is not enabled on the device
 4 | Location permission missing | Location permission is not enabled on the device
+5 | No location found | Location data not found
+8 | No beacon found | Beacon data not found
+9 | No activity found |  Activity data not found
+10 | No wifi connected | No wifi is connected
+12 | No attributes found | No health-kit data found
+
 
 To check the errors, you can call `event.errorArray.count` method and `event.errorArray` method.
 
