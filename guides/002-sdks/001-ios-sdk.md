@@ -11,7 +11,7 @@ The Sixgill Reach iOS SDK v2 is a package for collecting iOS device sensor data 
 Please see the [iOS sample app](https://github.com/sixgill/reach-ios-sample) for a working example showing how to use the Reach SDK.
 
 ## Release Notes
-* 1.2.19 - On-demand location update and improved errors.\
+* 1.2.19 - On-demand location update and improved errors.
 
 ## Installation
 To integrate Sixgill into your Xcode project, use CocoaPods.

@@ -341,7 +341,7 @@ Reach.forceSensorUpdate(context, long duration)
 ```
 This will generate an updated `Ingress.Event` object with the latest sensor data.
 
-To get on demand location update
+To get an on-demand location update
 ```java
 /**
 * @param context {@link Context}
