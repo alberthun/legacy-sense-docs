@@ -1,7 +1,7 @@
 ---
 title: Reach Android SDK
 description: ""
-Version: 1.2.9
+Version: 1.2.10
 ---
 # Sixgill Reach Android SDK Setup
 The Sixgill Reach Android SDK is a package for collecting android device sensor data for use with the Sixgill Sense platform. In order to fully utilize the Reach SDK, permissions will have to be requested at app level to enable features using Location, Push Notifications, and Wifi Sensors. The SDK is "plug and play" and only requires configuration. Reach SDK supports android SDK versions from 21 through 29. We currently do not support versions below Android 5.0. If you have a need to support a specific older version of Android, please reach out to [Sixgill Support](mailto:support@sixgill.com).
@@ -9,13 +9,9 @@ The Sixgill Reach Android SDK is a package for collecting android device sensor 
 Please see the [Android sample app](https://github.com/sixgill/reach-android-sample) for a working example showing how to use the Reach SDK.
 
 ## Release Notes
-* 1.2.9 
+* 1.2.10 
     - On demand sensor update
-    - Rules integration
-    - Notification integration
-    - Error code and messages
-    - Fixed minor bug related to network call which prevented sending events to SG server
-    - Capped maximum number of WIFI and Beacon to 20
+    - On demand location update
 
 ## Installation
 
@@ -23,7 +19,7 @@ Sixgill's Reach SDK can be installed by manually downloading and including an An
 
 **Manual**
 
-Download the [latest Reach Android Archive](https://raw.githubusercontent.com/sixgill/sense-docs/master/android/reach-android-1.2.9.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).
+Download the [latest Reach Android Archive](https://raw.githubusercontent.com/sixgill/sense-docs/master/android/reach-android-1.2.10.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).
 
 Once added as your app's dependency, add the following dependencies to your app level build file-
 ```
@@ -345,6 +341,25 @@ Reach.forceSensorUpdate(context, long duration)
 ```
 This will generate an updated `Ingress.Event` object with the latest sensor data.
 
+To get on demand location update
+```java
+/**
+* @param context {@link Context}
+* @param ReachLocationCallback
+* @return void
+*/
+Reach.getLocation(context, new ReachLocationCallback(){
+    @Override
+    public void onLocationSuccess(Ingress.Location location) {
+
+    }
+    @Override
+    public void onLocationFailure(Ingress.Error error) {
+        
+    }
+});
+```
+
 To perform actions based on Push Notifications:
 ```java
 /**
@@ -426,8 +441,14 @@ Error Code | Message | Description
 --- | --- | ---
 1 | Activity permission is missing | Activity permission is not enabled on the device
 4 | Location permission is missing| Location permission is not enabled on the device
+5 | No location found | Location data not found
 6 | WIFI permission is missing|  WiFi permission is not enabled on the device
 7 | Beacon permission missing | Beacon permission is not enabled on the device
+8 | No beacon found | Beacon data not found
+9 | No activity found | Activity data not found
+10 | No wifi found | WIFI data not found
+11 | No power found | Power data not found
+
 
 You can get the error object from `Ingress.Event` object
 ```java
