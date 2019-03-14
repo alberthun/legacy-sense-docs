@@ -36,3 +36,6 @@ The Reach SDK is initialized with an Sixgill Sense API Key available on the Sixg
 
 ###Configuration
 The functionality of the SDK can be changed dynamically based on a device’s configuration.  The SDK can be turned off or on, made to run slower or faster, or specific sensors can be whitelisted or blacklisted.  In conjunction with the Sixgill Rules Engine, the SDK’s functionality can change in certain areas or after specific sensor readings. 
+
+##Indoor Positioning
+Reach provides indoor positioning capabilities as part of the the SDK by partnering with experienced indoor navigation providers. 

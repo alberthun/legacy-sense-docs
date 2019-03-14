@@ -11,9 +11,9 @@ Read more about the [SDKs](/guides/sdks/overview).
 
 The SDK is available for both [iOS](/guides/sdks/ios-sdk) and [Android](/guides/sdks/android-sdk).
 
-## Connecting IoT Devices
+## Connecting Other Devices
 
-The platform is able to ingest generic IoT sensor data. Developers will need to use the [Ingress API](/apis/ingress) to send data to the IoT events endpoint.
+The platform is able to ingest generic IoT sensor data coming from just about any device. Developers will need to use the [Ingress API](/apis/ingress) to send data to the IoT events endpoint.
 
 1. [Schemas](/guides/channels/schemas) are required in order to make the most of your sensor data. Contact [support@sixgill.com](mailto:support@sixgill.com) with any questions regarding setting up your channel for IoT data.
 2. Create an **IoT Devices** Channel if you do not have one already and select the Schema you created.
@@ -43,11 +43,11 @@ See [look up device by alias](https://docs.sixgill.com/apis/sense-api#tag/device
 
 ### Managing Mobile Configuration
 
-Mobile devices have a configuration that controls cadence, sensors, event time-to-live, and maximum event cache storage. This configuration can be set through the dashboard, or through the API. 
+Mobile devices have a configuration that controls cadence, sensors, event time-to-live, and maximum event cache storage. This configuration can be set through the dashboard or through the API. 
 
 * enabled - flag to set whether or not the device should collect sensor data
-* cadence - the time, in *milliseconds*, between sensor data collection periods
-* sensors -  the sensors that should be enabled during data collection
+* cadence - the time, in *milliseconds*, between sensor data collection periods. Defaults to 30000 ms (30 seconds) unless overridden by a channel configuration.
+* sensors -  the sensors that should be enabled during data collection. Defaults to location,wifi,beacon,power,activity
 * eventTTL - the amount of time, *in milliseconds* that an unsent event is stored on the device for. _This value should not be less than the cadence._ For a majority of cases, the default value is fine.
 * maxStorage - the number of events that are stored on the device. For a majority of cases, the default value is fine.
 

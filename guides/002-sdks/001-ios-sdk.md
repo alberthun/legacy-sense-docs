@@ -6,7 +6,7 @@ Version: 1.2.19
 
 ---
 # Sixgill Reach iOS SDK Setup
-The Sixgill Reach iOS SDK v2 is a package for collecting iOS device sensor data for use with the Sixgill Sense platform. In order to fully utilize the Reach SDK, permissions will have to be requested at app level to enable features using Core Location, Push Notifications, and Core Motion. The SDK supports iOS deployment target SDK versions 10.1 and above. If you have a need to support a specific older version of iOS, please reach out to [Sixgill Support](mailto:support@sixgill.com).
+The Sixgill Reach iOS SDK is a package for collecting iOS device sensor data for use with the Sixgill Sense platform. In order to fully utilize the Reach SDK, permissions will have to be requested at app level to enable features using Core Location, Push Notifications, and Core Motion. The SDK supports iOS deployment target SDK versions 10.1 and above. If you have a need to support a specific older version of iOS, please reach out to [Sixgill Support](mailto:support@sixgill.com).
 
 Please see the [iOS sample app](https://github.com/sixgill/reach-ios-sample) for a working example showing how to use the Reach SDK.
 
@@ -14,7 +14,7 @@ Please see the [iOS sample app](https://github.com/sixgill/reach-ios-sample) for
 * 1.2.19 - On-demand location update and improved errors.
 
 ## Installation
-To integrate Sixgill into your Xcode project, use CocoaPods.
+To integrate Sixgill into your Xcode project, use CocoaPods. The SixgillSDK CocoaPod size is approx 7.6 MB.
 
 ### CocoaPods
 CocoaPods is a dependency manager for Cocoa projects. You can install it with the following command:
@@ -26,7 +26,6 @@ Initialize podfile:
 ```
 $ pod init
 ```
-
 
 Specify the following in your ```Podfile```
 ```
