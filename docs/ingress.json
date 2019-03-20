@@ -262,7 +262,7 @@
       "post": {
         "summary": "Send sensor data from IoT devices",
         "description": "IoT devices can send sensor data events to this endpoint for ingestion into the Sense pipeline.",
-        "tags": ["Mobile"],
+        "tags": ["Events"],
         "requestBody": {
           "required": true,
           "content": {
