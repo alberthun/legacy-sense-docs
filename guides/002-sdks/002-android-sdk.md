@@ -17,6 +17,11 @@ Please see the [Android sample app](https://github.com/sixgill/reach-android-sam
     - Notifications API support
     - Optimized memory and disk usages, database I/O operations
 
+* 1.2.10
+    - Force sensor update
+    - On-demand location update
+    - Added error codes when sensor update is missing
+
 ## Installation
 
 Sixgill's Reach SDK can be installed by manually downloading and including an Android Archive. The .aar file size is approx 320 KB.
