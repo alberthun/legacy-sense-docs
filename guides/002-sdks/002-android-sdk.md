@@ -11,14 +11,11 @@ Please see the [Android sample app](https://github.com/sixgill/reach-android-sam
 
 ## Release Notes
 * 1.3.4 
-    - Optimized memory and disk usages
-    - Optimized database IO operations
-    - Sticky notifications fixes
-    - Device name tagging
-    - Rules evaluations
-    - Notifications
-    - Fixed frequent location miss
-    - Added error codes when a sensor data is missing
+    - [Sticky notification fixes](#customize-notifications)
+    - [Device name tagging](#set-device-name)
+    - Mobile Edge Rule evaluations
+    - Notifications API support
+    - Optimized memory and disk usages, database I/O operations
 
 ## Installation
 
