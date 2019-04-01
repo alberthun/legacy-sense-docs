@@ -1,7 +1,7 @@
 ---
 title: Reach iOS SDK
 description: ""
-Version: 1.2.21
+Version: 1.2.22
 
 
 ---
@@ -11,6 +11,9 @@ The Sixgill Reach iOS SDK is a package for collecting iOS device sensor data for
 Please see the [iOS sample app](https://github.com/sixgill/reach-ios-sample) for a working example showing how to use the Reach SDK.
 
 ## Release Notes
+* 1.2.22
+- Fix: made event's network status update as optional
+
 * 1.2.21
 - Event's network status update
 - Device name support
@@ -54,7 +57,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-pod 'SixgillSDK', '~> 1.2.21'
+pod 'SixgillSDK', '~> 1.2.22'
 end
 ```
 
@@ -345,7 +348,7 @@ To register for the sensor updates:
     NSArray<Error *> *errors = sensorData.errorArray;
     ```
     
--  Implement this method `updateEventNetworkStatus`  to get status about whether event  being sent to sixgill server or not. This method gives `status` as EventNetworkStatus and `timestamp`  as int64_t id (event_id) for which event this status update came. 
+-  Implement this method `updateEventNetworkStatus`  to get status about whether event  being sent to sixgill server or not. This method gives `status` as EventNetworkStatus and `timestamp`  as int64_t id (event_id for which event this status update came). 
     - EventNetworkStatus is an enum with following cases:
         - EventNetworkStatusUnsent: Event not sent to sixgill server.
         - EventNetworkStatusRetrying: Event not sent to sixgill server but trying to send it.
