@@ -12,7 +12,8 @@ Please see the [iOS sample app](https://github.com/sixgill/reach-ios-sample) for
 
 ## Release Notes
 * 1.2.21
-- [Device name support]
+- Event's network status update
+- Device name support
 - Mobile Edge Rule evaluations
 - Notifications API support
 - Optimized code, database I/O operations
@@ -343,6 +344,14 @@ To register for the sensor updates:
     ```
     NSArray<Error *> *errors = sensorData.errorArray;
     ```
+    
+-  Implement this method `updateEventNetworkStatus`  to get status about whether event  being sent to sixgill server or not. This method gives `status` as EventNetworkStatus and `timestamp`  as int64_t id (event_id) for which event this status update came. 
+    - EventNetworkStatus is an enum with following cases:
+        - EventNetworkStatusUnsent: Event not sent to sixgill server.
+        - EventNetworkStatusRetrying: Event not sent to sixgill server but trying to send it.
+        - EventNetworkStatusSent: Event sent to sixgill.
+
+
     
 #### Error Codes
 In case any permission is missing for any sensor, Reach SDK will generate and error message with an error code, which can be then obtained from `Ingress.Event`
