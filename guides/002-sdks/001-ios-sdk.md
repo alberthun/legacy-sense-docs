@@ -12,27 +12,18 @@ Please see the [iOS sample app](https://github.com/sixgill/reach-ios-sample) for
 
 ## Release Notes
 * 1.2.22
-- Fix: made event's network status update as optional
+    - Fix: made event's network status update as optional
 
 * 1.2.21
-- Event's network status update
-- Device name support
-- Mobile Edge Rule evaluations
-- Notifications API support
-- Optimized code, database I/O operations
-- Fixed crashes for iPhone 5S and SE.
+    - Event's network status update
+    - [Device name support](#set-device-name)
+    - Mobile Edge Rule evaluations
+    - Notifications API support
+    - Optimized code, database I/O operations
+    - Fixed crashes for iPhone 5S and SE
 
 * 1.2.20
-- Fixed crashes for iOS 9.
-
-* 1.2.19
-- On demand location update
-- Improved error codes. (when sensor update is missing)
-
-* 1.2.16
-- On demand sensor update 
-- Show errors in event
-
+    - Fixed crashes for iOS 9
 
 ## Installation
 To integrate Sixgill into your Xcode project, use CocoaPods. The SixgillSDK CocoaPod size is approx 7.6 MB.
