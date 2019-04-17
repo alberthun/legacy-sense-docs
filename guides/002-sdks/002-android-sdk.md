@@ -11,7 +11,7 @@ Please see the [Android sample app](https://github.com/sixgill/reach-android-sam
 
 ## Release Notes
 * 1.3.5
-    - Urgent fix for edge case when the SDK stucks with default minimum cadence of 30 sec
+    - Fixed an issue with cadence handling, where the SDK stucks with default minimum cadence of 30 sec
 * 1.3.4 
     - [Sticky notification fixes](#customize-notifications)
     - [Device name tagging](#set-device-name)
