@@ -1,7 +1,7 @@
 ---
 title: Reach iOS SDK
 description: ""
-Version: 1.2.22
+Version: 1.2.23
 
 
 ---
@@ -11,8 +11,11 @@ The Sixgill Reach iOS SDK is a package for collecting iOS device sensor data for
 Please see the [iOS sample app](https://github.com/sixgill/reach-ios-sample) for a working example showing how to use the Reach SDK.
 
 ## Release Notes
+* 1.2.23
+- Fix: Remove inaccurate locations
+
 * 1.2.22
-    - Fix: made event's network status update as optional
+    - Fix: Made event's network status update as optional
 
 * 1.2.21
     - Event's network status update
@@ -48,7 +51,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-pod 'SixgillSDK', '~> 1.2.22'
+pod 'SixgillSDK', '~> 1.2.23'
 end
 ```
 
