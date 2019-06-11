@@ -10,12 +10,6 @@ The Sixgill Reach Android SDK is a package for collecting android device sensor 
 Please see the [Android sample app](https://github.com/sixgill/reach-android-sample) for a working example showing how to use the Reach SDK.
 
 ## Release Notes
-* 1.3.7
-    - Improved the background service stability
-    - Improved location tracking
-* 1.3.6
-    - Minor bug fixes
-    - Performance enhancement
 * 1.3.5
     - Fixed an issue with cadence handling, where the SDK stucks with default minimum cadence of 30 sec
 * 1.3.4 
@@ -36,7 +30,7 @@ Sixgill's Reach SDK can be installed by manually downloading and including an An
 
 **Manual**
 
-Download the [latest Reach Android Archive](https://raw.githubusercontent.com/sixgill/sense-docs/master/android/reach-android-1.3.7.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).
+Download the [latest Reach Android Archive](https://raw.githubusercontent.com/sixgill/sense-docs/master/android/reach-android-1.3.5.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).
 
 Once added as your app's dependency, add the following dependencies to your app level build file-
 ```

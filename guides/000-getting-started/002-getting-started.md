@@ -66,8 +66,6 @@ Users can also demo the mobile SDK capabilities by using the Sixgill Sync 2.0 de
 
 [Sixgill Sync 2.0 for Android](https://play.google.com/store/apps/details?id=sync.sixgill.com.sync)
 
-_Updated Sync 2.0 apps for both platforms to be released November 2018_
-
 Pre-reqs:
 A dashboard account. See [Creating an Account](#creating-an-account) for details
 A [Channel](#channels) for your device type.

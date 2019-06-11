@@ -12,7 +12,7 @@ Please see the [iOS sample app](https://github.com/sixgill/reach-ios-sample) for
 
 ## Release Notes
 * 1.2.23
-- Fix: Remove inaccurate locations
+	- Fix: Filter out inaccurate locations
 
 * 1.2.22
     - Fix: Made event's network status update as optional
