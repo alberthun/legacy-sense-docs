@@ -1,7 +1,7 @@
 ---
 title: Reach Android SDK
 description: ""
-Version: 1.3.5
+Version: 1.3.7
 ---
 # Sixgill Reach Android SDK Setup
 The Sixgill Reach Android SDK is a package for collecting android device sensor data for use with the Sixgill Sense platform. In order to fully utilize the Reach SDK, permissions will have to be requested at app level to enable features using Location, Push Notifications, and Wifi Sensors. The SDK is "plug and play" and only requires configuration. Reach SDK supports android SDK versions from 21 through 29. We currently do not support versions below Android 5.0. If you have a need to support a specific older version of Android, please reach out to [Sixgill Support](mailto:support@sixgill.com).
@@ -10,6 +10,12 @@ The Sixgill Reach Android SDK is a package for collecting android device sensor 
 Please see the [Android sample app](https://github.com/sixgill/reach-android-sample) for a working example showing how to use the Reach SDK.
 
 ## Release Notes
+* 1.3.7
+    - Improved the background service stability
+    - Improved location tracking
+* 1.3.6
+    - Minor bug fixes
+    - Performance enhancement
 * 1.3.5
     - Fixed an issue with cadence handling, where the SDK stucks with default minimum cadence of 30 sec
 * 1.3.4 
@@ -26,11 +32,11 @@ Please see the [Android sample app](https://github.com/sixgill/reach-android-sam
 
 ## Installation
 
-Sixgill's Reach SDK can be installed by manually downloading and including an Android Archive. The .aar file size is approx 320 KB.
+Sixgill's Reach SDK can be installed by manually downloading and including an Android Archive. The .aar file size is approx 381 KB.
 
 **Manual**
 
-Download the [latest Reach Android Archive](https://raw.githubusercontent.com/sixgill/sense-docs/master/android/reach-android-1.3.5.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).
+Download the [latest Reach Android Archive](https://raw.githubusercontent.com/sixgill/sense-docs/master/android/reach-android-1.3.7.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).
 
 Once added as your app's dependency, add the following dependencies to your app level build file-
 ```
