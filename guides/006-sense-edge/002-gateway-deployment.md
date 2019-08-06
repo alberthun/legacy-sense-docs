@@ -1,6 +1,6 @@
 ---
 title: Reach Edge Agent
-description: "Reach Edge Agent Guide"
+description: "A guide to installing the Reach Edge Agent for gateways"
 ---
 
 ## Introduction
@@ -24,12 +24,12 @@ reach-edge-agent gateway -parent-address="https://sense-ingress-api.sixgill.com"
 **parent-address** | Parent (defaults to Sense production) instance API URL
 **api-key** | API Key retrieved from the Sense Dash
 
-By default, the Agent's listening port 5000. This can be overridden by exporting environment variable SENSE\_INGRESS\_PORT and setting a different port.
+By default, the Agent's listening port is 5000. This can be changed by exporting environment variable SENSE\_INGRESS\_PORT and setting a different port.
 
 Running the binary, with the proper flag values, registers the agent with the parent instance making it visible in Sense Dash. Once running, the agent will auto-update its internal set of rules and configuration settings while listening on the given port for incoming sensor data. The agent operates using the same REST API interface as the Sense Ingress API. For example, to register a device with the agent:
 
 ```bash
-curl -X POST http://localhost:8080/v1/registration -d `{
+curl -X POST http://localhost:5000/v1/registration -d `{
   "apiKey": "12345ABCDEF",
   "properties": {
     "model": "iPhone",
@@ -41,7 +41,7 @@ curl -X POST http://localhost:8080/v1/registration -d `{
 To send event data to the agent:
 
 ```bash
-curl -X POST http://localhost:8080/v1/events -d `{
+curl -X POST http://localhost:5000/v1/events -d `{
   "timestamp": 1529462707,
   "locations": [
     {
