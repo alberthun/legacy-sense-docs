@@ -16,15 +16,13 @@ The Reach Edge Agent is currently in Beta.  For access please contact [Sixgill S
 The Reach Edge Agent (beta) runs as a binary on a "gateway" device.  To start the agent run the following command:  
 
 ```
-reach-edge-agent -assets=my_dir -parent="https://sense-ingress-api.sixgill.com" -apikey=MY-KEY-12345 -port=8080
+reach-edge-agent gateway -parent-address="https://sense-ingress-api.sixgill.com" -api-key=MY-KEY-12345
 ```
 
 **Flag**|**Description**
 -|-
-**assets** | Directory to store required assets
-**parent** | Parent (defaults to Sense production) instance API URL
-**apikey** | API Key retrieved from the Sense Dash
-**port** | Agent's listening port
+**parent-address** | Parent (defaults to Sense production) instance API URL
+**api-key** | API Key retrieved from the Sense Dash
 
 Running the binary, with the proper flag values, registers the agent with the parent instance making it visible in Sense Dash.  Once running, the agent will auto-update its internal set of rules and configuration settings while listening on the given port for incoming sensor data.  The agent operates using the same REST API interface as the Sense Ingress API.  For example, to register a device with the agent:
 
